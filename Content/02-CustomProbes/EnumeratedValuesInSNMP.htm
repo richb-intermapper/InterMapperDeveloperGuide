@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="816" MadCap:lastWidth="576">
+    <head>
+    </head>
+    <body>
+        <h1 class="L2">Enumerated Values In SNMP Probes</h1>
+        <p>An enumeration in a MIB allows a designer to represent text strings as  numeric values. This numeric representation is more compact, and therefore  efficient, but makes it hard for humans to read. InterMapper has several  techniques for displaying the enumerated values for easier interpretation.</p>
+        <p>There are several ways to do this:</p>
+        <ol>
+            <li>InterMapper can automatically display these "enumerations" if the MIB has  been imported. To do this, simply declare the variables to be of type "STRING"  instead of "DEFAULT". This is described in <a href="snmp-device-variables.htm">Probe  Variables</a>. </li>
+            <li>If no MIB file is available, you can create a calculation variable to select  a string based on the numeric value returned. If you have two choices, you  should use the "xxxx ? yyyy : zzzz" expression that can be read as:<br /><pre class="code" xml:space="preserve">     if xxxx is true then return yyyy     otherwise return zzzz </pre><br />				The calculation variable will look like this: 
+				<br /><pre class="code">     xxxxStr, ($xxxx == 0 ? "yyyy" : "zzzz"), CALCULATION, "replacement string for xxxx" </pre></li>
+            <li>If there are three or more possibilities, you can chain the expression in  this format: <br /><pre class="code" xml:space="preserve">     aaaa ? bbbb : cccc ? dddd : eeee ? ffff : gggg</pre><br />which can be read  as: <br /><pre class="code" xml:space="preserve">if aaaa is true then 
+  return bbbb 
+else if cccc is true 
+  return dddd 
+else if eeee is true 
+  return ffff <br />else return gggg </pre><br />Generally, the aaaa, cccc, and eeee test to see if a single  variable is equal to 1, 2, 3, etc. The calculation variable then looks like  this:<br /><pre class="code">aaaaStr, ($aaaa==0 ? "bbbb" : $aaaa==1 ? "dddd" : $aaaa==2 ? "ffff" : "gggg"), CALCULATION, "replacement string for aaaa" </pre></li>
+        </ol>
+    </body>
+</html>

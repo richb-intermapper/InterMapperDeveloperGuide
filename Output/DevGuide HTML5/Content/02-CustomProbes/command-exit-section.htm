@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|Command Line Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;command-exit&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2nopagebreak">The <span class="code">&lt;command-exit&gt;</span> Section</h1>
+            <p><a name="commandexitsection"></a>The <span class="code">&lt;command-exit&gt;</span> Section&#160;</p>
+            <p>The <span class="code">&lt;command-exit&gt;</span> section allows you to specify which results 
+ from the command indicate the five InterMapper device states. The states 
+ are:<a name="kanchor564"></a></p>
+            <ul>
+                <li value="1"> down</li>
+                <li value="2">critical</li>
+                <li value="3">alarm</li>
+                <li value="4">warning</li>
+                <li value="5">okay</li>
+            </ul>
+            <p>For each state, you need to indicate 
+ what item InterMapper should examine and what its value should be to result 
+ in that state being set. At the moment, the only thing InterMapper can look 
+ at is the exit code, which is indicated with ${EXIT_CODE}. So, in the example 
+ below, the line:<pre class="code">down: ${EXIT_CODE} = 2 </pre> means, "To determine if the device is down, examine the exit code from 
+ the command; if it is 2, the device is down." If none of the criteria for 
+ the states you have defined are true, then the device is set to "unknown". 
+    </p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

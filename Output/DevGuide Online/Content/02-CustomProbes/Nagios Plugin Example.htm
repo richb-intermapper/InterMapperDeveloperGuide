@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Command Line Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Nagios Plugin Example</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Nagios Plugin Example</h1><pre class="code">
+&lt;!-- 
+Command Line Nagios Plug-in Example (com.dartware.nagiosx.template) 
+Copyright (c) 2008 Dartware, LLC. All rights reserved. 
+--&gt; 
+
+&lt;header&gt; 
+&#160;&#160;type&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"cmd-line" 
+&#160;&#160;package&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"com.dartware" 
+&#160;&#160;probe_name&#160;&#160;&#160;=&#160;&#160;"nagios.template" 
+&#160;&#160;human_name&#160;&#160;&#160;=&#160;&#160;"Nagios Plugin" 
+&#160;&#160;version&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"1.6" 
+&#160;&#160;address_type&#160;=&#160;&#160;"IP" 
+&#160;&#160;display_name&#160;=&#160;&#160;"Miscellaneous/Nagios/Nagios Plugin"
+&#160;&#160;flags&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"NAGIOS3"
+&lt;/header&gt; 
+
+&lt;description&gt; 
+\GB\Nagios Plugin\p\ 
+This probe lets you specify a Nagios plugin. InterMapper invokes the plugin and uses the exit value to set the condition of the device. It uses performance data returned by the plugin to create a nice display of chartable data. The \i\Plugin\p\ parameter below should be the same command line (including arguments) used to test the plugin manually. \${ADDRESS} is replaced with the device's IP address, and \${PORT} is replaced by the port specified for the probe. 
+
+This probe looks in the Tools sub-directory of the InterMapper <br />Settings directory for the plugin. 
+
+Nagios and the Nagios logo are registered trademarks of Ethan Galstad. For more information, see \U2\http://www.nagios.org\P0\ 
+&lt;/description&gt; 
+
+&lt;parameters&gt; 
+&#160;&#160;Plugin&#160;=&#160;"check_ping -H ${ADDRESS} -w 100,10% -c 1000,90%" 
+&lt;/parameters&gt; 
+
+&lt;command-line&gt; 
+-- Empty path forces the InterMapper Settings:Tools directory
+&#160;&#160;path&#160;=&#160;"" 
+&#160;&#160;cmd&#160;&#160;=&#160;${Plugin} 
+&lt;/command-line&gt; 
+
+&lt;command-exit&gt;
+-- These are the exit codes used by Nagios plugins
+&#160;&#160;down:&#160;${EXIT_CODE}=3 
+&#160;&#160;critical:&#160;${EXIT_CODE}=2 
+&#160;&#160;alarm:&#160;&#160;&#160;&#160;${EXIT_CODE}=1 
+&#160;&#160;okay:&#160;&#160;&#160;&#160;&#160;${EXIT_CODE}=0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt;
+\B5\NAGIOS Probe Performance Data: ${Plugin}\P0\
+${nagios_output}
+&lt;/command-display&gt;</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

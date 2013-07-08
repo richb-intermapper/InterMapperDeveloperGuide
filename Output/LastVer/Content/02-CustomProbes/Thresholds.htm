@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Custom SNMP Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Thresholds</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Thresholds</h1>
+            <p>Use the <span class="code">&lt;snmp-device-thresholds&gt;</span><a name="kanchor176"></a><a name="kanchor177"></a> 
+  section to specify the comparisons that should be made between probe variables 
+ and other values.</p>
+            <p>Each line in the threshold section contains a <i> status</i>, a                             <i>comparison</i>, 
+ and an optional                             <i>condition string</i> for probe variables. If the comparison 
+ is                             <i>triggered</i>, (if the expression comparing the probe variable to a constant 
+ or other variable is true) then the device is changed to the corresponding status 
+ (if that exceeds its current status.) </p>
+            <p>A threshold can be one of the following (they are case-sensitive):</p>
+            <ul>
+                <li value="1">unknown
+</li>
+                <li value="2">okay
+</li>
+                <li value="3">warning
+</li>
+                <li value="4">alarm
+</li>
+                <li value="5">critical
+</li>
+                <li value="6">down</li>
+            </ul>
+            <h3>Sample <span class="code">&lt;snmp-device-threshold&gt;</span> 
+  Section </h3>
+            <pre class="code">&lt;snmp-device-thresholds&gt;<a name="kanchor178"></a>
+&#160;&#160;&#160;critical: ${ipInHdrErrors} &gt; 15 "ipInHdrErrors critical"
+&#160;&#160;&#160;   alarm: ${ipForwDatagrams} &gt; 10 "ipForwarded datagrams too high"
+&#160;&#160;&#160;   alarm: ${tcpCurrEstab} &gt;= 1
+&#160;&#160;&#160;   alarm: ${ipInHdrErrors} &gt; 10 "ipInHdrErrors too high"
+&#160;&#160;&#160; warning: ${ipForwDatagrams} &gt; 5
+&#160;&#160;&#160; warning: ${ipForwDatagrams} &lt;= 2
+&#160;&#160;&#160; warning: ${ipInHdrErrors} &gt; 5
+&lt;/snmp-device-threshold&gt;</pre>
+            <h2><a name="kanchor179"></a><a name="kanchor180"></a>Creating Comparisons </h2>
+            <p>Comparisons are evaluated in order from top to bottom until a comparison is 
+ triggered (result is <i>true</i>). At that point, if the associated status is 
+ more severe than the device's current status, the device now uses its status 
+ and condition. No further comparisons are made once one has triggered.</p>
+            <p>When a comparison is triggered, it is written to the log file as well as being 
+ added to the bottom of the device's Status window. If the condition string is 
+ present, it is displayed in addition to the comparison string.</p>
+            <h3><a name="kanchor181"></a>Numeric Comparisons</h3>
+            <p>The following numeric comparison operators are legal: &gt;, &gt;=, &lt;, &lt;=, 
+ = and !=. </p>
+            <h3><b><a name="kanchor182"></a><a name="kanchor183"></a>String Matches</b>
+            </h3>
+            <p>By default, InterMapper performs numeric comparisons. </p>
+            <p><b>To compare values as strings:</b>
+            </p>
+            <ul>
+                <li value="1">Enclose one or both of the operands in double-quotes ("). For example, the 
+ comparison<br></br><br></br><span class="code"><a name="kanchor184"></a>warning: ${sysContact} != "Fred Flintstone"</span><br></br><br></br>performs a string comparison because the name is enclosed in quotes. 
+  </li>
+                <li value="2">Use the =~ and !~ operators to provide partial string matches. They perform 
+ "contains" and "doesn't contain" comparisons, respectively.</li>
+            </ul>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

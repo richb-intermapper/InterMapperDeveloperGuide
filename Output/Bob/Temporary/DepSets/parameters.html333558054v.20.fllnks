@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet
+  FileTitle=""
+  FileSearchable="true"
+  FileTimeEstimate="0"
+  FilePriority="0"
+  FileStatus="In Progress">
+  <Links>
+    <Link
+      Url="Content/Resources/default.css" />
+    <Link
+      Url="Content/images/dialog_paramtest.png" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </Links>
+  <LongLinks>
+    <Link
+      Url="Content/Resources/default.css" />
+    <Link
+      Url="Content/images/dialog_paramtest.png" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </LongLinks>
+  <Anchors />
+  <Keywords>
+    <IndexCacheEntry
+      Term="Probe Parameters"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="6" />
+    <IndexCacheEntry
+      Term="Probe Configuration window"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="9" />
+    <IndexCacheEntry
+      Term="Name/value"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="12" />
+    <IndexCacheEntry
+      Term="Alarm/warning"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="18" />
+    <IndexCacheEntry
+      Term="Seconds"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="19" />
+    <IndexCacheEntry
+      Term="PASSWORD"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="37" />
+    <IndexCacheEntry
+      Term="Password Fields"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="38" />
+    <IndexCacheEntry
+      Term="Parameter Section Example"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="57" />
+    <IndexCacheEntry
+      Term="Custom TCP"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="59" />
+    <IndexCacheEntry
+      Term="Values"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="60" />
+  </Keywords>
+  <Concepts />
+  <ConceptControlNames />
+  <IndexControlNames />
+  <Variables />
+  <FileConditions>
+    <Condition
+      Tag="Primary.online" />
+    <Condition
+      Tag="Primary.print" />
+  </FileConditions>
+  <FileTags />
+  <AllConditions>
+    <Condition
+      Tag="Primary.online" />
+    <Condition
+      Tag="Primary.print" />
+  </AllConditions>
+  <Stylesheets>
+    <Url
+      Source="Content/Resources/default.css" />
+  </Stylesheets>
+</CatapultFileLinkSet>

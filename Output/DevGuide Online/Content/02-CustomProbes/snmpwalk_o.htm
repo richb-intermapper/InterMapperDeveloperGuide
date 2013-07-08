@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Troubleshooting" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using the SNMPWALK -o Option</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L3" MadCap:conditions="Primary.online">Using the SNMPWALK -o Option</h1>
+            <p>Instead of writing the voluminous results of the SNMPWalk to the Debug log, InterMapper can write the results to the SQLite file. To use this feature, you use the <b style="font-style: italic;">-o</b> option.</p>
+            <p>When you use the <b style="font-style: italic;">-o</b> option, snmpwalk stores its output into an SQLite database. To use this feature, you specify the name of the database file following the -o option. </p>
+            <p><b>Example:</b>
+            </p>
+            <p>To create an SQLite3 database named "foo" and store the snmpwalk results there, use the following "server command":
+</p><pre class="code">snmpwalk -v1 -c public -o foo switch 1.3
+</pre>
+            <p>This writes the output to an SQLite database file named "foo", located in InterMapper Settings/Temporary directory. The database file named "foo" may contain multiple snmpwalk's. The file is created if it doesn't exist.</p>
+            <p>When the -o option is used, only these four lines are written to the Debug log:
+</p><pre class="code">SNMPWalk command received: 'snmpwalk -v1 -c public -o foo -n 10 switch 1.3'
+  SNMPWalk 192.168.1.36 3: prefix 1.3 (version SNMPv1 ...
+  SNMPWalk on switch started
+  SNMPWalk 192.168.1.36 3: Finished (10 OIDs ...   
+</pre>
+            <h2>
+                <p>&#160;</p> The SNMPWALK&#160;Schema</h2>
+            <p>Here is the schema used for the snmpwalk database:
+</p><pre class="code" xml:space="preserve">CREATE TABLE walks (
+     id           INTEGER PRIMARY KEY,
+     address      TEXT,
+     port         INTEGER,
+     startOid     TEXT,
+     snmpVersion  INTEGER,
+     pktTimeout   INTEGER,
+     pktRetries   INTEGER,
+     maxOids      INTEGER,
+     toEnd        INTEGER,
+     timeStarted  INTEGER,
+     timeFinished INTEGER,
+     oidCount     INTEGER,
+     stopReason   TEXT
+   );
+
+   CREATE TABLE results (
+     walk_id      INTEGER,
+     name TEXT,
+     oid          TEXT,
+     type         INTEGER,
+     value        BLOB
+   );
+</pre>
+            <h3 class="pagebreakbefore"> Table: walks</h3>
+            <p>   The walks table stores one row for each snmpwalk command. Each walk will receive a unique id that is used to identify it (id).  The other columns are:</p>
+            <p class="dt">   address</p>
+            <p class="dd">the address of the snmpwalk target device</p>
+            <p class="dt">   port</p>
+            <p class="dd">the udp port number of the snmpwalk target device</p>
+            <p class="dt">   startOid</p>
+            <p class="dd">the starting OID specified in the snmpwalk command</p>
+            <p class="dt">   snmpVersion</p>
+            <p class="dd">the SNMP version specified</p>
+            <p class="dt">   pktTimeout</p>
+            <p class="dd">the packet timeout specified</p>
+            <p class="dt">   pktRetries</p>
+            <p class="dd">the packet retry count specified</p>
+            <p class="dt">   maxOids</p>
+            <p class="dd">the maximum number of OID's specified</p>
+            <p class="dt">   toEnd</p>
+            <p class="dd">a boolean flag indicating that the walk should proceed to the end (i.e. don't limit by startOid).</p>
+            <p class="dt">   timeStarted</p>
+            <p class="dd">the UTC timestamp when the walk was started</p>
+            <p class="dt">   timeFinished</p>
+            <p class="dd">the UTC timestamp when the walk was completed</p>
+            <p class="dt">   oidCount</p>
+            <p class="dd">the number of OID rows walked</p>
+            <p class="dt">   stopReason</p>
+            <p class="dd">text indicating the reason the walk stopped where it did</p>
+            <h3> Table: results</h3>
+            <p>   The results table stores a row for each entry of one snmpwalk, as specified by id in the <span class="code">walks</span> table.</p>
+            <p class="dt">   walk_id</p>
+            <p class="dd">the id of the walk (references walks.id)</p>
+            <p class="dt">   oid</p>
+            <p class="dd">the text of the OID naming the SNMP variable</p>
+            <p class="dt">   type</p>
+            <p class="dd">the ASN.1 type integer for the SNMP variable</p>
+            <p class="dt">value</p>
+            <p class="dd">the actual, uninterpreted binary value returned by the SNMP agent </p>
+            <h2 class="pagebreakbefore">Accessing the Data</h2>
+            <p> On Mac OS X 10.4, you can use the built-in <span class="code">sqlite3</span> command to access the data in the SQLite database file:
+</p><pre class="code" xml:space="preserve">&#160;&#160;$ sqlite3 foo
+
+  sqlite&gt; .mode csv
+  sqlite&gt; select * from walks;
+  1,"192.168.1.1",161,1.0,0,10000,3,2000,0,1178801645,1178801685,0,"No answer received"
+  2,"192.168.1.2",161,1.3,0,10000,3,2000,0,1178801708,1178801895,2000,"Finished (2000 OIDs found)"
+  sqlite&gt; select count(*) from results where walk_id = 1;
+  0
+  sqlite&gt; select count(*) from results where walk_id = 2;
+  2000
+  sqlite&gt; select * from results where walk_id = 2 order by oid limit 5; 
+  2,"1.3.6.1.2.1.1.1.0",4,"HP J4813A ProCurve Switch 2524..."
+  2,"1.3.6.1.2.1.1.2.0",6,"+\006\001\004\001\013\002\003\007\013\023"
+  2,"1.3.6.1.2.1.1.3.0",67,"\035\330J\375"
+  2,"1.3.6.1.2.1.1.4.0",4,"Bill Fisher"
+  2,"1.3.6.1.2.1.1.5.0",4,"HP ProCurve Switch 2524"
+</pre>
+            <p>There is a Firefox add-on called "SQLite Manager" that opens and displays
+SQLite database files. This makes it a cross-platform tool, requiring only
+Firefox 3.5 or greater, plus a small download. </p>
+            <p><b>To install SQLite Manager:
+</b>
+            </p>
+            <ol>
+                <li value="1">Start Firefox 3.5 or newer
+- Tools -&gt; Add-ons
+- Click Get Add-ons
+</li>
+                <li value="2">Enter "SQLite" into the Search field and press Return.
+</li>
+                <li value="3">Double-click the "SQLite Manager" item to install it. Restart Firefox when
+instructed.
+</li>
+            </ol>
+            <p><b>To use SQLite Manager:
+</b>
+            </p>
+            <ol>
+                <li value="1">Tools -&gt; SQLite Manager to open it.
+</li>
+                <li value="2">Use the Database -&gt; Connect Database (within the window) to open a saved
+SQLite database
+</li>
+                <li value="3">Click the results table to view it.</li>
+            </ol>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

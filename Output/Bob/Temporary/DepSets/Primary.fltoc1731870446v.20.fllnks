@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet
+  FileSearchable="false"
+  FileTimeEstimate="0"
+  FilePriority="0">
+  <Links>
+    <Link
+      Url="Content/DevGuideCover.htm" />
+    <Link
+      Url="Content/Resources/PageLayouts/FrontMatter.flpgl" />
+    <Link
+      Url="Content/Table of Contents.htm" />
+    <Link
+      Url="Content/Resources/MasterPages/PrintDoc.flmsp" />
+    <Link
+      Url="Content/Introduction.html" />
+    <Link
+      Url="Content/Resources/PageLayouts/DartwareChapter.flpgl" />
+    <Link
+      Url="Content/01-Preface/warranty.html" />
+    <Link
+      Url="Content/01-Preface/ThirdParty.htm" />
+    <Link
+      Url="Content/02-CustomProbes/customprobes.html" />
+    <Link
+      Url="Content/02-CustomProbes/Anatomy_of_a_Probe.htm" />
+    <Link
+      Url="Content/02-CustomProbes/header.html" />
+    <Link
+      Url="Content/02-CustomProbes/description.html" />
+    <Link
+      Url="Content/02-CustomProbes/parameters.html" />
+    <Link
+      Url="Content/02-CustomProbes/recordingdata.htm" />
+    <Link
+      Url="Content/02-CustomProbes/dartwareprobedata.htm" />
+    <Link
+      Url="Content/02-CustomProbes/probestatuswindows.html" />
+    <Link
+      Url="Content/02-CustomProbes/IMML - InterMapper Markup Language.htm" />
+    <Link
+      Url="Content/02-CustomProbes/comments.html" />
+    <Link
+      Url="Content/02-CustomProbes/builtinvariablereference.htm" />
+    <Link
+      Url="Content/02-CustomProbes/PersistentVariables.htm" />
+    <Link
+      Url="Content/02-CustomProbes/customsnmpprobes.html" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-variables.htm" />
+    <Link
+      Url="Content/02-CustomProbes/Thresholds.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-properties.htm" />
+    <Link
+      Url="Content/02-CustomProbes/OnDemandTables.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-display.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-alarmpoints.htm" />
+    <Link
+      Url="Content/02-CustomProbes/alarmpointformat.htm" />
+    <Link
+      Url="Content/02-CustomProbes/alarmpointnotifiers.htm" />
+    <Link
+      Url="Content/02-CustomProbes/probecalculations.htm" />
+    <Link
+      Url="Content/02-CustomProbes/probeproperties.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmpoids.htm" />
+    <Link
+      Url="Content/02-CustomProbes/SNMPProbeExample.htm" />
+    <Link
+      Url="Content/02-CustomProbes/handlingtraps.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-variables-traps.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmp-device-display-traps.htm" />
+    <Link
+      Url="Content/02-CustomProbes/trap_viewing_and_logging.htm" />
+    <Link
+      Url="Content/02-CustomProbes/trapexample.htm" />
+    <Link
+      Url="Content/02-CustomProbes/dartwaremib.html" />
+    <Link
+      Url="Content/02-CustomProbes/TCP_Probes.htm" />
+    <Link
+      Url="Content/02-CustomProbes/language.html" />
+    <Link
+      Url="Content/02-CustomProbes/tcpscriptoutputsection.htm" />
+    <Link
+      Url="Content/02-CustomProbes/commandref.html" />
+    <Link
+      Url="Content/02-CustomProbes/timing.html" />
+    <Link
+      Url="Content/02-CustomProbes/tcpexample.html" />
+    <Link
+      Url="Content/02-CustomProbes/commandlineprobes.htm" />
+    <Link
+      Url="Content/02-CustomProbes/command-line-section.htm" />
+    <Link
+      Url="Content/02-CustomProbes/command-exit-section.htm" />
+    <Link
+      Url="Content/02-CustomProbes/command-display-section.htm" />
+    <Link
+      Url="Content/02-CustomProbes/Probe_Tool_Section.htm" />
+    <Link
+      Url="Content/02-CustomProbes/cmdlineprobeexample.htm" />
+    <Link
+      Url="Content/02-CustomProbes/PythonPlugins.htm" />
+    <Link
+      Url="Content/02-CustomProbes/nagios.htm" />
+    <Link
+      Url="Content/02-CustomProbes/Nagios Plugin Example.htm" />
+    <Link
+      Url="Content/02-CustomProbes/NOAA_probe.htm" />
+    <Link
+      Url="Content/02-CustomProbes/installing.html" />
+    <Link
+      Url="Content/02-CustomProbes/Modifying Built-in Probes.htm" />
+    <Link
+      Url="Content/02-CustomProbes/Sharing_Custom_Probes.htm" />
+    <Link
+      Url="Content/02-CustomProbes/TroubleshootingProbes.htm" />
+    <Link
+      Url="Content/02-CustomProbes/errors.html" />
+    <Link
+      Url="Content/02-CustomProbes/Debugging_with_SNMPWalk.htm" />
+    <Link
+      Url="Content/02-CustomProbes/snmpwalk_o.htm" />
+    <Link
+      Url="Content/02-CustomProbes/APIOverview.htm" />
+    <Link
+      Url="Content/02-CustomProbes/APIImportingExportingFiles.htm" />
+    <Link
+      Url="Content/02-CustomProbes/APIImportingExportingTables.htm" />
+    <Link
+      Url="Content/02-CustomProbes/APIAcknowledgements.htm" />
+    <Link
+      Url="Content/02-CustomProbes/APIScriptingExamples.htm" />
+    <Link
+      Url="Content/04-CustomReports/IMDBOverview.htm" />
+    <Link
+      Url="Content/04-CustomReports/DatabaseSchemas.htm" />
+    <Link
+      Url="Content/04-CustomReports/Creating_SQL_Queries.htm" />
+    <Link
+      Url="Content/03-CustomWebPages/customizingwebpages.html" />
+    <Link
+      Url="Content/03-CustomWebPages/targetfiles.html" />
+    <Link
+      Url="Content/03-CustomWebPages/templatefiles.html" />
+    <Link
+      Url="Content/03-CustomWebPages/directives.html" />
+    <Link
+      Url="Content/03-CustomWebPages/quotedlinks.html" />
+    <Link
+      Url="Content/03-CustomWebPages/macros.htm" />
+    <Link
+      Url="Content/03-CustomWebPages/folders.html" />
+    <Link
+      Url="Content/03-CustomWebPages/Mime_Types.htm" />
+    <Link
+      Url="Content/03-CustomWebPages/charts.html" />
+    <Link
+      Url="Content/02-CustomProbes/Using_the_Command_Line_Interface.htm" />
+    <Link
+      Url="Content/Index.htm" />
+    <Link
+      Url="Content/Resources/PageLayouts/DartwareIndex.flpgl" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </Links>
+  <LongLinks />
+  <Anchors />
+  <Keywords />
+  <Concepts />
+  <ConceptControlNames />
+  <IndexControlNames />
+  <Variables />
+  <FileConditions />
+  <FileTags />
+  <AllConditions>
+    <Condition
+      Tag="Primary.print" />
+    <Condition
+      Tag="Primary.online" />
+  </AllConditions>
+  <Stylesheets />
+</CatapultFileLinkSet>

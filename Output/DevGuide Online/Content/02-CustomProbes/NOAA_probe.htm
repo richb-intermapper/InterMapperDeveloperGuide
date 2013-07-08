@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Command Line Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>NOAA Weather Probe Example</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">NOAA Weather Probe Example</h1>
+            <p>It is now easier than ever to build command-line probes. Here is a fun example that retrieves temperature data from the <a href="http://www.weather.gov/xml/current_obs/">US NOAA weather feed</a> in a particular city.
+
+
+<br /><br />			How does this probe work? </p>
+            <ol>
+                <li value="1">Right-click a device and choose <b style="font-style: italic;">Select Probe...</b></li>
+                <li value="2">Select the <b style="font-style: italic;">Weather Service-Temp</b> probe from the Miscellaneous/Test category.</li>
+                <li value="3"> Enter the city code for the closest weather station (KLEB is at Lebanon Municipal Airport, about a half mile to the south of us.) The Status window shows the name of the weather station, with a chartable value for the temperature reading.
+<br /></li>
+            </ol>
+            <p>	Under the covers, InterMapper launches a Python program to contact the weather service, retrieve the meteorological conditions for the indicated city, and parses out the XML response to retrieve the temperature. (There's lots more information in the Weather Service feed - the program could easily be extended to display more information.)&#160;Here are some of the features of this probe:</p>
+            <p>&#160;</p>
+            <ul>
+                <li value="1">The ${PYTHON} macro gives the path to the built-in python interpreter of InterMapper DataCenter no matter what platform you're using. For example, the probe can now use <blockquote class="code">cmd = "${PYTHON} program.py"</blockquote>    and InterMapper substitutes the proper path to invoke Python, whether on Windows, OSX, or Linux/Unix.
+<br /><br /><b>Note:</b> To use this macro, the InterMapper DataCenter (IMDC) must be installed. IMDC will be installed automatically with InterMapper 5.2 on Windows and OSX; Linux and Unix systems require a separate install for IMDC.&#160;
+<br /><br /></li>
+                <li value="2">You can include the script directly in the text of the probe file. This makes it much easier to write scripts and keep the probe file in sync. 		To do this, use the <span class="code">&lt;tool:program-name&gt;</span> section in your probe file. The example below contains a program named noaa-weather.py. When InterMapper loads the probe, it parses out this section and saves it in a folder within the Tools directory of InterMapper Settings. Programs in the <span class="code">&lt;tools&gt;</span> section may also save private files in that directory.</li>
+                <li value="3">The example probe file uses a couple interesting Python libraries. First is <em>urllib2</em> that makes it easy to make queries from web services. It's a few straightforward calls to build a url, issue it, and retrieve the results.</li>
+                <li value="4">The probe also uses the <em>xml.dom.minidom</em> library to parse out XML data returned from the NOAA web service. This library is particularly well-explained in Chapter 9 of <em>Dive into Python</em>.</li>
+            </ul>
+            <p>
+                <br />
+            </p>
+            <h2>The NOAA&#160;Temperature Probe</h2>
+            <p>To use this probe, copy the text below, paste it to a text editor, save it to a text file, then use File-&gt;Import-&gt;Probe... in InterMapper.</p><pre class="code">&lt;!-- 
+Weather Service Temperature - Retrieve the temperature from the NOAA weather XML (com.dartware.tool.noaa.txt) 
+Copyright (c) 2009 Dartware, LLC. 
+Please feel free to use this as a base for further development.
+--&gt; 
+<br /><br />&lt;header&gt; 
+&#160; type&#160; &#160; &#160; =&#160; "cmd-line" 
+&#160; package&#160; &#160;&#160; =&#160; "com.dartware" 
+&#160; probe_name&#160; &#160; =&#160; "tool.noaa" 
+&#160; human_name&#160; &#160; =&#160; "Weather Service-Temperature" 
+&#160; version&#160; &#160;&#160; =&#160; "1.2" 
+&#160; address_type&#160; =&#160; "IP" 
+&#160; display_name&#160; =&#160; "Miscellaneous/Test/Weather Service-Temp"
+&lt;/header&gt; 
+<br /><br />&lt;description&gt; 
+\GB\Retrieve the current temperature\p\
+<br />This probe retrieves the current temperature from the NOAA weather feed. To see the proper city code, visit:
+<br />\u4=http://www.weather.gov/xml/current_obs/\http://www.weather.gov/xml/current_obs/\p0\
+&lt;/description&gt; 
+<br />&lt;parameters&gt; 
+&#160; "Weather Station" &#160; = "KLEB"
+&lt;/parameters&gt; 
+<br />&lt;command-line&gt; 
+&#160;&#160; path=""
+&#160;&#160; cmd="${PYTHON} noaa-weather.py" 
+&#160;&#160; arg="${Weather Station}"
+&lt;/command-line&gt; 
+<br />&lt;command-exit&gt;
+-- These are the exit codes used by Nagios plugins
+&#160;&#160;&#160;&#160;&#160; down:&#160; ${EXIT_CODE}=4
+&#160; critical:&#160; ${EXIT_CODE}=3 
+&#160; &#160;&#160; alarm:&#160; ${EXIT_CODE}=2 
+&#160;&#160;&#160; &#160; warn:&#160; ${EXIT_CODE}=1 
+&#160;&#160;&#160; &#160; okay:&#160; ${EXIT_CODE}=0 
+&lt;/command-exit&gt; 
+<br /><br />&lt;command-display&gt; 
+\b5\ Temperature for $loc\p0\ 
+&#160;&#160; Temperature: $temp \3g\degrees F\p0\
+&lt;/command-display&gt; 
+<br />&lt;tool:noaa-weather.py&gt;
+<br /># noaa-weather.py 
+# Scan the XML results from NOAA's XML feeds
+# e.g., http://www.weather.gov/xml/current_obs/KLEB.xml
+# for relevant weather-related information.
+# 25 Mar 2009 -reb
+import os
+import re
+import sys
+import getopt
+import urllib
+import urllib2
+import htmllib
+from xml.dom import minidom
+<br /># httplib.HTTPConnection.debuglevel = 1 # force debugging....
+<br /># options are: station
+<br />try:
+&#160; opts, args = getopt.getopt(sys.argv[1:], "")
+except getopt.GetoptError, err:
+&#160; searchString = "getopt error %d" % (err)
+<br />station = args[0]
+userAgent = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; en-us) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.2 Safari/525.20.1"
+noaaString = "http://www.weather.gov/xml/current_obs/%s.xml"
+noaaString = noaaString % (urllib.quote_plus(station))
+<br /># print noaaString;
+retcode = 4;
+try:
+&#160; request = urllib2.Request(noaaString)
+&#160; opener = urllib2.build_opener()
+&#160; request.add_header('User-Agent', userAgent)
+&#160; usock= opener.open(request)
+#&#160; print buf
+except IOError, e:
+&#160; if hasattr(e, 'reason'):
+&#160;&#160;&#160; resp = 'We failed to reach a server. '
+&#160;&#160;&#160; reason = 'Reason: ' + 'Wrong host name?' # e.reason[1]
+&#160; elif hasattr(e, 'code'):
+&#160;&#160;&#160; resp = 'The server couldn\'t fulfill the request. '
+&#160;&#160;&#160; reason = 'Error code: '+ str(e.code)
+&#160; print "\{ $temp := '%s', $loc := 'Unknown' } %s" % (0, resp + reason)
+&#160; sys.exit(retcode)&#160; # make it look down
+&#160;&#160;&#160;&#160; 
+<br />&#160;retcode = 0 # looks like it'll succeed
+&#160;xmldoc = minidom.parse(usock)
+&#160;tempList = xmldoc.getElementsByTagName('temp_f')
+&#160;tempElem = tempList[0]
+&#160;tempval = tempElem.firstChild.data
+&#160;loclist = xmldoc.getElementsByTagName('location')
+&#160;locval = loclist[0].firstChild.data
+&#160;print "\{ $temp := '%s', $loc := '%s' }%s" % (tempval, locval, tempval + ' degrees at ' + locval)
+&#160;sys.exit(retcode)
+&lt;/tool:noaa-weather.py&gt;</pre>
+            <p style="font-weight: bold;">See also</p>
+            <p><![CDATA[			]]><a href="builtinvariablereference.htm">${PYTHON} macro<a href="builtinvariablereference.htm#commandlinevariables" target="" title="" alt="" class="MCXref_0"> </a></a> - the full path the to the Python interpreter.<br /><br /> - Include a script directly into the probe file.
+<br /><br />			Python Documentation:
+<br />			&#160;&#160; urllib2 - <a href="http://docs.python.org/library/urllib2.html">http://docs.python.org/library/urllib2.html</a><br />			&#160;&#160; xml.dom.minidom - <a href="http://docs.python.org/library/xml.dom.minidom.html">http://docs.python.org/library/xml.dom.minidom.html
+<br /></a><br />			Dive into Python: A very readable chapter on XML processing in Python
+<br /> <![CDATA[		   ]]><a href="http://diveintopython.org/xml_processing/">http://diveintopython.org/xml_processing/</a></p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

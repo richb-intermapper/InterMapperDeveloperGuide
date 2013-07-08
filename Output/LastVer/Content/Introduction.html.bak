@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:check_list="Ran Smart Index" MadCap:status="In Progress">
+    <head><title>Introduction</title>
+        <link rel="StyleSheet" href="default.css" />
+    </head>
+    <body>
+        <div class="pagewidth">
+            <h1 MadCap:conditions="Primary.online">InterMapper Developer Guide: An Introduction</h1>
+            <h1 MadCap:conditions="Primary.print">Introduction</h1>
+            <table style="margin-left: auto;margin-right: 0;" MadCap:conditions="Primary.print">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="images/welcomemap.png" style="border-style: none;" border="0" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="floatright" MadCap:conditions="Primary.online">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="images/welcomemap.png" style="border-style: none;" border="0" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <MadCap:keyword term="E-mail" />InterMapper is a network monitoring and alerting program. It continually 
+ tests routers, servers, hubs, and other computer devices that are attached 
+ to your network. If InterMapper detects a failure, it sends notifications 
+ to one or more individuals via sounds, e-mail, pagers, or by running a 
+ program to correct the problem.</p>
+            <p MadCap:conditions="Primary.online">Use this on-line manual to learn about 
+ how to develop custom probes and web pages for InterMapper.</p>
+            <p MadCap:conditions="Primary.print">Use this manual to learn about how to develop 
+ custom probes and web pages for InterMapper.</p>
+            <p class="dt"><a href="02-CustomProbes/customprobes.html">Customizing InterMapper's 
+ Probes</a>
+            </p>
+            <p class="dd">Explains how to create your own custom probes, and how to configure 
+ them to add power and flexibility to your network monitoring.</p>
+            <p class="dt"><a href="03-CustomWebPages/customizingwebpages.html">Customizing 
+ Web Pages</a>
+            </p>
+            <p class="dd">Tells how you can change the look and function of the web pages available 
+	from InterMapper's built-in Web server.</p>
+            <p class="dt"><a href="04-CustomReports/IMDBOverview.htm">Retrieving Collected Data</a>
+            </p>
+            <p class="dd">A look at the InterMapper Database, with links to useful resources.</p>
+            <p>Please give us comments at the address listed below. Thanks!</p>
+            <p><a href="http://www.dartware.com/">Dartware, LLC</a><a href="mailto:intermapper@dartware.com"><br />InterMapper Feedback</a>
+            </p>
+        </div>
+    </body>
+</html>

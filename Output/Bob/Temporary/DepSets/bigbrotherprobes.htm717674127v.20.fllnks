@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet FileClass="" FileTitle="" FileSearchable="true" FileTimeEstimate="0" FilePriority="0" FileStatus="In Progress">
+    <Links>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="http://www.bb4.com/download.html" />
+        <Link Url="http://www.deadcat.net/" />
+        <Link Url="http://www.bb4.org/bb/help/help/status_message_format.htm" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </Links>
+    <LongLinks>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="http://www.bb4.com/download.html" />
+        <Link Url="http://www.deadcat.net/" />
+        <Link Url="http://www.bb4.org/bb/help/help/status_message_format.htm" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </LongLinks>
+    <Anchors />
+    <Keywords>
+        <IndexCacheEntry Term="Big Brother Probes" Conditions="Primary.Outstanding" LocalConditions="" Position="6" />
+        <IndexCacheEntry Term="IP" Conditions="Primary.Outstanding" LocalConditions="" Position="9" />
+        <IndexCacheEntry Term="Set:IP" Conditions="Primary.Outstanding" LocalConditions="" Position="10" />
+        <IndexCacheEntry Term="Network Monitor" Conditions="Primary.Outstanding" LocalConditions="" Position="11" />
+        <IndexCacheEntry Term="IP:set" Conditions="Primary.Outstanding" LocalConditions="" Position="16" />
+        <IndexCacheEntry Term="Set" Conditions="Primary.Outstanding" LocalConditions="" Position="17" />
+        <IndexCacheEntry Term="BBDISPLAY" Conditions="Primary.Outstanding" LocalConditions="" Position="18" />
+        <IndexCacheEntry Term="Big Brother State" Conditions="Primary.Outstanding" LocalConditions="" Position="20" />
+        <IndexCacheEntry Term="InterMapper Status" Conditions="Primary.Outstanding" LocalConditions="" Position="28" />
+        <IndexCacheEntry Term="BB4 Technologies" Conditions="Primary.Outstanding" LocalConditions="" Position="42" />
+        <IndexCacheEntry Term="Big Brother System" Conditions="Primary.Outstanding" LocalConditions="" Position="43" />
+    </Keywords>
+    <Concepts />
+    <ConceptControlNames />
+    <IndexControlNames />
+    <Variables />
+    <FileConditions>
+        <Condition Tag="Primary.Outstanding" />
+    </FileConditions>
+    <FileTags />
+    <AllConditions>
+        <Condition Tag="Primary.Outstanding" />
+    </AllConditions>
+    <Stylesheets>
+        <Url Source="Content/Resources/default.css" />
+    </Stylesheets>
+</CatapultFileLinkSet>

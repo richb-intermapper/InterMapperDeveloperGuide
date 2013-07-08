@@ -1,0 +1,4 @@
+<ConditionExpressionList>
+  <Expression>include[Primary.print] exclude[Primary.online]</Expression>
+  <Expression>include[Primary.online] exclude[Primary.print]</Expression>
+</ConditionExpressionList>

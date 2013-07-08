@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="4483" MadCap:lastWidth="1148">
+    <head>
+    </head>
+    <body>
+        <h1 class="L2">The <span class="code">&lt;tool&gt;</span> Section</h1>
+        <p>Use the <span class="code">&lt;tool&gt;</span> section of a command-line probe to embed a script's code directly into a command-line probe. The <span class="code">&lt;tool&gt;</span> section provides a convenient way to maintain the probe and the script in a single file. </p><pre class="code">
+&lt;tool:scriptname&gt;
+&#160;&#160;[script code]
+&lt;/tool:scriptname&gt;</pre>
+        <p>Replace <b style="font-style: italic;">scriptname</b> with the executable you want to use for the script.</p>
+        <p>Replace <b style="font-style: italic;">[script code]</b> with the code of the script.</p>
+        <h2>What happens when you load a probe with a &lt;tool&gt; section?</h2>
+        <p> When the InterMapper server starts or when you import or reload a probe, if a tool section appears for a probe, InterMapper creates a  subdirectory of Tools with the canonical name of the probe and writes the  script to that subdirectory, using <span class="code">scriptname</span> as a file name. </p>
+        <p>If a  subdirectory of that name already exists, all non-hidden files are deleted before the script is written out. For this reason, you should not edit scripts directly in the subdirectories of the Tools directory, since they are overwritten when probes are reloaded.</p>
+        <p>For example,  given the trivial example of a command-line probe where the canonical name is <span class="code">com.dartware.cmdline.test</span>, where the <span class="code">cmd</span> clause in the <span class="code">&lt;command-line&gt;</span>  section is:</p><pre class="code">cmd="python test.py"</pre>
+        <p>or, using the ${PYTHON} macro:</p><pre class="code" xml:space="preserve">cmd="${PYTHON}  test.py"</pre>
+        <p>and the tool section  is:</p><pre class="code">
+&lt;tool:test.py&gt;
+  # Trivial  example
+  print "okay"
+  raise SystemExit,  0
+&lt;/tool:test.py&gt;</pre>
+        <p>When InterMapper starts or reloads probes, a  subdirectory of Tools named <span class="code">com.dartware.cmdline.test</span> is created if it doesn't exist, and (in this case) a file named "test.py" is written into it, containing the text between <span class="code">&lt;tool:test.py&gt;</span> and <span class="code">&lt;/tool:test.py&gt;</span>.</p>
+        <p>The  WMI probes provide a number of good examples of this feature.</p>
+        <h2>Calling external scripts and other executables</h2>
+        <p>While using the <span class="code">&lt;tool&gt;</span> section is recommended, it is optional. You can call an external script or other executable by providing the correct path to it in the <span class="code">cmd</span> property of the <span class="code">&lt;command-line&gt;</span> section of the probe. If you provide a paths to multiple directories in the <span class="code">path</span> parameter, InterMapper looks in the specified directories for the executable. The <span class="code">&lt;tool&gt;</span> section is appropriate only for scripts, not for compiled programs.</p>
+        <h2>Python Example</h2><pre class="code" xml:space="preserve">&lt;!-- 
+check_connect
+(com.dartware.commandline.check_connect.txt) 
+Copyright (c) 2009 Dartware, LLC. All rights reserved. 
+--&gt; 
+
+&lt;header&gt; 
+  type = "cmd-line" 
+  package = "com.dartware" 
+  probe_name = "commandline.check_connect" 
+  human_name = "Check Connect" 
+  version = "1.1" 
+  address_type = "IP" 
+  display_name = "Miscellaneous/Test/Check Connect"
+&lt;/header&gt; 
+
+&lt;description&gt; 
+  \GB\Check for connect\p\
+  
+  This probe checks to see if you can connect to the given address and port.
+&lt;/description&gt; 
+
+&lt;parameters&gt;
+  "CHECK_PORT" = "80"
+&lt;/parameters&gt; 
+
+&lt;command-line&gt; 
+  cmd=${PYTHON}
+  arg="check_connect.py ${ADDRESS} ${CHECK_PORT}"
+&lt;/command-line&gt; 
+
+&lt;command-data&gt; 
+  -- Currently unused. 
+&lt;/command-data&gt; 
+
+&lt;command-exit&gt;
+  -- These are the exit codes used by Nagios plugins
+  down: ${EXIT_CODE}=4
+  critical: ${EXIT_CODE}=3 
+  alarm: ${EXIT_CODE}=2 
+  warn: ${EXIT_CODE}=1 
+  okay: ${EXIT_CODE}=0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt; 
+&lt;/command-display&gt; 
+
+
+&lt;tool:check_connect.py&gt;
+  import sys
+  import socket
+  
+  # constant return codes for InterMapper
+  OKAY = 0
+  WARNING = 1
+  ALARM = 2
+  CRITICAL = 3
+  DOWN = 4
+  
+  retcode = OKAY
+  output = ""
+  
+  try:
+  host = sys.argv[1] # The remote host
+  port = long(sys.argv[2]) # The port
+  except:
+  print "Usage: check_connect HOST PORT"
+  sys.exit(DOWN)
+  
+  try:
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  s.connect((host, port))
+  s.close()
+  except IOError, e:
+  retcode = DOWN
+  if hasattr(e, 'reason'):
+  reason = 'Reason: ' + e.reason
+  elif hasattr(e, 'code'):
+  reason = str(e.code)
+  else:
+  reason = "unknown"
+  
+  output = "Error (" + reason + ") connecting to " + str(host) + ":" + str(port)
+  
+  print output
+  sys.exit(retcode)
+&lt;/tool:check_connect.py&gt;
+
+
+</pre>
+        <h2 class="pagebreakbefore">Cscript Example</h2><pre class="code" xml:space="preserve">&lt;!-- 
+Check Web 
+Copyright (c) 2009 Dartware, LLC. All rights reserved. 
+--&gt; 
+
+&lt;header&gt; 
+  type = "cmd-line" 
+  package = "com.dartware" 
+  probe_name = "commandline.check_web" 
+  human_name = "Check Web" 
+  version = "1.1" 
+  address_type = "IP" 
+  display_name = "Miscellaneous/Test/Check Web" 
+visible_in = "Windows" 
+&lt;/header&gt; 
+
+&lt;description&gt; 
+  \GB\Check Web\p\ 
+  
+  Given an address or hostname, attempts to connect to a web server. 
+&lt;/description&gt; 
+
+&lt;parameters&gt; 
+&lt;/parameters&gt; 
+
+
+&lt;command-line&gt; 
+  -- Empty path forces the InterMapper Settings:Tools directory 
+  path= 
+  cmd="${CSCRIPT} check_web.vbs" 
+  arg="${address}" 
+  timeout = ${Timeout (sec)} 
+&lt;/command-line&gt; 
+
+&lt;command-data&gt; 
+  -- Currently unused. 
+&lt;/command-data&gt; 
+
+&lt;command-exit&gt; 
+  down:${EXIT_CODE}=4 
+  critical:${EXIT_CODE}=3 
+  alarm:${EXIT_CODE}=2 
+  warning: ${EXIT_CODE} = 1 
+  okay:${EXIT_CODE}=0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt; 
+  ${^stdout} 
+&lt;/command-display&gt; 
+
+&lt;tool:check_web.vbs&gt; 
+  Dim web 
+  Set web = Nothing 
+  Set web = CreateObject("WinHttp.WinHttpRequest.5.1") 
+  
+  numargs = wscript.arguments.count 
+  If (numargs &lt; 1) Then 
+  wscript.Echo "Usage: check_web hostname" 
+  wscript.quit(4) 
+  End If 
+  
+  URL = "http://" + wscript.arguments(0) 
+  
+  on error resume next 
+  web.Open "GET", URL, False 
+  on error resume next 
+  web.Send 
+  If err.Number &lt;&gt; 0 Then 
+  returncode = 4 
+  Else 
+  If err.Number = 0 and web.Status = "200" Then 
+  returncode = 0 
+  Else 
+  returncode = 4 
+  End If 
+  End If 
+  
+  If returncode &lt;&gt; 0 Then 
+  wscript.Echo "Error connecting to " + URL +"." 
+  Else 
+  wscript.Echo "" 
+  End If 
+  wscript.quit(returncode) 
+&lt;/tool:check_web.vbs&gt;
+
+</pre>
+    </body>
+</html>

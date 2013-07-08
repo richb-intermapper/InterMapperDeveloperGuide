@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Enumerated Values In SNMP Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Enumerated Values In SNMP Probes</h1>
+            <p>An enumeration in a MIB allows a designer to represent text strings as  numeric values. This numeric representation is more compact, and therefore  efficient, but makes it hard for humans to read. InterMapper has several  techniques for displaying the enumerated values for easier interpretation.</p>
+            <p>There are several ways to do this:</p>
+            <ol>
+                <li value="1">InterMapper can automatically display these "enumerations" if the MIB has  been imported. To do this, simply declare the variables to be of type "STRING"  instead of "DEFAULT". This is described in <a href="snmp-device-variables.htm">Probe  Variables</a>. </li>
+                <li value="2">If no MIB file is available, you can create a calculation variable to select  a string based on the numeric value returned. If you have two choices, you  should use the "xxxx ? yyyy : zzzz" expression that can be read as:<br /><pre class="code" xml:space="preserve">     if xxxx is true then return yyyy     otherwise return zzzz </pre><br />				The calculation variable will look like this: 
+				<br /><pre class="code">     xxxxStr, ($xxxx == 0 ? "yyyy" : "zzzz"), CALCULATION, "replacement string for xxxx" </pre></li>
+                <li value="3">If there are three or more possibilities, you can chain the expression in  this format: <br /><pre class="code" xml:space="preserve">     aaaa ? bbbb : cccc ? dddd : eeee ? ffff : gggg</pre><br />which can be read  as: <br /><pre class="code" xml:space="preserve">if aaaa is true then 
+  return bbbb 
+else if cccc is true 
+  return dddd 
+else if eeee is true 
+  return ffff <br />else return gggg </pre><br />Generally, the aaaa, cccc, and eeee test to see if a single  variable is equal to 1, 2, 3, etc. The calculation variable then looks like  this:<br /><pre class="code">aaaaStr, ($aaaa==0 ? "bbbb" : $aaaa==1 ? "dddd" : $aaaa==2 ? "ffff" : "gggg"), CALCULATION, "replacement string for aaaa" </pre></li>
+            </ol>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Customizing Web Pages" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Template Files</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor723"></a>Template Files</h1>
+            <p>To allow all the web pages to have the same look, InterMapper uses <i>template 
+ files</i><a name="kanchor724"></a> to control the formatting of pages. A template file is composed of 
+ HTML commands that provide the skeleton for a web page. In addition, template 
+ files often contain macros and quoted links that are replaced by appropriate 
+ text when the page is generated.</p>
+            <h2><a name="kanchor725"></a>Template File Example</h2>
+            <p>Here is a simple template file that could be used with InterMapper:</p>
+            <pre class="code"><a name="kanchor726"></a>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN"&gt;<br />&lt;HTML&gt;<br /><a name="kanchor727"></a>&lt;HEAD&gt;<br /><a name="kanchor728"></a><a name="kanchor729"></a>&#160;&#160;&#160;&lt;TITLE&gt;${pagetitle}&lt;/TITLE&gt;<br />&lt;/HEAD&gt;<br /><a name="kanchor730"></a><a name="kanchor731"></a>&lt;BODY BGCOLOR="#FFFFFF"&gt;<br /><a name="kanchor732"></a>&#160;&#160;&#160;${imageref:logo.gif}<br /><a name="kanchor733"></a>&#160;&#160;&#160;${bodytext}<br /><a name="kanchor734"></a>&#160;&#160;&#160;${include:footer.incl}<br />&lt;/BODY&gt;<br />&lt;/HTML&gt;<br /></pre>
+            <p>This sample contains several important macros:</p>
+            <ul>
+                <li value="1"><b>${pagetitle}</b> - Replaced with the text of the #title directive of 
+ the target file.</li>
+                <li value="2"><b>${bodytext}</b> - Replaced with the body text of the target file, that 
+ is, everything from the target file that is not a directive.</li>
+                <li value="3"><b>${imageref:logo.gif}</b> - Replaced with an <span class="code"><a name="kanchor735"></a>&lt;img ... &gt;</span><a name="kanchor736"></a><a name="kanchor737"></a> tag that refers to the logo.gif file in the 
+ ~GuestImages folder on the InterMapper server.</li>
+                <li value="4"><b>${include:footer.incl}</b> - Replaced with the contents of the file named 
+ 'footer.incl'.</li>
+            </ul>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

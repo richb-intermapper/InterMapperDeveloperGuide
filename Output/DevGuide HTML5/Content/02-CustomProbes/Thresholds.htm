@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|SNMP Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;snmp-device-thresholds&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The <span class="code">&lt;snmp-device-thresholds&gt;</span> Section</h1>
+            <p>Use the <span class="code">&lt;snmp-device-thresholds&gt;</span><a name="kanchor162"></a><a name="kanchor163"></a> 
+  section to specify the comparisons that should be made between probe variables 
+ and other values.</p>
+            <p>Each line in the threshold section contains a <i> status</i>, a                             <i>comparison</i>, 
+ and an optional                             <i>condition string</i> for probe variables. If the comparison 
+ is                             <i>triggered</i>, (if the expression comparing the probe variable to a constant 
+ or other variable is true) then the device is changed to the corresponding status 
+ (if that exceeds its current status.) </p>
+            <p>A threshold can be one of the following (they are case-sensitive), and should be presented in this order:</p>
+            <ul>
+                <li value="1">down</li>
+                <li value="2">critical
+</li>
+                <li value="3">alarm
+</li>
+                <li value="4">warning
+</li>
+                <li value="5">okay
+</li>
+            </ul>
+            <h3>Sample <span class="code">&lt;snmp-device-threshold&gt;</span> 
+  Section </h3><pre class="code">&lt;snmp-device-thresholds&gt;<a name="kanchor164"></a>
+&#160;&#160;&#160;down: ${ifOperStatus} &#160;&#160;= &#160;0 "Device Down"
+&#160;&#160;&#160;critical: ${ipInHdrErrors} &#160;&#160;&gt; &#160;15 "ipInHdrErrors critical"
+&#160;&#160;&#160;   alarm: ${ipForwDatagrams} &gt; &#160;10 "ipForwarded datagrams too high"
+&#160;&#160;&#160;   alarm: ${tcpCurrEstab} &#160;&#160;&#160;&gt;= &#160;1
+&#160;&#160;&#160;   alarm: ${ipInHdrErrors} &#160;&#160;&gt; &#160;10 "ipInHdrErrors too high"
+&#160;&#160;&#160; warning: ${ipForwDatagrams} &gt; &#160;&#160;5
+&#160;&#160;&#160; warning: ${ipForwDatagrams} &lt;= &#160;2
+&#160;&#160;&#160; warning: ${ipInHdrErrors} &#160;&#160;&gt; &#160;&#160;5<br />&#160;&#160;&#160; okay: 1 = 1 "Everything is OK"
+&lt;/snmp-device-threshold&gt;</pre>
+            <h2><a name="kanchor165"></a><a name="kanchor166"></a>Creating Comparisons </h2>
+            <p>As implied above, comparisons are evaluated <i>in order from top to bottom until a comparison is 
+ triggered</i> (result is <i>true</i>). <i>It is important to put the Critical comparisons first, followed by Alarm, Warning, and OK</i>.</p>
+            <p>At that point, if the associated status is 
+ more severe than the device's current status, the device now uses its status 
+ and condition. No further comparisons are made once one has triggered.</p>
+            <p>When a comparison is triggered, it is written to the log file as well as being 
+ added to the bottom of the device's Status window. If the condition string is 
+ present, it is displayed in addition to the comparison string.</p>
+            <h3 class="pagebreakbefore"><a name="kanchor167"></a>Numeric Comparisons</h3>
+            <p>The following numeric comparison operators are legal: </p>
+            <p class="code">&gt;, &gt;=, &lt;, &lt;=, =, and !=. </p>
+            <h3><b><a name="kanchor168"></a><a name="kanchor169"></a>String Matches</b>
+            </h3>
+            <p>By default, InterMapper performs numeric comparisons. </p>
+            <p><b>To compare values as strings:</b>
+            </p>
+            <ul>
+                <li value="1">Enclose one or both of the operands in double-quotes ("). For example, the 
+ comparison<br></br><br></br><span class="code"><a name="kanchor170"></a>warning: ${sysContact} != "Fred Flintstone"</span><br></br><br></br>performs a string comparison because the name is enclosed in quotes. 
+  </li>
+                <li value="2">Use the =~ and !~ operators to provide partial string matches. They perform 
+ "contains" and "doesn't contain" comparisons, respectively.</li>
+            </ul>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

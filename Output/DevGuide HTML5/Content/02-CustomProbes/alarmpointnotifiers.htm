@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|SNMP Probes|The &lt;snmp-device-alarmpoints&gt; Section">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Alarm Point Notifier List</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L3" data-mc-conditions="Primary.online">Alarm Point Notifier List</h1>
+            <p><a name="kanchor194"></a>The <span class="code">&lt;snmp-device-notifiers&gt;</span> section contains several lines of the format:</p><pre class="code">&#160;&#160;NotifierName:  "notifier-rule" [ , "notifier-rule" ]</pre>
+            <p>where the <i>NotifierName</i> is an identifier that can be used in the notifier-list section of the alarm-points section, and the <i>notifier-rule</i> is a quoted specification for a notification rule.</p>
+            <p>  A <i>notifier-rule</i> contains the name of the actual InterMapper notifier and the notification delay, repeat and count, using the format below (the quote characters are required):</p><pre class="code">&#160;&#160;"name:delay:repeat:count"</pre>
+            <p>Delay and repeat are specified in minutes.  If values for delay and repeat are omitted, the value is zero. The count is the number of additional times the notification is repeated. If repeat is zero, the count will be ignored because there is no repeat. If repeat is non-zero and the count is omitted, the count is infinite (repeat forever).</p><pre class="code" xml:space="preserve">&lt;snmp-device-alarmpoints&gt;<br />   -- Name:     Severity (Condition-to-Test)       Condition-String  =&gt; Notifer-List     <br />   SiteTemp: critical ($Temp &gt; $CriticalHighTemp)  "VERY_HIGH_TEMP" =&gt; PageFred<br />   SiteTemp:    major ($Temp &gt; $MajorHighTemp)     "HIGH_TEMP"      =&gt; PageFred<br />&lt;/snmp-device-alarmpoints&gt;<br /><br />&lt;snmp-device-notifiers&gt;<br />   PageFred: "Fred via Pager:0:0:0"<br />&lt;/snmp-device-notifiers&gt;</pre>
+            <br />
+            <p>In this example, either of the SiteTemp alarms triggers the "PageFred" notifier. Looking farther down in the <span class="code">&lt;snmp-device-notifiers&gt; </span>section, we see that "PageFred" sends the notification to the "Fred via Pager" (which is defined in the <b>Notification list</b>.)</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

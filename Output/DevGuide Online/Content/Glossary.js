@@ -1,0 +1,109 @@
+CMCXmlParser._FilePathToXmlStringMap.Add(
+	'Glossary',
+	'<?xml version=\"1.0\" encoding=\"utf-8\"?>' +
+	'<html xmlns:MadCap=\"http://www.madcapsoftware.com/Schemas/MadCap.xsd\" MadCap:tocPath=\"\" MadCap:InPreviewMode=\"false\" MadCap:PreloadImages=\"false\" MadCap:RuntimeFileType=\"Glossary\" MadCap:TargetType=\"WebHelp\" lang=\"en-US\" xml:lang=\"en-US\" MadCap:PathToHelpSystem=\"../\" MadCap:HelpSystemFileName=\"index.xml\">' +
+	'    <head>' +
+	'        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />' +
+	'        <link href=\"SkinSupport/MadCap.css\" rel=\"stylesheet\" type=\"text/css\" />' +
+	'        <title>Glossary</title>' +
+	'        <link href=\"Resources/default.css\" rel=\"stylesheet\" type=\"text/css\" />' +
+	'        <script src=\"SkinSupport/MadCapAll.js\" type=\"text/javascript\">' +
+	'        </script>' +
+	'    </head>' +
+	'    <body style=\"background-color: #fafafa;\">' +
+	'        <div id=\"GlossaryBody\">' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_0\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">CSR</a>' +
+	'                    <a name=\"2162991471_anchor1\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_0\" style=\"display: none;\">Certificate Signing Request</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_1\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">InterMapper Console</a>' +
+	'                    <a name=\"2162991471_anchor2\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_1\" style=\"display: none;\">Every InterMapper server ships with a copy of InterMapper Console. This is a copy of the InterMapper Remote application that can connect only to the InterMapper server that runs on the machine as InterMapper Console.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_2\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">JPEG</a>' +
+	'                    <a name=\"2162991471_anchor3\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_2\" style=\"display: none;\">Joint Photographers Experts Group</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_3\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">MIB Variable</a>' +
+	'                    <a name=\"2162991471_anchor4\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_3\" style=\"display: none;\">MIB: (Management Information Base). A MIB defines all the settings and operational statistics that a device can report using SNMP. Among other things, a MIB defines these attributes: the exact technical definition for these statistics (the \"MIB variables\"), a text name for each variable, and a unique Object IDentifier (OID) that a program (such as InterMapper) could use to retrieve them.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_4\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">notification</a>' +
+	'                    <a name=\"2162991471_anchor5\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_4\" style=\"display: none;\">The action performed by a notifier, as viewed by the notifier target, or recipient, of the action.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_5\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">notifier</a>' +
+	'                    <a name=\"2162991471_anchor6\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_5\" style=\"display: none;\">A little \"robot\" that watches the state of one or more devices, and performs a specified action when the device changes to a state identified as requiring action in the notifier\'s parameters.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_6\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">notifier parameters</a>' +
+	'                    <a name=\"2162991471_anchor7\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_6\" style=\"display: none;\">The specific information for the notifier, dependent on the Notifier type.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_7\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">notifier schedule</a>' +
+	'                    <a name=\"2162991471_anchor8\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_7\" style=\"display: none;\">The hours during which notifications are sent for that notifier.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_8\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">notifier target</a>' +
+	'                    <a name=\"2162991471_anchor9\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_8\" style=\"display: none;\">The recipient of a notification.</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_9\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">PNG</a>' +
+	'                    <a name=\"2162991471_anchor10\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_9\" style=\"display: none;\">Portable Network Graphics</div>' +
+	'            </div>' +
+	'            <div class=\"GlossaryPageEntry\">' +
+	'                <div class=\"GlossaryPageTerm\">' +
+	'                    <a href=\"javascript:void(0);\" class=\"GlossaryPageTerm\" id=\"MCDropDownHotSpot_2162991471_10\" onclick=\"FMCDropDown( this ); FMCScrollToVisible( window, this.parentNode.parentNode ); return false;\">SNMP</a>' +
+	'                    <a name=\"2162991471_anchor11\">' +
+	'                    </a>' +
+	'                </div>' +
+	'                <div class=\"GlossaryPageDefinition\" id=\"MCDropDownBody_2162991471_10\" style=\"display: none;\">Simple Network Management Protocol - an application-layer protocol which allows an application (like InterMapper) to query other network devices (such as a router, switch, server, etc.) to get information about the device, or to send control commands to the device.</div>' +
+	'            </div>' +
+	'        </div>' +
+	'        <p>&#160;</p>' +
+	'        <script type=\"text/javascript\" src=\"SkinSupport/MadCapBodyEnd.js\">' +
+	'        </script>' +
+	'    </body>' +
+	'</html>'
+);

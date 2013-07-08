@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Parts of a Probe" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Probe Tools Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1>Probe Tools Section</h1>
+            <p>Use the &lt;tools&gt; section of a command-line probe to embed <a href="Companion_Scripts.htm">Companion Script</a> code directly into a command-line probe. This keeps the script code and the probe code together, ensuring that you are running the correct version of the script.</p>
+            <pre class="code">
+&lt;tool:scriptname&gt;
+&#160;&#160;[script code]
+&lt;/tool:scriptname&gt;</pre>
+            <p>Replace <b style="font-style: italic;">scriptname</b> with the file name you want to use for the script.</p>
+            <p>Replace <b style="font-style: italic;">[script code]</b> with the code of the script.</p>
+            <p><b style="font-style: normal;">Note:</b> When you load the probe, the script is written into the InterMapper Settings/Tools directory. If a script with the specified name exists, it is overwritten. For this reason, you should not edit scripts directly in the subdirectories of the Tools directory, since they are overwritten when probes are reloaded.</p>
+            <p>For detailed information, see <a href="Companion_Scripts.htm">Companion Scripts</a>.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

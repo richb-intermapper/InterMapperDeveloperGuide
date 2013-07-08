@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="4" MadCap:lastHeight="1800" MadCap:lastWidth="1148" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Command Line Probes</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 MadCap:xrefTargetName="Command Line Probes" MadCap:sourceTitle="Command Line Probes"><a MadCap:generatedBookmark="TOC" name="Command Line Probes"></a>
+            <MadCap:keyword term="Creating;Probes;Windows:probes;Command Line Probes" />Command Line Probes</h1>
+        <p class="code">type="cmd-line"</p>
+        <p> InterMapper provides the ability to run a <i>command-line</i> probe, a script or program (written 
+ in perl, C, C++, or your favorite language.) Your program's return value becomes the device's status on the 
+ InterMapper map. <MadCap:keyword term="Creating:Command-line" /><MadCap:keyword term="Hosting:InterMapper" /><MadCap:keyword term="Command-line" /><MadCap:keyword term="Unix" /><MadCap:keyword term="IP" /><MadCap:keyword term="Command-line:Create" /><MadCap:keyword term="Perl" /><MadCap:keyword term="Windows" /><MadCap:keyword term="Daemon" /><MadCap:keyword term="Mac OS" /></p>
+        <h2>Common Sections of a Command-Line Probe</h2>
+        <p>Each command-line probe follows the same general format as other probe files, sharing these common sections:</p>
+        <ul>
+            <li value="1">The <span class="code"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/header.html">&lt;header&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/header.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;header&gt; Section"> (Pg 1)</MadCap:xref></a></span> section of a command-line probe specifies the probe type, name, and a number of other properties fundamental to the operation of the probe.                              </li>
+            <li value="2">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/description.html"><span class="code">&lt;description&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/description.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;description&gt; Section"> (Pg 1)</MadCap:xref></span></a> 
+section specifies the help text that appears in the Set  Probe window. Format the description using IMML, <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.
+<br /></li>
+            <li value="3">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/parameters.html"><span class="code">&lt;parameters&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/parameters.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;parameters&gt; Section"> (Pg 1)</MadCap:xref></span></a> section defines the fields presented to the user in the Probe Configuration window.</li>
+        </ul>
+        <h2>Sections Specific to Command-line Probes</h2>
+        <p>Each command-line probe also has:</p>
+        <ul>
+            <li value="1">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-line-section.htm#commandlinesection"><span class="code">&lt;command-line&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-line-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;command-line&gt; Section"> (Pg 1)</MadCap:xref></span></a> section - defines the command-line, specifying the path to the executable, the command to execute, and any arguments to the command.</li>
+            <li value="2">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-exit-section.htm#commandexitsection"><span class="code">&lt;command-exit&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-exit-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;command-exit&gt; Section"> (Pg 1)</MadCap:xref></span></a> section - controls how the device's state is set, based on the results of the command.</li>
+            <li value="3">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-display-section.htm#commanddisplaysection"><span class="code">&lt;command-display&gt;<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-display-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;command-display&gt; Section"> (Pg 1)</MadCap:xref></span></a> section - controls what appears in the device's Status window.</li>
+        </ul>
+        <p> InterMapper uses the information in the probe's <span class="code">&lt;command-line&gt;</span> section to invoke the program or script and pass arguments to it. 
+ InterMapper sets the device's status based on the return code from the 
+ program or script. In addition, any data written to the 
+ script's standard output file is used as the device's reason string, and appears in the status window.
+The total amount of data that can be returned by the program, including return code, reason string, and additional values, is 64k.<MadCap:keyword term="Name" /><MadCap:keyword term="Name:program/script" /><MadCap:keyword term="Nagios:uses" /><MadCap:keyword term="Program/script" /><MadCap:keyword term="Program/script:name" /><MadCap:keyword term="Installing:Command-line Probe" /><MadCap:keyword term="Command-line Probe" /></p>
+        <p><a name="nagios"></a>InterMapper's command-line probes are similar to <MadCap:keyword term="Nagios" /> <![CDATA[                                ]]><b><a href="http://www.nagios.org/">Nagios® 
+ plugins</a></b>. You 
+ can see the                                 <a href="http://sourceforge.net/project/showfiles.php?group_id=29880"><MadCap:keyword term="Nagios Plugins" />standard 
+ set of Nagios plugins.</a><MadCap:keyword term="Build/compile" /> Many vendors and individuals have created their own 
+ Nagios plugins. You will have to download the Nagios plugins and build/compile 
+ them yourself. 
+</p>
+        <p> If you wish to develop your own command-line probes, we recommend you follow 
+ the <a href="http://nagiosplug.sourceforge.net/developer-guidelines.html">developer guidelines for Nagios</a>. 
+ This will result in probes/plugins that work for both InterMapper and Nagios. <MadCap:keyword term="Probes/plugins" /></p>
+        <p>For more information about InterMapper and Nagios Plugins, see the<a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/nagios.htm"> Nagios Plugins page<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/nagios.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Nagios Plugins"> (Pg 1)</MadCap:xref></a>.</p>
+        <p>See <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/cmdlineprobeexample.htm">Command Line Probe Example<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/cmdlineprobeexample.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Command Line Probe Example"> (Pg 1)</MadCap:xref></a> for a sample shell script and corresponding probe.</p>
+        <h2>The &lt;tool&gt; section - embedding a companion script</h2>
+        <p>You can also embed script code directly in a probe. This provides an easy way to deliver a command-line probe and a script that it runs in a single probe file, ensuring that the version of the script matches the version of the probe. WMI probes provide a number of good examples of companion scripts. For more information, see <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Probe_Tool_Section.htm" MadCap:conditions="Primary.print">The &lt;tool&gt; Section<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Probe_Tool_Section.htm" target="" title="" alt="" MadCap:xrefTarget="The &lt;tool&gt; Section"> (Pg 1)</MadCap:xref></a>.</p>
+        <h2>Command Line Script API</h2>
+        <p>When InterMapper invokes a command line program or script, it passes parameters on the command line. Use the <span class="code">path</span>, <span class="code">cmd</span>, and <span class="code">arg </span>properties of the <span class="code">&lt;command-line&gt;</span> section to specify the script or other executable to invoke, and any arguments 
+to the command. As the script developer, you are responsible for parsing the arguments. </p>
+        <p>The script can return three kinds of information to InterMapper:</p>
+        <ol>
+            <li value="1">The operating system return code, or <i>exit code</i>, is used to indicate the<br />success/failure/severity. This will be handled by the &lt;command-exit&gt; section 
+  of the probe file.</li>
+            <li value="2">The script can optionally return <i>additional values</i>, such as measurements, discovered during execution. It does this by writing to the script's <i>stdout</i>. You return these values as a comma-separated list enclosed in "\{" ... "}" 
+  characters.These values can then be handled as variables in the probe's <span class="code">&lt;command-display&gt;</span> section. The values themselves are <i>name-value</i> pairs in the form:<br /></li>
+        </ol>
+        <p class="codeindent">&lt;name&gt; := &lt;value&gt;</p>
+        <ol start="3">
+            <li value="3">The script can also return a <b>reason string</b> that will be used to explain the device's condition. You specify the reason string by writing to the script's stdout. This text should follow the closing 
+  "}" of any additional values. </li>
+        </ol>
+        <p><b>Example:</b> The following output from a script sets two values to the probe:<br /><span class="code">$rtt </span>and <span class="code">$hop</span>, and sets the device's reason string to "<i>Round-trip time 
+  is very high</i>".</p><pre class="code">\{ $rtt := 5, $hop := 2 } Round-trip time is very high</pre>
+        <p>You can do a significant amount when writing to stdout, using the ${^stdout} variable. For more information, see <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/builtinvariablereference.htm#stdout">The <span class="code">${^stdout}</span> variable and the Reason string<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/builtinvariablereference.htm#stdout" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_7"> (Pg 1)</MadCap:xref></a>.<br /></p>
+        <h2 class="pagebreakbefore">
+            <MadCap:keyword term="Installing" />
+            <MadCap:keyword term="Command-line Probe:Installing" />Installing a Command-line Probe</h2>
+        <p>Once you have created your probe, you need to install it before you can test it.</p>
+        <p><b>To install and use a command-line probe:</b>
+        </p>
+        <ol>
+            <li value="1">
+                <MadCap:keyword term="Non-interpreted" />
+                <MadCap:keyword term="Python" />
+                <MadCap:keyword term="Runnable" /> If you are using an external script or other executable, create the program, and make it runnable. If it's a Perl, Python, or other 
+ script, set the permissions so that it can run from the command line. If it's 
+ written in C, C++, or other non-interpreted language, compile the source and 
+ then place the resulting binary in an appropriate directory. (See the <a href="#path">path<MadCap:xref href="#path" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Command Line Probes"> (Pg 1)</MadCap:xref></a> discussion below.)
+<br /><b>Note:</b>  If you embed a script in the <span class="code">&lt;tool&gt;</span> section of the probe, permissions are set by InterMapper when it writes the script to the Tools directory (when you import or reload the probe.)</li>
+            <li value="2"> Create a Command-line probe  that references the executable program or contains the script in the <span class="code">&lt;tool&gt;</span> section.
+  </li>
+            <li value="3"> Import or reload the probe (from the Set Probe window) to make it available. 
+</li>
+        </ol>
+        <p>See <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/cmdlineprobeexample.htm">Command Line Probe Example<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/cmdlineprobeexample.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Command Line Probe Example"> (Pg 1)</MadCap:xref></a> for a sample shell script and corresponding probe.</p>
+        <h2>Passing parameters to a command-line probe</h2>
+        <p>Pass arguments to the command line into the probe by accessing the parameter variables with ${parametername}. The named arguments can be added to the command line. </p>
+        <p>For example, use <span class="code">${Timeout}</span> for an parameter as follows:
+	<br /></p><pre class="code">&lt;parameters&gt;<br />&#160;&#160;Timeout = "7"<br />&lt;/parameters&gt;
+</pre>
+        <p>The <span class="code">arg </span>variable could be set as follows:</p><pre class="code">arg = "-H ${Timeout}"</pre>
+        <p><b>Note:</b> Depending on the nature of the parameters you are passing, you may want to pass the parameters through STDIN, as described below.</p>
+        <h2>Sending Data to STDIN</h2>
+        <p>Using the <span class="code">ps</span> command on Unix systems, or using the Task Manager or other utility programs on Windows systems, it is possible to see the command line arguments. This represents a security vulnerability. Use the <span class="code">input</span> property of the <span class="code">&lt;command-line&gt;</span> section to pass sensitive data to <span class="code">STDIN</span>, removing this vulnerability. See <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-line-section.htm#stdin">Sending Data to STDIN<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/command-line-section.htm#stdin" target="" title="" alt="" MadCap:xrefTarget="$$xref$$_63"> (Pg 1)</MadCap:xref></a> in <i>The &lt;command-line&gt; Section</i> for a detailed example.</p>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" class="" MadCap:lastBlockDepth="4" MadCap:lastHeight="781" MadCap:lastWidth="1148">
+    <head>
+        <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
+    </head>
+    <body>
+        <h1>SNMP Probes</h1>
+        <p class="code">type="custom-snmp"</p>
+        <p>
+            <MadCap:keyword term="Sample &lt;snmp-device-variables;Sample &lt;snmp-device-threshold;Hexadecimal - Displays;Variable-name OID;Format" />
+            <MadCap:keyword term="SNMP" />
+            <MadCap:keyword term="Custom SNMP Probes" />
+            <MadCap:keyword term="Include" />
+            <MadCap:keyword term="Include:CPU" />
+            <MadCap:keyword term="MIB" />
+            <MadCap:keyword term="IP" />
+            <MadCap:keyword term="CPU" />Using  SNMP probes, you can monitor certain MIB variables that aren't 
+ tested by InterMapper's built-in probes. These MIB variables might include the 
+ CPU utilization of a router, temperature inside the equipment, switch closures, 
+ etc.</p>
+        <p>
+            <MadCap:keyword term="String" />
+            <MadCap:keyword term="Matches:String" />Like other probes,  SNMP probes are invoked and return the status and 
+ condition string for the device being tested. Here's a summary of the operational 
+ flow of an  SNMP probe:</p>
+        <ol>
+            <li>InterMapper polls the device for the values (called <i> probe variables</i>) 
+ specified in the probe file as well as the device's built-in MIB variables 
+ (usually byte and packet rates for interfaces).</li>
+            <li>InterMapper also polls each interface for probe variables as
+needed.<br /></li>
+            <li>
+                <MadCap:keyword term="Thresholds" />InterMapper then evaluates a series of expressions in the probe
+file, comparing the probe variables to thresholds.<br /></li>
+            <li>If a comparison is triggered (generally, if the probe variable is above 
+ or below the given threshold), then InterMapper sets the device status as 
+ specified in the probe, if it is "worse" than the devices current status.<br /></li>
+            <li>When the user clicks and holds on a device, InterMapper
+processes the relevant <i>display</i> section to produce the text
+for the Status window.</li>
+        </ol>
+        <h2>Common Sections of an SNMP probe</h2>
+        <p> SNMP probes follow the same general format as other probe files. </p>
+        <ul>
+            <li>The <span class="code"><a href="header.html">&lt;header&gt;,<MadCap:xref href="header.html" target="" title="" alt="" MadCap:conditions="Primary.print" /></a></span> section of a command-line probe specifies the probe type, name, and a number of other properties fundamental to the operation of the probe.                              </li>
+            <li>The <a href="description.html"><span class="code">&lt;description&gt;<MadCap:xref href="description.html" target="" title="" alt="" MadCap:conditions="Primary.print" /></span></a> 
+section specifies the help text that appears in the Set  Probe window. Format the description using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.
+<br /></li>
+            <li>The <a href="parameters.html"><span class="code">&lt;parameters&gt;<MadCap:xref href="parameters.html" target="" title="" alt="" MadCap:conditions="Primary.print" /></span></a> section defines the fields presented to the user in the Set  Probe window.</li>
+        </ul>
+        <h2 class="pagebreakbefore">Sections Specific to SNMP Probes</h2><pre class="code">&lt;header&gt;<br />&#160;&#160;type = "custom-snmp"<br />&lt;/header&gt;</pre>
+        <p><b>Note:</b> See <a href="handlingtraps.htm"><a href="trap_viewing_and_logging.htm">SNMP Trap Probes</a></a> for information on creating probes that handle SNMP traps.</p>
+        <p>Each SNMP probe also has:</p>
+        <ul>
+            <li><b><a href="snmp-device-variables.htm#devvar">An <span class="code"><MadCap:keyword term="Snmp-device-variables" />&lt;snmp-device-variables&gt;</span> 
+    section<MadCap:xref href="snmp-device-variables.htm#devvar" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> - Specifies which MIB variables to collect from the device</li>
+            <li><b><a href="Thresholds.htm">An <span class="code"><MadCap:keyword term="Snmp-device-threshold" /><MadCap:keyword term="Snmp-device-thresholds" />&lt;snmp-device-thresholds&gt;</span> 
+    section<MadCap:xref href="Thresholds.htm" target="" title="" alt="" MadCap:conditions="Primary.print" /></a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status</li>
+            <li><a href="#devdisp"><b>An <span class="code"><MadCap:keyword term="Snmp-device-display" />&lt;snmp-device-display&gt;</span> 
+    section</b><MadCap:xref href="#devdisp" target="" title="" alt="" MadCap:conditions="Primary.print" /></a> - Specifies what information about the device and its links 
+ should be displayed in the Status window</li>
+            <li><a href="snmp-device-properties.htm#devprop"><b>The <span class="code"><MadCap:keyword term="Snmp-device-properties" />&lt;snmp-device-properties&gt;</span> 
+    section</b><MadCap:xref href="snmp-device-properties.htm#devprop" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> - Specifies certain aspects of the SNMP queries sent to the 
+ device. </li>
+            <li><a href="OnDemandTables.htm"><b>The </b><span class="code" style="font-weight: bold;">&lt;snmp-device-variables-ondemand&gt;</span><b> Section</b></a>&#160; - Many devices store information in SNMP tables. InterMapper can
+retrieve this tabular information and display the data "on demand".</li>
+        </ul>
+    </body>
+</html>

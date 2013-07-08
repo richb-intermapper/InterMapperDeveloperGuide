@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="4" MadCap:lastHeight="414" MadCap:lastWidth="576">
+    <head>
+        <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
+    </head>
+    <body>
+        <h1 class="L2">Probe Files and File Names</h1>
+        <p>
+            <MadCap:keyword term="InterMapper Settings" />
+            <MadCap:keyword term="File Names">
+            </MadCap:keyword>
+            <MadCap:keyword term="Probe Files" />
+            <MadCap:keyword term="Probes" />Probes files are saved in the <b><i>Probes</i></b> folder of the <b><i>InterMapper 
+ Settings</i></b> folder.</p>
+        <p>The probe files are named with two parts separated by a period ("."). The parts 
+ are:</p>
+        <ul>
+            <li><b>package name - </b>must be unique for each organization creating probe 
+ files. <br /><br /><MadCap:keyword term="DNS" /><MadCap:keyword term="Com.dartware" /><MadCap:keyword term="Limit" /><MadCap:keyword term="Limit:Macintosh file" /><MadCap:keyword term="Macintosh file" /><MadCap:keyword term="Macintosh file:limit" />By convention, the package is composed of the organization's DNS domain name, 
+ with the segments reversed. Thus, the built-in probes for InterMapper all 
+ have a package of "com.dartware." Other organizations may create and share 
+ their own probes, since the file names will not collide.<br /><br /></li>
+            <li><b>probe name</b> - identifies the probe.</li>
+        </ul>
+        <p>
+            <MadCap:keyword term="Custom TCP" />For example, the built-in Custom TCP probe is defined in the file named:</p>
+        <blockquote>
+            <p><span class="code"><MadCap:keyword term="Tcp.custom" /><MadCap:keyword term="Com.dartware.tcp.custom" />com.dartware.tcp.custom</span>
+            </p>
+        </blockquote>
+        <p>The probe's package name and probe name are defined in the probe definition's 
+ header section. Dartware recommends that you name the file with the combination 
+ of the package name and probe name, as shown above.</p>
+        <p>The header section of the probe definition in the example above contains these 
+ two lines:</p><pre class="code">package = "com.dartware" 
+probe name = "tcp.custom"</pre>
+        <p class="pagebreakafter">&#160;</p>
+    </body>
+</html>

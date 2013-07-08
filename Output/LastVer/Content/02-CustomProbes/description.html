@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Parts of a Probe" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Probe File Description</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor84"></a><a name="kanchor85"></a><a name="kanchor86"></a>Probe File Description</h1>
+            <p><a name="kanchor87"></a>The Description section of a probe file contains text that will be displayed 
+ as a description of the probe in the Probe Configuration window. It is 
+ defined using the following tags:</p>
+            <pre class="code">&lt;description&gt; ... &lt;/description&gt;
+</pre>
+            <p><a name="kanchor88"></a><a name="kanchor89"></a><a name="kanchor90"></a>A sample is shown below. The description can be marked up 
+ with bold, italic, plain text. Underlined text becomes a link to an 
+ external URL, as described below.</p>
+            <p>
+                <img src="../images/setprobe.png" style="border-style: none;" border="0" />
+            </p>
+            <p><i style="font-style: italic;"><a name="kanchor91"></a>The Set Probe window, showing 
+ the description field. Note that the blue underlined links are actually 
+ links to the relevant RFC specifications.</i>
+            </p>
+            <p>The description section is delimited by <span class="code">&lt;description&gt;</span> 
+ and <span class="code">&lt;/description&gt;</span> tags. The entire text 
+ between those tags is placed into the probe configuration window.</p>
+            <h2><a name="markup"></a><a name="kanchor92"></a>The Markup Commands</h2>
+            <p>You can apply text styles to the description text using markup commands bracketed 
+	by backslash ("\") characters. There may be many markup commands 
+	between a pair of <b>\...\</b> characters. The                    <a href="tcpexample.html">Example 
+	Probe File</a> shows a sample description section. </p>
+            <p><i style="font-style: italic;">Historical note:</i> Prior to InterMapper 
+ 4.0, the markup characters were « and » (<span class="code">&amp;le;</span> and <span class="code">&amp;ge;</span>). InterMapper 
+ still accepts these characters, although we encourage everyone to use 
+ the <b>\...\</b> in new probe files as they're easier to type and will 
+ pass unchanged through all mail systems. </p>
+            <h3>How Markup Tags Are Applied</h3>
+            <ul>
+                <li value="1">A markup commands applies to all text that follows 
+ it. </li>
+                <li value="2">Subsequent markup tags may add to or counteract a 
+ previous set of markup tags. </li>
+            </ul>
+            <h3><a name="kanchor93"></a>Markup Tag Summary</h3>
+            <table>
+                <tr>
+                    <th style="text-align: right;" align="right">Tag</th>
+                    <th>&#160;</th>
+                    <th style="text-align: left;" align="left">Action</th>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">M</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td><a name="kanchor94"></a><a name="kanchor95"></a><a name="kanchor96"></a>Set the font to Monaco (a monospaced font).</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">G</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td><a name="kanchor97"></a>Set the font to Geneva (a proportional spaced font).</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">+</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Increase the font size by one. Multiples ("++") increase 
+ the font size by the corresponding amount.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">-</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Decrease the font size by one. Multiples are allowed.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">B</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Set following text in bold.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">I</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Set following text in italic.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">P</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td><a name="kanchor98"></a>Set following text to plain. This undoes all other stylings</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">U</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Set following text to underlined. See <b>Creating a link</b><a name="kanchor99"></a><a name="kanchor100"></a> section 
+ below for making hyperlinks.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">!</b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Turn off a format that is on.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><i style="font-style: italic;">digit</i></b>
+                    </td>
+                    <td>&#160;</td>
+                    <td>Set text color to one of the following: 
+
+<table style="border-spacing: 5px;" cellspacing="5"><tr><td>0: Black</td><td>&#160;</td><td>4: Light blue</td></tr><tr><td>1: Red</td><td>&#160;</td><td>5: Green</td></tr><tr><td>2: Blue</td><td>&#160;</td><td>6: Orange</td></tr><tr><td>3: Gray</td><td>&#160;</td><td>7: Yellow</td></tr></table></td>
+                </tr>
+            </table>
+            <h3>Examples</h3>
+            <p>The following description text is rendered as shown:</p>
+            <table style="border-spacing: 0px 0px;margin-left: 0;margin-right: auto;">
+                <col style="width: 4in;" />
+                <col style="width: 2.5in;" />
+                <tbody>
+                    <tr>
+                        <td>
+                            <pre class="code">\b\Bold \i\Bold Italic \!b\Italic \p\Plain</pre>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <p><b style="font-weight: bold;">Bold </b><i><b>Bold Italic  </b>Italic</i> Plain</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="code">\M1++\Big red monospace\p\</pre>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <p><span style="font-family: monospace;font-size: 14pt;color: #a52a2a;">Big 
+ red monospace</span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="code">\2U\http://www.example.com\p0\</pre>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <p style="color: #0000cd;text-decoration: underline;">http://www.example.com</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="code">\2U=http://www.example.com\Text Link\p0\ </pre>
+                        </td>
+                        <td>
+                            <p style="color: #0000cd;text-decoration: underline;">Text Link</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3><a name="link"></a>Creating a link</h3>
+            <p>The last two examples above shows the script code required to create a link. In both example, "\2U\" means "set the color to blue, underline the
+text." </p>
+            <p><b>Special Cases:
+</b>
+                <br />
+            </p>
+            <ul>
+                <li value="1">If, as in the first of the two link examples above, the only text between the opening and closing tags is a URL (e.g.,
+http://www.example.com), InterMapper treats it as a link to that page.
+<br /></li>
+                <li value="2">If, as in the last link example above, the underline tag contains "=[URL]", the
+text following the backslash ("Text Link" in the example) appears as blue and underlined. <br /></li>
+                <li value="3">In both cases, clicking the text opens that page in a browser.
+</li>
+            </ul>
+            <p class="pagebreakafter">&#160;</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

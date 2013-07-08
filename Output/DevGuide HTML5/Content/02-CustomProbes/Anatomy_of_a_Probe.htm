@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Anatomy of a Probe</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2" style="page-break-before: always;">Anatomy of a Probe</h1>
+            <p><a name="kanchor23"></a><a name="kanchor24"></a>Probe files have several sections, several of which are common to all probe types. These are described below. </p>
+            <p>Each section contains 
+ a number of lines bracketed by </p><pre class="code">&lt;section-name&gt; ... &lt;/section-name&gt; </pre>
+            <p>You might want to open a separate window with the                <a href="tcpexample.html">example 
+ probe file</a> while reading the subsequent sections. </p>
+            <h2>Sections common to all probes</h2>
+            <p class="dt"><a class="dt" href="header.html">The &lt;header&gt; Section</a>
+            </p>
+            <p class="dd">Learn about the <span class="code">&lt;header&gt;</span> section of the probe definition, 
+ including how the probe is identified, how its name appears in the                <b><i>Probe 
+ Type</i></b> menu, and the version numbering system.</p>
+            <p class="dt"><a class="dt" href="description.html">The &lt;description&gt; Section</a>
+            </p>
+            <p class="dd">The <span class="code">&lt;description&gt;</span> section specifies the help text that appears in the Set Probe window and typically explains the function of the 
+ probe and the use of its parameters. Format the description using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.</p>
+            <p class="dt"><a class="dt" href="parameters.html">The &lt;parameters&gt; Section</a>
+            </p>
+            <p class="dd">The <span class="code">&lt;parameters&gt;</span> section defines the probe's parameters and how they are presented in the Set Probe window.</p>
+            <p class="dt">Display Sections</p>
+            <p class="dd">Each probe type has its own output section, which controls what appears in the device's Status window. In all probes, you format the appearance of Status window using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.</p>
+            <h2>Type-Specific Probe Sections</h2>
+            <p>Each probe type has sections that are specific to that probe type. </p>
+            <h3>Sections specific to SNMP&#160;Probes</h3>
+            <p>Each custom SNMP probe has:
+</p>
+            <ul>
+                <li value="1"><b><a href="snmp-device-variables.htm#devvar" name="kanchor25">An <span class="code">&lt;snmp-device-variables&gt;</span> 
+    section</a></b> - Specifies which MIB variables to collect from the device.</li>
+                <li value="2"><b><a href="Thresholds.htm" name="kanchor26">An <span class="code">&lt;snmp-device-thresholds&gt;</span> 
+    section</a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status.</li>
+                <li value="3"><a href="snmp-device-display.htm#devdisp" name="kanchor28"><b>An <span class="code">&lt;snmp-device-display&gt;</span> 
+    section</b></a> - Specifies what information about the device and its links 
+ should be displayed in the Status window.</li>
+                <li value="4"><a href="snmp-device-properties.htm#devprop" name="kanchor29"><b>The <span class="code">&lt;snmp-device-properties&gt;</span> 
+    section</b></a> - Specifies certain aspects of the SNMP queries sent to the 
+ device.</li>
+                <li value="5"><b><a href="snmp-device-alarmpoints.htm">The <span class="code">&lt;snmp-device-alarmpoints&gt;</span> Section</a></b> - Allows you to define conditions under which the device changes a particular device state.</li>
+            </ul>
+            <h3>Sections specific to SNMP&#160;Trap Probes</h3>
+            <p>SNMP Trap Probes do not probe devices - they simply wait for traps to arrive. They have some sections that are common to SNMP Probes, but work somewhat differently.</p>
+            <ul>
+                <li value="1"><b><a href="snmp-device-variables-traps.htm#devvar">An <span class="code">&lt;snmp-device-variables&gt;</span> 
+    section</a></b> <![CDATA[ ]]><a name="kanchor30"></a>- Specifies which MIB variables to collect from the device. These are set automatically when a trap is received.</li>
+                <li value="2"><b><a href="Thresholds.htm" name="kanchor31">An <span class="code">&lt;snmp-device-thresholds&gt;</span> 
+    section</a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status.</li>
+            </ul>
+            <h3>Sections Specific to TCP Probes</h3>
+            <p>Each custom TCP probe can have:</p>
+            <ul>
+                <li value="1"><a href="language.html"><b>A <span class="code">&lt;script&gt; </span>section</b></a> - This contains the probe's script. Scripts are written in InterMapper's <a class="dt" href="language.html#scriptinglanguage">TCP&#160;Probe Scripting Language</a>&#160;, which uses a sequence of commands and program flow that is similar to Basic. A rich set of <a href="commandref.html">TCP commands</a> is available.</li>
+                <li value="2"><a href="tcpscriptoutputsection.htm"><b>A <span class="code">&lt;script-output&gt;</span> section</b></a> - This contains the probe's output, which is displayed in the Status window. Format the Status window using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.</li>
+            </ul>
+            <h3>Sections Specific to Command-line Probes</h3>
+            <p>Each command-line probe also has:</p>
+            <ul>
+                <li value="1"><a href="command-line-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-line&gt;</span> section</a> - builds the command-line, specifying the command path and any paramters to be sent with the command.</li>
+                <li value="2"><a href="command-exit-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-exit&gt;</span> section</a> - allows you to control the state of the device, depending on what is returned from the script.</li>
+                <li value="3"><a href="Probe_Tool_Section.htm"><b>The <span class="code">&lt;tool&gt;</span> section</b></a>&#160;- contains the code for a companion script that is executed by the probe.</li>
+                <li value="4"><a href="command-display-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-display&gt;</span> section</a> - allows you to control what appears in the device's Status window.</li>
+            </ul>
+            <h3>Other Information about Probes</h3>
+            <p class="dt"><a class="dt" href="comments.html">Comments</a>
+            </p>
+            <p class="dd">All probes use the same format for comments. The comment format is similar to HTML comments.</p>
+            <p class="dt"><a href="header.html#locations">Probe File Locations</a> and <a href="header.html#probefilenames">Probe File Names</a></p>
+            <p class="dd">To use probe files, you must import them, and should follow recommended naming conventions. </p>
+            <p class="dt"><a href="installing.html">Installing and Reloading Probes</a>
+            </p>
+            <p class="dd"> Before a modification to a probe 
+ becomes effective, you need to click the <b><i><a name="kanchor33"></a>Reload probes...</i></b><a name="kanchor34"></a><a name="kanchor35"></a> button in 
+ the Set Probe window (circular arrow icon below the left pane of the window).</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Command Line Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>InterMapper Python Plugins</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">InterMapper Python Plugins</h1>
+            <p>InterMapper DataCenter ships with an embedded Python interpreter. You may use  this interpreter to write command-line probe scripts and command-line notifiers. This Python interpreter is a good way to give maximum
+compatibility across systems. In InterMapper DataCenter <span class="PrimaryCurrentVersion">5.2.2</span>, the version of Python we ship is <span class="PrimaryPythonVersion">2.6</span>, with optimized 
+system libraries.</p>
+            <p>An extensive introductory tutorial on Python is available at <a href="http://docs.python.org/tut">http://docs.python.org/tut</a></p>
+            <p>As shipped, this Python interpreter requires the use of optimized
+and  stripped mode (-OO), so the interpreter must be invoked as:</p>
+            <table>
+                <tr>
+                    <td align="right"><b>MacOSX/Linux/Unix: </b>
+                    </td>
+                    <td><span class="code"> /usr/local/imdc/core/python/bin/imdc  	-OO [script_name]</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><b>Windows:           </b>
+                    </td>
+                    <td><span class="code"> c:\Program Files\InterMapper\dwf\core\python\imdc.exe -OO  [script_name] </span>
+                    </td>
+                </tr>
+            </table>
+            <p><b>Notes:</b> <![CDATA[ ]]></p>
+            <ul>
+                <li value="1">Use the ${PYTHON} macro as shown below; it automatically
+determines the platform and expands to the proper path to the interpreter with
+the <span class="code">-OO</span> argument.
+		</li>
+                <li value="2">Use the <a href="Companion_Scripts.htm">Companion Script</a> facility (&lt;tools:sample.py&gt;) to incorporate the Python script
+directly into the probe file itself.
+	</li>
+            </ul>
+            <h3>Simple example</h3>
+            <p>A simple sample Python script might look like this. Save this
+file as  sample.py in the InterMapper Settings/Tools directory.</p>
+            <pre class="code">
+#! /usr/local/imdc/core/python/bin/imdc -OO
+# Sample Python script using the InterMapper DataCenter Python interpreter
+# Save this text in a file named sample.py in the Tools directory
+
+import sys
+
+if (len(sys.argv) &lt; 2):
+  print "Usage: %s _address_" % sys.argv[0]
+  sys.exit(0)
+addr = sys.argv[1]
+
+# Code to get status from device at address addr
+import random
+result = random.randrange(4)
+
+print "Pretending we got result %d from device at address %s" % (result, addr)
+sys.exit(result)
+</pre>
+            <p class="pagebreakbefore">A matching probe that uses this script looks like this: </p>
+            <pre class="code">
+&lt;!--
+  Command Line Python Sample (com.dartware.python.sample.txt)
+  Custom Probe for InterMapper (http://www.intermapper.com)
+  Please feel free to use it as a base for further development.
+  Original version 31 Mar 2004 by Christopher L. Sweeney, Dartware, LLC.
+  Updated 13 Jun 2007 by Stephen P. Ryan, Dartware, LLC, for Python
+  Updated 28 Dec 2007 to update text descriptions and 
+     include display_name header line -reb
+  Updated 3 Jan 2010 to include ${PYTHON} macro -reb
+--&gt;
+
+&lt;header&gt;
+   type="cmd-line"
+   package="com.dartware"
+   probe_name="python.sample"
+   human_name="Python Sample"
+   version="1.1"
+   address_type="IP"
+   display_name = "Miscellaneous/Test/Python Sample"
+&lt;/header&gt;
+
+&lt;description&gt;
+\GB\Python Sample Command-Line Probe\p\
+
+A sample command line probe which executes a Python script. 
+
+The Python script generates and returns a random number which sets
+the device status to one of four values Down/Alarm/Warning/OK.
+
+&lt;/description&gt;
+
+&lt;parameters&gt;
+&lt;/parameters&gt;
+
+&lt;command-line&gt;
+   path=""
+   cmd="${PYTHON} sample.py ${ADDRESS}"
+   arg=""
+&lt;/command-line&gt;
+
+&lt;command-exit&gt;
+   down:${EXIT_CODE}=3
+   alarm:${EXIT_CODE}=2
+   warning:${EXIT_CODE}=1
+   okay:${EXIT_CODE}=0
+&lt;/command-exit&gt;
+
+&lt;command-display&gt;
+
+&lt;/command-display&gt;
+        </pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

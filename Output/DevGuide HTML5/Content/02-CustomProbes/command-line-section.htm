@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|Command Line Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;command-line&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The <span class="code">&lt;command-line&gt;</span> Section</h1>
+            <p>The <span class="code">&lt;command-line&gt;</span> section allows you to specify the information 
+ needed to execute the commands for the probe. There are three variables:</p>
+            <ul>
+                <li value="1"><b>path</b> - specify the path to the executable script/command.<a name="kanchor562"></a></li>
+                <li value="2"><b>cmd</b> - specify the actual script/command.</li>
+                <li value="3"><b>arg</b> - specify the arguments to be passed to the script/command.</li>
+                <li value="4"><b>input</b> - specify information to pass to STDIN to the script/command.</li>
+            </ul>
+            <h3>The Properties of the <span class="code">&lt;command-line&gt;</span> Section </h3>
+            <ul>
+                <li value="1"><a name="path"></a> Use the <span class="code">path</span> property to specify the directories in which InterMapper should 
+ look for the executable to run as a probe. This is the only path InterMapper 
+ will use; the PATH environment variable is not used. The <span class="code">path</span> property follows 
+ the conventions for the PATH environment variable on the system hosting 
+ InterMapper. The example below is for Unix or Mac OS X. A path for Windows 
+ would use "\" instead of "/" and ";" instead of ":". <br /><br /><b>Notes:</b><br />- If no path is specified, <i>InterMapper Settings/Tools</i> is used as the path.<br />- On Unix systems, it might be possible to see the command line arguments in the 'ps' listing. This represents a security vulnerability. Use the <span class="code">input</span> variable to pass values to stdin, removing this vulnerability. For more information, see <a href="#stdin">Sending Data to STDIN<a href="#stdin" title="" alt="" class="MCXref xref"> </a></a>, below.<br /><br /></li>
+                <li value="2">Use the <span class="code">cmd</span> <![CDATA[ ]]>property to specify the executable you wish to run. In the example 
+ below, this is "check_ping". Note that you need to specify the exact name, 
+ including any extensions such as .exe or .cmd. You may also specify arguments 
+ as part of the <span class="code">cmd</span> property if you'd like. </li>
+                <li value="3">Use the <span class="code">arg</span> property to specify arguments to the executable. This may be 
+ instead of or in addition to specifying them in the <span class="code">cmd</span> property. We could 
+ have just as easily written our sample <span class="code">cmd</span> property as a command and argument, 
+ like this: 
+  <br /><pre class="code">&lt;command-line&gt;<br />&#160;&#160;path = ""<br />&#160;&#160;cmd &#160;= "check_ping" <br />&#160;&#160;arg &#160;= "-H ${ADDRESS} -w 100,10% -c 1000,90%" <br />&lt;/command-line&gt;</pre></li>
+                <li value="4">Use the <span class="code">input</span> property to pass information to STDIN. See <a href="#stdin">Sending Data to STDIN</a>, below.</li>
+            </ul>
+            <p class="indent"><a name="kanchor563"></a>Note the use of the "${ADDRESS}" macro. This is replaced with 
+ the address given when the device was created. You can also use the "${PORT}" 
+ macro to indicate the port given when the device was created. </p>
+            <h2 class="pagebreakbefore"><a name="stdin"></a>Sending Data to STDIN</h2>
+            <p>Using the <span class="code">ps</span> command on Unix systems, or using the Task Manager or other utility programs on Windows systems, it is possible to see the command line arguments. This represents a security vulnerability.  Use the <span class="code">input</span> variable to pass sensitive data to stdin, removing this vulnerability.</p>
+            <p>This mechanism provides a less visible channel for sensitive communication to a
+probe script. Usernames, passwords, and SSL pass-phrases are likely
+candidates for this technique.</p>
+            <p style="font-weight: bold;">Example:</p><pre class="code" xml:space="preserve">&lt;command-line&gt;<br></br>&#160;&#160;cmd = "executable"
+&#160;&#160;input = "${User} ${Password}"<br></br>&lt;/command-line&gt;</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|SNMP Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Probe Properties</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor268"></a>Probe Properties</h1>
+            <p>The <span class="code"><a name="kanchor269"></a><a name="kanchor270"></a>&lt;snmp-device-properties&gt;</span> section specifies 
+ certain aspects of the SNMP queries sent to the device. Like other sections, 
+ it is closed with a &lt;/snmp-device-properties&gt; tag. For example:<a name="kanchor271"></a><a name="kanchor272"></a><a name="kanchor273"></a></p><pre class="code">&lt;snmp-device-properties&gt;
+&#160;&#160;&#160;nomib2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"true"
+&#160;&#160;&#160;pdutype&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"get-request"
+&#160;&#160;&#160;apcups&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"false"
+&#160;&#160;&#160;maxvars&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"10"
+&#160;&#160;&#160;interface_numbered = ($ifIndex == 2 or $ifDescr =~ "en2")
+&#160;&#160;&#160;interface_visible &#160;= ($ifIndex == 2 or $ifDescr =~ "en2")
+&lt;/snmp-device-properties&gt;</pre>
+            <p>The properties that may be set include:</p>
+            <ul>
+                <li value="1"><b>nomib2="true"</b><a name="kanchor274"></a><a name="kanchor275"></a><a name="kanchor276"></a> -- InterMapper does not query the sysUptime MIB-2 
+ variable.
+  </li>
+                <li value="2"><b>pdutype="get-request"</b><a name="kanchor277"></a><a name="kanchor278"></a> -- InterMapper uses SNMP Get-Request, instead 
+ of Get-Next-Request queries.
+  </li>
+                <li value="3"><b>apcups="false"</b><a name="kanchor279"></a><a name="kanchor280"></a><a name="kanchor281"></a> -- If apcups is false, InterMapper will not query the APC-UPS MIB even for devices that auto-detect as one. 
+  </li>
+                <li value="4"><b>maxvars="10"</b> -- maxvars controls the maximum number of variables 
+ to put in each SNMP request. If a custom probe requires more variables than 
+ maxvars, InterMapper sends multiple queries containing up to maxvars variables. </li>
+                <li value="5"><b>interface_visible = &lt;expression&gt;</b> - specifies a "filter expression" for use in determining which interfaces are made visible. By default, InterMapper makes the numbered interfaces visible. Setting this property allows you to make certain 
+<i>unnumbered</i> interfaces visible if they match the expression that can use $ifIndex, 
+$ifDescr, $ifType, or $ifAlias variables. <br /><b>Note:</b> This property does not allow you 
+to make numbered interfaces hidden.
+<br /></li>
+                <li value="6"><b>interface_numbered = &lt;expression&gt;</b> - specifies a "search expression" for use in determining which interface is made numbered. By default, the ipAddrTable specifies which interface is numbered. This property allows the probe file to override that choice. </li>
+            </ul>
+            <p>&#160;</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

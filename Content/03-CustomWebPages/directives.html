@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="886" MadCap:lastWidth="576">
+    <head>
+        <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
+    </head>
+    <body>
+        <h1 class="L2">
+            <MadCap:keyword term="Directives" />Directives</h1>
+        <p>A <i>directive</i> is a special command interpreted by the web server 
+ to control the way a page is formatted.</p>
+        <ul>
+            <li>Directives must start with a "#" in the first column.</li>
+        </ul>
+        <h2>Summary of Directives</h2>
+        <p>InterMapper has several directives that can change the way pages are formatted. 
+ They are defined below:</p>
+        <table border="0" cellspacing="0" cellpadding="5" style="caption-side: top;width: 5in;margin-left: 0;margin-right: auto;">
+            <col style="width: 131px;" />
+            <col style="width: 398px;" />
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#template</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code"><MadCap:keyword term="Template.html" /><MadCap:keyword term="HTML" />#template "othertemplate.html"</span>
+                    </p>
+                    <p>A target file may specify a template file with the <span class="code">#template</span> directive. The <span class="code"> #template</span><MadCap:keyword term="HTML:Use" /> 
+        directive is optional; if none is present, InterMapper uses the file named 
+ <span class="code">!template.html</span> as the page's template.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#title</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code"><MadCap:keyword term="Test Page" />#title "This is a Test Page"</span>
+                    </p>
+                    <p>The text in quotes becomes the title of the page - it enclosed in <span class="code">&lt;title&gt;...&lt;/title&gt;</span> 
+ tags in the generated page. The <span class="code">#title</span> 
+        directive also provides a destination for quoted links on other pages. 
+      </p>
+                    <p>Every target file must have a <span class="code">#title</span> directive 
+ to give it a name. </p>
+                    <p>You may include a macro within the quoted text of this directive. This 
+ is useful for inserting the device name or other information into the 
+ title of the web page.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b><MadCap:keyword term="Alt_title" />#alt_title</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code">#alt_title "Test Page"</span>
+                    </p>
+                    <p>The optional <span class="code">#alt_title</span> directive provides 
+ a way to give a page an alternate name that can be used with a quoted 
+ link.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#filename</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code">#filename "otherpage.html"</span>
+                    </p>
+                    <p>The optional <span class="code">#filename</span> directive causes InterMapper 
+ to treat the file as if named with the quoted string. </p>
+                    <p>
+                        <MadCap:keyword term="Index.html" />For example, a target file named "xindex.html" could have a directive of <br /><span class="code">#filename "!index.html"</span>. This causes the target file to be used in place of 
+ the file named "!index.html" <i>if its version number is higher</i>. This can 
+ be useful for debugging, or for creating alternate versions of pages.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#version</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code">#version "2.1"</span>
+                    </p>
+                    <p>The optional <span class="code">#version</span> 
+        directive determines which file is used when there are two or more instances 
+ of the same filename (as a result of using <span class="code">#filename</span> directives.) </p>
+                    <p> The optional <span class="code">#version</span> 
+        directive is used to break "ties" between several files having 
+ the same name to determine which should be used. This comes into play 
+ in several cases:</p>
+                    <ul>
+                        <li> InterMapper has its own internal copy of the web template files, 
+ which it uses to create the original set on disk.</li>
+                        <li> If you edit one of the default web template files, you could can 
+ change its #version to make it take precedence over InterMapper's built-in 
+ copy.<br /></li>
+                        <li> If you edit the file without changing the <span class="code">#version</span><MadCap:keyword term="Date-last-modified" />, 
+ its date-last-modified value is later, causing it to take precedence 
+ over InterMapper's built-in copy.<br /></li>
+                        <li>If you install a new version of InterMapper with updated web files, 
+ the <span class="code">#version</span> value is 
+ incremented, causing the built-in copy to take precedence over the user-edited 
+ files,<br /><br /><b>Note: </b> The user files are not overwritten.<br /></li>
+                        <li>Through the use of the <span class="code">#filename</span> 
+          directive, it is possible to have two files on-disk that have "essentially" 
+ the same name. One<br />could be named "foo.html", and the other (named something 
+ else) can use the <span class="code">#filename</span> 
+          directive to set its "virtual filename" to "foo.html". 
+ In such a case, the <span class="code">#version</span> 
+          is used to determine which file takes precedence.</li>
+                    </ul>
+                    <p>
+                        <MadCap:keyword term="Digit.digit" />Version numbers must be in a 'digit.digit' format. InterMapper uses the 
+ file with the highest version number. This is useful for debugging as 
+ well as experimenting with alternate pages. </p>
+                    <p>If <span class="code">#version</span> directive is not present in the 
+ file, the default version, "1.0" is used.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#redirect</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code">#redirect "otherpage.html"</span>
+                    </p>
+                    <p>The <span class="code">#redirect</span> directive causes the InterMapper 
+ to find <span class="code">otherpage.html</span> and use that in place 
+ of the original target file. </p>
+                    <p>This can be used to force a well-known page (such as !index.html) to 
+ display a user-selected page.</p>
+                    <p><b>Note:</b>
+                        <MadCap:keyword term="Meta" /> This directive creates a static redirection that works 
+ only for web pages that exist on the disk when the web server is started. 
+ To redirect to web pages that are generated dynamically by InterMapper 
+ (such as map web pages), use the HTML refresh meta tag instead.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p valign="top"><b>#target</b>
+                    </p>
+                </td>
+                <td>
+                    <p><span class="code"><MadCap:keyword term="Window_name" />#target "window_name"</span>
+                    </p>
+                    <p>The <span class="code">#target</span> directive forces a page to be 
+ opened in a new window named "window_name". </p>
+                    <p>
+                        <MadCap:keyword term="HREF" />When generating the web page, InterMapper generates an HREF link with 
+ a ...target = "window_name" ... reference. This causes the detailed information 
+ to appear in a separate window when the user clicks a map's device or 
+ link.</p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

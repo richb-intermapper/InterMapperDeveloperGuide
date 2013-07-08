@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="Probe_Properties" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="4" MadCap:lastHeight="732" MadCap:lastWidth="576">
+    <head><title></title>
+        <link rel="StyleSheet" href="../Resources/default.css" />
+    </head>
+    <body>
+        <h1 class="L2">
+            <MadCap:keyword term="Probe Properties" />Probe Properties</h1>
+        <p>The <span class="code"><MadCap:keyword term="SNMP" /><MadCap:keyword term="Snmp-device-properties" />&lt;snmp-device-properties&gt;</span> section specifies 
+ certain aspects of the SNMP queries sent to the device. Like other sections, 
+ it is closed with a &lt;/snmp-device-properties&gt; tag. For example:<MadCap:keyword term="Maxvars" /><MadCap:keyword term="Nomib2" /><MadCap:keyword term="Pdutype" /></p><pre class="code">&lt;snmp-device-properties&gt;
+&#160;&#160;&#160;nomib2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"true"
+&#160;&#160;&#160;pdutype&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"get-request"
+&#160;&#160;&#160;apcups&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"false"
+&#160;&#160;&#160;maxvars&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"10"
+&#160;&#160;&#160;interface_numbered = ($ifIndex == 2 or $ifDescr =~ "en2")
+&#160;&#160;&#160;interface_visible &#160;= ($ifIndex == 2 or $ifDescr =~ "en2")
+&lt;/snmp-device-properties&gt;</pre>
+        <p>The properties that may be set include:</p>
+        <ul>
+            <li><b>nomib2="true"</b>
+                <MadCap:keyword term="Query" />
+                <MadCap:keyword term="Query:sysUptime MIB-2" />
+                <MadCap:keyword term="SysUptime MIB-2" /> -- InterMapper does not query the sysUptime MIB-2 
+ variable.
+  </li>
+            <li><b>pdutype="get-request"</b>
+                <MadCap:keyword term="SNMP Get-Request" />
+                <MadCap:keyword term="Get-Next-Request" /> -- InterMapper uses SNMP Get-Request, instead 
+ of Get-Next-Request queries.
+  </li>
+            <li><b>apcups="false"</b>
+                <MadCap:keyword term="If apcups" />
+                <MadCap:keyword term="Query:APC-UPS MIB" />
+                <MadCap:keyword term="APC-UPS MIB" /> -- If apcups is false, InterMapper will not query the APC-UPS MIB even for devices that auto-detect as one. 
+  </li>
+            <li><b>maxvars="10"</b> -- maxvars controls the maximum number of variables 
+ to put in each SNMP request. If a custom probe requires more variables than 
+ maxvars, InterMapper sends multiple queries containing up to maxvars variables. </li>
+            <li><b>interface_visible = &lt;expression&gt;</b> - specifies a "filter expression" for use in determining which interfaces are made visible. By default, InterMapper makes the numbered interfaces visible. Setting this property allows you to make certain 
+<i>unnumbered</i> interfaces visible if they match the expression that can use $ifIndex, 
+$ifDescr, $ifType, or $ifAlias variables. <br /><b>Note:</b> This property does not allow you 
+to make numbered interfaces hidden.
+<br /></li>
+            <li><b>interface_numbered = &lt;expression&gt;</b> - specifies a "search expression" for use in determining which interface is made numbered. By default, the ipAddrTable specifies which interface is numbered. This property allows the probe file to override that choice. </li>
+        </ul>
+        <p>&#160;</p>
+    </body>
+</html>

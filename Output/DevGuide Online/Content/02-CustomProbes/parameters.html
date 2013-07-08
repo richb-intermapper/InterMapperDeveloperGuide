@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Anatomy of a Probe" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;parameters&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor92"></a>The &lt;parameters&gt; Section</h1>
+            <p><a name="kanchor93"></a>A probe can have one or more parameters. These parameters are set by the user 
+ in the Set Probe window (shown below). They are used for specifying 
+ numeric thresholds or strings to be sent to or received from the device. </p>
+            <p>The <i>parameter</i><a name="kanchor94"></a> section of the defines a set of name/value pairs with 
+ the format:</p><pre class="code">&lt;parameters&gt;<br />&#160;&#160;[parameter name]= "[parameter value]"<br />&lt;/parameters&gt;</pre>
+            <p>Each parameter name/value appears in its own entry field in the Set Probe 
+	window.</p>
+            <p><a name="kanchor95"></a><a name="kanchor96"></a>Probe parameters are accessed and used just like variables. They can be used 
+	in calculations, alarm/warning thresholds, and displayed in the status window. 
+	To refer to a parameter whose name contains one or more spaces, the name will 
+	need to be enclosed in curly braces. (Example: "${Seconds to wait}").</p>
+            <h2>Input Field Types</h2>
+            <p>Four types of input fields are available:</p>
+            <ul>
+                <li value="1"><b>Text </b>- Input a text string</li>
+                <li value="2"><b>Password </b>- Input a text string, obscuring the characters</li>
+                <li value="3"><b>Dropdown </b>- Choose from a dropdown menu.</li>
+                <li value="4"><b>Checkbox </b>- Set a variable to true or false by selecting or clearing a check box.</li>
+            </ul>
+            <h3>Text Fields</h3>
+            <p>This field type presents a simple text box for entering a string.</p><pre class="code">	"Text"	= "Text Value"</pre>
+            <p>The line above sets the variable <samp>${Text}</samp></p>
+            <h3><a name="kanchor97"></a><a name="kanchor98"></a>Password Fields</h3>
+            <p>You can create input parameters that conceal the string 
+ from casual view (so-called <i>password parameters</i>.) The data is displayed 
+ as a line of asterisks ("*****") when a user types the password. To specify 
+ a password parameter, place a single asterisk ("*") after the name of the field, 
+ like this:
+</p><pre class="code">"Password*" = ""</pre>
+            <p>Note that the variable name remains ${Password*} and you have to refer 
+to it as such in your script. The "*" is removed before displaying the 
+name, so the above password parameter would appear as "Password" in the Set Probe window.</p>
+            <h3>Dropdown Fields</h3>
+            <p>You can create input parameter fields that present a dropdown menu from which the user can choose from a number of choices.</p>
+            <p>To create a dropdown field, use this syntax:</p><pre class="code">"Test[Equal,NotEqual]" = "NotEqual" //Default value is NotEqual
+</pre>
+            <p>The values between brackets define the choices available to the user. The value on right of the statement is the initial value of the dropdown field.</p>
+            <p>You can use this parameter in expressions. The full variable is
+${Test[Equal,NotEqual]}, and it returns the current value of the dropdown as
+selected by the user. To display the value of a dropdown in the Status window, you must use the full variable definition.</p><pre class="code" xml:space="preserve">\4\Dropdown:\0\  ${Test[Equal,NotEqual]}\0\</pre><pre class="code" xml:space="preserve">&lt;snmp-device-variables&gt;
+  alarm: (${Dropdown[Choice1,Choice2,Choice3]} != <br />&#160;&#160;&#160;&#160;"Choice2") "It's not Choice2!"
+&lt;/snmp-device-variables&gt;
+</pre>
+            <h3>Check Box Fields</h3>
+            <p>To create a check box, use this syntax:</p><pre class="code" xml:space="preserve">"Checkbox[true,false]" = "true" //Default value is "true"
+</pre>
+            <p>You can use this parameter in expressions. The full variable is
+${Checkbox[Equal,NotEqual]}, and it returns the current value of the check box as
+selected by the user</p>
+            <h2 class="pagebreakbefore"><a name="kanchor99"></a>Parameter Section Example</h2>
+            <p><a name="kanchor100"></a><a name="kanchor101"></a>This is an example parameter section that demonstrates the use of the four types of input fields. The screenshot below shows how each input field type appears.</p><pre class="code">&lt;parameters&gt;
+&#160;&#160;"Text"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= "Text Value"
+&#160;&#160;"Password*"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= ""
+&#160;&#160;"Dropdown[Choice1,Choice2,Choice3]"&#160;&#160;=&#160;&#160;"Choice2"
+&#160;&#160;"Checkbox[true,false]"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"true"
+&lt;/parameters&gt;
+</pre>
+            <p>&#160;</p>
+            <table cellpadding="5" style="margin-left: 0;margin-right: auto;caption-side: top;">
+                <col style="width: 100%;" />
+                <tr>
+                    <td valign="top" style="text-align: center;">
+                        <img src="../images/dialog_paramtest.png" border="0" />
+                        <p><i>Probe Parameters</i>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

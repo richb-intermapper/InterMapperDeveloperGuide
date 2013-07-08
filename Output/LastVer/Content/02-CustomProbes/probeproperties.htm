@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Custom SNMP Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Probe Properties</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor261"></a>Probe Properties</h1>
+            <p>The <span class="code"><a name="kanchor262"></a><a name="kanchor263"></a>&lt;snmp-device-properties&gt;</span> section specifies 
+ certain aspects of the SNMP queries sent to the device. Like other sections, 
+ it is closed with a &lt;/snmp-device-properties&gt; tag. For example:<a name="kanchor264"></a><a name="kanchor265"></a><a name="kanchor266"></a></p>
+            <pre class="code">&lt;snmp-device-properties&gt;
+&#160;&#160;&#160;nomib2="true"
+&#160;&#160;&#160;pdutype="get-request"
+&#160;&#160;&#160;apcups="false"
+&#160;&#160;&#160;maxvars="10"
+&#160;&#160;&#160;interface_numbered = ($ifIndex == 2 or $ifDescr =~ "en2")
+&#160;&#160;&#160;interface_visible = ($ifIndex == 2 or $ifDescr =~ "en2")
+<br />&lt;/snmp-device-properties&gt;</pre>
+            <p>The properties that may be set include:</p>
+            <ul>
+                <li value="1"><b>nomib2="true"</b><a name="kanchor267"></a><a name="kanchor268"></a><a name="kanchor269"></a> -- InterMapper does not query the sysUptime MIB-2 
+ variable.
+  </li>
+                <li value="2"><b>pdutype="get-request"</b><a name="kanchor270"></a><a name="kanchor271"></a> -- InterMapper uses SNMP Get-Request, instead 
+ of Get-Next-Request queries.
+  </li>
+                <li value="3"><b>apcups="false"</b><a name="kanchor272"></a><a name="kanchor273"></a><a name="kanchor274"></a> -- If apcups is false, InterMapper will not query the APC-UPS MIB even for devices that auto-detect as one. 
+  </li>
+                <li value="4"><b>maxvars="10"</b> -- maxvars controls the maximum number of variables 
+ to put in each SNMP request. If a custom probe requires more variables than 
+ maxvars, InterMapper sends multiple queries containing up to maxvars variables. </li>
+                <li value="5"><b>interface_visible = &lt;expression&gt;</b> - specifies a "filter expression" for use in determining which interfaces are made visible. By default, InterMapper makes the numbered interfaces visible. Setting this property allows you to make certain 
+<i>unnumbered</i> interfaces visible if they match the expression that can use $ifIndex, 
+$ifDescr, $ifType, or $ifAlias variables. <br /><b>Note:</b> This property does not allow you 
+to make numbered interfaces hidden.
+<br /></li>
+                <li value="6"><b>interface_numbered = &lt;expression&gt;</b> - specifies a "search expression" for use in determining which interface is made numbered. By default, the ipAddrTable specifies which interface is numbered. This property allows the probe file to override that choice. </li>
+            </ul>
+            <p>&#160;</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

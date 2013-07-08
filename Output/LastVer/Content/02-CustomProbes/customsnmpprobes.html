@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Custom SNMP Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1>Custom SNMP Probes</h1>
+            <p><a name="kanchor133"></a><a name="kanchor134"></a><a name="kanchor135"></a><a name="kanchor136"></a><a name="kanchor137"></a><a name="kanchor138"></a><a name="kanchor139"></a><a name="kanchor140"></a>Using custom SNMP probes, you can monitor certain MIB variables that aren't 
+ tested by InterMapper's built-in probes. These MIB variables might include the 
+ CPU utilization of a router, temperature inside the equipment, switch closures, 
+ etc.</p>
+            <p><a name="kanchor141"></a><a name="kanchor142"></a>Like other probes, custom SNMP probes are invoked and return the status and 
+ condition string for the device being tested. Here's a summary of the operational 
+ flow of a custom SNMP probe:</p>
+            <ol>
+                <li value="1">InterMapper polls the device for the values (called <i> probe variables</i>) 
+ specified in the probe file as well as the device's built-in MIB variables 
+ (usually byte and packet rates for interfaces).</li>
+                <li value="2">InterMapper also polls each interface for probe variables as
+needed.<br /></li>
+                <li value="3"><a name="kanchor143"></a>InterMapper then evaluates a series of expressions in the probe
+file, comparing the probe variables to thresholds.<br /></li>
+                <li value="4">If a comparison is triggered (generally, if the probe variable is above 
+ or below the given threshold), then InterMapper sets the device status as 
+ specified in the probe, if it is "worse" than the devices current status.<br /></li>
+                <li value="5">When the user clicks and holds on a device, InterMapper
+processes the relevant <i>display</i> section to produce the text
+for the Status window.</li>
+            </ol>
+            <p>Custom SNMP probes follow the same general format as other probe files. The <a href="description.html"><span class="code">&lt;description&gt;</span></a>and <a href="parameters.html"><span class="code">&lt;parameter&gt;</span></a> 
+sections work as described for other probe files. 
+</p>
+            <p> The <span class="code">&lt;header&gt;</span> section of a custom 
+ SNMP probe file is similar to the                                <span class="code"><a href="header.html">standard 
+ &lt;header&gt; section,</a></span> with a few differences. For more information, 
+ see                                <a href="header.html#customsnmp">Header Section of Custom SNMP Probes</a>.
+</p>
+            <p>Each custom SNMP probe has:
+</p>
+            <ul>
+                <li value="1"><b><a href="#devvar" name="kanchor144">An <span class="code">&lt;snmp-device-variables&gt;</span> 
+    section</a></b> - Specifies which MIB variables to collect from the device</li>
+                <li value="2"><b><a href="Thresholds.htm" name="kanchor145">An <span class="code">&lt;snmp-device-thresholds&gt;</span> 
+    section</a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status</li>
+                <li value="3"><a href="#devdisp" name="kanchor147"><b>An <span class="code">&lt;snmp-device-display&gt;</span> 
+    section</b></a> - Specifies what information about the device and its links 
+ should be displayed in the Status window</li>
+                <li value="4"><a href="#devprop" name="kanchor148"><b>The <span class="code">&lt;snmp-device-properties&gt;</span> 
+    section</b></a> - Specifies certain aspects of the SNMP queries sent to the 
+ device</li>
+            </ul>
+            <h2><a name="devvar"></a><a name="kanchor149"></a><span class="code">SNMP Probe Variables - The &lt;snmp-device-variables&gt;</span> 
+  Section</h2>
+            <p>Use the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor150"></a><a name="kanchor151"></a> 
+  section to specify the values you want to retrieve using a particular SNMP OID. 
+ These values, called                                <i>probe variables</i>, can then be compared to thresholds 
+ to create alarms, warnings, etc.</p>
+            <h3><span class="code">&lt;snmp-device-variables&gt;</span> 
+  Format</h3>
+            <p>Each line of the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor152"></a> 
+  section defines a particular variable to be retrieved. The definition is composed 
+ of four comma-separated attributes:</p>
+            <ul>
+                <li value="1">Variable-name</li>
+                <li value="2">OID</li>
+                <li value="3">Type</li>
+                <li value="4">Chart-legend</li>
+            </ul>
+            <p>For a complete description of these variables, see <a href="Probe_Variables.htm">Probe Variables</a>.</p>
+            <h3 class="pagebreakbefore">Sample <span class="code">&lt;snmp-device-variables&gt;</span> 
+  Section </h3>
+            <pre class="code">&lt;snmp-device-variables&gt;<br style="mc-tag-and-class: ;" />&#160;&#160;&#160;  --Variable-name	 OID --- TYPE ---- CHART LEGEND ------<br style="mc-tag-and-class: ;" /><a name="kanchor153"></a><a name="kanchor154"></a>&#160;&#160;&#160;  ipForwDatagrams, 1.3.6.1.2.1.4.6.0, PER-SECOND, "Forwarded datagrams"<br style="mc-tag-and-class: ;" /><a name="kanchor155"></a>&#160;&#160;&#160;  ipInHdrErrors, 1.3.6.1.2.1.4.4.0, PER-MINUTE, "IP received header err"<br style="mc-tag-and-class: ;" /><a name="kanchor156"></a><a name="kanchor157"></a><a name="kanchor158"></a><a name="kanchor159"></a><a name="kanchor160"></a>&#160;&#160;&#160;  tcpCurrEstab, 1.3.6.1.2.1.6.9.0, DEFAULT, "Number of TCP conn's"<br style="mc-tag-and-class: ;" /><a name="kanchor161"></a>&#160;&#160;&#160;  sysDescr, 1.3.6.1.2.1.1.1.0, DEFAULT<br style="mc-tag-and-class: ;" />&lt;/snmp-device-variables&gt;</pre>
+            <p><b>Note:</b> The OIDs above have a trailing ".0" to specify their full OID.</p>
+            <h2 class="pagebreakbefore"><a name="devdisp"></a><a name="kanchor162"></a>Status Window Text - The <span class="code">&lt;snmp-device-display&gt;</span> 
+  Section</h2>
+            <p>Use the <span class="code">&lt;snmp-device-display&gt;</span> 
+  to control the way information gathered during polling appears in the Status 
+ window. Create a <span class="code">&lt;snmp-device-display&gt;</span> section with the items to be displayed. 
+ For more information, see                                <a href="customstatuswindows.html" name="kanchor163">Customized Status Windows</a>.</p>
+            <h2><a name="devprop"></a><a name="kanchor164"></a><a name="kanchor165"></a>SNMP Query Settings - The <span class="code">&lt;snmp-device-properties&gt;</span> 
+  Section</h2>
+            <p>The <span class="code">&lt;snmp-device-properties&gt;</span> section specifies certain aspects of the SNMP queries sent to the device. Like other sections, it is closed with a &lt;/snmp-device-properties&gt; tag. The items that may be set include:</p>
+            <p />
+            <ul>
+                <li value="1"><b><a name="kanchor166"></a>nomib2="true"</b><a name="kanchor167"></a><a name="kanchor168"></a> - InterMapper does not query the sysUptime MIB-2 variable 
+  </li>
+                <li value="2"><b><a name="kanchor169"></a>pdutype="get-request"</b><a name="kanchor170"></a><a name="kanchor171"></a> - InterMapper uses SNMP Get-Request, instead 
+ of Get-Next-Request queries 
+  </li>
+                <li value="3"><b>apcups="false"</b><a name="kanchor172"></a><a name="kanchor173"></a><a name="kanchor174"></a> - If apcups is false, InterMapper does not query 
+ the APC-UPS MIB even for devices that auto-detect as one. 
+  </li>
+                <li value="4"><b><a name="kanchor175"></a>maxvars="10"</b> - maxvars controls the maximum number of variables 
+ to put in each SNMP request. If a custom probe requires more variables than 
+ maxvars, InterMapper sends multiple queries containing up to maxvars variables. 
+</li>
+            </ul>
+            <pre class="code">&lt;snmp-device-properties&gt;
+&#160;&#160;nomib2="true"<br />&#160;&#160;pdutype="get-request"<br />&#160;&#160;apcups="false"<br />&#160;&#160;maxvars="10"<br />&lt;/snmp-device-properties&gt;</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="775" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|Anatomy of a Probe|The &lt;datasets&gt; Section" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Automatically-Recorded Data Values</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="Automatically-Recorded Data Values" MadCap:sourceTitle="Automatically-Recorded Data Values"><a MadCap:generatedBookmark="TOC" name="Automatically-Recorded Data Values"></a>Automatically-Recorded Data Values</h1>
+        <p>When recording data from built-in probes, Dartware has selected values for each probe which seem sensible to record.</p>
+        <table style="margin-left: 0;margin-right: auto;caption-side: top;">
+            <col />
+            <col />
+            <col style="width: 5em;" />
+            <col />
+            <col />
+            <tr>
+                <th style="text-align: left;vertical-align: middle;">Probe Name</th>
+                <th style="text-align: left;vertical-align: middle;">$variable in probe</th>
+                <th style="vertical-align: middle;">&#160;</th>
+                <th style="text-align: left;vertical-align: middle;">Tag (30)</th>
+                <th style="text-align: left;vertical-align: middle;">Legend (255)</th>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">APC UPS</td>
+                <td style="vertical-align: top;">$leftCharge</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pctcharge</td>
+                <td style="vertical-align: top;">Percent Charge</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$batMin</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$inVolt</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$batTempC</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">temperature</td>
+                <td style="vertical-align: top;">Internal temperature (C)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">APC UPS - AP961x</td>
+                <td style="vertical-align: top;">[same as APC UPS]</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Barracuda HTTP</td>
+                <td style="vertical-align: top;">$in_queue_size</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">inqueue</td>
+                <td style="vertical-align: top;">Input Queue</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$out_queue_size</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">outqueue</td>
+                <td style="vertical-align: top;">Output Queue</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$avg_latency</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">latency</td>
+                <td style="vertical-align: top;">Average Message Latency</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Barracuda HTTPS - same as HTTP</td>
+                <td style="vertical-align: top;">[Same as Barracuda HTTP]</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">BestPower UPS</td>
+                <td style="vertical-align: top;">$cTimeOnBattery</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$cInputVoltage</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"> <![CDATA[ ]]></td>
+                <td style="vertical-align: top;">$cIntTempC</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">temperature</td>
+                <td style="vertical-align: top;">Internal temperature (C)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Custom TCP</td>
+                <td style="vertical-align: top;">$_connect</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">conntime</td>
+                <td style="vertical-align: top;">Time to establish connection</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$_active</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">connactive</td>
+                <td style="vertical-align: top;">Time spent connected to host</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Exide UPS</td>
+                <td style="vertical-align: top;">$LeftCharge</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pctcharge</td>
+                <td style="vertical-align: top;">Percent Charge</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$LeftMin</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$in1Volt</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input 1 Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTP</td>
+                <td style="vertical-align: top;">$_connect</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">conntime</td>
+                <td style="vertical-align: top;">Time to establish connection</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$_active</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">connactive</td>
+                <td style="vertical-align: top;">Time spent connected to host</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTP (Authenticate)</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTP (Post)</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTP (Proxy)</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTP (Virtual Server)</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTPS</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">HTTPS (Post)</td>
+                <td style="vertical-align: top;">Same as HTTP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Liebert UPS - OpenComms</td>
+                <td style="vertical-align: top;">$LeftCharge</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pctcharge</td>
+                <td style="vertical-align: top;">Percent Charge</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$LeftMin</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$in1Volt</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input 1 Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$batteryTempC</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">temperature</td>
+                <td style="vertical-align: top;">Internal temperature</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - AFP</td>
+                <td style="vertical-align: top;">$currentThroughput</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">throughput</td>
+                <td style="vertical-align: top;">Current throughput</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$currentConnections</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">connections</td>
+                <td style="vertical-align: top;">Current connections</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - FTP</td>
+                <td style="vertical-align: top;">$realConnectionCount</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">authconns</td>
+                <td style="vertical-align: top;">Authenticated Connections</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$anonymousConnectionCount</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">anonconns</td>
+                <td style="vertical-align: top;">Anonymous Connections</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - NAT</td>
+                <td style="vertical-align: top;">$activeTCP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">tcpconns</td>
+                <td style="vertical-align: top;">TCP Links</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$activeUDP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">udpconns</td>
+                <td style="vertical-align: top;">UDP Links</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$activeICMP</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">icmpconns</td>
+                <td style="vertical-align: top;">ICMP Links</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - Print</td>
+                <td style="vertical-align: top;">$currentQueues</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">queues</td>
+                <td style="vertical-align: top;">Current Queues</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$currentJobs</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">numjobs</td>
+                <td style="vertical-align: top;">Spooled Jobs</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - QTSS</td>
+                <td style="vertical-align: top;">$currentConnections</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">connections</td>
+                <td style="vertical-align: top;">Current connections</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$currentThroughput</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">throughput</td>
+                <td style="vertical-align: top;">Current throughput</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server - Web</td>
+                <td style="vertical-align: top;">$currentRequestsBy10</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">requestrate</td>
+                <td style="vertical-align: top;">Requests/second</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$cacheCurrentRequestsBy10</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cachehitrate</td>
+                <td style="vertical-align: top;">Cache Requests/second</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$currentThroughput</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">throughput</td>
+                <td style="vertical-align: top;">Current throughput</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$cacheCurrentThroughput</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">throughputcache</td>
+                <td style="vertical-align: top;">Cache throughput</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">OS X Server Info</td>
+                <td style="vertical-align: top;">$cpu</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercent</td>
+                <td style="vertical-align: top;">CPU Usage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Cisco - Old CPU MIB</td>
+                <td style="vertical-align: top;">$lcpu.busyPer</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercent</td>
+                <td style="vertical-align: top;">CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$lcpu.avgBusy1</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercentavg</td>
+                <td style="vertical-align: top;">Average CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$lmem.freeMem</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">freemem</td>
+                <td style="vertical-align: top;">Available memory</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Cisco - Process and Memory Pool</td>
+                <td style="vertical-align: top;">$lcpu.busyPer</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercent</td>
+                <td style="vertical-align: top;">CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$lcpu.avgBusy1</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercentavg</td>
+                <td style="vertical-align: top;">Average CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$ciscoMemoryPoolFree1</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">freemem</td>
+                <td style="vertical-align: top;">Available memory</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Cisco (v2c)</td>
+                <td style="vertical-align: top;">$lcpu.busyPer</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercent</td>
+                <td style="vertical-align: top;">CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$lcpu.avgBusy1</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercentavg</td>
+                <td style="vertical-align: top;">Average CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$lmem.freeMem</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">freemem</td>
+                <td style="vertical-align: top;">Available memory</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Cisco IP SLA Jitter Probe</td>
+                <td style="vertical-align: top;">$cpmCPUTotal1min</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercentavg</td>
+                <td style="vertical-align: top;">Average CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$AvgJitter</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">jitteravg</td>
+                <td style="vertical-align: top;">Average Jitter</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$AvgLatency</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">latencyavg</td>
+                <td style="vertical-align: top;">Average Latency</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$PercentPacketLoss</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pktloss</td>
+                <td style="vertical-align: top;">Packet Loss</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Comparison</td>
+                <td style="vertical-align: top;">$theOID</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">value</td>
+                <td style="vertical-align: top;">Probe value</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - High Threshold</td>
+                <td style="vertical-align: top;">$theOID</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">value</td>
+                <td style="vertical-align: top;">Probe value</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Host Resources (built-in)</td>
+                <td style="vertical-align: top;">Average of items in hrProcessorTable or UCD-SNMP CPU table (anchor is UcuR)</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">cpupercentavg</td>
+                <td style="vertical-align: top;">Average CPU Percent</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Low Threshold</td>
+                <td style="vertical-align: top;">$theOID</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">value</td>
+                <td style="vertical-align: top;">Probe value</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - Range Threshold</td>
+                <td style="vertical-align: top;">$theOID</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">value</td>
+                <td style="vertical-align: top;">Probe value</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">SNMP - TCP Check</td>
+                <td style="vertical-align: top;">$tcpCurrEstab</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">numconns</td>
+                <td style="vertical-align: top;">Number of TCP connections</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Standard UPS (RFC1628)</td>
+                <td style="vertical-align: top;">$LeftCharge</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pctcharge</td>
+                <td style="vertical-align: top;">Percent Charge</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$LeftMin</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$in1Volt</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input 1 Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$batTempC</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">temperature</td>
+                <td style="vertical-align: top;">Internal temperature (C)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">TrippLite UPS</td>
+                <td style="vertical-align: top;">$LeftCharge</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">pctcharge</td>
+                <td style="vertical-align: top;">Percent Charge</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$LeftMin</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$in1Volt</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input 1 Voltage</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$envTempC</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">temperature</td>
+                <td style="vertical-align: top;">Ambient temperature (C)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$envHumid</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">humidity</td>
+                <td style="vertical-align: top;">Humidity (%)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Victron UPS</td>
+                <td style="vertical-align: top;">$batt.rem</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">batttimeleft</td>
+                <td style="vertical-align: top;">Time left on battery (min)</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                </td>
+                <td style="vertical-align: top;">$input.volt1</td>
+                <td style="vertical-align: top;">&#160;</td>
+                <td style="vertical-align: top;">involts</td>
+                <td style="vertical-align: top;">Input 1 Voltage</td>
+            </tr>
+        </table>
+    </body>
+</html>

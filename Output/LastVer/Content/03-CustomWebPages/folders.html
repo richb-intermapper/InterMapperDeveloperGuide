@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Customizing Web Pages" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Folder Structure</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor814"></a>Folder Structure</h1>
+            <p>Web target files and template files are in the <i><a name="kanchor815"></a><a name="kanchor816"></a>Web Pages</i> folder 
+ within the       <i><a name="kanchor817"></a>InterMapper Settings</i><a name="kanchor818"></a><a name="kanchor819"></a> folder. Except for the folders 
+ described below, the InterMapper web server serves out only those files 
+ located in the top level of the       <i>Web Pages</i> folder.</p>
+            <p>InterMapper ships with four folders stored in the <i>Web Pages</i> folder:</p>
+            <p class="dt"><a name="kanchor820"></a><a name="kanchor821"></a>~AdminHTML</p>
+            <p class="dd"><a name="kanchor822"></a>This folder contains HTML templates for pages that show the overall 
+ status of the InterMapper program. People who have access to these pages 
+ may also view all the separate map pages. You can access these files from 
+ the default web URL, or by using a URL in this form: 
+	
+	</p>
+            <p class="code">&#160;http://intermapper.domainname.com/~admin/filename.html</p>
+            <p class="dt"><a name="kanchor823"></a>~GuestHTML</p>
+            <p class="dd">This folder contains HTML templates for reporting errors such as missing 
+ or invalid file names, and for responding to web clients who are not authorized 
+ for the web server. These files bypass the usual access list mechanism; 
+ you can access them using this URL form: 
+	
+	</p>
+            <p class="code">&#160;http://intermapper.domainname.com/~error/filename.html</p>
+            <p class="dt"><a name="kanchor824"></a>~GuestImages</p>
+            <p class="dd"><a name="kanchor825"></a>This folder contains images used by the InterMapper web server. These 
+ images may be placed in a target or template file using the <span class="code"><a name="kanchor826"></a>${imageref: ... }</span> macro.<br /></p>
+            <p class="dt"><a name="kanchor827"></a>PerMapHTML</p>
+            <p class="dd">This folder contains HTML templates that are used when displaying a 
+ map's information. <!--To customize the HTML for a particular map, duplicate the PerMapHTML folder, and edit the file(s) within that folder. You must also select the new folder name from the pop-up menu in the map's {glosssub("Chapter 4 == Map Access Control","Map Settings...")} dialog. -->To view a specific document's information, use this URL form: 
+	
+	</p>
+            <p class="code">http://intermapper.domainname.com/docname</p>
+            <h2 class="pagebreakbefore"><a name="kanchor828"></a>How the Web Page Files are Used</h2>
+            <p class="dt"><a name="kanchor829"></a>Main Web Page</p>
+            <p class="dd"><a name="kanchor830"></a><a name="kanchor831"></a>The main web page is the ~admin/!index.html target file. When an unqualified 
+ URL request arrives (that is, a request for "/", without any 
+ additional path of file information), InterMapper sends out the file specified 
+ by ~admin/!index.html.</p>
+            <p class="dt"><a name="kanchor832"></a>Main Template file</p>
+            <p class="dd"><a name="kanchor833"></a>By default, all target files use the same template, "!template.html" 
+ (note the exclamation point at the beginning of the filename). A target 
+ file may specify a different template file by using the #template directive.</p>
+            <p class="dt"><a name="kanchor834"></a>Default HTML page</p>
+            <p class="dd">For both the "~AdminHTML" and "PerMapHTML" folders, 
+ the default HTML page is "!index.html". A request for <span class="code"><a name="kanchor835"></a>http://intermapper.domain.com/</span> is treated like 
+ a request for</p>
+            <pre class="code">&#160;&#160;&#160;http://intermapper.domain.com/~admin/!index.html.</pre>
+            <p>Similarly, a request for </p>
+            <pre class="code">&#160;&#160;&#160;http://intermapper.domain.com/docname</pre>
+            <p>will be treated like a request for</p>
+            <pre class="code">&#160;&#160;&#160;http://intermapper.domain.com/docname/document/main/!index.html.</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

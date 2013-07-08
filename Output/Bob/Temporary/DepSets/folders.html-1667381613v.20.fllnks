@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet FileTitle="" FileSearchable="true" FileTimeEstimate="0" FilePriority="0" FileStatus="In Progress">
+    <Links>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </Links>
+    <LongLinks>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </LongLinks>
+    <Anchors />
+    <Keywords>
+        <IndexCacheEntry Term="Folder Structure" Conditions="Primary.online,Primary.print" LocalConditions="" Position="6" />
+        <IndexCacheEntry Term="Level:Web Pages" Conditions="Primary.online,Primary.print" LocalConditions="" Position="9" />
+        <IndexCacheEntry Term="Web Pages" Conditions="Primary.online,Primary.print" LocalConditions="" Position="10" />
+        <IndexCacheEntry Term="InterMapper Settings" Conditions="Primary.online,Primary.print" LocalConditions="" Position="12" />
+        <IndexCacheEntry Term="Level" Conditions="Primary.online,Primary.print" LocalConditions="" Position="13" />
+        <IndexCacheEntry Term="Web Pages:level" Conditions="Primary.online,Primary.print" LocalConditions="" Position="14" />
+        <IndexCacheEntry Term="HTML" Conditions="Primary.online,Primary.print" LocalConditions="" Position="19" />
+        <IndexCacheEntry Term="AdminHTML" Conditions="Primary.online,Primary.print" LocalConditions="" Position="20" />
+        <IndexCacheEntry Term="URL" Conditions="Primary.online,Primary.print" LocalConditions="" Position="22" />
+        <IndexCacheEntry Term="GuestHTML" Conditions="Primary.online,Primary.print" LocalConditions="" Position="25" />
+        <IndexCacheEntry Term="GuestImages" Conditions="Primary.online,Primary.print" LocalConditions="" Position="29" />
+        <IndexCacheEntry Term="Used" Conditions="Primary.online,Primary.print" LocalConditions="" Position="31" />
+        <IndexCacheEntry Term="Imageref" Conditions="Primary.online,Primary.print" LocalConditions="" Position="33" />
+        <IndexCacheEntry Term="PerMapHTML" Conditions="Primary.online,Primary.print" LocalConditions="" Position="36" />
+        <IndexCacheEntry Term="Web Page Files" Conditions="Primary.online,Primary.print" LocalConditions="" Position="40" />
+        <IndexCacheEntry Term="Main Web Page" Conditions="Primary.online,Primary.print" LocalConditions="" Position="42" />
+        <IndexCacheEntry Term="Index.html" Conditions="Primary.online,Primary.print" LocalConditions="" Position="44" />
+        <IndexCacheEntry Term="Admin/!index.html" Conditions="Primary.online,Primary.print" LocalConditions="" Position="45" />
+        <IndexCacheEntry Term="Main Template file" Conditions="Primary.online,Primary.print" LocalConditions="" Position="47" />
+        <IndexCacheEntry Term="Template.html" Conditions="Primary.online,Primary.print" LocalConditions="" Position="49" />
+        <IndexCacheEntry Term="Default HTML" Conditions="Primary.online,Primary.print" LocalConditions="" Position="51" />
+        <IndexCacheEntry Term="Intermapper.domain.com" Conditions="Primary.online,Primary.print" LocalConditions="" Position="54" />
+    </Keywords>
+    <Concepts />
+    <ConceptControlNames />
+    <IndexControlNames />
+    <Variables />
+    <FileConditions>
+        <Condition Tag="Primary.online" />
+        <Condition Tag="Primary.print" />
+    </FileConditions>
+    <FileTags />
+    <AllConditions>
+        <Condition Tag="Primary.online" />
+        <Condition Tag="Primary.print" />
+    </AllConditions>
+    <Stylesheets>
+        <Url Source="Content/Resources/default.css" />
+    </Stylesheets>
+</CatapultFileLinkSet>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="334" MadCap:lastWidth="1148" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|Command Line Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>The &lt;command-exit&gt; Section</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2nopagebreak" MadCap:xrefTargetName="The &lt;command-exit&gt; Section" MadCap:sourceTitle="The &lt;command-exit&gt; Section"><a MadCap:generatedBookmark="TOC" name="The &lt;command-exit&gt; Section"></a>The <span class="code">&lt;command-exit&gt;</span> Section</h1>
+        <p><a name="commandexitsection"></a>The <span class="code">&lt;command-exit&gt;</span> Section&#160;</p>
+        <p>The <span class="code">&lt;command-exit&gt;</span> section allows you to specify which results 
+ from the command indicate the five InterMapper device states. The states 
+ are:<MadCap:keyword term="EXIT_CODE" /></p>
+        <ul>
+            <li value="1"> down</li>
+            <li value="2">critical</li>
+            <li value="3">alarm</li>
+            <li value="4">warning</li>
+            <li value="5">okay</li>
+        </ul>
+        <p>For each state, you need to indicate 
+ what item InterMapper should examine and what its value should be to result 
+ in that state being set. At the moment, the only thing InterMapper can look 
+ at is the exit code, which is indicated with ${EXIT_CODE}. So, in the example 
+ below, the line:<pre class="code">down: ${EXIT_CODE} = 2 </pre> means, "To determine if the device is down, examine the exit code from 
+ the command; if it is 2, the device is down." If none of the criteria for 
+ the states you have defined are true, then the device is set to "unknown". 
+    </p>
+    </body>
+</html>

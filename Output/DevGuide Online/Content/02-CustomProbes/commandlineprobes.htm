@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Command Line Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1><a name="kanchor536"></a>Command Line Probes</h1>
+            <p class="code">type="cmd-line"</p>
+            <p> InterMapper provides the ability to run a <i>command-line</i> probe, a script or program (written 
+ in perl, C, C++, or your favorite language.) Your program's return value becomes the device's status on the 
+ InterMapper map. <a name="kanchor537"></a><a name="kanchor538"></a><a name="kanchor539"></a><a name="kanchor540"></a><a name="kanchor541"></a><a name="kanchor542"></a><a name="kanchor543"></a><a name="kanchor544"></a><a name="kanchor545"></a><a name="kanchor546"></a></p>
+            <h2>Common Sections of a Command-Line Probe</h2>
+            <p>Each command-line probe follows the same general format as other probe files, sharing these common sections:</p>
+            <ul>
+                <li value="1">The <span class="code"><a href="header.html">&lt;header&gt;</a></span> section of a command-line probe specifies the probe type, name, and a number of other properties fundamental to the operation of the probe.                              </li>
+                <li value="2">The <a href="description.html"><span class="code">&lt;description&gt;</span></a> 
+section specifies the help text that appears in the Probe Configuration window. Format the description using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.
+<br /></li>
+                <li value="3">The <a href="parameters.html"><span class="code">&lt;parameters&gt;</span></a> section defines the fields presented to the user in the Probe Configuration window.</li>
+            </ul>
+            <h2>Sections Specific to Command-line Probes</h2>
+            <p>Each command-line probe also has:</p>
+            <ul>
+                <li value="1">The <a href="command-line-section.htm#commandlinesection"><span class="code">&lt;command-line&gt;</span></a> section - defines the command-line, specifying the path to the executable, the command to execute, and any arguments to the command.</li>
+                <li value="2">The <a href="command-exit-section.htm#commandexitsection"><span class="code">&lt;command-exit&gt;</span></a> section - controls how the device's state is set, based on the results of the command.</li>
+                <li value="3">The <a href="command-display-section.htm#commanddisplaysection"><span class="code">&lt;command-display&gt;</span></a> section - controls what appears in the device's Status window.</li>
+            </ul>
+            <p> InterMapper uses the information in the probe's <span class="code">&lt;command-line&gt;</span> section to invoke the program or script and pass arguments to it. 
+ InterMapper sets the device's status based on the return code from the 
+ program or script. In addition, any data written to the 
+ script's standard output file is used as the device's reason string, and appears in the status window.
+The total amount of data that can be returned by the program, including return code, reason string, and additional values, is 64k.<a name="kanchor547"></a><a name="kanchor548"></a><a name="kanchor549"></a><a name="kanchor550"></a><a name="kanchor551"></a><a name="kanchor552"></a><a name="kanchor553"></a></p>
+            <p><a name="nagios"></a>InterMapper's command-line probes are similar to <a name="kanchor554"></a> <![CDATA[                                ]]><b><a href="http://www.nagios.org/">Nagios® 
+ plugins</a></b>. You 
+ can see the                                 <a href="http://sourceforge.net/project/showfiles.php?group_id=29880" name="kanchor555">standard 
+ set of Nagios plugins.</a><a name="kanchor556"></a> Many vendors and individuals have created their own 
+ Nagios plugins. You will have to download the Nagios plugins and build/compile 
+ them yourself. 
+</p>
+            <p> If you wish to develop your own command-line probes, we recommend you follow 
+ the <a href="http://nagiosplug.sourceforge.net/developer-guidelines.html">developer guidelines for Nagios</a>. 
+ This will result in probes/plugins that work for both InterMapper and Nagios. <a name="kanchor557"></a></p>
+            <p>For more information about InterMapper and Nagios Plugins, see the<a href="nagios.htm"> Nagios Plugins page</a>.</p>
+            <p>See <a href="cmdlineprobeexample.htm">Command Line Probe Example</a> for a sample shell script and corresponding probe.</p>
+            <h2>The &lt;tool&gt; section - embedding a companion script</h2>
+            <p>You can also embed script code directly in a probe. This provides an easy way to deliver a command-line probe and a script that it runs in a single probe file, ensuring that the version of the script matches the version of the probe. WMI probes provide a number of good examples of companion scripts. For more information, see .</p>
+            <h2>Command Line Script API</h2>
+            <p>When InterMapper invokes a command line program or script, it passes parameters on the command line. Use the <span class="code">path</span>, <span class="code">cmd</span>, and <span class="code">arg </span>properties of the <span class="code">&lt;command-line&gt;</span> section to specify the script or other executable to invoke, and any arguments 
+to the command. As the script developer, you are responsible for parsing the arguments. </p>
+            <p>The script can return three kinds of information to InterMapper:</p>
+            <ol>
+                <li value="1">The operating system return code, or <i>exit code</i>, is used to indicate the<br />success/failure/severity. This will be handled by the &lt;command-exit&gt; section 
+  of the probe file.</li>
+                <li value="2">The script can optionally return <i>additional values</i>, such as measurements, discovered during execution. It does this by writing to the script's <i>stdout</i>. You return these values as a comma-separated list enclosed in "\{" ... "}" 
+  characters.These values can then be handled as variables in the probe's <span class="code">&lt;command-display&gt;</span> section. The values themselves are <i>name-value</i> pairs in the form:<br /></li>
+            </ol>
+            <p class="codeindent">&lt;name&gt; := &lt;value&gt;</p>
+            <ol start="3">
+                <li value="3">The script can also return a <b>reason string</b> that will be used to explain the device's condition. You specify the reason string by writing to the script's stdout. This text should follow the closing 
+  "}" of any additional values. </li>
+            </ol>
+            <p><b>Example:</b> The following output from a script sets two values to the probe:<br /><span class="code">$rtt </span>and <span class="code">$hop</span>, and sets the device's reason string to "<i>Round-trip time 
+  is very high</i>".</p><pre class="code">\{ $rtt := 5, $hop := 2 } Round-trip time is very high</pre>
+            <p>You can do a significant amount when writing to stdout, using the ${^stdout} variable. For more information, see <a href="builtinvariablereference.htm#stdout">The <span class="code">${^stdout}</span> variable and the Reason string</a>.<br /></p>
+            <h2><a name="kanchor558"></a><a name="kanchor559"></a>Installing a Command-line Probe</h2>
+            <p>Once you have created your probe, you need to install it before you can test it.</p>
+            <p><b>To install and use a command-line probe:</b>
+            </p>
+            <ol>
+                <li value="1"><a name="kanchor560"></a><a name="kanchor561"></a><a name="kanchor562"></a> If you are using an external script or other executable, create the program, and make it runnable. If it's a Perl, Python, or other 
+ script, set the permissions so that it can run from the command line. If it's 
+ written in C, C++, or other non-interpreted language, compile the source and 
+ then place the resulting binary in an appropriate directory. (See the <a href="#path">path</a> discussion below.)
+<br /><b>Note:</b>  If you embed a script in the <span class="code">&lt;tool&gt;</span> section of the probe, permissions are set by InterMapper when it writes the script to the Tools directory (when you import or reload the probe.)</li>
+                <li value="2"> Create a Command-line probe  that references the executable program or contains the script in the <span class="code">&lt;tool&gt;</span> section.
+  </li>
+                <li value="3"> Import or reload the probe (from the Set Probe window) to make it available. 
+</li>
+            </ol>
+            <p>See <a href="cmdlineprobeexample.htm">Command Line Probe Example</a> for a sample shell script and corresponding probe.</p>
+            <h2>Passing parameters to a command-line probe</h2>
+            <p>Pass arguments to the command line into the probe by accessing the parameter variables with ${parametername}. The named arguments can be added to the command line. </p>
+            <p>For example, use <span class="code">${Timeout}</span> for an parameter as follows:
+	<br /></p><pre class="code">&lt;parameters&gt;<br />&#160;&#160;Timeout = "7"<br />&lt;/parameters&gt;
+</pre>
+            <p>The <span class="code">arg </span>variable could be set as follows:</p><pre class="code">arg = "-H ${Timeout}"</pre>
+            <p><b>Note:</b> Depending on the nature of the parameters you are passing, you may want to pass the parameters through STDIN, as described below.</p>
+            <h2 class="pagebreakbefore">Sending Data to STDIN</h2>
+            <p>Using the <span class="code">ps</span> command on Unix systems, or using the Task Manager or other utility programs on Windows systems, it is possible to see the command line arguments. This represents a security vulnerability. Use the <span class="code">input</span> property of the <span class="code">&lt;command-line&gt;</span> section to pass sensitive data to <span class="code">STDIN</span>, removing this vulnerability. See <a href="command-line-section.htm#stdin">Sending Data to STDIN<a href="command-line-section.htm#stdin" target="" title="" alt="" class="MCXref_0"> </a></a> in <i>The &lt;command-line&gt; Section</i> for a detailed example.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

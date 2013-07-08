@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Parts of a Probe|Probe Header" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Probe File Header</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 MadCap:conditions="Primary.online"><a name="top"></a>Parts of a Probe</h1>
+            <h2 MadCap:conditions="Primary.online">Probe File Header</h2>
+            <p>The <i>header</i><a name="kanchor30"></a> of a probe file contains a formal description of the probe. 
+ It is defined using the following tags:</p>
+            <pre class="code">&#160;&#160;&#160;&lt;header&gt; ... &lt;/header&gt;</pre>
+            <h2><a name="kanchor31"></a><a name="kanchor32"></a>Header Part Format</h2>
+            <p>The header is composed of several parts. Each part has a name, and a corresponding 
+ value, written in this format:</p>
+            <pre class="code">&#160;&#160;&#160;part-name = "value"</pre>
+            <p>where <i>value</i> is enclosed in double-quotes. </p>
+            <h2><a name="kanchor33"></a>Header Parts</h2>
+            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b>type</b>
+                    </td>
+                    <td valign="top">
+                        <p>Describes the type of the probe file. InterMapper supports the following 
+ probe types:<a name="kanchor34"></a></p>
+                        <ul>
+                            <li value="1"><b><a name="kanchor35"></a>builtin</b>
+                            </li>
+                            <li value="2"><b><a name="kanchor36"></a><a name="kanchor37"></a>tcp-script</b>
+                            </li>
+                            <li value="3"><b><a name="kanchor38"></a><a name="kanchor39"></a>custom-snmp</b>
+                            </li>
+                            <li style="font-weight: bold;" value="4">custom-snmp-trap</li>
+                            <li value="5"><b><a name="kanchor40"></a>command-line</b>
+                            </li>
+                            <li value="6"><b>cmd-line</b>
+                            </li>
+                        </ul>
+                        <p>For <i><a name="kanchor41"></a></i>custom TCP probes<i>, </i>use the                            <i><b>tcp-script</b></i> type.<br />For <i><a name="kanchor42"></a><a name="kanchor43"></a></i>custom SNMP probes<i>, </i>use the                            <i><b>custom-snmp</b></i> type.<br />For custom SNMP Trap probes, use the <b style="font-style: italic;">custom-snmp-trap</b> type.<br />For command-line probes, use the                            <b><i>command-line</i></b> or <b><i>cmd-line</i></b> type.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b>package</b>
+                    </td>
+                    <td valign="top">
+                        <p>The first part of the probe's full identifier. Typically, the package 
+ is made up of the domain name of the organization that created the probe, 
+ with the labels reversed. </p>
+                        <p>For example, all probes created by Dartware, LLC the package statement 
+ is as follows: <a name="kanchor44"></a></p>
+                        <pre class="code">&#160;&#160;&#160;package = "com.dartware"</pre>
+                        <p>The package part guarantees that different organizations can create 
+ probes without concern that their probe identifiers will conflict.</p>
+                        <p><b>Note:</b><a name="kanchor45"></a><a name="kanchor46"></a><a name="kanchor47"></a> The combination of [package].[probe_name] together form 
+ the probe's full identifier. (In the example below, the full identifier 
+ is "com.dartware.tcp.custom") By convention, the name of the 
+ file that holds the probe definition is the same as the probe's full 
+ identifier. This is not required, but it's a good idea.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b>probe_name</b>
+                    </td>
+                    <td valign="top">The second part of the probe's full identifier. The probe_name 
+ may be whatever string the creating organization chooses.</td>
+                </tr>
+                <tr class="pagebreakbefore">
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b><a name="kanchor48"></a>human_name</b>
+                    </td>
+                    <td valign="top">The string that appears in the left pane of the Probe Picker window. This string helps guides the user to select the probe for 
+ a particular device.</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b>version</b>
+                    </td>
+                    <td valign="top">Provides a means to determine which probe file is the current 
+ one. The format of the version is "#.#".</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17" class="pagebreakbefore">&#160;</td>
+                    <td valign="top" class="pagebreakbefore"><b><a name="kanchor49"></a>address_type</b>
+                    </td>
+                    <td valign="top" class="pagebreakbefore">
+                        <p valign="top">A comma-separated list of one or more address types. InterMapper 
+ implements "IP" and "AT".<a name="kanchor50"></a></p>
+                    </td>
+                </tr>
+            </table>
+            <!-- broke table to allow a pagebreak -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b><a name="kanchor51"></a>port_number</b>
+                    </td>
+                    <td valign="top">The IP port used by this probe.</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b><a name="kanchor52"></a>display_name</b>
+                    </td>
+                    <td valign="top">
+                        <p><a name="kanchor53"></a>Specify the display_name to use with this probe, using forward slashes to specify the heirarchy. To do this, add the following line to the &lt;header&gt; 
+ section of the probe:</p>
+                        <p>&#160;&#160;&#160;&#160;display_name = "[top level]/[next level]/[next 
+ level]"</p>
+                        <p>Example:</p>
+                        <pre class="code">&#160;&#160;&#160;display_name = "Custom/Command-line"</pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top"><b><a name="kanchor54"></a>url_hint</b>
+                    </td>
+                    <td valign="top">Assign a double-click action within the probe (making it 
+ the pre-defined double-click action). To do this, add the following line 
+ to your &lt;header&gt; section of the probe: 
+        <p></p><blockquote><a name="kanchor55"></a> url_hint = "url-to-invoke" </blockquote><p> The following example would invoke the web browser to the device's 
+ IP address and port
+        </p><pre class="code"> url_hint = "http://${address}:${port}" </pre><p>&#160;</p></td>
+                </tr>
+                <tr>
+                    <td valign="top" width="17">&#160;</td>
+                    <td valign="top" style="font-weight: bold;">poll_interval</td>
+                    <td valign="top">
+                        <p valign="top">Set the device's default poll interval to the indicated number 
+of seconds. This overrides the map's default setting, and might be used to avoid 
+too-frequent polling for (physical) devices that should not be polled too often. </p>
+                        <p valign="top">Setting the poll interval *for the device* will override this poll_interval setting.
+
+</p>
+                        <p valign="top" class="code">poll_interval = "300"
+</p>
+                    </td>
+                </tr>
+            </table>
+            <h2><a name="kanchor56"></a><a name="kanchor57"></a><a name="kanchor58"></a>Sample Header Section</h2>
+            <p>This is a sample header from the Custom TCP script.</p>
+            <pre class="code">&lt;header&gt;<br />&#160;&#160;&#160;"type"          =   "tcp-script"<br />&#160;&#160;&#160;"package"       =   "com.dartware"<br />&#160;&#160;&#160;"probe_name"    =   "snmp.example"<br />&#160;&#160;&#160;"human_name"    =   "Example SNMP probe"<br />&#160;&#160;&#160;"display_name"    =   "Miscellaneous/Example SNMP Probe"    <br />&#160;&#160;&#160;"version"       =   "1.0"
+&#160;&#160;&#160;"address_type"  =   "IP,AT"<br />&#160;&#160;&#160;"port_number"   =   "161"<br />&#160;&#160;&#160;"flags" = ""<br />&lt;/header&gt;</pre>
+            <p style="font-size: 6pt;">&#160;</p><a name="customsnmp"></a>
+            <h2>Header Section of Custom SNMP Probes</h2>
+            <p> The <span class="code">&lt;header&gt;</span> section of the probe 
+ file is similar to the <span class="code"><a href="#top">standard &lt;header&gt; section,</a></span> with the following differences:
+ </p>
+            <ul>
+                <li value="1"> The "type" for a Custom SNMP probe is "custom-snmp".
+</li>
+                <li value="2"><a name="kanchor59"></a> There is a FLAGS=xxx,xxx command that takes the following optional items as parameters:
+	<ul type="o"><li value="1"><a name="kanchor60"></a> NOLINKS - InterMapper will not poll links (interfaces) with SNMP
+	</li><li value="2"><a name="kanchor61"></a> SNMPV2C - InterMapper will use SNMPv2c to poll the device
+	</li><li value="3"><a name="kanchor62"></a><a name="kanchor63"></a><a name="kanchor64"></a><a name="kanchor65"></a><a name="kanchor66"></a> NOICMPFALLBACK - InterMapper will not send an ICMP ping to a device if no SNMP responses return.
+</li><li value="4"><a name="kanchor67"></a>MINIMAL - the probe queries only its own (specified) variables.</li><li value="5"><a name="kanchor68"></a>NTCREDENTIALS - tells InterMapper to elevate its credentials using the username and password found in the NT Services server settings panel long enough to run the command line in the probe. (Windows only.)
+</li><li value="6">ALLOW-LOOPS - In some network equipment, the  indices for the ifTable and related tables do not proceed in the usual  strictly increasing fashion, jumping around instead. Adding this flag to the  header will instruct InterMapper to allow this situation. N.B. If the SNMP  agent in your network device doesn't stop returning values when every item  in the table has been read, set this flag to instruct InterMapper to loop  over the table continuously until 5000 reads have occurred, at which point  it will stop.</li><li value="7">IFINDEX-BUG - Some network equipment will respond  incorrectly to SNMP queries for the ifTable and related tables when InterMapper queries only certain entries in a sparse ifTable, rather than trying to  query each possible index in turn. Add this flag to the header to instruct InterMapper to work around this situation rather than attempting to  be efficient.</li><li value="8">LINKCRITICAL - If a link of a device goes down and the flag is set, the device status changes
+to critical, and not to alarm, which is the default.<br /><br /><!-- the next three are documented here, but should not be used by customers
+	<li> DISCOVERY - InterMapper will attempt to discover all the interfaces of the device
+	<li> DEFAULT - InterMapper will use this probe file as the default when creating a new device. 
+	<li> INVISIBLE - InterMapper will not display this probe as a choice
+--></li></ul></li>
+            </ul>
+            <p class="pagebreakafter"><b>Note: </b><span style="font-weight: normal;">The </span><b><a name="kanchor69"></a>old_protocol <a name="kanchor70"></a></b><span style="font-weight: normal;">and <b>old_script </b>parts, added for backward compatibility, are deprecated, and are ignored in any older probes that use them.</span>
+            </p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

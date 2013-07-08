@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" class="" MadCap:lastBlockDepth="4" MadCap:lastHeight="43" MadCap:lastWidth="576">
+    <head><title></title>
+        <link rel="StyleSheet" href="../Resources/default.css" />
+    </head>
+    <body>
+        <h1 MadCap:conditions="Primary.online">InterMapper HTTP API Overview</h1>
+        <h1 MadCap:conditions="Primary.print">InterMapper HTTP API </h1>
+        <p>InterMapper provides an HTTP API for retrieving data from, and sending  data to the InterMapper server ("exporting" and "importing", respectively). The  API allows an external program to use standard HTTP commands (GET, POST) and a  straightforward URL syntax to make these requests.</p>
+        <p>These are the major features of the HTTP&#160;API:</p>
+        <ul>
+            <li><strong>File Import/Export</strong> gives access to files of the  InterMapper Settings folder.</li>
+            <li><strong>Table Import/Export</strong> gives access to the tables in the  same formats that are currently available through the RemoteAccess Import and  Export commands.</li>
+            <li><b>Acknowledgements</b> - send Basic Acknowledgements to an InterMapper server using HTTP. This allows you to acknowledge down devices from phones, browsers, or scripts.</li>
+        </ul>
+        <p>Through these API interfaces you can accomplish a number of scripting tasks. Two scripts are provided, allowing you to "clone" the InterMapper Settings directory through a script.</p>
+        <p>The features of the HTTP API are described in these topics:</p>
+        <p><a href="APIImportingExportingFiles.htm">Importing &amp; Exporting Files<MadCap:xref href="APIImportingExportingFiles.htm" target="" title="" alt="" MadCap:conditions="Primary.print" /></a> - How to access the InterMapper Settings directory's file system.</p>
+        <p><a href="APIImportingExportingTables.htm">Importing &amp; Exporting Tables<MadCap:xref href="APIImportingExportingTables.htm" target="" title="" alt="" MadCap:conditions="Primary.print" /></a> - How to import or export map data directly.</p>
+        <p><a href="APIAcknowledgements.htm">Acknowledging Devices<MadCap:xref href="APIAcknowledgements.htm" target="" title="" alt="" MadCap:conditions="Primary.print" /></a> - How to acknowledge down devices or interfaces using the HTTP API.</p>
+        <p><a href="APIScriptingExamples.htm">Scripting Examples<MadCap:xref href="APIScriptingExamples.htm" target="" title="" alt="" MadCap:conditions="Primary.print" /></a> - Examples of the "clone" scripts and much more.</p>
+        <table class="fieldtable">
+            <colgroup>
+                <col>
+                </col>
+                <col>
+                </col>
+                <tbody>
+                    <tr>
+                        <td style="FONT-WEIGHT: bold;">InterMapper_Settings folder</td>
+                        <td style="FONT-WEIGHT: bold;">Corresponding URL</td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Custom  Icons</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/icons
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Extensions</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/extensions
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Fonts</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/fonts
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Maps</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/maps
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">MIB  Files</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/mibs
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Probes</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/probes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Sounds</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/sounds
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Tools</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/tools
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Web  Pages</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/webpages
+                        </td>
+                    </tr>
+                </tbody>
+            </colgroup>
+        </table>
+        <table class="fieldtable">
+            <colgroup>
+                <col />
+                <col />
+                <tbody>
+                    <tr>
+                        <td style="FONT-WEIGHT: bold;">InterMapper_Settings folder</td>
+                        <td style="FONT-WEIGHT: bold;">Corresponding URL</td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Custom  Icons</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/icons
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Extensions</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/extensions
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Fonts</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/fonts
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Maps</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/maps
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">MIB  Files</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/mibs
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Probes</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/probes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Sounds</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/sounds
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Tools</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/tools
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;">Web  Pages</td>
+                        <td style="BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid;" class="pre">/~files/webpages
+                        </td>
+                    </tr>
+                </tbody>
+            </colgroup>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Overview</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 data-mc-conditions="Primary.online"><a name="kanchor12"></a><a name="kanchor13"></a><a name="kanchor14"></a>Overview</h1>
+            <p><a name="kanchor15"></a>For many Internet services, simply "pinging" a device is not a sufficient test of whether it is operating correctly. InterMapper has a number of built-in probes that can test different aspects of a device's operation, whether it's a web server, router, database, LDAP server etc. </p>
+            <p>However, InterMapper's built-in probes may not test the kinds of devices you want to monitor, or may not test them ways that are most useful to you. In such a case, you can create your own probes. InterMapper's probes are defined by <i>probe files</i>, simple text files that can be duplicated and modified using any standard text editing utility. When you create your own probe, it becomes a first-class citizen and appears in the                    Set Probe window along with the built-in probes.</p>
+            <h2>What is a probe?</h2>
+            <p>A probe is a text file that specifies the way in which InterMapper tests a device. It is essentially a plug-in. All of InterMapper's probes follow the same logic:</p>
+            <ul>
+                <li value="1"><a name="kanchor16"></a><a name="kanchor17"></a><a name="kanchor18"></a><a name="kanchor19"></a><a name="kanchor20"></a>The probe sends one or more queries, as SNMP requests or UDP datagrams or over a TCP connection to the device being tested.
+</li>
+                <li value="2"> The device responds (or fails to respond).
+</li>
+                <li value="3"><a name="kanchor21"></a>If there is no response, InterMapper sets the device's status to DOWN.
+</li>
+                <li value="4"> InterMapper examines the response(s) from the device, and sets the device's status accordingly.
+</li>
+            </ul>
+            <h2>Parts of a Probe</h2>
+            <p>All of the probe types listed below follow a similar structure. This is outlined in <a href="Anatomy_of_a_Probe.htm">Anatomy of A Probe</a>, which explains the common sections of a probe, and the sections that are specific to a particular probe type.</p>
+            <h2>Types of Probes</h2>
+            <p>InterMapper has several kinds of probes. You can use InterMapper's built-in probes as-is, you can copy and modify them, or you can develop your own probes from scratch. These are the different probe types:</p>
+            <ul>
+                <li value="1"><a href="customsnmpprobes.html"><b>SNMP Probes</b></a> <![CDATA[ ]]><a name="kanchor22"></a> - InterMapper tests the device's status by sending SNMP queries and comparing the results to 
+	user-specified thresholds. </li>
+                <li value="2"><a href="handlingtraps.htm"><b>SNMP Trap Probes</b></a> - InterMapper can receive and process SNMP traps, and can set the status of a probe based on the contents of the trap's variables. You can create custom probes that alert you to problems in a certain device based on the contents of specific trap variables.<br /></li>
+                <li value="3"><a href="TCP_Probes.htm"><b>TCP Probes</b></a> - InterMapper establishes a TCP connection to a device. It then sends certain requests and evaluates the 	
+	responses to determine the device's status. 
+	TCP probes uses the <a href="language.html">TCP Probe Scripting language</a> to create a sequence of commands, branching to different parts of the script under specified conditions.<br /></li>
+                <li value="4"><a href="commandlineprobes.htm"><b>Command-line Probes</b></a> - InterMapper can invoke a program or script (as if "from the command line"), and use the results to 
+	determine the device's status.
+	</li>
+                <li value="5"><b>Big Brother Probes</b> - Big Brother™ is an open-source network monitoring program. InterMapper listens for reports from 
+	Big Brother clients and sets the device's status accordingly.
+	</li>
+            </ul>
+            <p>It's fairly straightforward to modify the existing files to produce new probes. If you make a new probe file that might be useful, please consider sending it to us. See <a href="Sharing_Custom_Probes.htm">Sharing Probes</a> for more information.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

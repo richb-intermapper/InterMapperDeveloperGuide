@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="5478" MadCap:lastWidth="1148" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|Anatomy of a Probe" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Built-in Probe Variables and Macros</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="Built-in Probe Variables and Macros" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a MadCap:generatedBookmark="TOC" name="Built-in Probe Variables and Macros"></a>Built-in Probe Variables and Macros</h1>
+        <p>Here is a list of built-in variables available in custom probes and notifiers. Note that certain variables are available only in certain contexts. The variables are listed by context.</p>
+        <ul>
+            <li value="1"><a href="#commandlinevariables">Command-line Probe Variables<MadCap:xref href="#commandlinevariables" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_11"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="2"><a href="#snmprobevars">SNMP Probe Variables<MadCap:xref href="#snmprobevars" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_10"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="3"><a href="#tcpprobevars">TCP Probe Variables<MadCap:xref href="#tcpprobevars" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_9"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="4"><a href="#clnotifiervars">Command Line Notifier Variables<MadCap:xref href="#clnotifiervars" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_8"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="5"><a href="#chartablemacro">The Chartable macro<MadCap:xref href="#chartablemacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_6"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="6"><a href="#evalmacro">The Eval Macro<MadCap:xref href="#evalmacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_5"> (Pg 1)</MadCap:xref></a>
+            </li>
+            <li value="7"><a href="#scalable">The Scalable10 and Scalable2 Macros<MadCap:xref href="#scalable" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_4"> (Pg 1)</MadCap:xref></a>
+            </li>
+        </ul>
+        <h2>&#160;</h2>
+        <h2 MadCap:xrefTargetName="$$xref$$_11" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="commandlinevariables"></a>Command Line Probe Variables</h2>
+        <p>The following variables are available in the specified sections of Command-line probes. (probe-type=cmd-line)</p>
+        <h3>&#160;</h3>
+        <h3>The &lt;command-line&gt; and &lt;command-exit&gt; sections</h3>
+        <p>The following variables are available in &lt;command-line&gt; and &lt;command-exit&gt; sections of command line probes</p>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;font-weight: bold;">${address}</td>
+                <td style="vertical-align: top;">The network address of the device.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${devicename}</td>
+                <td style="vertical-align: top;">The device name of the device.<br /><b>Note:</b> In some cases, the device name may resolve to the device's IP address.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${port}</td>
+                <td style="vertical-align: top;">The network port number that is being monitored.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${exit_code}</td>
+                <td style="vertical-align: top;">The exit code of the command-line probe. <br /><br /><b>Note:</b> The ${exit_code} variable is used in &lt;command-exit&gt; only.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${cscript}</td>
+                <td style="vertical-align: top;">Evaluates to the full path to the Windows cscript.exe utility; it also automatically adds /nologo as a command-line option. <br /><br /><b>Note:</b> This variable is only available in Windows.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${python}</td>
+                <td style="vertical-align: top;">Evaluates to the full path to the python interpreter installed as part of InterMapper DataCenter; it also automatically adds any necessary command-line options for normal operation.
+
+</td>
+            </tr>
+        </table>
+        <h3 class="pagebreakbefore">&#160;</h3>
+        <h3>The &lt;command-display&gt; section</h3>
+        <p>The following variables are available in the &lt;command-display&gt; section of command line probes. (probe-type=cmd-line)</p>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${devicename}</td>
+                <td style="vertical-align: top;">The device's name taken from first line of the label.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${deviceaddress}</td>
+                <td style="vertical-align: top;">The network address of the device.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#evalmacro">${eval:}<MadCap:xref href="#evalmacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_5"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">The eval macro.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#chartablemacro">${chartable[:fmt]:expr}<MadCap:xref href="#chartablemacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_6"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">Evaluate <span class="code">expr</span> and format the result as a chartable value</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#scalable">${scalable2:fmt:expr}<br></br>${scalable10:fmt:expr}<MadCap:xref href="#scalable" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_4"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">Scales large numbers into smaller units for better readability. The values are chartable.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#stdout">${^stdout}<MadCap:xref href="#stdout" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_7"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">Any output written to the standard output of a command-line script. See below for additional information about the effect of <span class="code">${^stdout}</span> on the <span class="code">reason</span> string.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${nagios_output}</td>
+                <td style="vertical-align: top;">Parses a Nagios plugin's output for display.</td>
+            </tr>
+        </table>
+        <h2>&#160;</h2>
+        <h2 MadCap:xrefTargetName="$$xref$$_10" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="snmprobevars"></a>SNMP Probe variables</h2>
+        <p>
+A variable name consists of letters, digits and an underscore, and must begin with a letter. 
+Variable names are not case-sensitive.
+A variable name can be referred to in the probe as <span class="code">$VariableName</span> or <span class="code">${VariableName}</span>.
+ Use the bracketed form for variables and parameters that have one or more spaces in the name.</p>
+        <p>The variables listed below are available in SNMP Probes. (probe-type = customsnmp)</p>
+        <p>In the <span class="code">&lt;snmp-device-display&gt;</span> section of a probe file, an occurrence of a variable name is replaced with its value, rounded to the nearest integer. </p>
+        <p>For example, if a calculation variable has the value of 3.14159265, using it in the <span class="code">&lt;display-output&gt;</span> section results in the value of "3"; if the variable had the value 4.75 it is be displayed as "5". </p>
+        <p> This value is chartable; clicking it makes a new chart, and dragging it adds it to an existing chart. If you need to display a non-integer value for the variable, use <a href="#chartablemacro">the <span class="code">${chartable}</span> macro</a> described below.</p>
+        <h3 class="pagebreakbefore">&#160;</h3>
+        <h3>The &lt;snmp-device-display&gt; section</h3>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${devicename}</td>
+                <td style="vertical-align: top;">The device's name taken from first line of the label.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${deviceaddress}</td>
+                <td style="vertical-align: top;">The network address of the device.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${imserveraddress}</td>
+                <td style="vertical-align: top;">The network address of the InterMapper Server.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${alarmpointlist}</td>
+                <td style="vertical-align: top;">The list of alarm points.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#evalmacro">${eval:expr}<MadCap:xref href="#evalmacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_5"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">The eval macro.</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"><b><a href="#chartablemacro">${chartable[:fmt]:expr}<MadCap:xref href="#chartablemacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_6"> (Pg 1)</MadCap:xref></a></b>
+                </td>
+                <td style="vertical-align: top;">The chartable macro.</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"><b><a href="#scalable"><b>${scalable2:fmt:expr}</b><br style="font-weight: bold;"></br><b>${scalable10:fmt:expr}</b><MadCap:xref href="#scalable" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_4"> (Pg 1)</MadCap:xref></a></b><b>&#160;</b>
+                </td>
+                <td style="vertical-align: top;">Scales large numbers into smaller units for better readability. The values are chartable.</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"><b>${[variablename]:legend}</b>
+                </td>
+                <td style="vertical-align: top;">The variable's legend as specified in the &lt;snmp-device-variables&gt; section For more information, see <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/snmp-device-variables.htm">SNMP Probe Variables<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/snmp-device-variables.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;snmp-device-variables&gt; Section"> (Pg 1)</MadCap:xref></a>.</td>
+            </tr>
+        </table>
+        <h3>&#160;</h3>
+        <h3>The &lt;snmp-device-properties&gt; section</h3>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${ifIndex}</td>
+                <td style="vertical-align: top;">The interface index.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${ifType}</td>
+                <td style="vertical-align: top;">The interface type.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${ifDescr}</td>
+                <td style="vertical-align: top;">The interface description.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${ifAlias}</td>
+                <td style="vertical-align: top;">The interface's alias</td>
+            </tr>
+        </table>
+        <h3>&#160;</h3>
+        <h3>The OID&#160;column of the &lt;snmp-device-variables&gt; section</h3>
+        <table style="width: 95%;">
+            <col style="width: 130pt;" />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${SpecificTrap}</td>
+                <td style="vertical-align: top;">Trap Field: specific-trap (SNMP v1; generic-trap is enterpriseSpecific)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${GenericTrap}</td>
+                <td style="vertical-align: top;">Trap Field: generic-trap (SNMP v1)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${TimeStamp}</td>
+                <td style="vertical-align: top;">Trap Field: trap timestamp (SNMP v1, v2c)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${Enterprise}</td>
+                <td style="vertical-align: top;">Trap Field: enterprise (SNMP v1)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${CommunityString}</td>
+                <td style="vertical-align: top;">Trap Field: community (SNMP v1, v2c)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${TrapOID}</td>
+                <td style="vertical-align: top;">Trap Field: trap OID (SNMPv2c, v3)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${SnmpVersion}</td>
+                <td style="vertical-align: top;">Trap Field: trap version</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${SenderAddress}</td>
+                <td style="vertical-align: top;">Trap Field: trap sender's address</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${AgentAddress}</td>
+                <td style="vertical-align: top;">Trap Field: trap agent's address (if different from sender)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${VarbindCount}</td>
+                <td style="vertical-align: top;">Trap Field: count of varbind variables<br /><br /><b>Note:</b> the next three macros do not use a colon ${VarbindValue8} returns the value of the eigth Varbind item.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${VarbindOID[NNN]}</td>
+                <td style="vertical-align: top;">Trap Field: <b style="font-style: italic;">NNNth</b> varbind OID</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${VarbindValue[NNN]}</td>
+                <td style="vertical-align: top;">Trap Field: <b style="font-style: italic;">NNNth</b> varbind Value</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${VarbindType[NNN]}</td>
+                <td style="vertical-align: top;"> Trap Field: <b style="font-style: italic;">NNNth</b> varbind Type</td>
+            </tr>
+        </table>
+        <h2>&#160;</h2>
+        <h2 MadCap:xrefTargetName="$$xref$$_9" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="tcpprobevars"></a>TCP Probe Variables</h2>
+        <p>These variables are available in TCP&#160;probes. (probe-type = tcp-script)</p>
+        <h3>&#160;</h3>
+        <h3>The &lt;script&gt; section</h3>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_remoteaddress}</td>
+                <td style="vertical-align: top;">The network address of the remote end of the connection.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_remoteport}</td>
+                <td style="vertical-align: top;">The network port number of the remote end of the connection.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_localaddress}</td>
+                <td style="vertical-align: top;">The network address of the local end of the connection.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_localport}</td>
+                <td style="vertical-align: top;">The network port number of the local end of the connection.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_gmttime}</td>
+                <td style="vertical-align: top;">The current time in RFC 822 format.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_version}</td>
+                <td style="vertical-align: top;">The version number of the InterMapper program.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_line:len}</td>
+                <td style="vertical-align: top;">The text of the last line received, truncated to the given length.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_idletimeout}</td>
+                <td style="vertical-align: top;">The idle timeout for the probe in seconds.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_stringtomatch}</td>
+                <td style="vertical-align: top;">The string we attempted to match in the last EXPT or MTCH command.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_base64:str}</td>
+                <td style="vertical-align: top;">Encode the given argument into base64.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_cvspassword:str}</td>
+                <td style="vertical-align: top;">Encode the given argument using the cvs password algorithm.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_md5:str}</td>
+                <td style="vertical-align: top;">The MD5 hash of the given argument, in hexadecimal.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_idleline}</td>
+                <td style="vertical-align: top;">The line number of the script where we were before the idle handler was invoked.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_secsconnected}</td>
+                <td style="vertical-align: top;">The number of seconds the probe spent connected to the other end. May be 0 if we were disconnected immediately or connection failed.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_length:str}</td>
+                <td style="vertical-align: top;">The length of the given argument in bytes.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_float:num}</td>
+                <td style="vertical-align: top;">The argument "pretty-printed" as a floating point number via printf %g.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_hmac:key:msg}</td>
+                <td style="vertical-align: top;">The HMAC-MD5 of the message, using the given key.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${_urlencode:str}</td>
+                <td style="vertical-align: top;">Encodes the specified string for use in URLs.</td>
+            </tr>
+        </table>
+        <h3>&#160;</h3>
+        <h3 class="pagebreakbefore">The &lt;script-output&gt; section</h3>
+        <table>
+            <col />
+            <col />
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${devicename}</td>
+                <td style="vertical-align: top;">The device's name taken from first line of the label.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${deviceaddress}</td>
+                <td style="vertical-align: top;">The network address of the device.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><a href="#evalmacro">${eval:}<MadCap:xref href="#evalmacro" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_5"> (Pg 1)</MadCap:xref></a>
+                </td>
+                <td style="vertical-align: top;">The eval macro.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;"><b><a href="#scalable"><b>${scalable2:fmt:expr}</b><br style="font-weight: bold;" /><b>${scalable10:fmt:expr}</b><MadCap:xref href="#scalable" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_4"> (Pg 1)</MadCap:xref></a></b>
+                </td>
+                <td style="vertical-align: top;">Scales large numbers into smaller units for better readability. The values are chartable.</td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <h2 MadCap:xrefTargetName="$$xref$$_8" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="clnotifiervars"></a>Variables passed to Command-line Notifiers</h2>
+        <p>The following variables are available for passing to a command line notifier. These values allow you to pass messages or URLs as command-line arguments in formats that are platform-friendly.</p>
+        <table style="caption-side: top;margin-left: 0;margin-right: auto;width: 100%;">
+            <col style="width: auto;">
+            </col>
+            <col>
+            </col>
+            <tr>
+                <th style="vertical-align: top;">Variable Name</th>
+                <th style="vertical-align: top;">Variable Description</th>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${message}</td>
+                <td style="vertical-align: top;">The notifier's message text. (On Windows, each double-quote " is escaped by \".)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${stripped_message}</td>
+                <td style="vertical-align: top;">The notifier's message text with quotes (' and ") removed and newlines (\r and \n) replaced by space.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${escaped_message}</td>
+                <td style="vertical-align: top;">The notifier's message text escaped for url syntax (e.g. %20 for space, etc.)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;vertical-align: top;">${urlescape:str}</td>
+                <td style="vertical-align: top;">Escapes a string specified in <b>str</b> for use in a URL. Any macros included in <b>str</b> are expanded prior to escaping.</td>
+            </tr>
+        </table>
+        <h2>&#160;</h2>
+        <h2 class="pagebreakbefore" MadCap:xrefTargetName="$$xref$$_12" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="Macros"></a>Macros</h2>
+        <p>InterMapper supports several macros that can control and manipulate the way variables are displayed, as well as their use in charts. </p>
+        <h3>&#160;</h3>
+        <h3 MadCap:xrefTargetName="$$xref$$_6" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="chartablemacro"></a>The ${chartable} macro</h3>
+        <p>Use the ${chartable} macro to evaluate <b>expr</b> and to format the result as a chartable value. </p>
+        <h4>Usage</h4><pre class="code">${chartable[:fmt]:expr}</pre>
+        <p>In the output section of a probe file, the <span class="code">${chartable: ...}</span> macro creates an underlined value that can
+be clicked to add it to a chart. The macro also controls the
+field width and number of decimal places. There are two parameters: </p>
+        <ul>
+            <li value="1"><b>fmt</b> - A
+formatting string that indicates the number and placement of the digits
+near the decimal point, and the variable to be formatted. The formatting
+string can be either a mask composed with the '#' symbol or a quoted
+printf specifier like those accepted by the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/probecalculations.htm#sprintf">sprintf<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/probecalculations.htm#sprintf" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_3"> (Pg 1)</MadCap:xref></a> function.</li>
+            <li value="2"><b>expr</b> - A variable or an expression (but not a macro). InterMapper evaluates the expression and displays the result according to the formatting string.</li>
+        </ul>
+        <h4>Examples</h4>
+        <p>If the variable <span class="code">$pi</span> is set to 3.14159265,</p>
+        <p class="code" xml:space="preserve">
+${chartable: #.## : $pi }:          --&gt; 3.14
+${chartable: #.####### : $pi }:     --&gt; 3.1415927
+${chartable: "%3d" : $pi }:         --&gt; 3 (with 2 leading spaces)
+${chartable: "%9.7f" : $pi}:        --&gt; 3.1415927
+${chartable: "%11.7f" : $pi}:       --&gt; 3.1415927 (also with 2 leading spaces)
+${chartable: #.####### : $pi*100}:  --&gt; 314.1592650
+${chartable: "%9.7f" : $pi*1000}:   --&gt; 3141.5926500
+${chartable: "%11.7f" : $pi*10000}: --&gt; 31415.9265000 (no leading spaces)</p>
+        <h3>&#160;</h3>
+        <h3 class="pagebreakbefore" MadCap:xrefTargetName="$$xref$$_5" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="evalmacro"></a>The ${eval} macro</h3>
+        <p>Use the <span class="code">${eval}</span> macro to compute a value in the output of a script. It is available in the following contexts:</p>
+        <ul>
+            <li value="1">The <span class="code">&lt;command-display&gt;</span> section of command-line probes</li>
+            <li value="2">The <span class="code">&lt;snmp-device-display&gt;</span> section of SNMP probes</li>
+            <li value="3">The <span class="code">&lt;script-output&gt;</span> section of TCP probes</li>
+        </ul>
+        <h4>Usage</h4>
+        <p>The syntax for the ${eval} macro is as follows:</p><pre class="code">${eval:[expr]}</pre>
+        <p>The expression can use any operators or functions defined in <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/probecalculations.htm">Probe Calculations<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/probecalculations.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Probe Calculations"> (Pg 1)</MadCap:xref></a>, allowing you to perform variable assignments, arithmetic calculations, relational and logical comparisons, as well as use built-in functions to perform bitwise, rounding and mathematical operations. You can also perform operations on strings using sprintf formatting and regular expressions.</p>
+        <h4>Examples</h4>
+        <p>Here are some examples that use the Eval macro:</p><pre class="code" xml:space="preserve">Arithmetic: ${eval:${test} := (4-1)*(2+1)/(9/3)} 
+&lt;!-- result = 3, also assigns result to ${test} --&gt;<br /><br />Modulo: ${eval:${test}%2}  
+&lt;!-- result = 1, uses the ${test} variable --&gt;<br /><br />String assign: ${eval:${yes}:="Yes"} ${eval:${no}:="No"}
+Numeric assign: ${eval:${test}:=5} (
+Conditional: ${eval: $test==5 ? ($response := "Yes") : ($response := "No") } 
+&lt;!-- result="Yes", because ${test} variable = 5 <br />     result also assigned to ${response} variable, output on the next line --&gt;
+${response}
+<br />subid(): ${eval:subid("1.3.6.1.2.1.4.20.1.1.10.10.2.20", -4, 4)}
+&lt;!-- result="10.10.2.20" --&gt;<br /><br />Regular Expression: ${eval: "test123" =~ "^te([st]*)([0-9]*)"; "${1} ${2}"}
+&lt;!-- result = "st 123"--&gt;</pre>
+        <h3>&#160;</h3>
+        <h3 class="pagebreakbefore">The ${variablename:legend} macro</h3>
+        <p>In the <span class="code">&lt;snmp-device-display&gt;</span> section of a probe file, the <span class="code">${variablename:legend}</span> macro is replaced with the legend field defined for that variable in the <span class="code">&lt;snmp-device-variables&gt;</span> section. For example, given this definition:</p>
+        <p class="code" xml:space="preserve">&lt;snmp-device-variables&gt;
+   ipForwDatagrams, 1.3.6.1.2.1.4.6.0, PER-SECOND, "Forwarded datagrams"
+&lt;/snmp-device-variables&gt;<br /></p>
+        <p>The following entry in the &lt;snmp-device-display&gt; section shows "Forwarded datagrams".</p><pre class="code">${ipForwDatagrams:legend}</pre>
+        <h3>&#160;</h3>
+        <h3 MadCap:xrefTargetName="$$xref$$_4" MadCap:sourceTitle="Built-in Probe Variables and Macros"><a name="scalable"></a>The ${scalable10} and ${scalable2} macros</h3>
+        <p>Use the ${scalable10} and ${scalable2} macros to display numbers in the appropriate scaled units. The values are always between 1.0 and 1000, are chartable, and are scaled by a factor of 1000 or 1024:</p>
+        <ul>
+            <li value="1">The ${scalable10} macro scales by a factor 1000 (for msec, Mbps, etc.).</li>
+            <li value="2">The ${scalable2} macro scales by a factor of 1024 (for KBytes, GBytes, Terabytes, etc.)</li>
+        </ul>
+        <p>Both macros display the appropriate scale. They use the same syntax as the ${chartable} macro.</p>
+        <h4>Usage</h4>
+        <p>${scalable10[:fmt]:expr}</p>
+        <p>${scalable2[:fmt]:expr}</p>
+        <h4>Example</h4><pre class="code">
+${scalable10: #.## : 12304 }bytes =&gt; 12.30 kbytes
+${scalable10:"%3.2d" : 12304 }bytes =&gt; 12.30 kbytes
+
+
+${scalable2: #.## : 12304 }bytes =&gt; 12.02 kbytes
+${scalable2: "%3.2d" : 12304 }bytes =&gt; 12.02 kbytes
+
+The following examples use the scalable10 macro.
+
+char scale factor short for example val  units example  output
+---- ------------ --------- -----------  -----  --------------
+k    * 1000       kilo      12304        bytes  12.30 kbytes
+M    * 1e6        Mega      3421814      bytes  3.42 Mbytes
+G    * 1e9        Giga      125032100300 bytes  125.03  Gbytes
+T    * 1e12       Tera      1.23 x 10^12 bytes  1.23 Tbytes
+none * 1          nothing   123          bytes  123.00 bytes
+m    / 1000       milli     0.02835      sec    28.35  msec
+u    / 1e-6       micro     0.00047658   sec    476.58 usec
+n    / 1e-9       nano      0.0000000032 sec    3.20 nsec
+p    / 1e-12      pico      1.0 x 10^-10 sec    100.00  psec
+</pre>
+        <h3>&#160;</h3>
+        <h3 MadCap:xrefTargetName="$$xref$$_7" MadCap:sourceTitle="Built-in Probe Variables and Macros">The ${^stdout} variable and the Reason string<a name="stdout"></a></h3>
+        <p>In command-line probes, a specially formatted output string is used to define variables and their values. Normally, <i>anything else written to standard output is used as the reason string for the probe</i>.</p>
+        <p>If <span class="code">${^stdout}</span> exists in the command-display section of a command-line probe, then anything written to standard output by the probe script is assigned as the value of the <span class="code">${^stdout}</span> variable. This allows the script to programmatically define all or part of the contents of the lower part of the status window.</p>
+        <p>Using <span class="code">${^stdout}</span> means that the reason string does not get defined. To compensate, and to allow the definition of a meaningful reason string, a convention was defined. If the specially-formatted output string mentioned above defines a variable named <span class="code">reason</span>, then its value is assigned to the reason string used in the status window.</p>
+        <p>For example, output from the WMI Top Processes probe might look like this:</p><pre class="code">
+\{ProcessTime0:=100.0,CPU:=1.0,reason:="CPU utilization is below 60%"}
+\B5\WMI Top Processes\0P\
+&#160;&#160;&#160;\B4\CPU Utilization:\P0\ &#160;&#160;$CPU %
+&#160;&#160;&#160;&#160;&#160;&#160;\B4\wmiprvse(3924)\P0\ &#160;$ProcessTime0 %</pre>
+    </body>
+</html>

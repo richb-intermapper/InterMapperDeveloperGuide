@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Customizing Web Pages">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Target Files</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Target Files</h1>
+            <p><a name="kanchor667"></a>When InterMapper receives a request for a web page, the requested URL is parsed 
+ to determine the target of the request. This <i>target file</i><a name="kanchor668"></a> contains the 
+ text content of the desired page. The target file may contain HTML markup if 
+ desired.</p>
+            <p>In addition to the page's text, the target file can contain these other elements:</p>
+            <ul>
+                <li value="1"><a href="directives.html"><b>Directives</b></a> - Commands that describe 
+ or modify the way a page should be displayed.<br /></li>
+                <li value="2"><a href="quotedlinks.html" name="kanchor669"><b>Quoted Links</b></a> - Provide a quick way 
+ to create a link to another page using its name, rather than specifying its 
+ full URL. If a string is placed in double-quotes (") and the text matches 
+ the title of another InterMapper web page, a link is created.<br /></li>
+                <li value="3"><b><a href="macros.htm">Macros </a></b> - InterMapper variables that are 
+ replaced with text or formatted HTML in the final web page. The macro may 
+ be replaced with a static string, a device's name or network address, the 
+ contents of another file, or other information. Macros are composed of keywords 
+ and optional parameters, and are enclosed in "${...}".<br /></li>
+            </ul>
+            <h2><a name="kanchor670"></a>Target File Example:</h2><pre class="code">#title "This is a test page"
+This is some text to be displayed in a <br />web page. The page's title is "This is a test page", while the remaining <br />text is displayed in the "body" of the page. The text may also contain <br />plain text, HTML tagged text such as &lt;b&gt;bold&lt;/b&gt; and &lt;i&gt;italic&lt;/i&gt;, <br />and macros, such as the ${date} macro, which displays today's date.<br /></pre>
+            <ul>
+                <li value="1">The first line is a directive that sets the title of the page to be displayed. 
+</li>
+                <li value="2">The text between double-quotes is placed in <span class="code">&lt;title&gt;...&lt;/title&gt;</span> 
+  tags in the resulting web page. </li>
+                <li value="3">The remainder of this example is placed in the <span class="code">&lt;body&gt;...&lt;/body&gt;</span> 
+  section of the resulting page. The macro ${date} will be replaced by the current 
+ date when the page is displayed.</li>
+            </ul>
+            <h2>Quoted Links</h2>
+            <p>Note that the text <span class="code">"This is a test page"</span> will be displayed as a link to its own page, since it is a string 
+ in quotes that matches the <span class="code">#title</span> of a web page 
+ (its own). Note, too, that the text "body" could be a link to a page with a 
+ title of "body". It is not an error if no such page exists: in that case, InterMapper 
+ displays the quoted string in place. For more information see             <a href="quotedlinks.html">Quoted 
+ Links</a>. </p>
+            <h2 class="pagebreakbefore"><a name="kanchor671"></a>What Happens When a Target File Is Read?</h2>
+            <p>As the target file is read, InterMapper processes the directives, then the 
+ expands the macros and creates the <span class="code"><a name="kanchor672"></a>&lt;A 
+ HREF=...&gt;</span> tags for any quoted links it encounters. The web server 
+ does not insert any white space or paragraph marks (such as &lt;P&gt;) when 
+ it encounters carriage returns, etc.</p>
+            <h2><a name="kanchor673"></a>Built-in Target Files</h2>
+            <p>InterMapper provides a number of built-in target files. These file names all 
+ begin with "!", and are required because InterMapper refers to them explicitly. 
+ Here are some of the built-in files:</p>
+            <ul>
+                <li value="1"><b><a name="kanchor674"></a>!index.html</b> - Displays the default page, when none is specified in 
+ the URL.</li>
+                <li value="2"><b><a name="kanchor675"></a>!document.html</b> - Displays a graphical image of the specified map.</li>
+                <li value="3"><b><a name="kanchor676"></a>!network.html</b> - Displays detailed information about the specified 
+ network.</li>
+                <li value="4"><b><a name="kanchor677"></a>!device.html</b> - Displays detailed information about the specified 
+ device.</li>
+                <li value="5"><b><a name="kanchor678"></a>!link.html</b> - Displays detailed information about the specified link.</li>
+                <li value="6"><b><a name="kanchor679"></a>!chart.html</b> - Displays the specified strip chart.</li>
+            </ul>
+            <p><b>Note:</b> The !network.html, !device.html, !link.html, and !chart.html files are targets intended to display information about a specific network, device, link or chart. The macros that display lists of maps, networks, devices, or charts create links to these targets. The easiest way to create custom versions of these targets is to edit them directly.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

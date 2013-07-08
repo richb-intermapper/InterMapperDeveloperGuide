@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Customizing Web Pages" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Macro Reference</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor757"></a>Macro Reference</h1>
+            <p>A macro is a text string with the format <span class="code"><a name="kanchor758"></a>${macroname:other-information}</span>. 
+ The       <i>macroname</i> is required, and some macros take       <i>other-information</i> 
+ which follows the ":". The entire macro will be replaced by 
+ the appropriate text when the page is generated.</p>
+            <p>Macros fall into these general categories:</p>
+            <ul>
+                <li value="1"><a href="#include">The Include Macro</a>
+                </li>
+                <li value="2"><a href="#content">Macros that generate "content" of an InterMapper web page</a>
+                </li>
+                <li value="3"><a href="#environment">Macros that describe InterMapper and its environment</a>
+                </li>
+                <li value="4"><a href="#images">Macros to place images onto a page</a>
+                </li>
+                <li value="5"><a href="#interval">Macros that control the interval 
+ between page refreshes</a>
+                </li>
+                <li value="6"><a href="#URL" name="kanchor759">Macros related to links and URLs</a>
+                </li>
+            </ul>
+            <h2><b style="font-weight: bold;"><a name="include"></a>The Include Macro</b>
+            </h2>
+            <p>Your template files and target files may include other files.</p>
+            <table>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor760"></a><a name="kanchor761"></a>${include:file-to-be-included.html}</b>
+                    </td>
+                    <td>the named file is inserted into the web page. The file must be in the same folder.</td>
+                </tr>
+            </table>
+            <h2><b style="font-weight: bold;"><a name="content"></a>Macros that generate the "content" of an InterMapper web page</b>
+            </h2>
+            <p>InterMapper often uses these macros either as the <span class="code"><a name="kanchor762"></a>${bodytext}</span><a name="kanchor763"></a> 
+ of the page, or as a major part of a page's contents. All the macros below work on the map named in the request URL. If the URL is for a page in 
+ the ~admin directory, InterMapper displays information about all items in all maps.</p>
+            <table>
+                <col style="width: 227px;vertical-align: top;text-align: right;" />
+                <col style="width: 400px;vertical-align: top;" />
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor764"></a><a name="kanchor765"></a>${fullstatus}</b>
+                    </td>
+                    <td><a name="kanchor766"></a>shows a list of all the devices and links for the map named in the 
+ URL.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor767"></a>${errorstatus}</b>
+                    </td>
+                    <td>shows only the devices and links which are in warning or alarm states, or down for the named map.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor768"></a>${errorstatus_orig}</b>
+                    </td>
+                    <td>Output the original "errors" status report. Differences from <span class="code">${errorstatus}</span>:<br /><br /><ul><li value="1"><span class="code">${errorstatus_orig}</span> doesn't show device alarms.</li><li value="2"><span class="code">${errorstatus}</span> first outputs interfaces in error, then interfaces with high utilization.<br /><span class="code">${errorstatus}</span>lists interfaces in random order.</li></ul></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor769"></a>${currentoutages}</b>
+                    </td>
+                    <td>shows the list of current outages -- devices or links that are currently in warning, alarm, or are down in the named map.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor770"></a>${currentlinkoutages}</b>
+                    </td>
+                    <td>Output a table of current interface outages. The table's column names are <b><i>Date</i></b>, <b><i>Time</i></b>, <b><i>Interface</i></b> and <b><i>Duration</i></b>.
+</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor771"></a>${previousoutages}</b>
+                    </td>
+                    <td>shows the list of devices that had been listed as outages but have since returned to normal.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${previousoutages:hours=xx}</b>
+                    </td>
+                    <td>shows the list of previous outages within the last xx hours.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor772"></a>${previousoutages:maxrows=x}</b>
+                    </td>
+                    <td>shows a list of the last x previous outages.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor773"></a>${maplist}</b>
+                    </td>
+                    <td>shows an HTML unnumbered list (<span class="code">&lt;UL&gt;</span>) of the maps available.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor774"></a>${chartlist} </b>
+                    </td>
+                    <td>
+                        <p>Outputs a sorted list of charts from the current context, one per  
+line with each line preceded by a <span class="code">&lt;LI&gt;</span> tag. You are required to  
+supply your own <span class="code">&lt;UL&gt;</span> or <span class="code">&lt;OL&gt;</span> tags. Each chart title is a hyperlink to  
+the related chart web page.</p>
+                        <p>Within an administrator context, <b>${chartlist}</b> generates a list of all  
+charts. In a "per-map" context, <b>${chartlist}</b> generates a list of  
+charts from the current map.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;"><b><a name="kanchor775"></a>${chartname}</b>
+                    </td>
+                    <td>
+                        <p>Output the title of the chart related to the current web page. If you  
+are not on a chart-related page, the output is "".
+</p>
+                        <p><b>Note:</b> Similar to ${mapname}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor776"></a>${maplistwithcharts}</b>
+                    </td>
+                    <td>shows an HTML unnumbered list of the maps available, with sub-lists of the charts for each map</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;text-align: right;">${include:file-to-be-included.html}</td>
+                    <td>Inserts the specified file into the web page.</td>
+                </tr>
+            </table>
+            <h2><b style="font-weight: bold;"><a name="environment"></a>Miscellaneous macros that describe InterMapper and its environment<br /></b>
+            </h2>
+            <table>
+                <col style="width: 228px;vertical-align: top;text-align: right;" />
+                <col style="width: 400px;vertical-align: top;" />
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${abouthtml}</b>
+                    </td>
+                    <td>shows the "About" page with the current version of InterMapper.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor777"></a>${statshtml}</b>
+                    </td>
+                    <td><a name="kanchor778"></a>shows InterMapper's statistics: uptime, memory usage, etc.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpuserid}</b>
+                    </td>
+                    <td>the name the user typed when asked for authentication</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;"><b>${httplocaladdress}
+</b>
+                    </td>
+                    <td>
+                        <p>Output the IP address of the web server's side of the connection. If  
+the InterMapper server is multi-homed, this will be the local side IP  
+address of the current TCP connection.
+</p>
+                        <p><b>Note:</b> Use caution with this address; URL's produced using  
+this address may break in NAT situations.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpremoteaddress}</b>
+                    </td>
+                    <td><a name="kanchor779"></a>the IP address of the remote browser.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor780"></a>${intermapperaddress}</b>
+                    </td>
+                    <td>the IP address of this InterMapper server</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${version}</b>
+                    </td>
+                    <td>the version of this copy of InterMapper</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${date}</b>
+                    </td>
+                    <td>the current date</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${time}</b>
+                    </td>
+                    <td>the current time</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor781"></a>${imagesuffix}</b>
+                    </td>
+                    <td><a name="kanchor782"></a><a name="kanchor783"></a>set to ".png" if the web client can display PNG images, or 
+ ".jpeg" otherwise.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor784"></a><a name="kanchor785"></a>${telnetserverurl}</b>
+                    </td>
+                    <td>a telnet: URL that connects to this InterMapper Telnet server</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor786"></a>${webserverurl}</b>
+                    </td>
+                    <td>a http: URL that connects to this InterMapper server</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor787"></a>${mapname}</b>
+                    </td>
+                    <td>the current map's name</td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor788"></a>${deviceaddress}</b>
+                    </td>
+                    <td><a name="kanchor789"></a>the IP or AppleTalk address of the particular device. For anything 
+ that isn't a device, an empty string is returned.</td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor790"></a>${deviceid}</b>
+                    </td>
+                    <td>Output the device ID of the device related to the current page, in the form: <span class="code">"gMMMM-rNN"</span>. If the current page is not device-related, output "".
+</td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor791"></a>${devicelist}</b>
+                    </td>
+                    <td>Output a table showing the device list for the current context. The table's columns are <b><i>Status</i></b>, <b><i>Name</i></b>, <b><i>Condition</i></b>, <b><i>Date</i></b>, <b><i>Time</i></b>, <b><i>Probe</i></b>, and <b><i>Port</i></b>.<br /><br />Within an administrator context, <b>${devicelist}</b> generates a list of all devices. In a "per-map" context,<b> ${devicelist}</b> generates a list of devices from the current map.
+
+</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor792"></a>${devicename}</b>
+                    </td>
+                    <td><a name="kanchor793"></a><a name="kanchor794"></a>the DNS name or AppleTalk NBP name of the particular device. It is 
+ an empty string for anything that isn't a device.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor795"></a>${ifadmin: ADMIN : NONADMIN }</b>
+                    </td>
+                    <td>Outputs ADMIN if the user has admin privileges. Otherwise outputs NONADMIN.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor796"></a>${pagetitle}</b>
+                    </td>
+                    <td>displays the value set by the <span class="code">#title</span> 
+ directive</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor797"></a>${SetNameFieldWidth:xx}</b>
+                    </td>
+                    <td>Set the width of the name field. InterMapper pads the name up to xx 
+ characters wide. Use -1 to set the width of the field to the width of 
+ its contents. The default width is 20 chars.</td>
+                </tr>
+            </table>
+            <h2><b style="font-weight: bold;"><a name="images"></a>Macros to place images 
+ onto a page<br /></b>
+            </h2>
+            <table>
+                <col style="width: 230px;vertical-align: top;text-align: right;" />
+                <col style="width: 400px;vertical-align: top;" />
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor798"></a><a name="kanchor799"></a>${imageref:IMAGEFILE [,tags]}</b>
+                    </td>
+                    <td>
+                        <p>creates an <span class="code"><a name="kanchor800"></a>&lt;img ... &gt;</span> tag to place 
+ an image on the page.</p>
+                        <p>Example:<br /><span class="code">&#160;&#160;${imageref: photo, class='grade4'}</span></p>
+                        <p>  outputs <br /><span class="code">&#160;&#160;&lt;IMG SRC="/images/photo.gif" class='grade4'&gt;</span></p>
+                        <p>
+                            <br /><b>Notes:</b>
+                            <br />Unlike every other macro, this one uses a comma-delimiter in  
+the parameter section instead of a colon.
+<br /><br />This macro searches the images folder alphabetically for the first  
+file whose name matches the IMAGEFILE parameter. If you have two  
+files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${imagesuffix}</b>
+                    </td>
+                    <td>returns ".png" or ".jpeg", depending on the file 
+ format the web browser supports.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor801"></a>${intermapperlogo}</b>
+                    </td>
+                    <td>creates an <span class="code">&lt;img... &gt;</span> tag that 
+ includes the "Made with InterMapper" logo image.</td>
+                </tr>
+            </table>
+            <h2><b style="font-weight: bold;"><a name="interval"></a>Macros that control 
+ the interval between page refreshes</b>
+            </h2>
+            <p>InterMapper's web server can automatically refresh a particular web 
+ page at a desired interval. Include these tags on your page to take advantage 
+ of this facility.</p>
+            <table>
+                <col style="width: 231px;vertical-align: top;text-align: right;" />
+                <col style="width: 400px;vertical-align: top;" />
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor802"></a>${htmlrefreshmetatag}</b>
+                    </td>
+                    <td>is either an empty string or the previous refresh choice from the web 
+ client. (Inserts a <span class="code"><a name="kanchor803"></a>&lt;meta http-equiv="refresh"...&gt;</span> 
+ tag on the resulting page.)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor804"></a>${htmlrefreshmetaoptions}</b>
+                    </td>
+                    <td>is the option list that a web client can choose from. The current <span class="code">${htmlrefreshmetatag}</span> value is selected. 
+ Note that your HTML template should supply the       <span class="code">&lt;form&gt;&lt;select&gt;...&lt;/select&gt;&lt;/form&gt;</span> 
+ surrounding this       <span class="code">${htmlrefreshmetaoptions}</span> 
+ macro.</td>
+                </tr>
+            </table>
+            <h2><b style="font-weight: bold;"><a name="URL"></a>Macros related to links and URLs</b>
+            </h2>
+            <p>These macros all return a fully-escaped string, that is, a space character 
+ (" ") will be replaced with a <span class="code">%20</span>; 
+ a "?" with       <span class="code">%3F</span>; etc.</p>
+            <p>Here is a sample URL. The result of using this URL is shown in parentheses 
+ after each macro:<a name="kanchor805"></a><a name="kanchor806"></a></p>
+            <p><span class="code">&#160;http://localhost/Map1/device/192.168.0.1%3ASNMP/!device.html</span>
+            </p>
+            <table>
+                <col style="width: 233px;font-weight: bold;vertical-align: top;text-align: right;" />
+                <col style="width: 400px;vertical-align: top;vertical-align: top;" />
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor807"></a>${webpageurl}</b>
+                    </td>
+                    <td>the full URL of the requested web page. (e.g., the full URL as shown 
+ above)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httppath}</b>
+                    </td>
+                    <td>the full path to the file requested (e.g., "/Map1/device/192.168.0.1%3ASNMP/!device.html")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpdocument}</b>
+                    </td>
+                    <td>the top level directory of the page requested. Also an alias for <span class="code">${mapname}</span> (e.g., Map1")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpclass}</b>
+                    </td>
+                    <td>the second level directory of the page requested (device, chart, link, 
+ document, network) (e.g., "device")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpinstance}</b>
+                    </td>
+                    <td>the third level directory of the page requested (e.g., "192.168.0.1%3ASNMP")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpmethod}</b>
+                    </td>
+                    <td>the fourth-level part of the page requested (e.g., "!device.html")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpinstancepath}</b>
+                    </td>
+                    <td>a concatenation of <span class="code">${httpdocument}</span>,       <span class="code">${httpclass}</span>,       <span class="code">${httpinstance}</span> 
+ separated by "/" (e.g., "/Map1/device/192.168.0.1%3ASNMP")</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpparam: NAME}</b>
+                    </td>
+                    <td>Outputs the value of the HTTP parameter specified by NAME. An HTTP parameter 
+					is one passed with the originating GET request, affixed to the URL following a 
+					question mark. If there is no HTTP parameter by the given name, outputs "".<br /><br />Example: Given the following URL:<br /><br />&#160;&#160; <span class="code">http://www.example.com/TestMap/?color=red&amp;style=bold</span><br /><br />${httpparam: color} outputs "red"<br />${httpparam: style} outputs "bold"<br />${httpparam: font} outputs "" (because the parameter doesn't exist)<br /></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;">${httpparams}</b>
+                    </td>
+                    <td>Output all the HTTP parameters from the originating GET request in their original format. If there were 
+					no parameters attached to the original request, output "".<br /><br />Example: Given the following URL:<br /><br />&#160;&#160;
+<span class="code">http://www.example.com/TestMap/?color=red&amp;style=bold</span><br /><br />${httpparams} outputs "color=red&amp;style=bold"
+					
+					</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><a name="kanchor808"></a><b style="font-weight: bold;">${httpparams_endchart}</b>
+                        <br /><a name="kanchor809"></a><b style="font-weight: bold;">${httpparams_nextchart}</b>
+                        <br /><a name="kanchor810"></a><b style="font-weight: bold;">${httpparams_prevchart}</b>
+                        <br /><a name="kanchor811"></a><b style="font-weight: bold;">${httpparams_startchart}</b>
+                        <br /><a name="kanchor812"></a><b style="font-weight: bold;">${httpparams_timescale}</b>
+                        <br />
+                    </td>
+                    <td><span class="code">${httpparams_endchart}</span> - Replaces the value of the "endtime" parameter with the chart's last time. 
+					(For scrolling to the end of the chart).<br /><br />${httpparams_nextchart} - Replaces the value of the "endtime" parameter with a new time 
+					value that effectively scrolls the chart one page into the future.<br /><br /><span class="code">${httpparams_prevchart}</span> - Replaces the value of the "endtime" parameter with a new time value that 
+					effectively scrolls the chart one page into the past.<br /><br /><span class="code">${httpparams_startchart}</span> - Replaces the value of the "endtime" parameter with the chart's starting time. 
+					(For scrolling to the beginning of the chart).<br /><br /><span class="code">${httpparams_timescale: VALUE}</span> - Replaces the value of the "timescale" 
+					parameter with the specified value.<br /><br /><b>Note:</b> These five macros are nearly identical to <span class="code">${httpparams}</span>. They implement support for 
+					chart scrolling and scaling in the web interface. They generate output <i>only </i>within a web page associated with a chart.
+
+
+					
+</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;" align="right" valign="top"><b style="font-weight: bold;"><a name="kanchor813"></a>${anchor: value}<br />${attr}</b>
+                    </td>
+                    <td>
+                        <p>Sets the current "anchor" value.<br />Outputs the current "anchor" parameter value as set using <span class="code">${anchor: value}</span>. If no "anchor" value has been set, output is "".</p>
+                        <p><b>Note:</b> These two macros are closely related. <span class="code">${anchor}</span> sets the value; <span class="code">${attr}</span> retrieves it.</p>
+                        <p>Example:</p>
+                        <p class="code" xml:space="preserve">${anchor:class="header"}<br style="mc-tag-and-class: SPAN;" />  &lt;A HREF="maplist.html" ${attr}&gt;Map List&lt;/A&gt;<br />  &lt;A HREF="${TelnetServerURL}" ${attr}&gt;Telnet&lt;/A&gt;
+  &lt;A HREF="${WebServerURL}"${attr}&gt;Home&lt;/A&gt;
+${anchor:}</p>
+                        <p>In this example, the anchor is set to 'class="header"'. Then the ${attr} macro is used to place the attribute string in each link. Afterward, ${anchor:} sets the anchor to an empty string.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

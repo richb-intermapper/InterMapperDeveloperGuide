@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Custom SNMP Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Displaying SNMP Tables in Custom Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Displaying SNMP Tables in Custom Probes</h1>
+            <h2>Introduction</h2>
+            <P> Many devices store information in SNMP tables. InterMapper can
+retrieve this tabular information and display the data "on demand", that is,
+when requested by user action. 
+            When you view a table, InterMapper retrieves the information from
+the device immediately and displays it in a separate window. The information in
+an on-demand window is not part of the regular polling cycle, nor is it
+refreshed until you specifically request it. The image below shows a sample
+on-demand window.</P>
+            <P>
+                <IMG src="../images/ifTable.gif" />
+            </P>
+            <P> On-demand tables are useful for digging down into a device when
+you suspect there might be a problem. You can create on-demand tables to view a
+routing table, ARP table, or other statistics that that are kept within tables.
+</P>
+            <H2>Background on SNMP Tables</H2>
+            <P> The SNMP protocol provides access to two types of variables:
+            </P>
+            <UL>
+                <LI value="1">
+                    <B>Scalar variables</B> contain single values such as strings
+(that could represent system description or firmware version), integers (number
+of interfaces), counters (number of errors), gauges (CPU temperature and memory
+utilization), etc.
+            </LI>
+                <LI value="2">
+                    <B>Table variables</B> hold information about similar
+entities within a device. These entities could be interfaces in a router or
+switch, users associated with a wireless access point, virtual machines in a
+server, etc. Each entity's information is represented by a row, whose columns
+are variables (which are themselves scalars) that hold information about the
+entity. A row is often called an "entry" in a MIB; each column is specified by
+an OID prefix plus a unique index that specifies a particular row. 
+            </LI>
+            </UL>
+            <p class="pagebreakbefore"> For example, MIB-II defines a table named "ifTable" that gives
+information about a device's interfaces. An outline of ifTable looks like
+this:</p>
+            <pre class="code">+ ifTable
+  + ifEntry [ifIndex]<br />    - ifIndex       "Interface Index"
+    - ifDescr       "Description"<br />    - ifType        "Link type"
+    - ifSpeed       "Link speed"
+    - ifPhysAddress "MAC Address"
+    - ifOperStatus  "Operational status"
+    - ifAdminStatus "Administrative status"
+    -  ... and so on...
+</pre>
+            <PRE>
+            </PRE>
+            <P>Here's how to interpret this information. The
+<I>ifTable</I> is composed of a sequence of <I>ifEntry</I>s which form the rows
+of the table. 
+            Each row (each <I>ifEntry</I>) has a number of variables: we show
+only some of them, starting with ifIndex and ending with ifAdminStatus. These
+variables become the columns of each row. </P>
+            <P>The image above shows the window of an on-demand table for
+ifTable. The columns match the variables mentioned above. The window also shows
+the number of rows in the table (at lower left), the time the data was
+retrieved, and the Refresh button to retrieve current data.
+            </P>
+            <H3>Table Indexes</H3>
+            <P>Each row of an SNMP table has a unique index. The index for
+ifTable is the "interface index", that loosely represents the port number of the
+interface. Individual values are represented by the column name followed by its
+index. For example:</P>
+            <pre class="code"> ifSpeed.3 (or the OID 1.3.6.1.2.1.2.2.1.3)</pre>
+            <P>would represent the ifSpeed for row 3 of the table. The "column name" is ifSpeed
+(1.3.6.1.2.1.2.2.1), and the index is the ".3".</P>
+            <h2 class="pagebreakbefore">Table Syntax</h2>
+            <P> An on-demand table in a custom SNMP probe mirrors the outline
+above. Its definition consists of a sequence of lines of comma-separated values
+defining the variables of one or more tables:</P>
+            <pre class="code" xml:space="preserve">&lt;snmp-device-variables-ondemand&gt;
+<br />ifTableTest,    .1,     TABLE
+<br />
+ ifTableTest/ifIndex,  IF-MIB::ifIndex, DEFAULT
+
+&lt;!-- normal calculation --&gt;
+ifTableTest/ifIndexPlus1Times2, ($ifIndex + 1)*2, CALCULATION
+
+&lt;!-- calculation can depend on the result of a calculation --&gt;
+ifTableTest/ifIndexBack, $ifIndexPlus1Times2/2 - 1, CALCULATION
+
+&lt;!-- ifFoo1 depends on ifFoo2 which depends on ifFoo1; fails gracefully --&gt;
+ifTableTest/ifFoo1, $ifFoo2 - 1, CALCULATION
+
+&lt;!-- ifFoo2 depends on ifFoo1 which depends on ifFoo2; fails gracefully --&gt;
+ifTableTest/ifFoo2, $ifFoo1 + 1, CALCULATION
+
+&lt;/snmp-device-variables-ondemand&gt;</pre>
+            <P>This example shows an on-demand table for ifTable. It is
+enclosed in &lt;snmp-device-variables-ondemand&gt; and
+&lt;/snmp-device-variables-ondemand&gt; tags. </P>
+            <P><b>Note:</b>  the &lt;snmp-device-variables-ondemand&gt; section must contain fewer than 50 queries.</P>
+            <P>The remainder of the table is
+composed of comma-separated lines describing each variable. 
+			</P>
+            <UL>
+                <LI value="1"> The first line creates a table. The first field is the table's name that
+can be used to represent the table elsewhere in the probe file. The second field
+should be ".1". The third field ("TABLE") indicates that this is a new table.
+The fourth field is a human-readable description that is displayed in the
+on-demand window. </LI>
+                <LI value="2"> The remaining lines follow the format of &lt;snmp-device-variables&gt;.
+See their page for more information. The names in the first column contain the
+table name, a "/", and the name for the column.</LI>
+                <LI value="3"> The next four lines define variables (ifIndex, ifDescr, ifType and
+ifSpeed) that are to be columns of the table. They are defined using the numeric
+OID that represents the column for those values. </LI>
+                <LI value="4"> The final three lines define ifPhysAddress, ifOperStatus, and
+ifAdminStatus. They are defined using the name of the column from the MIB. This
+is entirely equivalent to writing out the full numeric OID.</LI>
+            </UL>
+            <P>The tables described here are available as the <B>SNMP/Table Viewer</B>probe that's built into InterMapper. In addition, the probe file is available on
+the Table Viewer page of this manual.</P>
+            <h2 class="pagebreakbefore">Augmenting Tables</h2>
+            <P>  Certain MIB's define a table that "augments" another table.
+This simply means that the augmenting table uses the same index variables as
+another table. Since the index variables are the same, you can visualize this as
+adding columns to an existing table. </P>
+            <P>For example, in the IF-MIB, the ifXTable augments ifTable,
+providing a number of useful additions.</P>
+            <P>  InterMapper's table syntax easily supports mixing columns from
+one or more tables that share the same table definition:</P>
+            <pre class="code" xml:space="preserve">&lt;snmp-device-variables-ondemand&gt;
+<br />  ifXTable,               .1,                    TABLE,       "Extended ifTable"
+<br />  ifXTable/ifIndex,       IF-MIB::ifIndex,       DEFAULT,     "Interface index" 
+<br />  ifXTable/ifDescr,       IF-MIB::ifDescr,       DEFAULT,     "Description"
+<br />  ifXTable/ifName,        IF-MIB::ifName,        DEFAULT,     "Name"      &lt;!-- ifXTable --&gt;
+<br />  ifXTable/ifAlias,       IF-MIB::ifAlias,       DEFAULT,     "Alias"     &lt;!-- ifXTable --&gt;
+<br />  ifXTable/ifType,        IF-MIB::ifType,        STRING,      "Link Type  "
+<br />  ifXTable/ifSpeed,       IF-MIB::ifSpeed,       DEFAULT,     "Link Speed"
+<br />  ifXTable/ifHighSpeed,   IF-MIB::ifHighSpeed,   DEFAULT,     "Mbit/sec"
+<br />  ifXTable/ifPhysAddress, IF-MIB::ifPhysAddress, HEXADECIMAL, "MAC Address "
+<br />  ifXTable/ifOperStatus,  IF-MIB::ifOperStatus,  STRING,      "Opn'l"
+<br />  ifXTable/ifAdminStatus, IF-MIB::ifAdminStatus, DEFAULT,     "Admin"
+<br />&lt;/snmp-device-variables-ondemand&gt;
+</pre>
+            <p>In the example, ifName and ifAlias come from the ifXTable while the others
+are part of ifTable. Yet they all can be shown in the same on-demand window.</p>
+            <h2 class="pagebreakbefore"> Derived Variables</h2>
+            <P>  Certain SNMP equipment uses the value of one of more columns as
+part of the row index. In many cases, the column itself is not accessible, and
+thus cannot be queried directly. </P>
+            <P>InterMapper has a facility that allows you to derive the values
+of these columns from the index itself, even from columns that are not
+accessible. The notation <span class="code">oid[a:b]</span> means to fetch the OID
+<span class="code">oid</span> and compute the value from the index:
+</P>
+            <pre class="code">    [a:b] means start with the a'th subid and collect b subids.
+    [a:] means start with the a'th subid and collect the remaining subids
+</pre>
+            <P>  Here is an example of retrieving the four columns
+of ipNetToMediaTable. Note that the table has been given the name "ARPTable",
+although the OID is ipNetToMediaEntry.</P>
+            <pre class="code">&lt;snmp-device-variables-ondemand&gt;
+<br />   ARPTable,                         .1,                      TABLE,      "Map from IP addresses to physical addresses."
+<br />   ARPTable/ipNetToMediaIfIndex,     ipNetToMediaType[0:1],   DEFAULT,    "Interface index"
+<br />   ARPTable/ipNetToMediaNetAddress,  ipNetToMediaType[1:4],   DEFAULT,    "IP Address"
+<br />   ARPTable/ipNetToMediaPhysAddress, ipNetToMediaPhysAddress, HEXADECIMAL,"MAC Address"
+<br />   ARPTable/ipNetToMediaType,        ipNetToMediaType,        STRING,     "Type"
+<br />&lt;/snmp-device-variables-ondemand&gt;
+</pre>
+            <P>  When InterMapper displays table, it will retrieve
+only two columns: ipNetToMediaPhysAddress and ipNetToMediaType. It then uses the
+OID of ipNetToMediaPhysAddress to derive the values of ipNetToMediaIfIndex and
+ipNetToMediaNetAddress.</P>
+            <P>Here's how this works. The ipNetToMediaTable is defined to use
+two index values:
+            </P>
+            <UL>
+                <LI value="1"> ipNetToMediaIndex (the row number of the interface)
+            </LI>
+                <LI value="2"> ipNetToMediaNetAddress (the IP address of the device)
+            </LI>
+            </UL>This means that the full OID used to retrieve an item from the table
+is its prefix followed by the ipNetToMediaIndex followed by
+ipNetToMediaNetAddress.<p class="pagebreakafter">The notation ipNetToMediaType[0:1] returns the single value that
+immediately follows the OID of ipNetToMediaType (this is in fact the index);
+ipNetToMediaType[1:4] returns the following four values, which comprise the IP
+address used in the index.</p><h2 class="pagebreakbefore">Displaying On-demand Tables</h2><P> After you define a TABLE variable in the "ondemand" section of
+the probe, you can specify that status window should display a link to the
+ondemand window. To do this, add the variable name to the
+&lt;snmp-device-display&gt; section of the probe:</P><pre class="code">&lt;snmp-device-display&gt;
+<br />   ...
+<br />   $ARPTable
+<br />&lt;/snmp-device-display&gt;
+</pre><P> The status window displays the table name as a
+hyperlink. Clicking on the hyperlink opens the on-demand table window shown at
+the top of the page.</P><P> If you want to replace the default table name displayed with
+your own text, you can specify the "alternate text" in the expanded variable
+form:</P><pre class="code">&lt;snmp-device-display&gt;
+<br />   ...
+<br />   ${ARPTable:View the entire ARP Table}
+<br />&lt;/snmp-device-display&gt;
+</pre><H2>Limitations</H2><ul><LI value="2">On-demand variables must be in table form with a
+"/" in the variable name.</LI><LI value="3">You cannot query tables in the regular
+&lt;snmp-device-variables&gt; section.</LI><LI value="4">You cannot reference on-demand tables defined in
+other probes.</LI><LI value="5">You cannot specify non-accessible MIB variables by
+their symbolic OID. Instead, use the "derived values" syntax to determine the
+correct index-derived OID expression.</LI><LI value="6">You must no more than 50 variables in the &lt;snmp-device-variables-ondemand&gt; section or the query will not work.</LI></ul></div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

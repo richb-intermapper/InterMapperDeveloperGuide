@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MsWordImport PreserveSourceStyles="True" KeepSourceLinks="false" ConvertInlineFormatting="True" AddContinuedLinks="False" AddContinuedFromLinks="False" ContinuedLinkFormat="(continued in {title})" ContinuedFromLinkFormat="(continued from {title})" UseMaxCharLimit="False" UseMinCharLimit="True" MaxCharLimit="10000" MinCharLimit="50" FilenameLength="24" LastCollectTime="2008-10-07T10:48:00.2187500-04:00" LastImport="2008-10-07T10:48:54.7812500-04:00">
+    <ParagraphStyles>
+        <Map From="Heading1" To="h1.(MS Word Style)" />
+        <Map From="Heading2" To="h2.(MS Word Style)" />
+        <Map From="Heading3" To="h3.(MS Word Style)" />
+        <Map From="Heading4" To="h4.(MS Word Style)" />
+        <Map From="Heading5" To="h5.(MS Word Style)" />
+        <Map From="Heading6" To="h6.(MS Word Style)" />
+        <Map From="Heading 1" To="h1.Heading 1" />
+        <Map From="Heading 2" To="h2.Heading 2" />
+        <Map From="Heading 3" To="h3.Heading 3" />
+        <Map From="Heading 4" To="h4.Heading 4" />
+        <Map From="Heading 5" To="h5.Heading 5" />
+        <Map From="Heading 6" To="h6.Heading 6" />
+    </ParagraphStyles>
+    <CharacterStyles>
+        <Map From="Hyperlink" To="a.(MS Word Style)" />
+    </CharacterStyles>
+    <Files>
+        <Url Source="../../Output/Bob Merrill/InterMapper_Dev_Guide-cover.doc" AbsoluteSource="file:///P:/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob Merrill/InterMapper_Dev_Guide-cover.doc" />
+    </Files>
+    <GeneratedFiles>
+        <Url Source="../../Content/Resources/Images/NewImport/03000001.png" TimeStamp="10/7/2008 10:48:00 AM" />
+        <Url Source="../../Content/NewImport/Developer Guide.htm" TimeStamp="10/7/2008 10:48:00 AM" />
+        <Url Source="../TOCs/NewImport.fltoc" TimeStamp="10/7/2008 10:48:01 AM" />
+        <Url Source="../../Content/Resources/Stylesheets/NewImport.css" TimeStamp="10/7/2008 10:48:01 AM" />
+    </GeneratedFiles>
+    <NewTopicStyles />
+    <UsedParagraphStyles>
+        <StyleName Name="Table of Contents Page Title" />
+    </UsedParagraphStyles>
+    <UsedCharacterStyles />
+</MsWordImport>

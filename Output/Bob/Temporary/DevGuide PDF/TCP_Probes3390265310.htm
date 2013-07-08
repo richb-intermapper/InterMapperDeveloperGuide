@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="TCP_Probes" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="5" MadCap:lastHeight="1892" MadCap:lastWidth="1135" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>TCP Probes</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 MadCap:conditions="Primary.print" MadCap:xrefTargetName="TCP Probes" MadCap:sourceTitle="TCP Probes"><a MadCap:generatedBookmark="TOC" name="TCP Probes"></a>TCP Probes</h1>
+        <p class="code">type="tcp-script"</p>
+        <p>TCP Probes connect to the specified device and port, then execute a script 
+ that sends and receives data from the device. InterMapper examines the responses, 
+ and sets the device's status and condition based on the results.</p>
+        <p>For example, the HTTP probe connects to the specified port, then issues the commands of an HTTP request to send data to the web server, and verifies the received data. If the response is not as expected, the probe sets the device into alarm or warning.
+</p>
+        <p>As another example, the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/tcpexample.html">TCP Example<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/tcpexample.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Example TCP Probe File"> (Pg 1)</MadCap:xref></a> shows another TCP-based probe that connects to a device. It then sends the specified string, waits several seconds and checks the response to determine the device state. </p>
+        <p>The Custom TCP probe is shown in full as an example, and can be used as the basis for making your own probes. </p>
+        <h2>Common Sections of TCP Probes</h2>
+        <p>Each TCP probe follows the same general format as other probe files. </p>
+        <ul>
+            <li value="1">The <span class="code"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/header.html">&lt;header&gt; <MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/header.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;header&gt; Section"> (Pg 1)</MadCap:xref></a></span> section of a command-line probe specifies the probe type, name, and a number of other properties fundamental to the operation of the probe.                              </li>
+            <li value="2">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/description.html"><span class="code">&lt;description&gt; <MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/description.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;description&gt; Section"> (Pg 1)</MadCap:xref></span></a> 
+section specifies the help text that appears in the Set  Probe window. Format the description using IMML, <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.
+<br /></li>
+            <li value="3">The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/parameters.html"><span class="code">&lt;parameters&gt; <MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/parameters.html" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;parameters&gt; Section"> (Pg 1)</MadCap:xref></span></a> section defines the fields presented to the user in the Set  Probe window.</li>
+        </ul>
+        <h2>Sections Specific to TCP&#160;Probes</h2>
+        <p>Each TCP&#160;probe also has:</p>
+        <ul>
+            <li value="1">Use the <span class="code">&lt;script&gt;</span> section of a TCP probe to define a sequence of commands the probe uses to interact with and query a device, and to interpret the responses from the device.&#160;The <span class="code">&lt;script&gt;</span> section uses the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/language.html">TCP&#160;Probe Scripting Language</a>, a sequential language with a <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/commandref.html">rich set of commands</a>.<br /><br /></li>
+            <li value="2">The <span class="code">&lt;script-output&gt;</span> section of a TCP probe file formats the information retrieved from the device and sends it to the device's Status window. Format the script output using IMML, <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/IMML - InterMapper Markup Language.htm">InterMapper's Markup language</a>.</li>
+        </ul>
+        <p>InterMapper's TCP Probes establish a connection to a remote system, exchange commands and receive responses, and then set the status of the device based on those responses.</p>
+        <p>This note describes how probe writers can use <em>regular expressions</em> and <em>comparisons</em> to parse out information from the responses.</p>
+        <h2>The Overall Process</h2>
+        <p>There is an annotated FTP probe in the <a href="http://download.dartware.com/docs/DevGuide//Content/02-CustomProbes/commandref.html?Highlight=FTP#example">Developer Guide.</a> This gives an overview of the script language and shows how it connects and logs into a FTP server, how a script can respond to error conditions, and how to set the device's status based on those conditions.</p>
+        <h2>Regular Expressions</h2>
+        <p>The TCP Script Language uses the MTCH command to compare a response string to expected values. It can also use a regular expression to match on a part of a string. For example:</p><pre class="code" xml:space="preserve"> MTCH "A([BCD]+)E"r else goto @NOMATCH
+STOR "testval" "${1}" </pre>
+        <p>If the incoming line contains ABDE, then the "testval" variable will contain "BD".</p>
+        <p>In the MTCH regular expression, enclosing something in parentheses turns  it into a capturing subgroup.  The one or more Bs, Cs or Ds that it's  matching will be stored in the ${1} variable.  If you have several  capturing groups, they get stored in ${2}, ${3}, etc.</p>
+        <p>For more information, see <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/probecalculations.htm#regexp">the Regular Expressions examples</a> in Probe Calculations.</p>
+        <h2>Calculations in Scripts</h2>
+        <p>To perform calculations within a TCP script, you should use <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/commandref.html#eval">the EVAL command</a>. Its argument is an expression (in quotes) that will be evaluated. It usually contains an assignment (with the ":=" operator), that sets a variable to the result of the expression. For example:</p><pre class="code">EVAL $celsius := (($fahrenheit - 32) * 5 / 9) </pre>
+        <p>will set the variable $celsius to the temperature that corresponds to the $fahrenheit variable. The value of the $celsius variable can be used in subsequent statements.</p>
+        <h2>Comparisons in Scripts</h2>
+        <p>You can use the EVAL statement to make comparisons between either strings or numeric (either integer or floating point) values. To do this, write an EVAL statement that compares the two values and set the result in a new variable. If the comparison was true, then the resulting variable will be set to 1, otherwise it will be zero. </p>
+        <p class="pagebreakbefore">Here are examples of comparing numeric and string values:</p>
+        <table style="width: 517px;">
+            <tr>
+                <td>
+                    <h3>Comparing Numeric Values</h3><pre class="code">EVAL $x := ($val &gt; 50.5)<br />NBNE #$x #0 @greater       <br />@less:           <br />...           <br />GOTO @ENDIF           <br />@greater:           <br />...           <br />GOTO @ENDIF           <br />@ENDIF:           <br /></pre>
+                </td>
+                <td>
+                    <h3>Comparing String Values</h3><pre class="code">EVAL $x := ("dog" &gt; "cat")<br />NBNE #$x #0 @dog           <br />@cat:           <br />...           <br />GOTO @ENDIF           <br />@dog:           <br />...           <br />GOTO @ENDIF           <br />@ENDIF:           <br /></pre>
+                </td>
+            </tr>
+        </table>
+        <p>For more information, see The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/builtinvariablereference.htm#evalmacro">Eval Macro section</a> of Built-in Custom Probe Variables.</p>
+        <h2>Simple Comparisons in Scripts</h2>
+        <p>InterMapper TCP Scripts can compare two string or integer numeric values and branch based on the results. The commands below are no longer preferred as the EVAL statement described above is equally simple and more powerful.</p>
+        <p>The SBNE ("String Branch Not Equal") compares the two <em>string</em> values and branches if they are not equal. One or both of the arguments can be variables, expressed as ${<em>variable-name</em>}.</p>
+        <p>The NBNE ("Numeric Branch Not Equal") and NBGT ("Numeric Branch Greater Than") compares two <em>numeric</em> values, branching on the result. The arguments to these commands are strings and are expected to be within quotes. To convert a string to a numeric value, place a number sign (#) before the parameter. For example:</p><pre class="code">STOR "val1" "100"
+STOR "val2" "50"
+NBGT #${val1} #${val2} @exit </pre>
+        <p>In this example, the string ${val1} will be converted to the numeric value 100, and ${val2} will be converted to the numeric value 50, and the branch will be taken, because 100 is greater than 50.</p>
+        <p><b>Note:</b> The NBGT, NBNE and other TCP probe commands expect integer arguments only (with an optional + or -). A script parses up to the first non-digit character. Thus, the value of "50.5" is 50; the remaining digits are ignored. If you wish to compare against a fraction or floating point value, use the EVAL statement described above.</p>
+        <p>These commands are described in detail in the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/commandref.html">TCP Probe Command Reference</a> topic.</p>
+        <p>&#160;</p>
+    </body>
+</html>

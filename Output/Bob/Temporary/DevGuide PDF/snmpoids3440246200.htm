@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="871" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|SNMP Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Specifying SNMP OIDs in Custom Probes</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="Specifying SNMP OIDs in Custom Probes" MadCap:sourceTitle="Specifying SNMP OIDs in Custom Probes"><a MadCap:generatedBookmark="TOC" name="Specifying SNMP OIDs in Custom Probes"></a>Specifying SNMP OIDs in Custom Probes</h1>
+        <h2>Introduction</h2>
+        <p> InterMapper supports two kinds of OID's: Numeric and Symbolic. The Symbolic OIDs become available when a MIB has been imported into InterMapper.</p>
+        <p>In addition, InterMapper supports three kinds of OID expressions: Get-Next, Trap-Conditional, and Index-Derived.</p>
+        <h2>Numeric OID's</h2>
+        <p> Numeric OID's contain only numbers separated by periods. Preceding periods are ignored. A trailing period is allowed if there is only one subid.</p>
+        <p style="font-weight: bold;"> Examples:</p><pre class="code">.1<br />1.<br />1.3.6
+</pre>
+        <p style="font-weight: bold;"> Invalid examples:</p><pre class="code">1 (no period)<br />1.3.6. (trailing period but with multiple subids)<br />1.3.6.blah  (not numeric)<br />1.3.6.1.2.1.system.sysUpTime.0  (not numeric)
+</pre>
+        <p> Unlike Net-SNMP, InterMapper ascribes no special meaning to OID's that begin with a period; all numeric OID's are considered absolute.</p>
+        <p> Errors in numeric OID's are reported by the system to the Event Log when the error is in a custom probe. The error message will have the form:</p><pre class="code">Syntax error in OID "1.3.6.1..1.2"
+</pre>
+        <h2>Symbolic OID's</h2>
+        <p> A symbolic OID begins with a letter, after ignoring any preceding periods. InterMapper must be able to locate a MIB file that defines the symbols used.  There are three types of symbolic OID's:</p>
+        <ol>
+            <li value="1">Simple symbols specify a starting symbol and zero or more trailing subid's.</li>
+            <li value="2">Relative symbols specify a starting symbol and one of more subid symbols.</li>
+            <li value="3">Scoped symbols specify the name of the MIB, the scope operator ::, followed by a simple or relative symbol.</li>
+        </ol>
+        <p> Relative and scoped symbols are handy when a symbol is ambiguous, i.e. the same symbol name is defined differently in two separate MIB files. You should prefer the scoped OID form, when possible.</p>
+        <p> Symbolic names are case-sensitive.</p>
+        <p class="pagebreakbefore"> <![CDATA[ ]]><b>Examples:</b></p><pre class="code">Simple: sysUpTime
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sysUpTime.0
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;enterprises.9.2.3.4.5<br /><br />Relative: system.sysUpTime<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;system.sysUpTime.0<br /><br />Scoped: SNMPv2-MIB::sysUpTime  <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SNMPv2-MIB::system.sysUpTime.0
+</pre>
+        <p style="font-weight: bold;"> Invalid Examples:</p><pre class="code">Simple:  sysUpTiime  &#160;(misspelled; not found)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sysupTime   &#160;(wrong case)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sys%pTime   &#160;(disallowed character %)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sysUpTime.0.  &#160;(bad; trailing period)<br /><br />Relative: system.ifIndex  (bad; ifIndex isn't under system)<br /><br />Scoped: SNMPv2-MIB.sysUpTime  (bad; must use :: for scoped OID)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IF-MIB::sysUpTime    &#160;(bad; wrong MIB module for sysUpTime)
+</pre>
+        <p> Errors in symbolic OID's are reported by the system to the Event Log when the error is in a custom probe. The error message will have the form:</p><pre class="code">Syntax error in OID "sys%pTime" 
+</pre>
+        <h3>OIDs indexed by Strings</h3>
+        <p>Certain MIBs specify tables that are indexed by strings. The net-snmp documentation at </p>
+        <p>  &#160;<a href="http://www.net-snmp.org/tutorial/tutorial-5/commands/output-options.html">http://www.net-snmp.org/tutorial/tutorial-5/commands/output-options.html</a> <![CDATA[ ]]></p>
+        <p>describes this. A convenient way to enter these OIDs is:</p>
+        <p class="code">NET-SNMP-EXTEND-MIB::nsExtendOutLine."LOG"</p>
+        <p>and a SNMP variable could be created like this:</p>
+        <p class="code">outLine, NET-SNMP-EXTEND-MIB::nsExtendOutLine."LOG", DEFAULT, ""</p>
+        <h3 class="pagebreakbefore">Limitations of Symbolic OID's</h3>
+        <ol>
+            <li value="1">Symbolic OID's will only work if the necessary MIB file is loaded into InterMapper. If InterMapper cannot resolve the symbolic OID using a MIB file, this is considered a syntax error in the symbolic OID. At this time, there is no way to bundle a MIB file with a probe as one file; this is a future direction.</li>
+            <li value="2">It may happen that two or more MIB files define the same symbol. When this happens, InterMapper may pick the wrong definition. You can avoid this by using the scoped OID form.</li>
+        </ol>
+        <h2>Get-Next OID Expressions</h2>
+        <p> InterMapper has a special syntax for "get-next" style OID's - attach a + to the end of the OID.</p>
+        <p> Normally, when you specify a variable to query in a custom SNMP probe, you specify the complete OID, including the instance. For example, you might specify "sysUpTime.0" or "ifInOctets.13". For sysUpTime, the .0 specifies the (only) instance. For ifInOctets, the .13 specifies the value for ifIndex 13.</p>
+        <p> There are occasions when you want to query a variable using a preceding OID. For example, you might want to query the value of ifInOctets for the first interface, but you can't assume the ifIndex of the first interface is 1. Here's how you would specify the OID:</p><pre class="code">ifInOctets+
+</pre>
+        <p> To retrieve the value of ifInOctets for the interface whose ifIndex follows 13, specify the OID with a plus:</p><pre class="code">ifInOctets.13+
+</pre>
+        <p> The plus sign must immediately follow the OID. Technically, it's not part of the OID, but considered an operator in InterMapper's OID expression language.</p>
+        <p> Note: Get-Next OID expressions will not work for custom SNMP probes that specify get-request queries.</p>
+        <h2 class="pagebreakbefore">Trap-Conditional OID Expressions</h2>
+        <p> Trap-conditional OID expressions allow you to assign a variable only when it occurs in the varbind list of a certain trap. For example, you might want to set the value of your probe's "sysUpTimeCrashed" variable to value of the "sysUpTime.0" variable included in the varbind list of a "systemCrashed" trap. However, you don't want to set "sysUpTimeCrashed" when you see the sysUpTime.0 value in any other received trap. To restrict the assignment of sysUpTime.0 to only the systemCrashed trap, you need to specify both the systemCrashed trap OID and the sysUpTime.0 OID using the ?: operator. This combination is called a "Trap-Conditional" OID, or "Trap OID" for short.</p>
+        <p> Examples:</p><pre class="code">systemCrashed?:sysUpTime.0
+     <br />sysTrapOID?:sysContact
+     <br />SOMEMIB::sysTrapOID.1?:SMIv2-MIB::sysContact
+</pre>
+        <p> Supported in 4.4, the legacy format for trap OID's is a numeric OID followed by an OID:</p><pre class="code">1.3.6.1.2.1::sysUpTime.0
+</pre>
+        <p> The legacy format does not allow use of a symbolic name for a trap OID; this conflicts with the scoped format above. The use of :: for Trap-conditional OID expressions is deprecated. Please use ?: in the future.</p>
+        <h2>Index-Derived OID Expressions</h2>
+        <p> When querying tables from SNMP devices, it is often useful to assign the value of a variable from a row's OID index. This technique will work even if the values used to index the row have an access of "not-accessible".</p>
+        <p>For more information, see <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/OnDemandTables.htm#indexderived">Index-Derived Variables</a> in the <span class="code">&lt;snmp-device-variables-ondemand&gt;</span> Section topic.</p>
+        <p><![CDATA[ ]]></p>
+    </body>
+</html>

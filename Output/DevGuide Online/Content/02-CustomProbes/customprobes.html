@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Overview</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 MadCap:conditions="Primary.online"><a name="kanchor12"></a><a name="kanchor13"></a><a name="kanchor14"></a>Overview</h1>
+            <p><a name="kanchor15"></a>For many Internet services, simply "pinging" a device is not a sufficient test of whether it is operating correctly. InterMapper has a number of built-in probes that can test different aspects of a device's operation, whether it's a web server, router, database, LDAP server etc. </p>
+            <p>However, InterMapper's built-in probes may not test the kinds of devices you want to monitor, or may not test them ways that are most useful to you. In such a case, you can create your own probes. InterMapper's probes are defined by <i>probe files</i>, simple text files that can be duplicated and modified using any standard text editing utility. When you create your own probe, it becomes a first-class citizen and appears in the                    Probe Configuration window along with the built-in probes.</p>
+            <h2>What is a probe?</h2>
+            <p>A probe is a text file that specifies the way in which InterMapper tests a device. It is essentially a plug-in. All of InterMapper's probes follow the same logic:</p>
+            <ul>
+                <li value="1"><a name="kanchor16"></a><a name="kanchor17"></a><a name="kanchor18"></a><a name="kanchor19"></a><a name="kanchor20"></a> The probe sends one or more queries, as SNMP requests, UDP or AppleTalk datagrams or over a TCP connection to the device being tested.
+</li>
+                <li value="2"> The device responds (or fails to respond).
+</li>
+                <li value="3"><a name="kanchor21"></a> If there is no response, InterMapper sets the device's status to DOWN.
+</li>
+                <li value="4"> InterMapper examines the response(s) from the device, and sets the device's status accordingly.
+</li>
+            </ul>
+            <h2>Parts of a Probe</h2>
+            <p>All of the probe types listed below follow a similar structure, as outlined in <a href="Anatomy_of_a_Probe.htm">Anatomy of A Probe</a>, which explains the common sections of a probe, and the sections that are specific to a particular probe type.</p>
+            <h2>Types of Probes</h2>
+            <p>InterMapper has several kinds of probes. You can use InterMapper's built-in probes as-is, you can copy and modify them, or you can develop your own probes from scratch. These are the different probe types:</p>
+            <p class="dt"><a href="customsnmpprobes.html">SNMP Probes</a>
+            </p>
+            <p class="dd"><a name="kanchor22"></a>InterMapper tests the device's status by sending SNMP queries and comparing the results to 
+	user-specified thresholds. </p>
+            <p class="dt"><a href="handlingtraps.htm">SNMP Trap Probes</a>
+            </p>
+            <p class="dd">InterMapper can receive and process SNMP traps, and can set the status of a probe based on the contents of the trap's variables. You can create custom probes that alert you to problems in a certain device based on the contents of specific trap variables.<br /></p>
+            <p class="dt"><a href="TCP_Probes.htm">TCP Probes</a>
+            </p>
+            <p class="dd">InterMapper establishes a TCP connection to a device. It then sends certain requests and evaluates the 	
+	responses to determine the device's status. 
+	TCP probes uses the <a href="language.html">TCP Probe Scripting language</a> to create a sequence of commands, branching to different parts of the script under specified conditions.<br /></p>
+            <p class="dt"><a href="commandlineprobes.htm">Command-line Probes</a>
+            </p>
+            <p class="dd">InterMapper can invoke a program or script (as if "from the command line"), and use the results to 
+	determine the device's status.
+	</p>
+            <p class="dt">Big Brother Probes</p>
+            <p class="dd">Big Brother™ is an open-source network monitoring program. InterMapper listens for reports from 
+	Big Brother clients and sets the device's status accordingly.
+	</p>
+            <p>It's fairly straightforward to modify the existing files to produce new probes. If you make a new probe file that might be useful, please consider sending it to us. See <a href="Sharing_Custom_Probes.htm">Sharing Probes</a> for more information.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

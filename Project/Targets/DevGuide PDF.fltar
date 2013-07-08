@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="1"
+  DefaultUrl="/Content/Introduction.html"
+  Type="PDF"
+  GlossaryTermConversion="marked"
+  ConditionTagExpression="include[Primary.print] exclude[Primary.online or Primary.Outstanding or Primary.review] "
+  MasterPage="/Content/Resources/MasterPages/PrintDoc.flmsp"
+  PatchHeadingLevels="false"
+  InjectBookHeadings="true"
+  MasterPageLayout="/Content/Resources/PageLayouts/DartwareChapter.flpgl"
+  MasterToc="/Project/TOCs/Primary.fltoc"
+  MasterStylesheet="/Content/Resources/default.css"
+  OutputFolder="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapper Developer Guide">
+  <Variables />
+  <ConditionTags />
+  <Glossaries>
+    <Glossary
+      Link="/Project/Glossaries/Primary.flglo" />
+  </Glossaries>
+  <PDF
+    ShowUsedBookmarks="false"
+    DownsampleImages="true" />
+  <DocumentProperties
+    Title="InterMapper Developer Guide"
+    Author="Dartware, LLC" />
+</CatapultTarget>

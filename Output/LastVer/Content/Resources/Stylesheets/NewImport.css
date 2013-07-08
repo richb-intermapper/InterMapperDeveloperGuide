@@ -1,0 +1,83 @@
+/*<meta />*/
+
+p
+{
+	page-break-inside: avoid;
+	margin-bottom: 6pt;
+	font-family: Verdana;
+	font-size: 8pt;
+	margin-top: 0pt;
+}
+
+ol
+{
+	page-break-inside: avoid;
+	margin-bottom: 6pt;
+	font-family: Verdana;
+	font-size: 8pt;
+	margin-top: 0pt;
+}
+
+ul
+{
+	page-break-inside: avoid;
+	margin-bottom: 6pt;
+	font-family: Verdana;
+	font-size: 8pt;
+	margin-top: 0pt;
+}
+
+li
+{
+	page-break-inside: avoid;
+	margin-bottom: 6pt;
+	font-family: Verdana;
+	font-size: 8pt;
+	margin-top: 0pt;
+}
+
+td
+{
+	page-break-inside: avoid;
+	margin-bottom: 6pt;
+	font-family: Verdana;
+	font-size: 8pt;
+	vertical-align: top;
+}
+
+p.TableofContentsPageTitle
+{
+	page-break-inside: avoid;
+	margin-top: 12pt;
+	margin-bottom: 3pt;
+	text-align: center;
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 16pt;
+}
+
+p.p_1
+{
+	margin-left: 14pt;
+	text-align: center;
+}
+
+p.p_2
+{
+	margin-top: 42pt;
+	margin-left: 54pt;
+	text-align: right;
+	font-size: 20pt;
+}
+
+span.span_1
+{
+	font-size: 20pt;
+}
+
+p.p_3
+{
+	margin-left: 54pt;
+	text-align: right;
+}
+

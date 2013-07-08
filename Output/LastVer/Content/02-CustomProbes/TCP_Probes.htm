@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>TCP Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 MadCap:conditions="Primary.online"><a name="kanchor282"></a>About TCP Probes</h1>
+            <p>TCP Probes connect to the specified device and port, then execute a script 
+ that sends and receives data from the device. InterMapper examines the responses, 
+ and sets the device's status and condition based on the results.</p>
+            <p>For example, the HTTP probe connects to the specified port, then issues the commands of an HTTP request to send data to the web server, and verifies the received data. If the response is not as expected, the probe sets the device into alarm or warning.
+</p>
+            <p>As another example, the <a href="tcpexample.html">TCP Example</a> shows another TCP-based probe that connects to a device. It then sends the specified string, waits several seconds and checks the response to determine the device state. </p>
+            <p>The Custom TCP probe is shown in full as an example, and can be used as the basis for making your own probes. 
+</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

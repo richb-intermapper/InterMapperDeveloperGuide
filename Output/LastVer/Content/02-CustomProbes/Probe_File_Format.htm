@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Parts of a Probe" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Probe File Format</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2" style="page-break-before: always;">Custom Probe File Format</h1>
+            <p><a name="kanchor20"></a><a name="kanchor21"></a>Probe files have several sections, described below. Each section contains 
+ a number of lines bracketed by a &lt;<i>section-name</i>&gt; ... &lt;/<i>section-name</i>&gt; 
+ lines. You might want to open a separate window with the                <a href="tcpexample.html">example 
+ probe file</a> while reading the subsequent sections. </p>
+            <p class="dt"><a class="dt" href="filenames.html">Probe Files</a>
+            </p>
+            <p class="dd">Learn where probe files are saved on the hard drive, and how 
+ the files are named.</p>
+            <p class="dt"><a class="dt" href="header.html">Header Information</a>
+            </p>
+            <p class="dd">Learn about the <b><i>header</i></b> section of the probe definition, 
+ including how the probe is identified, how its name appears in the                <b><i>Probe 
+ Type</i></b> pop-up menu, and the version numbering system.</p>
+            <p class="dt"><a class="dt" href="description.html">Text Description</a>
+            </p>
+            <p class="dd">Learn about the <i><b>description</b></i> section of the probe 
+ definition, which specifies the help text that appears in the user's probe 
+ configuration window. The text typically explains the function of the 
+ probe, and describes any parameters. You can also learn about the markup 
+ language you can use to apply a certain amount of formatting and text 
+ styling to the probe's help text.</p>
+            <p class="dt"><a class="dt" href="parameters.html">Parameters to the Probe File</a>
+            </p>
+            <p class="dd">Learn about the <i><b>parameters</b></i> for the probe. InterMapper 
+ automatically creates fields for these entries when it opens the probe 
+ configuration window.</p>
+            <p class="dt"><a class="dt" href="language.html">Scripting Language</a>
+            </p>
+            <p class="dd">Learn about the probe <b><i>scripting language</i></b><a name="kanchor22"></a>, a sequence 
+ of statements that specify the data to send out a TCP connection, the 
+ expected response, and how to interpret that data to set the display status 
+ for the device being probed. </p>
+            <p class="dt"><a href="Probe_Tools_Section.htm">Probe Tools section</a>
+            </p>
+            <p class="dd">Learn about the <b style="font-style: italic;">tools</b> section of the probe definition, which contains the code for a <a href="Companion_Scripts.htm">Companion script</a> that is executed by the probe.</p>
+            <p class="dt"><a class="dt" href="comments.html">Comments</a>
+            </p>
+            <p class="dd">Learn about the format to use when adding <b><i>comments</i></b><a name="kanchor23"></a>. 
+ Comment format is similar to HTML comments: full details on comment are 
+ included in this section.</p>
+            <p class="dt"><a class="dt" href="customsnmpprobes.html" name="kanchor24">Custom SNMP Probes</a>
+            </p>
+            <p class="dd">Learn about how to create <i><b>custom SNMP Probes</b></i><a name="kanchor26"></a>. 
+ With custom SNMP probes, you can query specific MIB variables besides 
+ those built into InterMapper. You can also specify your own thresholds 
+ for MIB variables to control warnings and alarms.</p>
+            <p style="page-break-after: always;"><b style="font-weight: bold;">Note:</b> Before a modification to a probe 
+ becomes effective, you need to click the <b><i><a name="kanchor27"></a>Reload probes...</i></b><a name="kanchor28"></a><a name="kanchor29"></a> button in 
+ the Set Probe window (circular arrow icon below the left pane of the window).</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

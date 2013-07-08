@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UrlList>
+    <Url Source="images/ReloadProbeButton.png" />
+    <Url Source="images/ImportProbeButton.png" />
+    <Url Source="images/check_load_status_window.png" />
+    <Url Source="images/nagiosplugin.png" />
+    <Url Source="images/dialog_paramtest.png" />
+    <Url Source="images/ackwindowap.gif" />
+    <Url Source="images/ipNetToMediaTable.gif" />
+    <Url Source="/images/ipNetToMediaTable.gif" />
+    <Url Source="images/logoicon.png" />
+    <Url Source="images/setprobe-custtcp.png" />
+    <Url Source="images/setprobe.png" />
+    <Url Source="images/SelectProbe-SNMP.png" />
+</UrlList>

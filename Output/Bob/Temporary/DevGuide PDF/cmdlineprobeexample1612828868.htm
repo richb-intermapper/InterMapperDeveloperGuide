@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="852" MadCap:lastWidth="576" class="" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|Command Line Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Command Line Probe Example</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="Command Line Probe Example" MadCap:sourceTitle="Command Line Probe Example"><a MadCap:generatedBookmark="TOC" name="Command Line Probe Example"></a>Command Line Probe Example</h1>
+        <p>The following shell script is called from the command-line probe:</p><pre class="code">#!/bin/sh
+# Expects an address passed in. Passes out the address and a pretend result.
+# Note that we use "\$" instead of just "$" because "$" has special meaning
+# in a shell script.
+echo "\{ \$addr := \"$1\", \$result :=1.2345 } Note that everything after the brace is used as the reason."
+</pre><pre class="code">&lt;!-- 
+  <MadCap:keyword term="Command Line Nagios Plug-in Example" />Simple Command Line Example (com.dartware.cmd.simple) 
+  Copyright (c) 2007 Dartware, LLC. All rights reserved. 
+--&gt; 
+
+&lt;header&gt; 
+  type = "cmd-line" 
+  package = "com.dartware" 
+  probe_name = "cmd.simple" 
+  human_name = "Simple Command Line Output Example" 
+  version = "1.0" 
+  address_type = "IP" 
+&lt;/header&gt; 
+
+&lt;description&gt; 
+This probe shows how to use the specially-formatted output from the
+simple shell script listed above for display in the command-display
+section, rather than being set to the reason as is usual for
+command-line probes.
+&lt;/description&gt; 
+
+&lt;parameters&gt; 
+&lt;/parameters&gt; 
+
+&lt;command-line&gt; 
+  path = "" 
+  cmd = "simple.sh ${ADDRESS}" 
+&lt;/command-line&gt; 
+
+&lt;command-exit&gt; 
+  down: ${EXIT_CODE} = 2 
+  alarm: ${EXIT_CODE} = 1 
+  okay: ${EXIT_CODE} = 0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt;
+  \B5\Simple Probe Information\0P\
+&#160;&#160;Output from $addr is $result (${chartable: #.#### : $result})
+&lt;/command-display&gt;
+</pre>
+        <p> For more information about Nagios, visit the web site at <a href="http://www.nagios.org">http://www.nagios.org</a>. 
+ Nagios® and the Nagios logo are registered trademarks of Ethan Galstad.
+</p>
+    </body>
+</html>

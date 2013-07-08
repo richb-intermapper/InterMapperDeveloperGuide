@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RecentLinks>
+    <Dialog Name="B3.XmlTextKit.InsertHyperlinkDialog">
+        <Link Value="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapper Developer Guide\Content\02-CustomProbes\probecalculations.htm" />
+    </Dialog>
+    <Dialog Name="B3.XmlMdiEditorKit.ImageGeneralDialogPage">
+        <Link Value="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapper Developer Guide\Content\images\SetProbeWindow1.png" />
+    </Dialog>
+    <Dialog Name="B3.XmlTextKit.InsertCrossReferenceDialog">
+        <Link Value="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapper Developer Guide\Content\02-CustomProbes\probecalculations.htm" />
+    </Dialog>
+</RecentLinks>

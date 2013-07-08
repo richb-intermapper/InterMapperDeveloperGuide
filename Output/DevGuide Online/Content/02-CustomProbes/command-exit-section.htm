@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Command Line Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;command-exit&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The &lt;command-exit&gt; Section</h1>
+            <p><a name="commandexitsection"></a>The <span class="code">&lt;command-exit&gt;</span> Section&#160;</p>
+            <p>The <span class="code">&lt;command-exit&gt;</span> section allows you to specify which results 
+ from the command indicate the five InterMapper device states. The states 
+ are:<a name="kanchor565"></a></p>
+            <ul>
+                <li value="1"> down</li>
+                <li value="2">critical</li>
+                <li value="3">alarm</li>
+                <li value="4">warning</li>
+                <li value="5">okay</li>
+            </ul>
+            <p>For each state, you need to indicate 
+ what item InterMapper should examine and what its value should be to result 
+ in that state being set. At the moment, the only thing InterMapper can look 
+ at is the exit code, which is indicated with ${EXIT_CODE}. So, in the example 
+ below, the line:<pre class="code">down: ${EXIT_CODE} = 2 </pre> means, "To determine if the device is down, examine the exit code from 
+ the command; if it is 2, the device is down." If none of the criteria for 
+ the states you have defined are true, then the device is set to "unknown". 
+    </p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

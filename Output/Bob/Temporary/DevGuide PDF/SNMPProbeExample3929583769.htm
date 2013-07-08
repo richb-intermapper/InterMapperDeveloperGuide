@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="850" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|SNMP Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>SNMP Probe Example</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="SNMP Probe Example"><a MadCap:generatedBookmark="TOC" name="SNMP Probe Example"></a>SNMP Probe Example</h1>
+        <p class="code" style="font-size: -2em;">
+&lt;!--
+&#160;&#160;Single OID Custom Probe (com.dartware.snmp.oidsingle.txt)
+&#160;&#160;&#160;&#160;Custom Probe for InterMapper (http://www.intermapper.com)
+&#160;&#160;&#160;&#160;Please feel free to use this as a base for further development.
+
+&#160;&#160;10 May 2007 Cloned from High Threshold probe -reb
+&#160;&#160; 3 Jul 2007 Changed probe name to Single OID Viewer -reb
+&#160;&#160; 4 Sep 2012 Added a datasets section -jpd
+&#160;&#160; 
+&#160;&#160;You can read the Developer Guide to learn more about InterMapper Probes. It's at:
+&#160;&#160;&#160;&#160;http://intermapper.com/go.php?to=intermapper.devguide
+--&gt;
+
+&lt;header&gt;
+&#160;&#160;"type"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= "custom-snmp"
+&#160;&#160;"package"&#160;&#160; &#160;&#160;= "com.dartware"
+&#160;&#160;"probe_name"&#160;&#160;= "snmp.oidsingle"
+&#160;&#160;"human_name"&#160;&#160;= "SNMP - Single OID Viewer"
+&#160;&#160;"version"&#160;&#160; &#160;&#160;= "1.4"
+&#160;&#160;"address_type"= "IP,AT"
+&#160;&#160;"port_number" = "161"
+&#160;&#160;"display_name"= "SNMP/Single OID Viewer"
+&#160;&#160;"flags"&#160;&#160;&#160;&#160; &#160;&#160;=&#160;"Minimal"
+&lt;/header&gt;
+
+&lt;snmp-device-properties&gt;
+&#160;&#160;nomib2&#160;&#160;=&#160;"true"
+&#160;&#160;pdutype&#160;=&#160;"get-request"
+&lt;/snmp-device-properties&gt;
+
+&lt;description&gt;
+\GB\Single OID Viewer\P\
+
+This probe retrieves a single SNMP MIB variable and displays it in the device's Status Window.
+
+\ib\Variable\p\ specifies the MIB name or OID for the value to retrieve. If you have imported the MIB for this device, you may enter the symbolic name for this value, otherwise, simply enter its OID here. 
+
+\bi\Legend\p\ is a text string used to identify the variable in the status window and any strip charts. If left blank, the variable's name or OID will be used.
+
+\bi\Units\p\ is a text string that will be displayed next to the value in the Status Window. You can use it for the unit of measure (packets/sec, degrees, etc.) 
+
+\bi\Tag\p\ is a short text string that identifies a particular class of dataset. Tags will be used to correlate different variables from different probes that describe the same thing, such as CPU% or temperature.
+&lt;/description&gt;
+
+-- Parameters are user-settable values that the probe uses for its comparisons.
+-- Specify the default values here. The customer can change them and they will be retained for each device.
+
+&lt;parameters&gt;
+&#160;&#160;"Variable"&#160;&#160;=&#160;"ifNumber.0"
+&#160;&#160;"Legend"&#160;&#160;&#160;&#160;=&#160;""
+&#160;&#160;"Units"&#160;&#160;&#160;&#160; = ""
+&#160;&#160;"Tag"&#160;&#160;&#160;&#160; &#160;&#160;= "exampletag"
+&lt;/parameters&gt;
+
+-- SNMP values to be retrieved from the device, and 
+-- Specify the variable name, its OID, a format (usually DEFAULT) and a short description.
+-- CALCULATION variables are computed from other values already retrieved from the device.
+ 
+&lt;snmp-device-variables&gt;
+
+&#160;&#160;&#160;&#160;theLegend,&#160;&#160;($Legend!="" ? "$Legend" : "$Variable"), CALCULATION, "Legend/OID"
+&#160;&#160;&#160;&#160;theOID,&#160;&#160;&#160;&#160;&#160;&#160;$Variable ,&#160;&#160;&#160;&#160;DEFAULT,&#160;&#160;"$theLegend"
+
+&lt;/snmp-device-variables&gt;
+
+-- The &lt;snmp-device-display&gt; section specifies the text that will be appended 
+-- to the device's Staus Window. 
+
+&lt;snmp-device-display&gt;
+\B5\&#160;&#160;$theLegend:\0P\&#160;&#160;$theOID \3G\$Units\mp0\
+&lt;/snmp-device-display&gt;
+
+&lt;datasets&gt;
+&#160;&#160;$theOID, "$Tag", "$Units", "false", "$Legend"
+&lt;/datasets&gt;
+</p>
+    </body>
+</html>

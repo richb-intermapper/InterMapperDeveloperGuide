@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="InterMapper HTTP API">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>HTTP API Scripting Examples</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">HTTP API Scripting Examples</h1>
+            <p>Two command line scripts are available; these scripts provide good examples of the use of the InterMapper HTTP API:</p>
+            <ul>
+                <li value="1"><b>Unix shell script</b> - for Unix/Linux platforms</li>
+                <li value="2"><b>Windows vbscript</b> - for Windows platforms</li>
+            </ul>
+            <p>Both scripts make a copy of the InterMapper Settings directory. Both scripts assume  they are invoked from the destination directory rather than trying to look it up - this is intended to make testing easier. Dartware recommends that you create a dummy InterMapper Settings  folder someplace and try the synchronization to that (the destination directory doesn't  even require that InterMapper is installed, only the script). The remote server  does not need to be the same platform as the destination machine.</p>
+            <p>The destination directory should <b style="font-style: italic;">not</b> have an active InterMapper running in it, as the script assumes that it  can replace files at will.</p>
+            <p>The following URLs are used to access the folders:</p>
+            <table class="fieldtable">
+                <tbody>
+                    <tr>
+                        <td class="fieldname">InterMapper Settings folder</td>
+                        <td class="fieldname">Corresponding URL</td>
+                    </tr>
+                    <tr>
+                        <td>Custom  Icons</td>
+                        <td class="code">/~files/icons</td>
+                    </tr>
+                    <tr>
+                        <td>Extensions</td>
+                        <td class="code">/~files/extensions</td>
+                    </tr>
+                    <tr>
+                        <td>Fonts</td>
+                        <td class="code">/~files/fonts</td>
+                    </tr>
+                    <tr>
+                        <td>Maps</td>
+                        <td class="code">/~files/maps</td>
+                    </tr>
+                    <tr>
+                        <td>MIB  Files</td>
+                        <td class="code">/~files/mibs</td>
+                    </tr>
+                    <tr>
+                        <td>Probes</td>
+                        <td class="code">/~files/probes</td>
+                    </tr>
+                    <tr>
+                        <td>Sounds</td>
+                        <td class="code">/~files/sounds</td>
+                    </tr>
+                    <tr>
+                        <td>Tools</td>
+                        <td class="code">/~files/tools</td>
+                    </tr>
+                    <tr>
+                        <td>Web  Pages</td>
+                        <td class="code">/~files/webpages</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Unix shell script</h3>
+            <p>The Unix shell  script assumes that the current working directory is the "Temporary" folder  inside the destination InterMapper Settings <i>(This is likely to change.).</i></p>
+            <p>The script requires bash, curl, tr, grep, sed and awk. to  be installed.</p>
+            <h4>Unix script  options</h4><pre class="code">
+clone_im.sh [options]
+-r [remote_host_name ]
+-t [remote_port ]
+-u [remote_user ] 
+-p [remote_password]
+
+Defaults:
+remote_host_name =  "localhost"
+remote_port = 8080 (this is the InterMapper web access  port)
+remote_user = "admin"
+remote_password =  "admin"
+
+Example:
+clone_im.sh -r nitro.dartware.com -t 8080 -u IMuser -p UsErpaSS
+</pre>
+            <h3>
+                <br />Windows vbscript</h3>
+            <p>The Windows vbscript assumes that the current working  directory is the destination InterMapper Settings.</p>
+            <h4>Windows script  options</h4><pre class="code">
+clone_im.vbs 
+/host:[remote_hostname] 
+/port:[remote_port] 
+/user:[remote_user]
+/password:[remote_password]
+
+Defaults:
+remote_host_name (none, must be specified)
+remote_port = 80
+user  (none, uses auto-login unless specified)
+password (none, uses auto-login  unless specified)
+secure = false
+
+Example:
+clone_im.vbs /host:nitro.dartware.com /port:8080 /user:IMuser /password:UsErpaSS /secure:true</pre>
+            <h3>
+                <br />Known  bugs</h3>
+            <ul>
+                <li value="1">The Unix version does not yet support a "secure" switch.<br /></li>
+                <li value="2">The  Unix version should not have default username and password, to use the  auto-login if that's available.<br /></li>
+                <li value="3">The Unix version should require the current  directory to be the top-level of the destination InterMapper Settings  directory, not the "Temporary" subdirectory.</li>
+            </ul>
+            <h3 class="pagebreakbefore">clone_im.sh</h3><pre class="code">
+#! /bin/bash
+
+# Synchronize InterMapper Settings folder from a remote host with InterMapper SDK
+# 
+# Requires curl and gnu awk
+
+remote=localhost
+port=8080
+user=admin
+password=admin
+auth=
+while getopts 'r:t:u:p:' OPTION ; do
+   case $OPTION in 
+      r)   remote="$OPTARG"
+         ;;
+      t)   port="$OPTARG"
+         ;;
+      u)   user="$OPTARG"
+         ;;
+      p)   password="$OPTARG"
+         ;;
+      ?)   printf "Usage: %s -r remotehost\n" $(basename $0) &gt;&amp;2
+         exit 2;;
+   esac
+done
+
+if [ "$user" ] ; then
+   auth="--user $user:$password"
+fi
+
+# This script requires InterMapper to be stopped before running.
+#/etc/init.d/intermapperd stop
+
+# Get list of top-level file directories from InterMapper
+topdirs=$(curl $auth -s http://$remote:$port/~files | tr '\r' '\n')
+
+for dir in $topdirs ; do 
+   # Get list of files in this directory
+   filelist=$(curl $auth -s $dir | tr '\r' '\n')
+
+   webdir=$(basename $dir)
+   echo "Processing $webdir..."
+   localdir=""
+
+   echo $filelist | grep "does not exist" &gt;&amp; /dev/null
+   if [ $? != 0 ] ; then
+
+   # Convert the web path into the corresponding Setting folder path
+      case $webdir in 
+         icons) localdir="Custom Icons" ;;
+         sounds) localdir="Sounds" ;;
+         mibs) localdir="MIB Files" ;;
+         probes) localdir="Probes" ;;
+         tools) localdir="Tools" ;;
+         webpages) localdir="Web Pages";;
+         fonts) localdir="Fonts" ;;
+         extensions) localdir="Extensions" ;;
+         maps) localdir="Maps" ;;
+      esac
+
+      for file in $filelist ; do
+      # Get this file and move it into the proper location
+         curl $auth -s -O $file 
+         filename=$(basename $file)
+
+      # Decode the URL to find the real filename
+      # Modified from http://do.homeunix.org/UrlDecoding.html to work with gnu awk
+         local_filename=$(echo $filename | \
+            sed 's/+/ /g'| \
+            sed 's/\%0[dD]//g' | \
+            awk '/%/{while(match($0,/\%[0-9a-fA-F][0-9a-fA-F]/)){$0=substr($0,1,RSTART-1)sprintf("%c",strtonum("0x"substr($0,RSTART+1,2)))substr($0,RSTART+3);}}{print}')
+
+      # This version works with BSD awk
+      # local_filename=$(echo $filename | \
+      #    sed 's/+/ /g'| \
+      #    sed 's/\%0[dD]//g' | \
+      #    awk '/%/{while(match($0,/\%[0-9a-fA-F][0-9a-fA-F]/)){$0=substr($0,1,RSTART-1)sprintf("%c",0+("0x"substr($0,RSTART+1,2)))substr($0,RSTART+3);}}{print}')
+
+      # Make sure the destination directory exists
+         local_dirname=$(dirname "$local_filename")
+         mkdir -p "../$localdir/$local_dirname"
+
+         echo "  " $(basename "$local_filename")
+         mv $(basename $file) "../$localdir/$local_filename"
+      done
+   fi
+done
+
+# Preferences file is separate, since it's stored in the top level of the InterMapper Settings directory
+curl $auth -s -O http://$remote:$port/~files/Preferences
+mv Preferences ../
+
+# restart InterMapper 
+#/etc/init.d/intermapperd start
+   
+    </pre>
+            <h3 class="pagebreakbefore">clone_im.vbs</h3><pre class="code" xml:space="preserve">
+Rem Synchronize with a remote InterMapper server
+
+Option Explicit
+
+
+Dim remoteAddr, remotePort, remoteUser, remotePassword, secureConnection
+Dim urlBase, topLevelDirs, dir, fileList, file, fileName, fileData
+Dim webDir, localDir, localFileName
+
+
+'*******************************************************************************
+' Parse command line arguments
+
+If WScript.Arguments.Named.Exists("host") Then
+  remoteAddr = WScript.Arguments.Named.Item("host")
+Else
+  WScript.Echo "Must specify a remote InterMapper host to synchronize with"
+  WScript.Quit
+End If
+
+
+If WScript.Arguments.Named.Exists("port") Then
+  remotePort = WScript.Arguments.Named.Item("port")
+Else
+  remotePort = 80
+End If
+
+
+If WScript.Arguments.Named.Exists("user") Then
+  remoteUser = WScript.Arguments.Named.Item("user")
+End If
+
+
+If WScript.Arguments.Named.Exists("password") Then
+  remotePassword = WScript.Arguments.Named.Item("password")
+End If
+
+
+if (WScript.Arguments.UnNamed.Count &gt; 0) Then
+  secureConnection = (WScript.Arguments.UnNamed.Item(0) = "secure")
+End If
+
+
+'*******************************************************************************
+' Get list of supported folders
+urlBase = MakeURLBase(remoteUser, remotePassword, remoteAddr, remotePort, secureConnection)
+
+topLevelDirs = Split(FetchURL(urlBase, remoteUser, remotePassword,true), VbCrLf, -1, vbBinaryCompare)
+
+
+For Each dir In topLevelDirs
+  if dir &lt;&gt; "" Then
+
+    ' Convert the top-level name in the URL to the local folder name
+    webDir = Right(dir, Len(dir) - Len(urlBase) - 1)
+    Select Case webDir
+      Case "icons"
+        localDir = "Custom Icons"
+      Case "sounds"
+        localDir = "Sounds"
+      Case "mibs"
+        localDir = "MIB Files"
+      Case "probes"
+        localDir = "Probes"
+      Case "tools"
+        localDir = "Tools"
+      Case "webpages"
+        localDir = "Web Pages"
+      Case "fonts"
+        localdir = "Fonts"
+      Case "extensions"
+        localDir = "Extensions"
+      Case "maps"
+        localDir = "Maps"
+    End Select
+
+    ' Get the files in this folder
+    fileList = Split(FetchURL(dir, remoteUser, remotePassword, true), VbCrLf, -1, vbBinaryCompare)
+    For Each file In fileList
+      If (Len(file) &gt; len(dir)) Then
+        localFileName = Right(file, len(file) - len(dir) - 1)
+
+        fileName = localDir &amp; "\" &amp; URLDecode(localFileName)
+        fileData = FetchURL(file, remoteUser, remotePassword, false)
+        MakeFolderFor fileName
+        SaveBinaryData fileData, fileName
+      End If
+    Next
+  End If
+Next
+
+' Preferences file is not contained in a folder on the server.
+fileData = FetchURL(urlBase &amp; "/Preferences", remoteUser, remotePassword, false)
+SaveBinaryData fileData, "Preferences"
+
+'********************************************************************************
+'********************************************************************************
+'********************************************************************************
+
+Function URLDecode(str)
+  URLDecode = Replace(Unescape(Replace(str, "+", " ")),"\%2F","\\")
+End Function
+
+Function FetchURL(url, user, password, textonly)
+  Dim http, result
+
+  Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+  http.Open "GET", url
+
+  If user &lt;&gt; ""  Then
+    http.SetCredentials user, password, 0
+  End If
+ 
+  http.Send
+
+  if http.Status = 200 then
+    if textonly Then
+      result = http.ResponseText
+    Else
+      result = http.ResponseBody
+    End If
+  Else
+    result = ""
+  End If
+
+  Set http = Nothing
+  FetchURL = result
+End Function
+
+
+Sub MakeFolderFor(filename)
+  'Recursively make folders
+  Dim fso, i
+  Redim dirstack(0)
+
+  Set fso=CreateObject("Scripting.FileSystemObject")
+  dirstack(0) = fso.GetParentFolderName(filename)
+
+  While (dirstack(ubound(dirstack)) &lt;&gt; "" )
+    Redim preserve dirstack(ubound(dirstack) + 1)
+
+    dirstack(ubound(dirstack)) = fso.GetParentFolderName(dirstack(ubound(dirstack) - 1))
+  WEnd
+  
+  For i = ubound(dirstack)-1 To 0 step -1
+    If Not fso.FolderExists(dirstack(i)) Then
+      fso.CreateFolder(dirstack(i))
+    End If
+  Next
+
+  Set fso=Nothing
+End Sub
+
+
+
+Function MakeURLBase(user, password, host, port, secure)
+  Dim protocol, fullhost
+  If secure Then
+    protocol = "https://"
+  Else
+    protocol = "http://"
+  End If
+
+  If (port &lt;&gt; "") Then
+    fullhost = host &amp; ":" &amp; port
+  Else
+    fullhost = host
+  End If
+
+  MakeURLBase = protocol &amp; fullhost &amp; "/~files"
+End Function
+
+
+
+Function SaveBinaryData(arrByteArray, strFileName)
+  Dim objBinaryStream
+  Set objBinaryStream = CreateObject("ADODB.Stream")
+  objBinaryStream.Type = 1
+  objBinaryStream.Open()
+  objBinaryStream.Write(arrByteArray)
+  objBinaryStream.SaveToFile strFileName, 2
+End Function
+
+
+</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

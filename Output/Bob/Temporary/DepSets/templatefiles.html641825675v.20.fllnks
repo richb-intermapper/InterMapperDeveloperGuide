@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet
+  FileTitle=""
+  FileSearchable="true"
+  FileTimeEstimate="0"
+  FilePriority="0"
+  FileStatus="In Progress">
+  <Links>
+    <Link
+      Url="Content/Resources/default.css" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </Links>
+  <LongLinks>
+    <Link
+      Url="Content/Resources/default.css" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </LongLinks>
+  <Anchors />
+  <Keywords>
+    <IndexCacheEntry
+      Term="Template Files"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="6" />
+    <IndexCacheEntry
+      Term="HTML"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="9" />
+    <IndexCacheEntry
+      Term="Template File Example"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="11" />
+    <IndexCacheEntry
+      Term="DOCTYPE HTML PUBLIC"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="13" />
+    <IndexCacheEntry
+      Term="HEAD"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="17" />
+    <IndexCacheEntry
+      Term="Title"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="19" />
+    <IndexCacheEntry
+      Term="Pagetitle"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="20" />
+    <IndexCacheEntry
+      Term="BODY"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="23" />
+    <IndexCacheEntry
+      Term="BODY BGCOLOR"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="24" />
+    <IndexCacheEntry
+      Term="Imageref"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="26" />
+    <IndexCacheEntry
+      Term="Bodytext"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="28" />
+    <IndexCacheEntry
+      Term="Footer.incl"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="30" />
+    <IndexCacheEntry
+      Term="Img"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="43" />
+    <IndexCacheEntry
+      Term="GuestImages"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="44" />
+    <IndexCacheEntry
+      Term="Logo.gif file"
+      Conditions="Primary.online,Primary.print"
+      LocalConditions=""
+      Position="45" />
+  </Keywords>
+  <Concepts />
+  <ConceptControlNames />
+  <IndexControlNames />
+  <Variables />
+  <FileConditions>
+    <Condition
+      Tag="Primary.online" />
+    <Condition
+      Tag="Primary.print" />
+  </FileConditions>
+  <FileTags />
+  <AllConditions>
+    <Condition
+      Tag="Primary.online" />
+    <Condition
+      Tag="Primary.print" />
+    <Condition
+      Tag="Primary.review" />
+  </AllConditions>
+  <Stylesheets>
+    <Url
+      Source="Content/Resources/default.css" />
+  </Stylesheets>
+</CatapultFileLinkSet>

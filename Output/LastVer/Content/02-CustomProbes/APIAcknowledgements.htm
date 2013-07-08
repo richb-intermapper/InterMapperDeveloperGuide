@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="InterMapper HTTP API" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Acknowledging with HTTP</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Acknowledging with HTTP</h1>
+            <p>You can perform a Basic Acknowledgement of a device by issuing a POST to a URL of this format:</p>
+            <pre class="code">http://imserver:port/mapid/device/deviceIMID/*acknowledge.cgi?message=URL+encoded+string</pre>
+            <p>
+                <br />where:</p>
+            <ul>
+                <li value="1"><em>mapid</em> = the mapid of the corresponding map.</li>
+                <li value="2"><em>deviceIMID</em> = the IMID of the device you wish to acknowledge.</li>
+                <li value="3"><em>message</em>: requires a URL-encoded text string</li>
+            </ul>
+            <p>
+                <br />There are several ways of finding these values:</p>
+            <ul>
+                <li value="1">Look in the web interface at the status window for a device, remove the trailing "!device.html" at the end, and replace that with "*acknowledge.cgi?message=....".</li>
+                <li value="2">Review the device table (you can view it using the HTTP API) and get the MapId and IMID.</li>
+            </ul>
+            <p>
+                <br />Example:&#160;This curl command sends the POST&#160;with the proper string to acknowledge the device:</p>
+            <pre class="code">curl --user admin:Pa55w0rd http://imserver:port/mapid/device/deviceIMID/*acknowledge.cgi?message=URL+encoded+text+string -d "dummy post data"
+        </pre>
+            <p>Example:&#160;This curl command retrieves the full list of devices and each device's address, MapID and IMID</p>
+            <pre class="code">curl --user admin:Pa55w0rd http://imserver:port/~export/devices.tab?fields=MapId,IMID,address,name
+        </pre>
+            <p>Example:&#160;You can also use this expression in Python to create the URL to POST:</p>
+            <pre class="code" xml:space="preserve">"http://imserver:port/%s/device/%s/*acknowledge.cgi?message=%s"  % (mapId, IMID,urllib.urlencode([('message', messageStr)]))
+"http://imserver:port/%s/device/%s/*acknowledge.cgi?message=%s"  % (mapId, IMID,URL+encoded+string)
+        </pre>
+            <p>&#160;</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

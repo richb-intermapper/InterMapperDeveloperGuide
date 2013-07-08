@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="Probe_File_Format" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="5" MadCap:lastHeight="1232" MadCap:lastWidth="1135">
+    <head><title></title>
+        <link rel="StyleSheet" href="../Resources/default.css" />
+    </head>
+    <body>
+        <h1 class="L2" style="page-break-before: always;">Anatomy of a Probe</h1>
+        <p>
+            <MadCap:keyword term="Probe Type" />
+            <MadCap:keyword term="Custom Probe File Format" />Probe files have several sections, several of which are common to all probe types. These are described below. </p>
+        <p>Each section contains 
+ a number of lines bracketed by </p><pre class="code">&lt;section-name&gt; ... &lt;/section-name&gt; </pre>
+        <p>You might want to open a separate window with the                <a href="tcpexample.html">example 
+ probe file<MadCap:xref href="tcpexample.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> while reading the subsequent sections. </p>
+        <h2>Sections common to all probes</h2>
+        <p class="dt"><a class="dt" href="header.html">The &lt;header&gt; Section<MadCap:xref href="header.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>
+        </p>
+        <p class="dd">Learn about the <span class="code">&lt;header&gt;</span> section of the probe definition, 
+ including how the probe is identified, how its name appears in the                <b><i>Probe 
+ Type</i></b> menu, and the version numbering system.</p>
+        <p class="dt"><a class="dt" href="description.html">The &lt;description&gt; Section<MadCap:xref href="description.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>
+        </p>
+        <p class="dd">The <span class="code">&lt;description&gt;</span> section specifies the help text that appears in the Set Probe window and typically explains the function of the 
+ probe and the use of its parameters. Format the description using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language<MadCap:xref href="IMML - InterMapper Markup Language.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>.</p>
+        <p class="dt"><a class="dt" href="parameters.html">The &lt;parameters&gt; Section<MadCap:xref href="parameters.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>
+        </p>
+        <p class="dd">The <span class="code">&lt;parameters&gt;</span> section defines the probe's parameters and how they are presented in the Set Probe window.</p>
+        <p class="dt">Display Sections</p>
+        <p class="dd">Each probe type has its own output section, which controls what appears in the device's Status window. In all probes, you format the appearance of Status window using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language<MadCap:xref href="IMML - InterMapper Markup Language.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>.</p>
+        <h2>Type-Specific Probe Sections</h2>
+        <p>Each probe type has sections that are specific to that probe type. </p>
+        <h3>Sections specific to SNMP&#160;Probes</h3>
+        <p>Each custom SNMP probe has:
+</p>
+        <ul>
+            <li><b><a href="snmp-device-variables.htm#devvar">An <span class="code"><MadCap:keyword term="Snmp-device-variables"></MadCap:keyword>&lt;snmp-device-variables&gt;</span> 
+    section<MadCap:xref href="snmp-device-variables.htm#devvar" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> - Specifies which MIB variables to collect from the device.</li>
+            <li><b><a href="Thresholds.htm">An <span class="code"><MadCap:keyword term="Snmp-device-threshold"></MadCap:keyword><MadCap:keyword term="Snmp-device-thresholds"></MadCap:keyword>&lt;snmp-device-thresholds&gt;</span> 
+    section<MadCap:xref href="Thresholds.htm" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status.</li>
+            <li><a href="snmp-device-display.htm#devdisp"><b>An <span class="code"><MadCap:keyword term="Snmp-device-display" />&lt;snmp-device-display&gt;</span> 
+    section<MadCap:xref href="snmp-device-display.htm#devdisp" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></b></a> - Specifies what information about the device and its links 
+ should be displayed in the Status window.</li>
+            <li><a href="snmp-device-properties.htm#devprop"><b>The <span class="code"><MadCap:keyword term="Snmp-device-properties" />&lt;snmp-device-properties&gt;</span> 
+    section<MadCap:xref href="snmp-device-properties.htm#devprop" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></b></a> - Specifies certain aspects of the SNMP queries sent to the 
+ device.</li>
+            <li><b><a href="snmp-device-alarmpoints.htm">The <span class="code">&lt;snmp-device-alarmpoints&gt;</span> Section<MadCap:xref href="snmp-device-alarmpoints.htm" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> - Allows you to define conditions under which the device changes a particular device state.</li>
+        </ul>
+        <h3>Sections specific to SNMP&#160;Trap Probes</h3>
+        <p>SNMP Trap Probes do not probe devices - they simply wait for traps to arrive. They have some sections that are common to SNMP Probes, but work somewhat differently.</p>
+        <ul>
+            <li><b><a href="snmp-device-variables-traps.htm#devvar">An <span class="code">&lt;snmp-device-variables&gt;</span> 
+    section<MadCap:xref href="#devvar" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> <![CDATA[ ]]><MadCap:keyword term="Snmp-device-variables"></MadCap:keyword>- Specifies which MIB variables to collect from the device. These are set automatically when a trap is received.</li>
+            <li><b><a href="Thresholds.htm">An <span class="code"><MadCap:keyword term="Snmp-device-threshold" /><MadCap:keyword term="Snmp-device-thresholds" />&lt;snmp-device-thresholds&gt;</span> 
+    section<MadCap:xref href="Thresholds.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></b> - Specifies how those variables are to be tested against thresholds 
+ to determine the device's status.</li>
+        </ul>
+        <h3>Sections Specific to TCP Probes</h3>
+        <p>Each custom TCP probe can have:</p>
+        <ul>
+            <li><a href="language.html"><b>A <span class="code">&lt;script&gt; </span>section<MadCap:xref href="language.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></b></a> - This contains the probe's script. Scripts are written in InterMapper's <a class="dt" href="language.html#scriptinglanguage">TCP&#160;Probe Scripting Language<MadCap:xref href="language.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>&#160;, which uses a sequence of commands and program flow that is similar to Basic. A rich set of <a href="commandref.html">TCP commands<MadCap:xref href="commandref.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> is available.</li>
+            <li><a href="tcpscriptoutputsection.htm"><b>A <span class="code">&lt;script-output&gt;</span> section<MadCap:xref href="tcpscriptoutputsection.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></b></a> - This contains the probe's output, which is displayed in the Status window. Format the Status window using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup language<MadCap:xref href="IMML - InterMapper Markup Language.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>.</li>
+        </ul>
+        <h3>Sections Specific to Command-line Probes</h3>
+        <p>Each command-line probe also has:</p>
+        <ul>
+            <li><a href="command-line-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-line&gt;</span> section<MadCap:xref href="command-line-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> - builds the command-line, specifying the command path and any paramters to be sent with the command.</li>
+            <li><a href="command-exit-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-exit&gt;</span> section<MadCap:xref href="command-exit-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> - allows you to control the state of the device, depending on what is returned from the script.</li>
+            <li><a href="Probe_Tool_Section.htm"><b>The <span class="code">&lt;tool&gt;</span> section<MadCap:xref href="Probe_Tool_Section.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></b></a>&#160;- contains the code for a companion script that is executed by the probe.</li>
+            <li><a href="command-display-section.htm" style="font-weight: bold;">The <span class="code">&lt;command-display&gt;</span> section<MadCap:xref href="command-display-section.htm" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> - allows you to control what appears in the device's Status window.</li>
+        </ul>
+        <h3>Other Information about Probes</h3>
+        <p class="dt"><a class="dt" href="comments.html">Comments<MadCap:xref href="comments.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>
+        </p>
+        <p class="dd">All probes use the same format for comments. The comment format is similar to HTML comments.</p>
+        <p class="dt"><a href="header.html#locations">Probe File Locations<MadCap:xref href="header.html#locations" target="" title="" alt="" class="ListOfPageNumber" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a> and <a href="header.html#probefilenames">Probe File Names<MadCap:xref href="header.html#probefilenames" target="" title="" alt="" class="ListOfPageNumber" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a></p>
+        <p class="dd">To use probe files, you must import them, and should follow recommended naming conventions. </p>
+        <p class="dt"><a href="installing.html">Installing and Reloading Probes<MadCap:xref href="installing.html" target="" title="" alt="" MadCap:conditions="Primary.print"> (Pg 1)</MadCap:xref></a>
+        </p>
+        <p class="dd"> Before a modification to a probe 
+ becomes effective, you need to click the <b><i><MadCap:keyword term="Reload" />Reload probes...</i></b><MadCap:keyword term="Get Info window" /><MadCap:keyword term="Alert" /> button in 
+ the Set Probe window (circular arrow icon below the left pane of the window).</p>
+    </body>
+</html>

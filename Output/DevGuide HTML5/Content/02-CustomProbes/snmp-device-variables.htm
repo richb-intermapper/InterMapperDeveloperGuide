@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|SNMP Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;snmp-device-variables&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The <span class="code">&lt;snmp-device-variables&gt;</span> Section<madcap:keyword term="Variable-name OID;Var;Probe Variables" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /></h1>
+            <p>Use the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor148"></a><a name="kanchor149"></a> 
+  section to specify the values you want to retrieve using a particular SNMP OID. 
+ These values, called                                <i>probe variables</i>, can then be compared to thresholds 
+ to create alarms, warnings, etc.</p>
+            <p>Each line of the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor150"></a> 
+  section defines a particular variable to be retrieved. The definition is composed 
+ of four comma-separated attributes:</p><pre class="code">[Variable-name], [OID], [Type], [Chart-legend]</pre>
+            <h3>Sample <span class="code">&lt;snmp-device-variables&gt;</span> 
+  Section </h3><pre class="code">&lt;snmp-device-variables&gt;<br style="mc-tag-and-class: ;"></br>&#160;&#160;--Variable-name&#160; OID --- TYPE ---- CHART LEGEND ------<br style="mc-tag-and-class: ;"></br>&#160;&#160;ipForwDatagrams, 1.3.6.1.2.1.4.6.0, PER-SECOND, "Forwarded datagrams"<br style="mc-tag-and-class: ;"></br>&#160;&#160;ipInHdrErrors, &#160;&#160;1.3.6.1.2.1.4.4.0, PER-MINUTE, "IP received header err"<br style="mc-tag-and-class: ;"></br>&#160;&#160;tcpCurrEstab, &#160;&#160;&#160;1.3.6.1.2.1.6.9.0, DEFAULT, &#160;&#160;&#160;"Number of TCP conn's"<br style="mc-tag-and-class: ;"></br>&#160;&#160;sysDescr, &#160;&#160;&#160;&#160;&#160;&#160;&#160;1.3.6.1.2.1.1.1.0, DEFAULT<br style="mc-tag-and-class: ;"></br>&lt;/snmp-device-variables&gt;</pre>
+            <p><b>Note:</b> The OIDs above have a trailing ".0" to specify their full OID.<a name="kanchor151"></a><a name="kanchor152"></a><a name="kanchor153"></a><a name="kanchor154"></a><a name="kanchor155"></a><a name="kanchor156"></a><a name="kanchor157"></a><a name="kanchor158"></a><a name="kanchor159"></a></p>
+            <h2><a name="devdisp"></a><a name="kanchor160"></a>Status Window Text - The <span class="code">&lt;snmp-device-display&gt;</span> 
+  Section</h2>
+            <p>Use the <span class="code">&lt;snmp-device-display&gt;</span> 
+  to control the way information gathered during polling appears in the Status 
+ window. Create a <span class="code">&lt;snmp-device-display&gt;</span> section with the items to be displayed. 
+ For more information, see                                <a href="probestatuswindows.html" name="kanchor161">Customized Status Windows</a>.</p>
+            <p>
+                <madcap:keyword term="MIB" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />InterMapper retrieves MIB variables from a device and then tests them against thresholds.
+The
+<madcap:keyword term="SNMP" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="Snmp-device-variables" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><span class="code">&lt;snmp-device-variables&gt;</span><madcap:keyword term="OID" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="OID:defines" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="Values" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="Request:OID" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="Defines" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /><madcap:keyword term="Defines:OIDs" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /> section defines the OIDs of MIB variables that are to be retrieved. These values are called <i>probe variables</i> and can then be compared to thresholds to create alarms, warnings, etc.</p>
+            <p>
+                <madcap:keyword term="CHART LEGEND" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="Comma-separated" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="Type" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="Chart" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />Each line of the <span class="code">&lt;snmp-device-variables&gt;</span> section defines a particular variable to be retrieved. The definition is composed of four comma-separated attributes: </p><pre class="code">[VariableName], [OID], [Type], [Chart Legend]</pre>
+            <p>The definitions of these attributes are:</p>
+            <ul>
+                <li value="1"><b><madcap:keyword term="VariableName" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />VariableName</b> is the name used to represent the particular MIB value in this probe. For more information, see the <a href="builtinvariablereference.htm">Built-in Variable Reference</a> topic. 
+<br /></li>
+                <li value="2"><b>OID</b>
+                    <madcap:keyword term="OID:request" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="Request" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="SNMP Get-Next-Request" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="Object ID" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /> is the SNMP Object ID for the particular probe variable. The OID can be
+expressed as a string of dotted numbers or as an OID name, if the corresponding
+MIB has been imported into InterMapper. An OID can also be an expression, if the
+type is "CALCULATION" (<a href="#TypeNotes">see note below</a>).
+<br /></li>
+                <li value="3"><b>Type</b>
+                    <madcap:keyword term="Hexadecimal" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="DEFAULT" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="Default, Per-second" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="Total-value" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="Per-minute" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="PER-SECOND" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />- specifies how InterMapper displays a value. The type may be one of the following: 
+	<ul style="list-style-type: square;"><li value="1"><b>Default</b> - InterMapper deduces an applicable type from the SNMP type of the
+variable and displays it according to the "Format for DEFAULT types" table
+below.</li><li value="2"><b>Integer</b> - values are coerced to a numeric value. If you have a string value
+returned "78Fred", the value as INTEGER is 78.
+</li><li value="3"><b>Integer64</b> - values are coerced to a numeric value (up to 64-bits). If you have a string value returned "78Fred", the value as INTEGER is 78.</li><li value="4"><b>Hexadecimal</b> - If the value is a number, it is displayed as a hex number, preceded by "0x" (0xFFFFFFFF). 
+
+Otherwise, it is represented as a series of hex characters separated by spaces (44 61 72 77 69 6E 20 52 69 63 68 61 72). <i>This type is not chartable</i>.</li><li value="5"><b>Hexnumber</b> - converts a string of hexadecimal digits into a number. For example,
+a string value of "FE" is converted to the number 254. </li><li value="6"><b>Total-value</b> - displays the actual value of a counter or gauge, not a computed
+rate value. This is always an unsigned number.
+</li><li value="7"><b>Total64-value</b> - displays the actual value of a counter or gauge, not a computed rate value. This is always an unsigned number (up to 64-bits).</li><li value="8"><b>Per-second</b> and <b>Per-minute</b> - force InterMapper to compute a rate for the
+particular variable by computing the difference between two successive samples
+and dividing by the elapsed time.
+
+</li><li value="9"><b>String</b> - sets a variable to the text string that corresponds to this OID's
+enumerated type, as defined in the MIB. (see <a href="#EnumeratedValue">Enumerated Values</a> below)
+
+<i>This type is not chartable</i>.</li><li value="10"><b>Calculation</b> - sets the variable to the result of the calculation shown in the
+OID field.
+
+</li><li value="11"><b>TrapVariable</b> - sets a variable based on the value received from an SNMP trap. A
+complete discussion of Trap Variables is available in <a href="handlingtraps.htm">About Custom SNMP Trap Probes</a></li><li value="12"><b>IPADDRESS</b> - InterMapper displays a 4-byte octet string as an IPv4 address and a 16-byte octet string as an IPv6 address.<br /> <![CDATA[
+]]><br /><br /><b>Format for DEFAULT types</b> - All SNMP&#160;variables have an inherent type (one of the choices in the Type column below.) If a probe variable is declared as DEFAULT, InterMapper displays it according to this table:
+<br /><table><col style="width: 25em;" /><col style="width: 30.00em;" /><tr><td style="text-align: left;"><b>Type</b></td><td style="text-align: left;"><b>Displayed as:</b></td></tr><tr><td style="vertical-align: top;text-align: left;">Counter32, Counter64</td><td style="text-align: left;">Per-Second</td></tr><tr><td style="vertical-align: top;text-align: left;">Unsigned32 (Gauge)</td><td style="text-align: left;"> Total-Value</td></tr><tr><td style="vertical-align: top;text-align: left;">Integer</td><td style="text-align: left;"> Integer</td></tr><tr><td style="vertical-align: top;text-align: left;">OctetString</td><td style="text-align: left;"> String (if 1st digit printable) <br />Hexadecimal (if 1st digit not printable)</td></tr><tr><td style="vertical-align: top;text-align: left;">Object ID</td><td style="text-align: left;">String</td></tr><tr><td style="vertical-align: top;text-align: left;">IPAddress</td><td style="text-align: left;">String</td></tr><tr><td style="text-align: left;">TimeTicks</td><td style="text-align: left;">String</td></tr></table><br /></li></ul></li>
+                <li value="4"><b>Chart-legend</b>
+                    <madcap:keyword term="IP" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /> is an optional field that provides a text label to be placed on any strip charts that incorporate this variable. Chart legends may contain embedded variable names in the form $VariableName.</li>
+            </ul>
+            <p><b>Notes:</b><a name="TypeNotes"></a>
+            </p>
+            <ul>
+                <li value="1">
+                    <madcap:keyword term="Calculation Variables" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                    <madcap:keyword term="CALCULATION" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />Calculation variables have a slightly different form, as described below.</li>
+                <li value="2">See <a href="probecalculations.htm">Probe Calculations</a> for a description of the functions and operators that are
+available in expressions. A scalar's OID must end in ".0" according to the SNMP specifications. See <a href="snmpoids.htm">SNMP OIDs</a> for a description of allowable formats for OIDs
+</li>
+                <li value="3">See <a href="OnDemandTables.htm">On-Demand SNMP&#160;Tables</a> for a description of how your probe can display tabular
+information from a MIB.
+</li>
+                <li value="4">When InterMapper retrieves a value, by default it issues an SNMP
+Get-Next-Request for the previous OID, unless the pdutype is set to
+"get-request" (see <a href="probeproperties.htm">Probe Properties</a>.)<br /></li>
+            </ul>
+            <p class="pagebreakbefore">
+                <madcap:keyword term="Number" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="Number:TCP" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="TCP" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="TCP:Number" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="IpInHdrErrors" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="IpForwDatagrams" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="TcpCurrEstab" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="Forwarded datagrams" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+                <madcap:keyword term="SysDescr" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />Here is a sample <span class="code">&lt;snmp-device-variables&gt;</span> section.</p><pre class="code">&lt;snmp-device-variables&gt;
+   --Variable-name  OID ---            TYPE ----    CHART LEGEND ------
+   sysDescr,        1.3.6.1.2.1.1.1.0, DEFAULT,
+   sysLocation,     sysLocation.0,     DEFAULT,
+   ipInHdrErrors,   1.3.6.1.2.1.4.4.0, PER-MINUTE,  "IP received header err"
+   ifInOctets1,     ifInOctets.1,      DEFAULT,     "bytes/sec received on interface 1"
+   ifInOctets2,     ifInOctets.$if,    DEFAULT,     "bytes/sec received on interface ${if}"
+   TempF,           ($TempC * 1.8)+32, CALCULATION, "Degrees F"
+&lt;/snmp-device-variables&gt;</pre>
+            <ul>
+                <li value="1"><b>$sysDescr</b> is set by retrieving the OID 1.3.6.1.2.1.1.1.0 and using that value. It will be displayed as the default format, that is a string.</li>
+                <li value="2"><b>$sysLocation</b> is set by querying the OID sysLocation.0 (which is equivalent to the numeric 1.3.6.1.2.1.1.6.0). It, too, will be displayed as a string. Note that you can use a human-readable SNMP variable name instead of its numeric OID.</li>
+                <li value="3"><b>$ipInHdrErrors</b> is set by querying the OID 1.3.6.1.2.1.4.4.0, but will be displayed as a number of errors *per minute*.</li>
+                <li value="4"><b>$ifInOctets1</b> is set by querying the OID ifInOctets.1 (1.3.6.1.2.1.2.2.1.10.1). Note that the final digit is "1", indicating that it is reading row 1 of the values in the table. It will be displayed as a number of octets (byte) per second, since InterMapper's default display format for a counter is "per-second".</li>
+            </ul>
+            <p>The next two examples are controlled by variables that have been set elsewhere, perhaps set manually in the <span class="code">&lt;parameters&gt;</span> section of the probe.</p>
+            <ul>
+                <li value="1"><b>$ifInOctets2</b> is set by first evaluating the variable <span class="code">$if</span>, then substituting that value into the OID. If $if were set to "1", then <span class="code">$ifInOctets</span> would retrieve<span class="code"> ifInOctets.1</span>, and would result in the same value as <span class="code">$ifInOctets1</span>. Note that <span class="code">$if</span> is also used in the variable's legend.</li>
+                <li value="2"><b>$TempF</b> is a "calculation" variable. It is set by evaluating the expression <span class="code">($TempC * 1.8)+32</span> where <span class="code">$TempC</span> was set elsewhere.</li>
+            </ul>
+            <h2>SNMP Scalar and Table Values</h2>
+            <p>SNMP has two kinds of values: <i>table</i> and <i>scalar</i> values.</p>
+            <ul>
+                <li value="1">A <b>table</b> value is an element of a table: the variable name (e.g. <span class="code">ifInOctets</span>) is the name of a column; the final digit (or digits) is the index for the element; it defines the table row containing the element. Thus <span class="code">ifInOctets.1</span> is the full OID for the value in the first row of the <span class="code">ifInOctets </span>column.</li>
+                <li value="2">A <b>scalar</b> value is "one of a kind" - there is only a single value, so you must specify a ".0" after the name to indicate that it's the only "row". For example, sysDescr can be represented as <span class="code">1.3.6.1.2.1.1.1.0</span> or <span class="code">sysDescr.0</span>. Both OIDs end in ".0".</li>
+            </ul>
+            <h2>Using Variables in OIDs and Legends</h2>
+            <p> You can use SNMP variables in OIDs and legends. The example below uses <span class="code">$if</span> as the OID&#160;index, and displays it in the legend.</p>
+            <p class="code">ifInOctets2, ifInOctets.$if, DEFAULT, "bytes/sec received on interface ${if}"</p>
+            <h2><a name="calculation"></a>Calculation Variables</h2>
+            <p>A <i>Calculation </i>type variable receives the result of an arithmetic expression. After all variables have been polled, InterMapper calculates the expression, and sets the value of its variable to the result. In the example above:</p><pre class="code">TempF,  ($TempC * 1.8)+32, CALCULATION, "Degrees F"</pre>
+            <p>
+                <madcap:keyword term="Chartable" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />The variable "TempF" is set to the value of the expression <span class="code">(10 * sin(0.01 * time())</span>. This gives a sine wave that makes an attractive chartable value. Use "$SineValue" to refer to the variable elsewhere in the probe.</p>
+            <h2>Built-in Variables</h2>
+            <p>InterMapper provides a number of built-in variables, detailed in the <a href="builtinvariablereference.htm">Built-in Variable Reference</a> topic. </p>
+            <h2><a name="macros"></a>Macros</h2>
+            <p>InterMapper also supports several macros that can help control the output of variables, as well as their use in charts. </p>
+            <ul>
+                <li value="1">${chartable[:fmt]: expr}</li>
+                <li value="2">${variablename:legend}</li>
+                <li value="3">${eval: expr}</li>
+                <li value="4">${scalable10} and ${scalable2}</li>
+            </ul>
+            <p>These are detailed in the Built-in Variable Reference topic's  <a href="builtinvariablereference.htm#Macros">Macros section</a>.</p>
+            <h2>Enumerated Values<a name="EnumeratedValue"></a></h2>
+            <p>Many MIBs use an integer to represent one of several states. For example,<span class="code">
+ifOperStatus</span> (1.3.6.1.2.1.2.2.1.8.x) is defined in MIB-II as:
+</p><pre class="code">INTEGER { up(1), down(2), testing(3) }
+</pre>
+            <p>This means that the value 1 represents the "up" condition; 2 represents "down";
+and 3 represents "testing".</p>
+            <p> 
+
+The type you use when you define the variable affects the result:</p>
+            <ul>
+                <li value="1">If you define a variable to retrieve this value as INTEGER or DEFAULT, the probe
+displays the value as a number. </li>
+                <li value="2">If you define it as a STRING, the probe uses the MIB to find the string representation, and sets the variable (in this case) to the
+value "up", "down", or "testing".</li>
+            </ul>
+            <p class="code" xml:space="preserve">-- If the MIB has been imported, the string is displayed in the output if the variable is declared as STRING.
+
+&#160;&#160;variable1, ifOperStatus.3, STRING, ""
+
+-- The integer value is always used in the output if the variable is declared as DEFAULT&#160;or INTEGER.
+
+&#160;&#160;variable2, ifOperStatus.3, DEFAULT, ""
+&#160;&#160;variable3, ifOperStatus.3, INTEGER, ""</p>
+            <p>If the OID or MIB name isn't defined (because the corresponding MIB hasn't been
+imported or because of a typo), the probe displays the integer value.
+</p>
+            <h2>Alternatives to Enumerated Values</h2>
+            <p>If no MIB file is available, you can create a calculation variable to select  a string based on the numeric value returned.</p>
+            <p><b>Example:</b> Two choices</p><pre class="code" xml:space="preserve">-- If you have two choices, use a conditional expression: <br />&#160;&#160;&#160;xxxx ? yyyy : zzzz<br /><br />-- It can be read as:   <br />if xxxx is true then <br />&#160;&#160; return yyyy<br />otherwise <br />&#160;&#160; return zzzz<br /><br />--&#160;The variable looks like this:<br />&#160;&#160;&#160;xxxxStr, ($xxxx == 0 ? "yyyy" : "zzzz"), CALCULATION, "replacement string for $xxxx"<br /></pre>
+            <p><b>Example:</b> Three or more choices</p><pre class="code" xml:space="preserve">-- Chain the expression:<br />   aaaa ? bbbb : cccc ? dddd : eeee ? ffff : gggg<br /><br />-- Can be read as:<br />if aaaa is true then 
+&#160;&#160;  return bbbb 
+else if cccc is true 
+&#160;&#160;  return dddd 
+else if eeee is true 
+&#160;&#160;  return ffff <br />else return gggg <br /><br />-- Generally, aaaa, cccc, and eeee test to see if a single  variable is equal to 1, 2, 3, etc. <br /><br />-- The calculation variable then looks like  this:<br />&#160;&#160;&#160;aaaaStr, ($aaaa==0 ? "bbbb" : $aaaa==1 ? "dddd" : $aaaa==2 ? "ffff" : "gggg"), CALCULATION, "replacement string for aaaa"<br /></pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

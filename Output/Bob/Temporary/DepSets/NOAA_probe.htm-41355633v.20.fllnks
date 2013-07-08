@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet
+  FileSearchable="true"
+  FileTimeEstimate="0"
+  FilePriority="0">
+  <Links>
+    <Link
+      Url="http://www.weather.gov/xml/current_obs/" />
+    <Link
+      Url="Content/02-CustomProbes/builtinvariablereference.htm" />
+    <Link
+      Url="Content/02-CustomProbes/Probe_Tool_Section.htm" />
+    <Link
+      Url="http://docs.python.org/library/urllib2.html" />
+    <Link
+      Url="http://docs.python.org/library/xml.dom.minidom.html" />
+    <Link
+      Url="http://diveintopython.org/xml_processing/" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </Links>
+  <LongLinks>
+    <Link
+      Url="http://www.weather.gov/xml/current_obs/" />
+    <Link
+      Url="Content/02-CustomProbes/builtinvariablereference.htm" />
+    <Link
+      Url="Content/02-CustomProbes/builtinvariablereference.htm#commandlinevariables" />
+    <Link
+      Url="Content/02-CustomProbes/Probe_Tool_Section.htm" />
+    <Link
+      Url="http://docs.python.org/library/urllib2.html" />
+    <Link
+      Url="http://docs.python.org/library/xml.dom.minidom.html" />
+    <Link
+      Url="http://diveintopython.org/xml_processing/" />
+    <Link
+      Url="Project/ConditionTagSets/Primary.flcts" />
+  </LongLinks>
+  <Anchors />
+  <Keywords />
+  <Concepts />
+  <ConceptControlNames />
+  <IndexControlNames />
+  <Variables />
+  <FileConditions />
+  <FileTags />
+  <AllConditions>
+    <Condition
+      Tag="Primary.print" />
+  </AllConditions>
+  <Stylesheets />
+</CatapultFileLinkSet>

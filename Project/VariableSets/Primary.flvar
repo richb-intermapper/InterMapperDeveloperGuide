@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultVariableSet>
+  <Variable
+    Comment=""
+    Name="CompanyName">Dartware</Variable>
+  <Variable
+    Comment=""
+    Name="PhoneNumber">877-276-6903</Variable>
+  <Variable
+    Name="CurrentVersion"
+    Comment="Currently used in What's New"
+    Definition="Some text">5.6</Variable>
+  <Variable
+    Name="CurrentFlowsVersion"
+    Comment=""
+    Definition="Some text">1.2.1</Variable>
+  <Variable
+    Name="PythonVersion"
+    Definition="Some text">2.6</Variable>
+  <Variable
+    Name="CurrentIMReleaseDate"
+    Comment=""
+    Definition="Some text">January 2013</Variable>
+  <Variable
+    Name="CurrentVersionMajor"
+    Comment=""
+    Definition="Some text">5.6</Variable>
+  <Variable
+    Name="ReleaseMonth"
+    Comment=""
+    Definition="Some text">January 2013</Variable>
+  <Variable
+    Name="Copyright"
+    Comment=""
+    Definition="Some text">2012</Variable>
+</CatapultVariableSet>

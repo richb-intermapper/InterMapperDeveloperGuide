@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|Command Line Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Command Line Probe Example</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Command Line Probe Example</h1>
+            <p>The following shell script is called from the command-line probe:</p><pre class="code">#!/bin/sh
+# Expects an address passed in. Passes out the address and a pretend result.
+# Note that we use "\$" instead of just "$" because "$" has special meaning
+# in a shell script.
+echo "\{ \$addr := \"$1\", \$result :=1.2345 } Note that everything after the brace is used as the reason."
+</pre><pre class="code">&lt;!-- 
+  <a name="kanchor565"></a>Simple Command Line Example (com.dartware.cmd.simple) 
+  Copyright (c) 2007 Dartware, LLC. All rights reserved. 
+--&gt; 
+
+&lt;header&gt; 
+  type = "cmd-line" 
+  package = "com.dartware" 
+  probe_name = "cmd.simple" 
+  human_name = "Simple Command Line Output Example" 
+  version = "1.0" 
+  address_type = "IP" 
+&lt;/header&gt; 
+
+&lt;description&gt; 
+This probe shows how to use the specially-formatted output from the
+simple shell script listed above for display in the command-display
+section, rather than being set to the reason as is usual for
+command-line probes.
+&lt;/description&gt; 
+
+&lt;parameters&gt; 
+&lt;/parameters&gt; 
+
+&lt;command-line&gt; 
+  path = "" 
+  cmd = "simple.sh ${ADDRESS}" 
+&lt;/command-line&gt; 
+
+&lt;command-exit&gt; 
+  down: ${EXIT_CODE} = 2 
+  alarm: ${EXIT_CODE} = 1 
+  okay: ${EXIT_CODE} = 0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt;
+  \B5\Simple Probe Information\0P\
+&#160;&#160;Output from $addr is $result (${chartable: #.#### : $result})
+&lt;/command-display&gt;
+</pre>
+            <p> For more information about Nagios, visit the web site at <a href="http://www.nagios.org">http://www.nagios.org</a>. 
+ Nagios® and the Nagios logo are registered trademarks of Ethan Galstad.
+</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

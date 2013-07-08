@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|Troubleshooting" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Errors with Custom Probes</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 MadCap:conditions="Primary.online"><a name="kanchor592"></a><a name="kanchor593"></a>Errors with Custom Probes</h1>
+            <p>When working with custom probes, you may see results that you don't expect. 
+ Here are some common problems.</p>
+            <h2>Error: "Undefined variable" in Debug log</h2>
+            <p>When processing a probe, InterMapper will not evaluate an expression if it detects a variable that is not defined. A variable will be undefined if it is not in the symbol table. This could happen because:</p>
+            <ul>
+                <li value="1"> there is a typo in the variable name</li>
+                <li value="2">the value for the variable was not returned in a SNMP response</li>
+                <li value="3">the value was not set earlier in the probe processing</li>
+            </ul>
+            <p>In this case, InterMapper will emit the following message in the Debug log file:</p><pre class="code">
+Calculation error in rule (probe: com.dartware.example, expression: 
+&#160;&#160;"($oid  0)"): Undefined variable: '$oid'</pre>
+            <p>To guard against these error messages (where it may be a legitimate case that a particular variable is undefined) you may use the "defined()" function in  the expression:</p><pre class="code"> warning: defined("oid") &amp;&amp; ($oid&gt; 0) "Warning condition string"</pre>
+            <h2><b><a name="kanchor594"></a><a name="kanchor595"></a>Error: A device shows a "Reason: No SNMP Response." at the bottom of the 
+ status window.</b>
+            </h2>
+            <p>There are several reasons that InterMapper might not be able to retrieve SNMP 
+ information from a device. The two most common are </p>
+            <ul>
+                <li value="1"> The device doesn't speak SNMP</li>
+                <li value="2">You haven't entered the proper SNMP read-only community string. </li>
+            </ul>
+            <p><a name="kanchor596"></a><i>About SNMP</i>, located in the Troubleshooting section of the <a href="http://dartware.com/go.php?to=intermapper.userguide" target="_blank">User Guide</a>, lists many other reasons.</p>
+            <h2><b><a name="kanchor597"></a>Error: When I build a custom probe, the status window shows "[N/A]" for 
+ certain values.</b>
+            </h2>
+            <p><a name="kanchor598"></a> This probably means that there is an error with the OID for one of the device 
+ variables. </p>
+            <p><a name="kanchor599"></a><a name="kanchor600"></a>Open the Debug window, and look 
+ for entries in this format:</p><pre class="code"><a name="kanchor601"></a><a name="kanchor602"></a>12:57:00 router.example.net.: SNMP error status [[query = 28]] noSuchName (2), index = 3 <br />1) 1.3.6.1.2.1.1.3: NULL <br />2) 1.3.6.1.2.1.1.1: NULL <br />3) 1.3.6.1.7.1.1.4: NULL <br />4) 1.3.6.1.2.1.1.6: NULL</pre>
+            <p>Note that the first line above shows a "noSuchName" error for
+index 3. Look at the subsequent lines to find item 3, and check
+that OID very carefully. In this example, the proper OID should
+have a "2" in place of the "7" that's there.</p>
+            <h2><b>Error: When I build a custom probe, the status window shows "[noSuchName]" 
+ for certain values.</b>
+            </h2>
+            <p> This probably means that there is an error with the OID for one of the device 
+ variables. </p>
+            <p>Open the Debug window, and look 
+ for entries in this format.</p><pre class="code"><a name="kanchor603"></a><a name="kanchor604"></a>13:17:59 OID Error: GetNextRequest from 192.168.1.1 expected 1.3.6.1.2.1.2.2.1.2.10; got 1.3.6.1.2.1.2.2.1.3.1</pre>
+            <p><a name="kanchor605"></a><a name="kanchor606"></a>In this case, the desired value is from a non-existent table row. (The OID 
+ 1.3.6.1.2.1.2.2.1.2 is the ifDescr for an interface on a device. The index (.10) 
+ indicates which row to retrieve. But when InterMapper requested that row, it 
+ learned it was not present.) Consequently, InterMapper displays the "noSuchName" 
+ value.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

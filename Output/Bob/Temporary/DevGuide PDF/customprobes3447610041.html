@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="5" MadCap:lastHeight="43" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Creating Your Own Probes</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 MadCap:conditions="Primary.print" MadCap:xrefTargetName="Creating Your Own Probes" MadCap:sourceTitle="Creating Your Own Probes"><a MadCap:generatedBookmark="TOC" name="Creating Your Own Probes"></a>Creating Your Own Probes</h1>
+        <p>
+            <MadCap:keyword term="LDAP" />For many Internet services, simply "pinging" a device is not a sufficient test of whether it is operating correctly. InterMapper has a number of built-in probes that can test different aspects of a device's operation, whether it's a web server, router, database, LDAP server etc. </p>
+        <p>However, InterMapper's built-in probes may not test the kinds of devices you want to monitor, or may not test them ways that are most useful to you. In such a case, you can create your own probes. InterMapper's probes are defined by <i>probe files</i>, simple text files that can be duplicated and modified using any standard text editing utility. When you create your own probe, it becomes a first-class citizen and appears in the                    Set Probe window along with the built-in probes.</p>
+        <h2>What is a probe?</h2>
+        <p>A probe is a text file that specifies the way in which InterMapper tests a device. It is essentially a plug-in. All of InterMapper's probes follow the same logic:</p>
+        <ul>
+            <li value="1">
+                <MadCap:keyword term="SNMP" />
+                <MadCap:keyword term="TCP" />
+                <MadCap:keyword term="UDP" />
+                <MadCap:keyword term="Sending:SNMP" />
+                <MadCap:keyword term="AppleTalk datagrams" />The probe sends one or more queries, as SNMP requests or UDP datagrams or over a TCP connection to the device being tested.
+</li>
+            <li value="2"> The device responds (or fails to respond).
+</li>
+            <li value="3">
+                <MadCap:keyword term="DOWN" />If there is no response, InterMapper sets the device's status to DOWN.
+</li>
+            <li value="4"> InterMapper examines the response(s) from the device, and sets the device's status accordingly.
+</li>
+        </ul>
+        <h2>Parts of a Probe</h2>
+        <p>All of the probe types listed below follow a similar structure. This is outlined in <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Anatomy_of_a_Probe.htm">Anatomy of A Probe<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Anatomy_of_a_Probe.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Anatomy of a Probe"> (Pg 1)</MadCap:xref></a>, which explains the common sections of a probe, and the sections that are specific to a particular probe type.</p>
+        <h2>Types of Probes</h2>
+        <p>InterMapper has several kinds of probes. You can use InterMapper's built-in probes as-is, you can copy and modify them, or you can develop your own probes from scratch. These are the different probe types:</p>
+        <ul>
+            <li value="1"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/customsnmpprobes.html"><b>SNMP Probes</b><MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/customsnmpprobes.html" target="" title="" alt="" MadCap:conditions="Primary.print" style="font-weight: bold;" MadCap:xrefTarget="SNMP Probes"> (Pg 1)</MadCap:xref></a> <![CDATA[ ]]><MadCap:keyword term="Sending" /> - InterMapper tests the device's status by sending SNMP queries and comparing the results to 
+	user-specified thresholds. </li>
+            <li value="2"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/handlingtraps.htm"><b>SNMP Trap Probes</b><MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/handlingtraps.htm" target="" title="" alt="" MadCap:conditions="Primary.print" style="font-weight: bold;" MadCap:xrefTarget="SNMP Trap Probes"> (Pg 1)</MadCap:xref></a> - InterMapper can receive and process SNMP traps, and can set the status of a probe based on the contents of the trap's variables. You can create custom probes that alert you to problems in a certain device based on the contents of specific trap variables.<br /></li>
+            <li value="3"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/TCP_Probes.htm"><b>TCP Probes</b><MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/TCP_Probes.htm" target="" title="" alt="" MadCap:conditions="Primary.print" style="font-weight: bold;" MadCap:xrefTarget="TCP Probes"> (Pg 1)</MadCap:xref></a> - InterMapper establishes a TCP connection to a device. It then sends certain requests and evaluates the 	
+	responses to determine the device's status. 
+	TCP probes uses the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/language.html">TCP Probe Scripting language<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/language.html" target="" title="" alt="" MadCap:conditions="Primary.print" style="font-weight: normal;" MadCap:xrefTarget="The &lt;script&gt; Section"> (Pg 1)</MadCap:xref></a> to create a sequence of commands, branching to different parts of the script under specified conditions.<br /></li>
+            <li value="4"><a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/commandlineprobes.htm"><b>Command-line Probes</b><MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/commandlineprobes.htm" target="" title="" alt="" MadCap:conditions="Primary.print" style="font-weight: bold;" MadCap:xrefTarget="Command Line Probes"> (Pg 1)</MadCap:xref></a> - InterMapper can invoke a program or script (as if "from the command line"), and use the results to 
+	determine the device's status.
+	</li>
+            <li value="5"><b>Big Brother Probes</b> - Big Brother™ is an open-source network monitoring program. InterMapper listens for reports from 
+	Big Brother clients and sets the device's status accordingly.
+	</li>
+        </ul>
+        <p>It's fairly straightforward to modify the existing files to produce new probes. If you make a new probe file that might be useful, please consider sending it to us. See <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Sharing_Custom_Probes.htm">Sharing Probes<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/Sharing_Custom_Probes.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="Sharing Probes"> (Pg 1)</MadCap:xref></a> for more information.</p>
+    </body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|TCP Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;script&gt; Section</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The <span class="code">&lt;script&gt;</span> Section</h1>
+            <p>Use the <span class="code">&lt;script&gt;</span> section of a TCP probe to define a sequence of commands the probe uses to interact with and query a device, and to interpret the responses from the device.&#160;The <span class="code">&lt;script&gt;</span> section uses the TCP&#160;Probe Scripting Language, (described below) a sequential language with a <a href="commandref.html">rich set of commands</a>.<br></br></p><pre class="code">&lt;script&gt;<br />&#160;&#160;&#160;...<br />&lt;/script&gt;</pre>
+            <h2><a name="scriptinglanguage"></a>TCP Probe Scripting Language</h2>
+            <p>Use the InterMapper TCP Probe Scripting language to create custom 
+ probes. You can use script statements to send data to the device being 
+ tested, to examine responses from that device, and to return a status 
+ based on the response. To view a TCP&#160;Probe script example, see <a href="tcpexample.html" name="kanchor288">Example 
+ TCP Probe File</a>.</p>
+            <ul>
+                <li value="1"><a href="#flow" name="kanchor289">Script Process Flow</a>
+                </li>
+                <li value="2"><a href="#commands" name="kanchor290">Script Command Format</a>
+                </li>
+                <li value="3"><a href="#strings" name="kanchor291">String Argument Format</a>
+                </li>
+                <li value="4"><a href="#matching" name="kanchor295">String Matching</a>
+                </li>
+                <li value="5"><a href="#numeric" name="kanchor296">Numeric Argument Format</a>
+                </li>
+                <li value="6"><a href="#labels" name="kanchor298">Using Labels for Program Control</a>
+                </li>
+                <li value="7"><a href="#variables" name="kanchor302">Using Variables</a>
+                </li>
+                <li value="8"><a href="#failures" name="kanchor303">Handling Script Failures</a>
+                </li>
+                <li value="9"><a href="#comments" name="kanchor307">Adding Comments</a>
+                </li>
+            </ul>
+            <h2><a name="flow"></a>Script Process Flow</h2>
+            <p><a name="kanchor311"></a>Each probe has a common process flow. It sends data (as a datagram or 
+ over a TCP connection) to the device to be tested, then examines any responses. 
+ Based on responses, the probe sets the device status (<i><a name="kanchor312"></a><a name="kanchor313"></a><a name="kanchor314"></a><a name="kanchor315"></a><a name="kanchor316"></a>UP, DOWN, CRITICAL, ALARM, 
+ WARN, OK</i>). It also sets a                           <i>condition string</i>, which contains 
+ a text description of the state.</p>
+            <h2><a name="commands"></a>Script Command Format</h2>
+            <p>All script command keywords have the following requirements:</p>
+            <ul>
+                <li value="1">All commands are 4 letters long.</li>
+                <li value="2">All commands are case-sensitive.</li>
+                <li value="3"><a name="kanchor317"></a><a name="kanchor318"></a>All commands MUST be in UPPER CASE.</li>
+                <li value="4">There must be white space between a command and each argument. 
+ You can include other text (e.g. comments) after the first argument, as 
+ long as it is separated by white space from the remaining arguments.</li>
+            </ul>
+            <p class="pagebreakbefore"><b style="font-weight: bold;">Example:</b>
+            </p>
+            <p>The <i><b><a name="kanchor319"></a>MTCH </b></i>command has the format </p><pre class="code">MTCH "string" #fail
+</pre>
+            <p>The command statement <a name="kanchor320"></a><a name="kanchor321"></a></p><pre class="code">MTCH "blah" else goto #7 
+</pre>
+            <p>is treated exactly the same as </p><pre class="code">MTCH "blah" #7 
+</pre>
+            <p>When parsing the statement, InterMapper ignores the "else goto" 
+ part. This allows you to include comments to make the behavior of the 
+ script more obvious. This extraneous text does not have to be in uppercase.</p>
+            <h2><a name="strings"></a>String Argument Format</h2>
+            <p>Some commands take string arguments. </p>
+            <ul>
+                <li value="1">String arguments must be enclosed in double-quotes. 
+ </li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">"This is a string"
+</pre>
+            <h3 class="pagebreakbefore"><a name="kanchor322"></a>Special Characters</h3>
+            <p>The following special characters may be included by using a backslash 
+ escape code:</p>
+            <table>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\r</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor323"></a>Carriage Return</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\n</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor324"></a><a name="kanchor325"></a>Unix Linefeed</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\t</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor326"></a>Horizontal Tab</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\f</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor327"></a>Formfeed</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\b</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">Backspace</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\v</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor328"></a>Vertical Tab</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\a</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">Alert (bell) Character</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\"</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor329"></a>Double Quote</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\\</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">Backslash</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\ooo</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor330"></a>Octal Number</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;width: 40px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right" width="40px"><b style="font-weight: bold;">\xhh</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor331"></a>Hexadecimal Number</td>
+                </tr>
+            </table>
+            <p><b style="font-weight: bold;"><a name="kanchor332"></a>Special Character Example:</b>
+            </p><pre class="code">"\tThis sentence is preceded by a tab, and followed by a carriage return and linefeed.\r\n"
+</pre>
+            <h2><a name="matching"></a>String Matching</h2>
+            <p>The MTCH and EXPT commands both specify a string to match. When specifying the string, you can use regular expressions. See Wildcard Matching, below.</p>
+            <h3><a name="kanchor333"></a><a name="kanchor334"></a><a name="kanchor335"></a><a name="kanchor336"></a>Controlling Case-Sensitivity</h3>
+            <ul>
+                <li value="1">By default, string-matching is case-sensitive. </li>
+                <li value="2"><a name="kanchor337"></a>Place an 'i' after the final quote if you want the 
+ matching to be case-insensitive.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Examples:</b>
+            </p>
+            <p><a name="kanchor338"></a>"fred" matches only "fred".<br />"fred"i matches "fred", "FRED", 
+ or "FrEd".</p>
+            <h3 class="pagebreakbefore"><a name="kanchor339"></a>Wild-card Character Matching</h3>
+            <P>In some cases, it is convenient to match a more general pattern. You can use 
+simple regular expressions to match patterns and place them into variables.</P>
+            <P>To use regular expressions in MTCH and EXPT:</P>
+            <UL>
+                <li value="1">Place an '<B style="FONT-STYLE: italic">r</B>' after the closing quote of 
+  the match string to indicate that the contents of the string is a regular 
+  expression. </li>
+                <li value="2">Place an '<B style="FONT-STYLE: italic">i</B>' after the closing quote of 
+  the match string to indicate that the match is case-insensitive.  </li>
+                <li value="3">An expression inside round brackets (parentheses) creates a match group 
+  and places matched text within a numbered variable. The first variable is 
+  ${1}, the second is ${2}, and so on.  </li>
+                <li value="4">A subsequent MTCH or EXPT command resets the variables, so you should make 
+  a copy of the contents into another variable after a match. See the example 
+  below. </li>
+            </UL>
+            <p>
+                <B style="FONT-WEIGHT: bold">Simple Example:</B>
+            </p>
+            <P>&#160;"red"r matches "fred", "Fred", "tred", "bred", etc. It does 
+not match "freD" unless you include the "i" after the string.</P>
+            <P>
+                <B style="FONT-WEIGHT: bold">More Complex Example:</B>
+            </P>
+            <P>Given the following returned data:</P><pre class="code">"var1=12 var2=1234.00 var3=45" </pre>
+            <P>You match and store each data variable into an InterMapper variable:</P><pre class="code" xml:space="preserve">MTCH m"var1=([0-9]+)"i else goto +1 (skip the next STOR line) <br /><br />STOR "var1" "${1}" 
+MTCH m"var2=([0-9]+)"i else goto @BLAH <br />STOR "var2" "${1}" 
+MTCH m"var3=([0-9]+)"i else goto @BLAH&#160;<br />STOR "var3" "${1}" </pre>
+            <P>Note: True Regex groups and the Alternate operator ( | ) are not 
+supported.</P>
+            <h2><a name="numeric"></a>Numeric Argument Format</h2>
+            <p>Some commands take numeric arguments. </p>
+            <ul>
+                <li value="1">Numeric arguments are formed using a # sign followed 
+ by digits.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b><a name="kanchor340"></a>
+            </p><pre class="code">WAIT #30
+</pre>
+            <h3 class="pagebreakbefore"><a name="kanchor341"></a>Using Numeric Arguments with the GOTO Command</h3>
+            <p><a name="kanchor342"></a>In many cases, numeric arguments are used to specify the script statement 
+ number to go to when a failure occurs. A special notation allows you to 
+ express these jumps as relative offsets. </p>
+            <ul>
+                <li value="1">Include a sign ('+' or '-') after the # to express 
+ a relative offset from the current statement.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">GOTO #+2
+</pre>
+            <h3><a name="kanchor343"></a><a name="kanchor344"></a>Default Values and Script Termination</h3>
+            <ul>
+                <li value="1">If a command takes a numeric argument, but you do 
+ not include it, the default value is 0. </li>
+                <li value="2">If you specify 0 as the statement to goto when the 
+ script fails, the script is terminated with a <i>DOWN</i> condition.</li>
+            </ul>
+            <h2><a name="labels"></a>Using Labels for Program Control</h2>
+            <p>Use a label as script marker to which you can jump from elsewhere in 
+ the script. </p>
+            <p>Labels take the form:<a name="kanchor345"></a></p><pre class="code">@label_name
+</pre>
+            <ul>
+                <li value="1">Labels must be alone on a line.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b><a name="kanchor346"></a>
+            </p><pre class="code"> @IDLE
+</pre>
+            <h3><a name="kanchor347"></a><a name="kanchor348"></a>Jumping to a Label</h3>
+            <p>Use the <i>GOTO</i> command to jump to a label.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">WAIT #30 seconds else goto @IDLE
+</pre>
+            <h3 class="pagebreakbefore"><a name="kanchor349"></a><a name="kanchor350"></a><a name="kanchor351"></a>Using Relative Offsets to Transfer Control</h3>
+            <p>You can specify an offset for the <i>GOTO</i> command</p>
+            <p>Specify a offset (in statements) "#+n" or "#-n" 
+ to jump forward or backward <i>n</i> statements (respectively). </p>
+            <p><b style="font-weight: bold;">Example:</b><a name="kanchor352"></a>
+            </p><pre class="code">MTCH "${WARN Response}" else #+2
+</pre>
+            <h2><a name="variables"></a>Using Variables</h2>
+            <p>You can substitute variables in a script statement before the statement is 
+ processed. </p>
+            <ul>
+                <li value="1">Variables names and their default values can be defined 
+ in the <span class="code"><a name="kanchor353"></a>&lt;parameter&gt;</span> section of the probe 
+ file, or by using the STOR, NADD, or TIME command.</li>
+                <li value="2">Variable names are preceded by a dollar sign 
+ ($), and are enclosed by curly braces. </li>
+                <li value="3">Variable names are case-insensitive.</li>
+                <li value="4">See the the <a href="builtinvariablereference.htm">Built-in Variable Reference</a> topic for detailed information on variable usage.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <p>&#160;&#160;&#160;${Password} and ${password} are treated as the same 
+ variable</p>
+            <h3><a name="builtinmacros"></a><a name="kanchor354"></a>Built-in Macros</h3>
+            <p>A macro is an expression that modifies an input string to produce another 
+ string. The built-in macros are:</p>
+            <table>
+                <tr>
+                    <td style="text-align: right;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right"><b style="font-weight: bold;">${_LINE:&lt;line&gt;}</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">The first &lt;num&gt; characters of the 
+ last line received.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right"><b style="font-weight: bold;"><a name="kanchor355"></a>${_BASE64:&lt;param&gt;}</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;"><a name="kanchor356"></a>The Base-64 encoding of the string that 
+ follows the ":".</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" align="right"><b style="font-weight: bold;"><a name="kanchor357"></a>${_CVSPASSWORD:&lt;param&gt;}</b>
+                    </td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">The value of &lt;param&gt; encoded for use as a password over the CVS pserver protocol.</td>
+                </tr>
+            </table>
+            <h2 class="pagebreakbefore"><a name="failures"></a>Handling Script Failures</h2>
+            <p><a name="kanchor358"></a>Certain script commands may fail, either because they are malformed 
+ or because an unexpected situation occurs. For example, the script could 
+ jump to a non-existent command, it could fail to match a string it expects, 
+ or an unexpected disconnection could occur. In each case, the script immediately 
+ branches to a failure handler in the script. Each command that can fail 
+ takes the statement number of the failure statement as a numeric argument. 
+ If this number is omitted, the script will terminate with a "DOWN" 
+ status.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <p>In the following example, the MTCH command succeeds if the incoming 
+ line of data contains "220". If the command fails, the script 
+ branches to statement 3.</p><pre class="code">MTCH "220" ELSE #3
+</pre>
+            <p><b style="font-weight: bold;">Note:</b> If the script is idle for too 
+ long, it may go to a special "idle" handler. See the                           <a href="commandref.html#wait">WAIT 
+ command</a> for more details.</p>
+            <h2><a name="comments"></a>Adding Comments to your Script</h2>
+            <p>There are two ways to add comments to your script:</p>
+            <ul>
+                <li value="1">Add text between or after arguments to a script command.</li>
+                <li value="2">Add a comment using the InterMapper probe file comment 
+ format.</li>
+            </ul>
+            <h3>Adding text within a command line</h3>
+            <p>You can add text between arguments in a command line, as well as adding 
+ text after the line.</p>
+            <p><b style="font-weight: bold;">Examples:</b>
+            </p>
+            <p>The following statements all have exactly the same effect:</p><pre xml:space="preserve" class="code">MTCH "331 " #14
+MTCH "331 " else #14
+MTCH "331 " else goto -1- #14 -- Unexpected or unknown response to USER command</pre>
+            <h3 class="pagebreakbefore">Adding text in Comment format</h3>
+            <p><a name="kanchor359"></a>Use the HTML comment syntax to add comments to a probe files. Place 
+ comments anywhere in a probe file. HTML comment syntax can be simplified 
+ by following this rule:</p>
+            <ul>
+                <li value="1">Begin a comment with "<span class="code">&lt;!--</span>", end 
+ it with "<span class="code">--&gt;</span>", and do not use "<span class="code">--</span>" within the comment.
+</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">&lt;!-- This text is treated as a comment, and will be ignored --&gt;</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

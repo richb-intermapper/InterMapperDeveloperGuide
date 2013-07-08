@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="parameters.html" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="5" MadCap:lastHeight="1882" MadCap:lastWidth="1135">
+    <head>
+        <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
+    </head>
+    <body>
+        <h1 class="L2">
+            <MadCap:keyword term="Probe Parameters" />The <span class="code">&lt;parameters&gt;</span> Section</h1>
+        <p>
+            <MadCap:keyword term="Probe Configuration window" />A probe can have one or more parameters. These parameters are set by the user 
+ in the Set Probe window (shown below). They are used for specifying 
+ numeric thresholds or strings to be sent to or received from the device. </p>
+        <p>The <i>parameter</i><MadCap:keyword term="Name/value" /> section of the defines a set of name/value pairs with 
+ the format:</p><pre class="code">&lt;parameters&gt;<br />&#160;&#160;[parameter name]= "[parameter value]"<br />&lt;/parameters&gt;</pre>
+        <p>Each parameter name/value appears in its own entry field in the Set Probe 
+	window.</p>
+        <p>
+            <MadCap:keyword term="Alarm/warning" />
+            <MadCap:keyword term="Seconds" />Probe parameters are accessed and used just like variables. They can be used 
+	in calculations, alarm/warning thresholds, and displayed in the status window. 
+	To refer to a parameter whose name contains one or more spaces, the name will 
+	need to be enclosed in curly braces. (Example: "${Seconds to wait}").</p>
+        <h2>Input Field Types</h2>
+        <p>Four types of input fields are available:</p>
+        <ul>
+            <li><b>Text </b>- Input a text string</li>
+            <li><b>Password </b>- Input a text string, obscuring the characters</li>
+            <li><b>Dropdown </b>- Choose from a dropdown menu.</li>
+            <li><b>Checkbox </b>- Set a variable to true or false by selecting or clearing a check box.</li>
+        </ul>
+        <h3>Text Fields</h3>
+        <p>This field type presents a simple text box for entering a string.</p><pre class="code">	"Text"	= "Text Value"</pre>
+        <p>The line above sets the variable <samp>${Text}</samp></p>
+        <h3>
+            <MadCap:keyword term="PASSWORD" />
+            <MadCap:keyword term="Password Fields" />Password Fields</h3>
+        <p>You can create input parameters that conceal the string 
+ from casual view (so-called <i>password parameters</i>.) The data is displayed 
+ as a line of asterisks ("*****") when a user types the password. To specify 
+ a password parameter, place a single asterisk ("*") after the name of the field, 
+ like this:
+</p><pre class="code">"Password*" = ""</pre>
+        <p>Note that the variable name remains ${Password*} and you have to refer 
+to it as such in your script. The "*" is removed before displaying the 
+name, so the above password parameter would appear as "Password" in the Set Probe window.</p>
+        <h3>Dropdown Fields</h3>
+        <p>You can create input parameter fields that present a dropdown menu from which the user can choose from a number of choices.</p>
+        <p>To create a dropdown field, use this syntax:</p><pre class="code">"Test[Equal,NotEqual]" = "NotEqual" //Default value is NotEqual
+</pre>
+        <p>The values between brackets define the choices available to the user. The value on right of the statement is the initial value of the dropdown field.</p>
+        <p>You can use this parameter in expressions. The full variable is
+${Test[Equal,NotEqual]}, and it returns the current value of the dropdown as
+selected by the user. To display the value of a dropdown in the Status window, you must use the full variable definition.</p><pre class="code" xml:space="preserve">\4\Dropdown:\0\  ${Test[Equal,NotEqual]}\0\</pre><pre class="code" xml:space="preserve">&lt;snmp-device-variables&gt;
+  alarm: (${Dropdown[Choice1,Choice2,Choice3]} != <br />&#160;&#160;&#160;&#160;"Choice2") "It's not Choice2!"
+&lt;/snmp-device-variables&gt;
+</pre>
+        <h3>Check Box Fields</h3>
+        <p>To create a check box, use this syntax:</p><pre class="code" xml:space="preserve">"Checkbox[true,false]" = "true" //Default value is "true"
+</pre>
+        <p>You can use this parameter in expressions. The full variable is
+${Checkbox[Equal,NotEqual]}, and it returns the current value of the check box as
+selected by the user</p>
+        <h2 class="pagebreakbefore">
+            <MadCap:keyword term="Parameter Section Example" />Parameter Section Example</h2>
+        <p>
+            <MadCap:keyword term="Custom TCP" />
+            <MadCap:keyword term="Values" />This is an example parameter section that demonstrates the use of the four types of input fields. The screenshot below shows how each input field type appears.</p><pre class="code">&lt;parameters&gt;
+&#160;&#160;"Text"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= "Text Value"
+&#160;&#160;"Password*"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= ""
+&#160;&#160;"Dropdown[Choice1,Choice2,Choice3]"&#160;&#160;=&#160;&#160;"Choice2"
+&#160;&#160;"Checkbox[true,false]"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"true"
+&lt;/parameters&gt;
+</pre>
+        <p>&#160;</p>
+        <table cellpadding="5" style="margin-left: 0;margin-right: auto;caption-side: top;">
+            <col style="width: 100%;" />
+            <tr>
+                <td valign="top" style="text-align: center;">
+                    <img src="../images/dialog_paramtest.png" border="0" />
+                    <p><i>Probe Parameters</i>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

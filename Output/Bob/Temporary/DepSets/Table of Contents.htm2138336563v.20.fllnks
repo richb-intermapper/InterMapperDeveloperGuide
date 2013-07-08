@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet FileClass="" FileSearchable="true" FileTimeEstimate="0" FilePriority="0">
+    <Links>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </Links>
+    <LongLinks>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </LongLinks>
+    <Anchors />
+    <Keywords />
+    <Concepts />
+    <ConceptControlNames />
+    <IndexControlNames />
+    <Variables />
+    <FileConditions>
+        <Condition Tag="Primary.print" />
+    </FileConditions>
+    <FileTags />
+    <AllConditions>
+        <Condition Tag="Primary.print" />
+    </AllConditions>
+    <Stylesheets>
+        <Url Source="Content/Resources/default.css" />
+    </Stylesheets>
+</CatapultFileLinkSet>

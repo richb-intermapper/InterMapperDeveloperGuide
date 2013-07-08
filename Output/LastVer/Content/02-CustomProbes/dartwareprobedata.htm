@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Automatically-Recorded Data Values</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Automatically-Recorded Data Values</h1>
+            <p>When recording data from built-in probes, Dartware has selected values for each probe which seem sensible to record.</p>
+            <table style="margin-left: 0;margin-right: auto;caption-side: top;">
+                <col />
+                <col />
+                <col />
+                <col />
+                <tr>
+                    <th style="text-align: left;">Probe Name</th>
+                    <th style="text-align: left;">$variable in probe</th>
+                    <th style="text-align: left;">Tag (30)</th>
+                    <th style="text-align: left;">Label (255)</th>
+                </tr>
+                <tr>
+                    <td>APC UPS</td>
+                    <td>leftCharge</td>
+                    <td>pctcharge</td>
+                    <td>Percent Charge</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>batMin</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>inVolt</td>
+                    <td>involts</td>
+                    <td>Input Voltage</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>batTempC</td>
+                    <td>temperature</td>
+                    <td>Internal temperature (C)</td>
+                </tr>
+                <tr>
+                    <td>APC UPS - AP961x</td>
+                    <td>[same as APC UPS]</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Barracuda HTTP</td>
+                    <td>in_queue_size</td>
+                    <td>inqueue</td>
+                    <td>Input Queue</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>out_queue_size</td>
+                    <td>outqueue</td>
+                    <td>Output Queue</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>avg_latency</td>
+                    <td>latency</td>
+                    <td>Average Message Latency</td>
+                </tr>
+                <tr>
+                    <td>Barracuda HTTPS - same as HTTP</td>
+                    <td>[Same as Barracuda HTTP]</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>BestPower UPS</td>
+                    <td>cTimeOnBattery</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>cInputVoltage</td>
+                    <td>involts</td>
+                    <td>Input Voltage</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>cIntTempC</td>
+                    <td>temperature</td>
+                    <td>Internal temperature (C)</td>
+                </tr>
+                <tr>
+                    <td>Custom TCP</td>
+                    <td>_connect</td>
+                    <td>conntime</td>
+                    <td>Time to establish connection</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>_active</td>
+                    <td>connactive</td>
+                    <td>Time spent connected to host</td>
+                </tr>
+                <tr>
+                    <td>Exide UPS</td>
+                    <td>LeftCharge</td>
+                    <td>pctcharge</td>
+                    <td>Percent Charge</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>LeftMin</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>in1Volt</td>
+                    <td>involts</td>
+                    <td>Input 1 Voltage</td>
+                </tr>
+                <tr>
+                    <td>HTTP</td>
+                    <td>_connect</td>
+                    <td>conntime</td>
+                    <td>Time to establish connection</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>_active</td>
+                    <td>connactive</td>
+                    <td>Time spent connected to host</td>
+                </tr>
+                <tr>
+                    <td>HTTP (Authenticate)</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HTTP (Post)</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HTTP (Proxy)</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HTTP (Virtual Server)</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HTTPS</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HTTPS (Post)</td>
+                    <td>Same as HTTP</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Liebert UPS - OpenComms</td>
+                    <td>LeftCharge</td>
+                    <td>pctcharge</td>
+                    <td>Percent Charge</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>LeftMin</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>in1Volt</td>
+                    <td>involts</td>
+                    <td>Input 1 Voltage</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>batteryTempC</td>
+                    <td>temperature</td>
+                    <td>Internal temperature</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - AFP</td>
+                    <td>currentThroughput</td>
+                    <td>throughput</td>
+                    <td>Current throughput</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>currentConnections</td>
+                    <td>connections</td>
+                    <td>Current connections</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - FTP</td>
+                    <td>realConnectionCount</td>
+                    <td>authconns</td>
+                    <td>Authenticated Connections</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>anonymousConnectionCount</td>
+                    <td>anonconns</td>
+                    <td>Anonymous Connections</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - NAT</td>
+                    <td>activeTCP</td>
+                    <td>tcpconns</td>
+                    <td>TCP Links</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>activeUDP</td>
+                    <td>udpconns</td>
+                    <td>UDP Links</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>activeICMP</td>
+                    <td>icmpconns</td>
+                    <td>ICMP Links</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - Print</td>
+                    <td>currentQueues</td>
+                    <td>queues</td>
+                    <td>Current Queues</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>currentJobs</td>
+                    <td>numjobs</td>
+                    <td>Spooled Jobs</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - QTSS</td>
+                    <td>currentConnections</td>
+                    <td>connections</td>
+                    <td>Current connections</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>currentThroughput</td>
+                    <td>throughput</td>
+                    <td>Current throughput</td>
+                </tr>
+                <tr>
+                    <td>OS X Server - Web</td>
+                    <td>currentRequestsBy10</td>
+                    <td>requestrate</td>
+                    <td>Requests/second</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>cacheCurrentRequestsBy10</td>
+                    <td>cachehitrate</td>
+                    <td>Cache Requests/second</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>currentThroughput</td>
+                    <td>throughput</td>
+                    <td>Current throughput</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>cacheCurrentThroughput</td>
+                    <td>throughputcache</td>
+                    <td>Cache throughput</td>
+                </tr>
+                <tr>
+                    <td>OS X Server Info</td>
+                    <td>cpu</td>
+                    <td>cpupercent</td>
+                    <td>CPU Usage</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Cisco - Old CPU MIB</td>
+                    <td>lcpu.busyPer</td>
+                    <td>cpupercent</td>
+                    <td>CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>lcpu.avgBusy1</td>
+                    <td>cpupercentavg</td>
+                    <td>Average CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>lmem.freeMem</td>
+                    <td>freemem</td>
+                    <td>Available memory</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Cisco - Process and Memory Pool</td>
+                    <td>lcpu.busyPer</td>
+                    <td>cpupercent</td>
+                    <td>CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>lcpu.avgBusy1</td>
+                    <td>cpupercentavg</td>
+                    <td>Average CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>ciscoMemoryPoolFree1</td>
+                    <td>freemem</td>
+                    <td>Available memory</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Cisco (v2c)</td>
+                    <td>lcpu.busyPer</td>
+                    <td>cpupercent</td>
+                    <td>CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>lcpu.avgBusy1</td>
+                    <td>cpupercentavg</td>
+                    <td>Average CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>lmem.freeMem</td>
+                    <td>freemem</td>
+                    <td>Available memory</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Cisco IP SLA Jitter Probe</td>
+                    <td>cpmCPUTotal1min</td>
+                    <td>cpupercentavg</td>
+                    <td>Average CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>AvgJitter</td>
+                    <td>jitteravg</td>
+                    <td>Average Jitter</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>AvgLatency</td>
+                    <td>latencyavg</td>
+                    <td>Average Latency</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>PercentPacketLoss</td>
+                    <td>pktloss</td>
+                    <td>Packet Loss</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Comparison</td>
+                    <td>theOID</td>
+                    <td>value</td>
+                    <td>Probe value</td>
+                </tr>
+                <tr>
+                    <td>SNMP - High Threshold</td>
+                    <td>theOID</td>
+                    <td>value</td>
+                    <td>Probe value</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Host Resources (built-in)</td>
+                    <td>Average of items in hrProcessorTable or UCD-SNMP CPU table (anchor is UcuR)</td>
+                    <td>cpupercentavg</td>
+                    <td>Average CPU Percent</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Low Threshold</td>
+                    <td>theOID</td>
+                    <td>value</td>
+                    <td>Probe value</td>
+                </tr>
+                <tr>
+                    <td>SNMP - Range Threshold</td>
+                    <td>theOID</td>
+                    <td>value</td>
+                    <td>Probe value</td>
+                </tr>
+                <tr>
+                    <td>SNMP - TCP Check</td>
+                    <td>tcpCurrEstab</td>
+                    <td>numconns</td>
+                    <td>Number of TCP connections</td>
+                </tr>
+                <tr>
+                    <td>Standard UPS (RFC1628)</td>
+                    <td>LeftCharge</td>
+                    <td>pctcharge</td>
+                    <td>Percent Charge</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>LeftMin</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>in1Volt</td>
+                    <td>involts</td>
+                    <td>Input 1 Voltage</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>batTempC</td>
+                    <td>temperature</td>
+                    <td>Internal temperature (C)</td>
+                </tr>
+                <tr>
+                    <td>TrippLite UPS</td>
+                    <td>LeftCharge</td>
+                    <td>pctcharge</td>
+                    <td>Percent Charge</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>LeftMin</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>in1Volt</td>
+                    <td>involts</td>
+                    <td>Input 1 Voltage</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>envTempC</td>
+                    <td>temperature</td>
+                    <td>Ambient temperature (C)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>envHumid</td>
+                    <td>humidity</td>
+                    <td>Humidity (%)</td>
+                </tr>
+                <tr>
+                    <td>Victron UPS</td>
+                    <td>batt.rem</td>
+                    <td>batttimeleft</td>
+                    <td>Time left on battery (min)</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>input.volt1</td>
+                    <td>involts</td>
+                    <td>Input 1 Voltage</td>
+                </tr>
+            </table>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

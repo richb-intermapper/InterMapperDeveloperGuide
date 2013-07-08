@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="43" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>SNMP&#160;Trap Probes</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 MadCap:conditions="Primary.print" MadCap:xrefTargetName="SNMP Trap Probes" MadCap:sourceTitle="SNMP&#160;Trap Probes"><a MadCap:generatedBookmark="TOC" name="SNMP Trap Probes"></a>SNMP&#160;Trap Probes</h1>
+        <p class="code">type = "custom-snmp-trap"</p>
+        <p>A <em>trap</em> is an unsolicited packet sent from a device to
+            InterMapper (or other SNMP management console). The trap generally
+            contains one or more data values that give information about the
+            device's state.
+</p>
+        <p>When a trap arrives, InterMapper first determines which device(s)
+            on the enabled maps should receive information from the trap. InterMapper examines the Agent Address
+            (for relayed traps) or the Source IP address, and passes a copy of
+            the trap packet to <i>each</i> device on the maps whose IP address
+            matches. For example, if a device with the IP address is on two
+            maps, or is present twice on the same map, each of those devices
+            will receive a copy of the trap.
+         </p>
+        <p>InterMapper then parses out the all the values from the trap and assigns them to
+trap variables for use in the remainder of the probe..       InterMapper then re-evaluates the expressions in the probe, and
+            sets the device status appropriately. If a particular trap variable
+            is not set by an incoming trap, expressions containing that
+            variable are <i>not</i> evaluated. See the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/snmp-device-variables-traps.htm">The &lt;snmp-device-variables&gt; Section for Traps<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/snmp-device-variables-traps.htm" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;snmp-device-variables&gt; Section For Traps"> (Pg 1)</MadCap:xref></a> section below for
+            details of defining trap variables.
+         </p>
+        <p>Finally, as a result of receiving the trap, InterMapper             re-polls the device that sent the trap. This guarantees that
+            InterMapper has the most up-to-date information about the device's
+            state. If another trap arrives before the final response of this
+            new poll has returned, InterMapper will complete the current poll
+            and initiate another round of polling to get the new state.
+</p>
+        <p><b>Note:</b> A trap is sent as a UDP packet. If something on your network is causing packet loss, it is possible to lose a trap packet. Therefore, Dartware recommends that you don't rely completely on traps as a means for monitoring the health of a device. There is no substitute for regular polling. <a name="traponly"></a></p>
+        <p>The <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/trapexample.htm">Example Trap Probe<MadCap:xref href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/trapexample.htm" target="" title="" alt="" MadCap:xrefTarget="Example - Trap Viewer Probe"> (Pg 1)</MadCap:xref></a> demonstrates how to retrieve and display the contents of a trap.</p>
+    </body>
+</html>

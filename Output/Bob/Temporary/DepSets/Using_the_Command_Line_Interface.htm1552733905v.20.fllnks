@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet FileTitle="" FileSearchable="true" FileTimeEstimate="0" FilePriority="0">
+    <Links>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Content/02-CustomProbes/APIOverview.htm" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </Links>
+    <LongLinks>
+        <Link Url="Content/Resources/default.css" />
+        <Link Url="Content/02-CustomProbes/APIOverview.htm" />
+        <Link Url="Project/ConditionTagSets/Primary.flcts" />
+    </LongLinks>
+    <Anchors />
+    <Keywords>
+        <IndexCacheEntry Term="Command Line Interface" Conditions="Primary.online,Primary.print" LocalConditions="" Position="6" />
+        <IndexCacheEntry Term="InterMapper Server:testing" Conditions="Primary.online,Primary.print" LocalConditions="" Position="8" />
+        <IndexCacheEntry Term="InterMapper Remote" Conditions="Primary.online,Primary.print" LocalConditions="" Position="9" />
+    </Keywords>
+    <Concepts />
+    <ConceptControlNames />
+    <IndexControlNames />
+    <Variables />
+    <FileConditions>
+        <Condition Tag="Primary.online" />
+        <Condition Tag="Primary.print" />
+    </FileConditions>
+    <FileTags />
+    <AllConditions>
+        <Condition Tag="Primary.online" />
+        <Condition Tag="Primary.print" />
+    </AllConditions>
+    <Stylesheets>
+        <Url Source="Content/Resources/default.css" />
+    </Stylesheets>
+</CatapultFileLinkSet>

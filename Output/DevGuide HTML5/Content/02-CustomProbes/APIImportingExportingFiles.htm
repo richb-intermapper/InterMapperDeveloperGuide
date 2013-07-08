@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="InterMapper HTTP API">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Importing &amp; Exporting Files</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="top"></a>Importing &amp; Exporting Files</h1>
+            <p>Most of the files in the InterMapper Settings folder can be accessed through  the HTTP API. These include:</p>
+            <ul>
+                <li value="1">Custom Icons</li>
+                <li value="2">Fonts</li>
+                <li value="3">Maps</li>
+                <li value="4">MIB&#160;Files</li>
+                <li value="5">Probes</li>
+                <li value="6">Sounds</li>
+                <li value="7">Web&#160;Pages</li>
+            </ul>
+            <p>These folder contents may be exported, but not imported:</p>
+            <ul>
+                <li value="1">Extensions</li>
+                <li value="2">Certificates folder</li>
+                <li value="3">Tools</li>
+            </ul>
+            <p>The contents of the following folders are not currently available:</p>
+            <ul>
+                <li value="2">Chart Data folder</li>
+                <li value="3">InterMapper Logs folder</li>
+                <li value="4">Deleted and Disabled Maps folders</li>
+            </ul>
+            <p>All other files are served up as binary files with a MIME type of  application/octet-stream. Each file has a corresponding URL to retrieve its  contents; each folder in InterMapper Settings also has a URL to retrieve the  list of URLs for the files in that folder.</p>
+            <p>All URLs given below are relative to a URL composed of the InterMapper Server  address and the webport, as defined in the server settings. For example, in the  following discussion a URL of <span class="code">/~files</span> would imply the full URL (either  http:&#160;or https:):</p><pre class="code">http://imserver_address:webport/~files  
+        </pre>
+            <p><b>Example:</b>&#160;The URL above produces a text listing the URLs for the folders in  the InterMapper Settings that can be accessed over HTTP; this is provided for  the convenience of scripts that might want to access all files.</p>
+            <p class="pagebreakbefore">A request for following URLs provides a text listing of the URLs for the  files within the corresponding folder in the InterMapper Settings folder.</p>
+            <table class="fieldtable">
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">InterMapper Settings folder</td>
+                        <td style="font-weight: bold;">Corresponding URL</td>
+                    </tr>
+                    <tr>
+                        <td>Custom  Icons</td>
+                        <td class="code">/~files/icons</td>
+                    </tr>
+                    <tr>
+                        <td>Extensions</td>
+                        <td class="code">/~files/extensions</td>
+                    </tr>
+                    <tr>
+                        <td>Fonts</td>
+                        <td class="code">/~files/fonts</td>
+                    </tr>
+                    <tr>
+                        <td>Maps</td>
+                        <td class="code">/~files/maps</td>
+                    </tr>
+                    <tr>
+                        <td>MIB  Files</td>
+                        <td class="code">/~files/mibs</td>
+                    </tr>
+                    <tr>
+                        <td>Probes</td>
+                        <td class="code">/~files/probes</td>
+                    </tr>
+                    <tr>
+                        <td>Sounds</td>
+                        <td class="code">/~files/sounds</td>
+                    </tr>
+                    <tr>
+                        <td>Tools</td>
+                        <td class="code">/~files/tools</td>
+                    </tr>
+                    <tr>
+                        <td>Web  Pages</td>
+                        <td class="code">/~files/webpages</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>&#160;</h3>
+            <h3 class="pagebreakbefore">HTTP file imports</h3>
+            <p>To import these files over HTTP, issue a POST request to the appropriate URL  with the file contents as a payload; the MIME type should be  application/octet-stream.</p>
+            <p><strong>Icons</strong>
+            </p>
+            <p>You can import icons via HTTP as described above. The URL should take the  following form:</p><pre class="code">http://imserver:port/~files/icons/Folder/Filename.type
+</pre>
+            <p>If the file type is a valid image file (jpeg or png), it will be available to  use immediately.</p>
+            <p>Sample curl commands (command-line) to use this facility might look like this (should  be all on one line):</p><pre class="code" xml:space="preserve">
+HTTP: curl --data-binary "@sample.png" http://localhost:8080/~files/icons/Default/sample.png
+HTTPS: curl -k --data-binary "@sample.png" https://localhost/~files/icons/Default/sample.png</pre>
+            <p><b>Note:</b> the <span class="code">-k</span> option for HTTPS ignores an unsigned certificate.</p>
+            <h2>Maps</h2>
+            <p>You can import maps or map data using the HTTP API.</p>
+            <p>A sample curl command line to import a map file should take this form:</p><pre class="code">$ curl --user admin:Pa55w0rd --data-binary @/path/to/local/map_file http://imserver:port/~files/maps/map_file<br /></pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

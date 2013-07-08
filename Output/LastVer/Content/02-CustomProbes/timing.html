@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Custom Probes|Troubleshooting" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Measuring Response Times</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor674"></a><a name="kanchor675"></a><a name="kanchor676"></a><a name="kanchor677"></a><a name="kanchor678"></a>Measuring Response Times</h1>
+            <p>You can measure the response time of a device as it is being tested. Times are 
+ measured in milliseconds. Depending on the probe type, different responses are 
+ measured: </p>
+            <ul>
+                <li value="1"><b><a name="kanchor679"></a><a name="kanchor680"></a>TCP-based probes</b> - InterMapper measures both the         <i>time to establish 
+ the connection</i> and the         <i>time for various portions of an interaction</i>. 
+ These times can be charted and logged.</li>
+                <li value="2"><b><a name="kanchor681"></a><a name="kanchor682"></a><a name="kanchor683"></a><a name="kanchor684"></a><a name="kanchor685"></a>Timing of Pings and other datagram-based probes</b> - InterMapper measures 
+ the interval between sending the ping and receipt of its response time. The 
+ time is appears in the pop-up window, and can be charted and logged.</li>
+            </ul>
+            <h2><a name="kanchor686"></a>Time Measurement Probe Variables</h2>
+            <p><a name="kanchor687"></a>TCP Timers are:</p>
+            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td width="21%"><b>Connection initiation interval</b>
+                    </td>
+                    <td width="13%"><span class="code">${_connect}</span>
+                    </td>
+                    <td width="66%">Records the time required to establish a connection.</td>
+                </tr>
+                <tr>
+                    <td width="21%"><b>Connection duration interval</b>
+                    </td>
+                    <td width="13%"><span class="code">${_active} </span>
+                    </td>
+                    <td width="66%">Records the duration from the connection request until the 
+ end of the end of the script.</td>
+                </tr>
+            </table>
+            <h2><a name="kanchor688"></a>TCP Script Commands</h2>
+            <p>InterMapper supports two commands for measuring intervals during
+a script. These are:</p>
+            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td><b><a name="kanchor689"></a>STRT</b>
+                    </td>
+                    <td>Starts the probe's custom timer.</td>
+                </tr>
+                <tr>
+                    <td><b>TIME <i><a name="kanchor690"></a>varname</i></b>
+                    </td>
+                    <td>Sets the variable named ${<i>varname</i><a name="kanchor691"></a>} to the milliseconds elapsed 
+ since the customtimer was started.</td>
+                </tr>
+            </table>
+            <h2>The &lt;script-output&gt; Section</h2>
+            <p>Use the optional <span class="code">&lt;script-output&gt;</span> 
+  section to display the results of custom TCP probes. The data in this section 
+ appears in a Status window when you click and hold on the device. The format 
+ of this section is the same as the <span class="code"><a name="kanchor692"></a>&lt;snmp-device-display&gt;</span>, 
+ described in         <a href="customstatuswindows.html"> Customized Pop-up Windows</a>.</p>
+            <p>Use the <span class="code">${_connect}</span> and <span class="code">${_active}</span> 
+  variables, as well as any variables set with the TIME         <i>varname</i> command, 
+ in the <span class="code">&lt;script-output&gt;</span> 
+  section of the pop-up window.</p>
+            <h2>A Note on Accuracy</h2>
+            <p>InterMapper uses different techniques to measure the round-trip
+times of various probes.</p>
+            <ul>
+                <li value="1"><b><a name="kanchor693"></a><a name="kanchor694"></a>Pings (ICMP and AppleTalk echoes)</b> - These are the most accurate timings. 
+ InterMapper detects the arrival of the Ping response at interrupt time, and 
+ thus, it can compute the response times with millisecond accuracy.</li>
+                <li value="2"><b>Other UDP-based and TCP-based probes</b> - These timings are computed by InterMapper as it does its normal 
+polling. Thus, the measured time can be affected slightly by the 
+such things as the number of devices probed and other various other tasks, as they may affect how long it takes InterMapper to 
+execute a single round of polling.</li>
+            </ul>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

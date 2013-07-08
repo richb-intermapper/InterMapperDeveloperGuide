@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="2756" MadCap:lastWidth="1109" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Creating Your Own Probes|Anatomy of a Probe" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>The &lt;header&gt; Section</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:conditions="Primary.print" style="page-break-before: always;" MadCap:xrefTargetName="The &lt;header&gt; Section" MadCap:sourceTitle="The &lt;header&gt; Section"><a MadCap:generatedBookmark="TOC" name="The &lt;header&gt; Section"></a>The <span class="code">&lt;header&gt;</span> Section</h1>
+        <p>The <span class="code">&lt;header&gt;</span><MadCap:keyword term="IP" /> section of a probe file contains a formal description of the probe. 
+ It is defined as follows, with each header property having a name and a corresponding 
+ value.</p><pre class="code">&lt;header&gt; <br />..[part name] = "[value]"<br />&lt;/header&gt;</pre>
+        <p><b>Note:</b> Information by which InterMapper uniquely identifies the probe is contained in the header. While it is not required, Dartware strongly recommends that you follow <a href="#probefilenames">probe file naming conventions</a> that correspond to the unique identifer in the probe header.</p>
+        <h2 style="page-break-before: avoid;">
+            <MadCap:keyword term="Header Parts" />Header Parts</h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b>type</b>
+                </td>
+                <td valign="top">
+                    <p>Describes the type of the probe file. InterMapper supports the following 
+ probe types:<MadCap:keyword term="Probe Type" /></p>
+                    <ul>
+                        <li value="1"><b><MadCap:keyword term="Builtin" />builtin</b>
+                        </li>
+                        <li value="2"><b><MadCap:keyword term="TCP" /><MadCap:keyword term="Tcp-script" />tcp-script</b>
+                        </li>
+                        <li value="3"><b><MadCap:keyword term="SNMP" /><MadCap:keyword term="Custom-snmp" />custom-snmp</b>
+                        </li>
+                        <li style="font-weight: bold;" value="4">custom-snmp-trap</li>
+                        <li value="5"><b><MadCap:keyword term="Command-line" />command-line</b>
+                        </li>
+                        <li value="6"><b>cmd-line</b>
+                        </li>
+                    </ul><pre class="code">&#160;&#160;&#160;type = "cmd-line"</pre>
+                    <p>For <i><MadCap:keyword term="Custom SNMP Probes" /><MadCap:keyword term="Header Section:Custom SNMP Probes" /></i>custom SNMP probes<i>, </i>use the                            <i><b>custom-snmp</b></i> type.<br />For custom SNMP Trap probes, use the <b style="font-style: italic;">custom-snmp-trap</b> type.<br />For <i><MadCap:keyword term="Custom TCP" /></i>custom TCP probes<i>, </i>use the                            <i><b>tcp-script</b></i> type.<br />For command-line probes, use the                            <b><i>command-line</i></b> or <b><i>cmd-line</i></b> type.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b>package</b>
+                </td>
+                <td valign="top">
+                    <p>The first part of the probe's full identifier. Typically, the package 
+ is made up of the domain name of the organization that created the probe, 
+ with the labels reversed. </p>
+                    <p>For example, all probes created by Dartware, LLC the package statement 
+ is as follows: <MadCap:keyword term="Com.dartware" /></p><pre class="code">&#160;&#160;&#160;package = "com.dartware"</pre>
+                    <p>The package part guarantees that different organizations can create 
+ probes without concern that their probe identifiers will conflict.</p>
+                    <p><b>Note:</b>
+                        <MadCap:keyword term="Tcp.custom" />
+                        <MadCap:keyword term="Com.dartware.tcp.custom" />
+                        <MadCap:keyword term="Probe_name" /> The combination of [package].[probe_name] together form 
+ the probe's full identifier. (In the example below, the full identifier 
+ is "com.dartware.tcp.custom") By convention, the name of the 
+ file that holds the probe definition is the same as the probe's full 
+ identifier. This is not required, but it's a good idea. See <a href="#locations">Probe File Locations<MadCap:xref href="#locations" target="" title="" alt="" class="ListOfPageNumber" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_2"> (Pg 1)</MadCap:xref></a> and <a href="#probefilenames">Probe File Names<MadCap:xref href="#probefilenames" target="" title="" alt="" class="ListOfPageNumber" MadCap:conditions="Primary.print" MadCap:xrefTarget="$$xref$$_1"> (Pg 1)</MadCap:xref></a> below for more information.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b>probe_name</b>
+                </td>
+                <td valign="top">The second part of the probe's full identifier. The probe_name 
+ may be whatever string the creating organization chooses.</td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b><MadCap:keyword term="Human_name" />human_name</b>
+                </td>
+                <td valign="top">The string that appears in the left pane of the Set Probe window. This string helps guides the user to select the probe for 
+ a particular device.</td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b>version</b>
+                </td>
+                <td valign="top">Provides a means to determine which probe file is the current 
+ one. The format of the version is "#.#".</td>
+            </tr>
+            <tr>
+                <td valign="top" width="17" class="pagebreakbefore">&#160;</td>
+                <td valign="top" class="pagebreakbefore"><b><MadCap:keyword term="Address_type" />address_type</b>
+                </td>
+                <td valign="top" class="pagebreakbefore">
+                    <p valign="top">A comma-separated list of one or more address types. InterMapper 
+ implements "IP" and "AT".<MadCap:keyword term="Comma-separated list" /></p>
+                </td>
+            </tr>
+        </table>
+        <!-- broke table to allow a pagebreak -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b><MadCap:keyword term="Port_number" />port_number</b>
+                </td>
+                <td valign="top">The IP port used by this probe.</td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b><MadCap:keyword term="display_name" />display_name</b>
+                </td>
+                <td valign="top">
+                    <p>
+                        <MadCap:keyword term="Select Probe window" />Specify the display_name to use with this probe, using forward slashes to specify the heirarchy. To do this, add the following line to the &lt;header&gt; 
+ section of the probe:</p>
+                    <p>&#160;&#160;&#160;&#160;display_name = "[top level]/[next level]/[next 
+ level]"</p>
+                    <p>Example:</p><pre class="code">&#160;&#160;&#160;display_name = "Custom/Command-line"</pre>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top"><b><MadCap:keyword term="Url_hint" />url_hint</b>
+                </td>
+                <td valign="top">Assign a double-click action within the probe (making it 
+ the pre-defined double-click action). To do this, add the following line 
+ to your &lt;header&gt; section of the probe: 
+        <p></p><blockquote><MadCap:keyword term="Url-to-invoke" /> url_hint = "url-to-invoke" </blockquote><p> The following example would invoke the web browser to the device's 
+ IP address and port
+        </p><pre class="code"> url_hint = "http://${address}:${port}" </pre><p>&#160;</p></td>
+            </tr>
+            <tr class="pagebreakbefore">
+                <td valign="top" width="17">&#160;</td>
+                <td valign="top" style="font-weight: bold;">poll_interval</td>
+                <td valign="top">
+                    <p valign="top">Set the device's default poll interval to the indicated number 
+of seconds. This overrides the map's default setting, and might be used to avoid 
+too-frequent polling for (physical) devices that should not be polled too often. </p>
+                    <p valign="top">Setting the poll interval *for the device* will override this poll_interval setting.
+
+</p>
+                    <p valign="top" class="code">poll_interval = "300"
+</p>
+                </td>
+            </tr>
+        </table>
+        <h2 class="pagebreakbefore">
+            <MadCap:keyword term="Custom SNMP Probes:Header Section" />
+            <MadCap:keyword term="Header Section" />
+            <MadCap:keyword term="Sample Header Section" />Sample Header Section</h2>
+        <p>This is a sample header from the Custom TCP script.</p><pre class="code">&lt;header&gt;<br />&#160;&#160;&#160;"type"          =   "tcp-script"<br />&#160;&#160;&#160;"package"       =   "com.dartware"<br />&#160;&#160;&#160;"probe_name"    =   "snmp.example"<br />&#160;&#160;&#160;"human_name"    =   "Example SNMP probe"<br />&#160;&#160;&#160;"display_name"    = "Miscellaneous/Example SNMP Probe"<br />&#160;&#160;&#160;"version"       =   "1.0"
+&#160;&#160;&#160;"address_type"  =   "IP,AT"<br />&#160;&#160;&#160;"port_number"   =   "161"<br />&#160;&#160;&#160;"flags" = ""<br />&lt;/header&gt;</pre>
+        <p style="font-size: 6pt;">&#160;</p><a name="customsnmp"></a>
+        <h2>Header Section of Custom SNMP Probes</h2>
+        <p> The <span class="code">&lt;header&gt;</span> section of the probe 
+ file is similar to the <span class="code"><a href="#top">standard &lt;header&gt; section,<MadCap:xref href="#top" target="" title="" alt="" MadCap:conditions="Primary.print" MadCap:xrefTarget="The &lt;header&gt; Section"> (Pg 1)</MadCap:xref></a></span> with the following differences:
+ </p>
+        <ul>
+            <li value="1"> The "type" for a Custom SNMP probe is "custom-snmp".
+</li>
+            <li value="2">
+                <MadCap:keyword term="FLAGS" /> There is a FLAGS=xxx,xxx command that takes the following optional items as parameters:
+	<ul type="o"><li value="1"><MadCap:keyword term="NOLINKS" /> NOLINKS - InterMapper will not poll links (interfaces) with SNMP
+	</li><li value="2"><MadCap:keyword term="SNMPV2C" /> SNMPV2C - InterMapper will use SNMPv2c to poll the device
+	</li><li value="3"><MadCap:keyword term="SEND" /><MadCap:keyword term="SEND:ICMP" /><MadCap:keyword term="NOICMPFALLBACK" /><MadCap:keyword term="ICMP" /><MadCap:keyword term="ICMP:send" /> NOICMPFALLBACK - InterMapper will not send an ICMP ping to a device if no SNMP responses return.
+</li><li value="4"><MadCap:keyword term="MINIMAL" />MINIMAL - the probe queries only its own (specified) variables.</li><li value="5"><MadCap:keyword term="NTCREDENTIALS" />NTCREDENTIALS - tells InterMapper to elevate its credentials using the username and password found in the NT Services server settings panel long enough to run the command line in the probe. (Windows only.)
+</li><li value="6">ALLOW-LOOPS - In some network equipment, the  indices for the ifTable and related tables do not proceed in the usual  strictly increasing fashion, jumping around instead. Adding this flag to the  header will instruct InterMapper to allow this situation. N.B. If the SNMP  agent in your network device doesn't stop returning values when every item  in the table has been read, set this flag to instruct InterMapper to loop  over the table continuously until 5000 reads have occurred, at which point  it will stop.</li><li value="7">IFINDEX-BUG - Some network equipment will respond  incorrectly to SNMP queries for the ifTable and related tables when InterMapper queries only certain entries in a sparse ifTable, rather than trying to  query each possible index in turn. Add this flag to the header to instruct InterMapper to work around this situation rather than attempting to  be efficient.</li><li value="8">LINKCRITICAL - If a link of a device goes down and the flag is set, the device status changes
+to critical, and not to alarm, which is the default.</li><li value="9">NAGIOS3 - Use "flags" = "NAGIOS3" in the <span class="code">&lt;header&gt;</span> of a command-line probe to indicate 
+that the return value should be treated as a Nagios Plugin. See the <a href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Content/02-CustomProbes/nagios.htm">Nagios Plugins</a> 
+section.<br /><br /><!-- the next three are documented here, but should not be used by customers
+	<li> DISCOVERY - InterMapper will attempt to discover all the interfaces of the device
+	<li> DEFAULT - InterMapper will use this probe file as the default when creating a new device. 
+	<li> INVISIBLE - InterMapper will not display this probe as a choice
+--></li></ul></li>
+        </ul>
+        <p><b>Note: </b><span style="font-weight: normal;">The </span><b><MadCap:keyword term="Old_protocol" />old_protocol <MadCap:keyword term="Old_script" style="font-weight: normal;" /></b><span style="font-weight: normal;">and <b>old_script </b>parts, added for backward compatibility, are deprecated, and are ignored in any older probes that use them.</span>
+        </p>
+        <h2 MadCap:xrefTargetName="$$xref$$_2" MadCap:sourceTitle="The &lt;header&gt; Section"><a name="locations"></a>Probe File Locations </h2>
+        <p>
+            <MadCap:keyword term="InterMapper Settings">
+            </MadCap:keyword>
+            <MadCap:keyword term="File Names">
+            </MadCap:keyword>
+            <MadCap:keyword term="Probe Files">
+            </MadCap:keyword>
+            <MadCap:keyword term="Probes">
+            </MadCap:keyword>Probes files are saved in the <b><i>Probes</i></b> folder of the <b><i>InterMapper 
+ Settings</i></b> folder.</p>
+        <h2 MadCap:xrefTargetName="$$xref$$_1" MadCap:sourceTitle="The &lt;header&gt; Section"><a name="probefilenames"></a>Probe File Names</h2>
+        <p>The probe files are named with two parts separated by a period ("."). The parts 
+ are:</p>
+        <ul>
+            <li value="1"><b>package name - </b>must be unique for each organization creating probe 
+ files. <br></br><br></br><MadCap:keyword term="DNS"></MadCap:keyword><MadCap:keyword term="Com.dartware"></MadCap:keyword><MadCap:keyword term="Limit"></MadCap:keyword><MadCap:keyword term="Limit:Macintosh file"></MadCap:keyword><MadCap:keyword term="Macintosh file"></MadCap:keyword><MadCap:keyword term="Macintosh file:limit"></MadCap:keyword>By convention, the package is composed of the organization's DNS domain name, 
+ with the segments reversed. Thus, the built-in probes for InterMapper all 
+ have a package of "com.dartware." Other organizations may create and share 
+ their own probes, since the file names will not collide.<br></br><br></br></li>
+            <li value="2"><b>probe name</b> - identifies the probe.</li>
+        </ul>
+        <p>For example, the built-in Custom TCP probe is defined in the file named:<MadCap:keyword term="Custom TCP" /><MadCap:keyword term="Tcp.custom" /><MadCap:keyword term="Com.dartware.tcp.custom" /></p>
+        <blockquote>
+            <p><span class="code">com.dartware.tcp.custom</span>
+            </p>
+        </blockquote>
+        <p>The probe's package name and probe name are defined in the probe definition's 
+ header section. Dartware recommends that you name the file with the combination 
+ of the package name and probe name, as shown above.</p>
+        <p>The header section of the probe definition in the example above contains these 
+ two lines:</p><pre class="code">package = "com.dartware" 
+probe name = "tcp.custom"</pre>
+    </body>
+</html>

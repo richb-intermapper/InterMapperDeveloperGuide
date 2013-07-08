@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:disableMasterStylesheet="true" MadCap:tocPath="InterMapper HTTP API" MadCap:InPreviewMode="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head><title>Importing &amp; Exporting Tables</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Importing &amp; Exporting Tables</h1>
+            <p>Table-based Import/Export</p>
+            <p>The table-based functions of the InterMapper HTTP API&#160;match the capabilities of the  Import -&gt;&#160;Data file... and Export -&gt;&#160;Data file... commands of InterMapper  RemoteAccess (available from the File menu). These import and export a number of  "tables" of information about the devices being monitored. These tables  include:</p>
+            <ul>
+                <li value="1">Devices</li>
+                <li value="2">Interfaces</li>
+                <li value="3">Vertices</li>
+                <li value="4">Maps</li>
+                <li value="5">Notifiers</li>
+                <li value="6">Users</li>
+                <li value="7">Schema</li>
+            </ul>
+            <p>These tables have detailed descriptions in the <em>Advanced Data  Import/Export</em> section of the <a href="http://download.dartware.com/docs/UserGuide52/">InterMapper User  Guide</a>. The URLs for importing and exporting have the following format:</p>
+            <pre class="code">http://imserver:port/~export/tablename.format? <em>(options)</em></pre>
+            <p>Supported formats are:</p>
+            <ul>
+                <li value="1">.tab - save as a tab-delimited text file</li>
+                <li value="2">.csv - save as a comma-delimited text file</li>
+                <li value="3">.xml - save as an XML&#160;format file</li>
+                <li value="4">.html- display as HTML&#160;directly in the browser</li>
+            </ul>
+            <p>The primary option is "fields=...." The list of valid fields are listed in  the "schema" export.&#160;For example, this query:</p>
+            <pre class="code">http://imserver:port/~export/schema.html</pre>
+            <p>provides a list of the supported tables and the fields for each table in an  HTML format that you can view right in the browser. Other examples include:</p>
+            <pre class="code">http://imserver:port/~export/devices.tab</pre>
+            <p>provides a list of all devices on active maps as a tab-delimited file.  This&#160;URL:</p>
+            <pre class="code">http://imserver:port/~export/devices.tab?fields=id,name,macadress,address</pre>
+            <p>provides a list of all devices on active maps, but only includes the ID,  Name, MACAddress and Address fields.</p>
+            <h3>Importing Table-based Data</h3>
+            <p>An external program can also import table information with an  HTTP&#160;POST&#160;operation by including the table data as the payload.</p>
+            <pre class="code">http://imserver:port/~import/filename</pre>
+            <p>The <em>filename</em> in this URL is written to the log file, but is otherwise ignored. It is not used to determine the data to import, nor is it used to specify where the data goes. InterMapper examines the directive line of the attached file to determine what  information is imported from the file. It follows the same logic that is  used when importing data using the Import-&gt;Data File... command available from InterMapper RemoteAccess's File menu. </p>
+            <p>A sample curl command line to import map data should take this form:</p>
+            <pre class="code">$  curl --user admin:Pa55w0rd --data-binary @/path/to/import/file http://imserver:port/~import/file</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

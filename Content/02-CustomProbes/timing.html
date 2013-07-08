@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="4" MadCap:lastHeight="692" MadCap:lastWidth="576">
+    <head>
+        <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
+    </head>
+    <body>
+        <h1 class="L2">
+            <MadCap:keyword term="TIME varname" />
+            <MadCap:keyword term="Measuring">
+            </MadCap:keyword>
+            <MadCap:keyword term="Measuring:Response Times" />
+            <MadCap:keyword term="Response Times" />
+            <MadCap:keyword term="Response Times:Measuring" />Measuring TCP&#160;Response Times</h1>
+        <p>You can measure the response time of a device as it is being tested by a TCP&#160;probe. Times are 
+ measured in milliseconds. </p>
+        <p>With TCP Probes, InterMapper measures both the         <i>time to establish 
+ the connection</i> and the         <i>time for various portions of an interaction</i>. 
+ These times can be charted and logged.</p>
+        <h2>
+            <MadCap:keyword term="Time Measurement Probe Variables" />Time Measurement Probe Variables</h2>
+        <p>
+            <MadCap:keyword term="TCP Timers" />TCP Timers are:</p>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <col style="width: 187px;" />
+            <col style="width: 122px;" />
+            <col />
+            <tr>
+                <td><b>Connection initiation interval</b>
+                </td>
+                <td><span class="code">${_connect}</span>
+                </td>
+                <td width="66%">Records the time required to establish a connection.</td>
+            </tr>
+            <tr>
+                <td><b>Connection duration interval</b>
+                </td>
+                <td><span class="code">${_active} </span>
+                </td>
+                <td width="66%">Records the duration from the connection request until the 
+ end of the end of the script.</td>
+            </tr>
+        </table>
+        <h2>
+            <MadCap:keyword term="TCP Script Commands" />TCP Script Commands</h2>
+        <p>InterMapper supports two commands for measuring intervals during
+a script. These are:</p>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+                <td><b><MadCap:keyword term="STRT" />STRT</b>
+                </td>
+                <td>Starts the probe's custom timer.</td>
+            </tr>
+            <tr>
+                <td><b>TIME <i><MadCap:keyword term="Varname" />varname</i></b>
+                </td>
+                <td>Sets the variable named ${<i>varname</i><MadCap:keyword term="Customtimer" />} to the milliseconds elapsed 
+ since the customtimer was started.</td>
+            </tr>
+        </table>
+        <h2>The &lt;script-output&gt; Section</h2>
+        <p>Use the optional <span class="code">&lt;script-output&gt;</span> 
+  section to display the results of custom TCP probes. The data in this section 
+ appears in a Status window when you click and hold on the device. The format 
+ of this section is the same as the <span class="code"><MadCap:keyword term="Snmp-device-display" />&lt;snmp-device-display&gt;</span>, 
+ described in         <a href="probestatuswindows.html"> Customized  Status Windows<MadCap:xref href="probestatuswindows.html" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>.</p>
+        <p>Use the <span class="code">${_connect}</span> and <span class="code">${_active}</span> 
+  variables, as well as any variables set with the TIME         <i>varname</i> command, 
+ in the <span class="code">&lt;script-output&gt;</span> 
+  section of the Status window.</p>
+        <h2 class="pagebreakbefore">A Note on Accuracy</h2>
+        <p>InterMapper uses different techniques to measure the round-trip
+times of various probes.</p>
+        <ul>
+            <li><b><MadCap:keyword term="ICMP" /><MadCap:keyword term="AppleTalk" />Pings (ICMP and AppleTalk echoes)</b> - These are the most accurate timings. 
+ InterMapper detects the arrival of the Ping response at the moment it arrives. Thus, it can compute the response times with millisecond accuracy.</li>
+            <li><b>Other UDP-based and TCP-based probes</b> - These timings are computed by InterMapper as it does its normal 
+polling. Thus, the measured time can be affected slightly by the 
+such things as the number of devices probed and other various other tasks, as they may affect how long it takes InterMapper to 
+execute a single round of polling.</li>
+        </ul>
+    </body>
+</html>

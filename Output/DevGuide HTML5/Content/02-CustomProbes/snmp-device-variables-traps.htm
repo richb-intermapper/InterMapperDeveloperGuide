@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|SNMP Trap Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The &lt;snmp-device-variables&gt; Section For Traps</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">The <span class="code">&lt;snmp-device-variables&gt;</span> Section For Traps</h1>
+            <p>A <b><a name="kanchor281"></a><a name="kanchor282"></a>Trap Variable</b> is a variable defined in a custom probe file
+whose value           is set to a value received in a trap. InterMapper has three kinds of Trap Variables, only one of which can be declared in a probe:</p>
+            <ul>
+                <li value="1"><b style="font-style: italic;">Packet Trap Variables</b> - a set of variables automatically set by InterMapper when a trap is received.</li>
+                <li value="2"><b style="font-style: italic;">Positional Trap Variables</b> - a set of variables automatically set by InterMapper. Use positional Trap Variables to access data from the trap's VarBind list by position in the list.</li>
+                <li value="3"><b style="font-style: italic;">Named Trap Variables</b> - variables you define by associating an SNMP&#160;OID with a name. If the OID exists in the trap's VarBind list, the variable is set to the value in the trap.</li>
+            </ul>
+            <p>A
+            Trap Variable will never be polled: that is, InterMapper never sends
+            an SNMP GetRequest or GetNextRequest to retrieve its value. </p>
+            <h3>Packet Trap Variables</h3>
+            <p>In addition to the variables in the VarBind List, a probe can set variables based on the fields of the trap packet’s header.</p>
+            <ul>
+                <li value="1"><strong>$GenericTrap</strong> - The GenericTrap field in the trap (SNMPv1). This field can take on the values:
+<br />&#160;&#160;&#160;0 - coldStart;
+<br />&#160;&#160;&#160;1 - warmStart;
+<br />&#160;&#160;&#160;2 - linkDown;
+<br />&#160;&#160;&#160;3 - linkUp;
+<br />&#160;&#160;&#160;4 - authenticationFailure;
+<br />&#160;&#160;&#160;5 - egpNeighborLoss;
+<br />&#160;&#160;&#160;6 - An enterprise-specific value.</li>
+                <li value="2"><strong>$SpecificTrap</strong> - The value of the SpecificTrap field in the trap. If the $GenericTrap value is 0-5, the $SpecificTrap is zero (0); otherwise it is a positive 32-bit value specified by the vendor (SNMPv1).</li>
+                <li value="3"><strong>$TimeStamp</strong> - The TimeStamp field in the trap, in hundredths of a second.</li>
+                <li value="4"><strong>$Enterprise</strong> - The value of the SNMPv1 enterprise field (SNMPv1)</li>
+                <li value="5"><strong>$CommunityString</strong> - The value of the CommunityString field in the trap (SNMPv1, SNMPv2c).</li>
+                <li value="6"><strong>$TrapOID</strong> - The value of the TrapOID field in the trap (SNMPv2c, SNMPv3).</li>
+                <li value="7"><strong>$AgentAddress</strong> - The IP address of the SNMP agent that generated the trap.</li>
+                <li value="8">$<strong>SenderAddress</strong> - The IP address of the device that sent the trap. This could be different from the $AgentAddress when the sender is forwarding traps for the agent. </li>
+                <li value="9"><strong>$SnmpVersion</strong> - Represents the version of the trap. Values can be 0 (v1), 1 (v2c) or 3 (v3).</li>
+                <li value="10"><strong>$VarbindCount</strong> - The number of variables contained in the VarBind list. <span style="font-weight: normal;">&#160;</span></li>
+            </ul>
+            <h3 class="pagebreakbefore">Positional Variables from the Varbind List</h3>
+            <p>You can access values from the VarBind List by <b style="font-style: italic;">position</b> using variables of the form:</p>
+            <ul>
+                <li value="1"><strong>$VarbindValueN</strong> - The value of the N'th variable in the trap's VarBind List</li>
+                <li value="2"><strong>$VarbindTypeN</strong> - The type of the N'th variable in the trap's VarBind List</li>
+                <li value="3"><strong>$VarbindOIDN</strong> - the OID of the N'th variable in the trap's VarBind List</li>
+            </ul>
+            <p><b>Note:</b> N may be from 1 to 50.</p>
+            <h3>Named Trap Variables&#160;</h3>
+            <p>The
+            only way to set a named Trap Variable value is to receive a trap that contains the
+            OID in its VarBind List, or the set the named variable to the value of a positional variable. The <a href="snmp-device-variables.htm">Probe Variables section</a> of this document describes the file
+            format. Here is an example:
+         </p><pre class="code">&lt;snmp-device-variables&gt;
+&#160;&#160;&#160;InterMapperTimeStamp, 1.3.6.1.4.1.6306.2.1.1.0, TRAPVARIABLE, "Timestamp" 
+&lt;/snmp-device-variables&gt;</pre>
+            <p>In this example, the variable $InterMapperTimeStamp is set
+            every time a trap arrives containing the OID
+            1.3.6.1.4.1.6306.2.1.1.0 in the VarBind List. Trap Variables that
+            don't have values set by an incoming trap are left undefined.
+         </p>
+            <p>A full <a href="trapexample.htm">example trap file</a> is available.
+         </p>
+            <p class="pagebreakbefore">Here's how several useful trap variables might be defined</p><pre class="code" xml:space="preserve">&lt;snmp-device-variables&gt;
+&#160;&#160;genericTrapVar,    &#160;&#160;$GenericTrap, &#160;&#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Generic Trap"
+&#160;&#160;specificTrapVar,    &#160;$SpecificTrap, &#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Specific Trap"<br />&#160;&#160;timeStampVar,    &#160;&#160;&#160;&#160;$TimeStamp, &#160;&#160;&#160;&#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Timestamp"<br />&#160;&#160;enterpriseVar,   &#160;&#160; &#160;$Enterprise, &#160;&#160;&#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Enterprise"<br />&#160;&#160;commStringVar,    &#160;&#160;&#160;$CommunityString, TRAPVARIABLE, &#160;&#160;&#160;"Community String"<br />&#160;&#160;trapOIDVar,    &#160;&#160;&#160;&#160;&#160;&#160;$TrapOID, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Trap OID"<br />&#160;&#160;agentAdrsVar,    &#160;&#160;&#160;&#160;$AgentAddress, &#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Agent Address"<br />&#160;&#160;senderAdrsVar,    &#160;&#160;&#160;$SenderAddress, &#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Sender Address"<br />&#160;&#160;snmpVersionVar,    &#160;&#160;$SnmpVersion, &#160;&#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"SNMP Version"<br />&#160;&#160;varbindCountVar,    &#160;$VarbindCount, &#160;&#160;&#160;TRAPVARIABLE, &#160;&#160;&#160;"Varbind Count"<br />&#160;&#160;-- the first and second values from the Varbind List by position<br />&#160;&#160;trap_var1, $VarbindValue1, TRAPVARIABLE, "First value"<br />&#160;&#160;trap_var2, $VarbindValue2, TRAPVARIABLE, "Second value"
+&lt;/snmp-device-variables&gt;
+</pre>
+            <p><b>Note:</b> The TRAPVARIABLE&#160;type causes the value to be displayed in the most useful format. You can also use one of following to force the display to a certain format. These variables are equivalent to their non-trapvariable counterparts, whose complete descriptions of the formats are available in <a href="snmp-device-variables.htm">Probe Variables</a>:</p>
+            <ul>
+                <li value="1">TRAPVARIABLE-TOTAL-VALUE
+</li>
+                <li value="2">TRAPVARIABLE-PER-SECOND
+</li>
+                <li value="3">TRAPVARIABLE-PER-MINUTE
+</li>
+                <li value="4">TRAPVARIABLE-STRING*
+</li>
+                <li value="5">TRAPVARIABLE-INTEGER
+</li>
+                <li value="6">TRAPVARIABLE-HEXADECIMAL*
+</li>
+                <li value="7">TRAPVARIABLE-HEXNUMBER
+</li>
+                <li value="8">TRAPVARIABLE-DOUBLE
+<br /><br />* STRING and HEXADECIMAL are both strings; they can't be charted.
+</li>
+            </ul>
+            <h3 class="pagebreakbefore">Accessing Trap Variables by Position</h3>
+            <p>When accessing VarBind List entries, you can access them either by name or by position. Access by name is much easier to program and understand, but there have been instances where a vendor's traps contained VarBind List entries with the same name: in those cases you must get their values by position. Below are examples of accessing VarBind List entries by name and by position.</p>
+            <p>Given this trap, InterMapper creates the following Event Log  entry:</p><pre class="code">03/23 11:37:34  TRAP  IC3 Demo System:Video Stream ENC01 LIVEWAVE-MIB::deviceFaulted (v2c)<br />&#160;&#160;&#160;{ LIVEWAVE-MIB::deviceUnitID : "5",<br />&#160;&#160;&#160;LIVEWAVE-MIB::deviceName : "5 - Video Stream",<br />&#160;&#160;&#160;LIVEWAVE-MIB::deviceStatus : "6" }</pre>
+            <p>The trap contains these three values:  deviceUnitID, deviceName, and deviceStatus. (InterMapper has already imported a LIVEWAVE MIB that defines these OIDs.)</p>
+            <p>The variables are declared in the variables section:</p><pre class="code">&lt;snmp-device-variables&gt;<br />&#160;&#160;&#160;deviceUnitID, LIVEWAVE-MIB::deviceUnitID, TRAPVARIABLE, "Device Unit ID"<br />&#160;&#160;&#160;deviceName, &#160;&#160;LIVEWAVE-MIB::deviceName, &#160;&#160;TRAPVARIABLE, "Device Name"<br />&#160;&#160;&#160;deviceStatus, LIVEWAVE-MIB::deviceStatus, TRAPVARIABLE, "Device Status"<br />&lt;/snmp-device-variables&gt;</pre>
+            <p>When a trap is received, the probe variables above are set to the values of the trap variables from the VarBind list. One way you could use them is as follows:</p><pre class="code">&lt;snmp-device-thresholds&gt;<br />&#160;&#160;&#160;critical: deviceStatus == 3 "Problem with $deviceUnitID $deviceName: Device status = $devicestatus"<br />&#160;&#160;&#160;okay: &#160;&#160;&#160;&#160;deviceStatus == 1 "$deviceUnitID $deviceName functioning normally."<br />&lt;/snmp-device-thresholds&gt;
+</pre>
+            <p>You can also access the variables by position in the VarBind list:</p><pre class="code" xml:space="preserve">&lt;snmp-device-variables&gt;<br />   deviceUnitID, LIVEWAVE-MIB::$VarbindValue1, TRAPVARIABLE, "Device Unit ID"<br />   deviceName, &#160;&#160;LIVEWAVE-MIB::$VarbindValue2, TRAPVARIABLE, "Device Name"<br />   deviceStatus, LIVEWAVE-MIB::$VarbindValue3, TRAPVARIABLE, "Device Status"<br />&lt;/snmp-device-variables&gt;</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

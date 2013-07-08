@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|TCP Probes">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>TCP Probe Command Reference</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2"><a name="kanchor360"></a><a name="kanchor361"></a><a name="kanchor362"></a><a name="kanchor363"></a>TCP Probe Command Reference</h1>
+            <p><a name="kanchor364"></a><a name="kanchor365"></a>This is a list of commands defined in the InterMapper TCP Probe Scripting Language. 
+ For an example of a custom probe script, see the <a href="#example" name="kanchor366">Annotated 
+ Example of the FTP (Login) Script</a>.</p>
+            <h2><a name="kanchor370"></a>Device I/O Commands</h2>
+            <p><a name="kanchor371"></a><a name="kanchor372"></a><a name="kanchor373"></a><a name="kanchor374"></a><a name="kanchor375"></a><a name="kanchor376"></a>The following commands operate on a device by sending data to the device 
+ or by reading one or more lines from the input (from the connection to 
+ the device being tested). Each command that reads a device compares its 
+ string to the <i>current line</i><a name="kanchor377"></a> - which is the most recently-read line 
+ from the connection. If there is no current line (for example, if a SEND 
+ command has been executed), these statements will read one or more lines 
+ to get the current line.</p>
+            <ul>
+                <li value="1"><a href="#expt" name="kanchor378">EXPT "string" #fail</a><a name="kanchor379"></a><a name="kanchor380"></a> 
+ - Searches incoming lines for the specified                     <i>string.</i></li>
+                <li value="2"><a href="#mtch" name="kanchor381">MTCH "string" #fail</a><a name="kanchor382"></a> 
+ - Searches the next incoming line for the specified string.</li>
+                <li value="3"><a href="#skip" name="kanchor383">SKIP "string" #fail</a><a name="kanchor384"></a><a name="kanchor385"></a> 
+ - Ignore all incoming lines containing the specified                     <i>string.</i></li>
+                <li value="4"><a href="#disc" name="kanchor386">DISC #discfail</a><a name="kanchor388"></a><a name="kanchor389"></a> - Jump to a specified 
+ line number if the probe is suddenly disconnected.</li>
+                <li value="5"><a href="#conn" name="kanchor390">CONN #timeout ["TELNET"]["SECURE"]</a><a name="kanchor395"></a> 
+ - Specifies the connect timeout of the probe and whether to process Telnet 
+ options.</li>
+                <li value="6"><a href="#rcon">RCON</a> - reconnects to the specified server and port.</li>
+                <li value="7"><a href="#port" name="kanchor396">PORT #port_num #connect_timeout</a> 
+ - No longer required (the remote port number is now a separate parameter 
+ in the configuration dialog.)</li>
+                <li value="8"><a href="#line" name="kanchor399">LINE [ON | OFF]</a> - Specifies whether 
+ the script should read incoming data as lines or as raw data.</li>
+                <li value="9"><a href="#next">NEXT</a><a name="kanchor400"></a> - Clears the input buffer 
+ so that subsequent                     <i><b>MTCH</b></i> commands will operate on newly-received 
+ information. </li>
+                <li value="10"><a href="#send">SEND "string"</a> - Sends 
+ the specified string to a remote device.</li>
+                <li value="11"><a href="#brcv">BRCV {BER&#160;sequence}</a> - Receive TCP data and decode from BER format into a local format.<br /></li>
+                <li value="12"><a href="#bsnd">BSND {BER&#160;sequence}</a> - Encode local data in BER format and send. (See LDAP probes for examples, syntax.)</li>
+            </ul>
+            <h2>Commands that control script flow</h2>
+            <p>The following commands control the order of operations in the script.</p>
+            <ul>
+                <li value="1"><a href="#chck" name="kanchor401">CHCK "string" #fail</a> 
+ - Determines whether "string" is non-empty.</li>
+                <li value="2"><a href="#done" name="kanchor402">DONE <i>status</i> ["message"]</a> 
+ - Terminates a script with a specified condition.</li>
+                <li value="3"><a href="#exit" name="kanchor404">EXIT</a> - Terminates a script with 
+ the condition specified previously by                     <b><i>STAT</i></b>.</li>
+                <li value="4"><a href="#fail" name="kanchor405">FAIL</a> - specifies the line # to jump to if a CONN command fails to connect.</li>
+                <li value="5"><a href="#goto" name="kanchor406">GOTO #statement</a> - Branches immediately 
+ to the specified statement number.</li>
+                <li value="6"><a href="#nbgt" name="kanchor407">NBGT #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>G</b></i>reater                     <i><b>T</b></i>han) branches 
+ to                     <i>#line </i>if #<i>arg1</i> is greater than                     <i>#arg2</i>.</li>
+                <li value="7"><a href="#nbne" name="kanchor408">NBNE #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) Compares two 
+ numeric arguments and branches to the indicated #line if they are not 
+ equal.</li>
+                <li value="8"><a href="#sbne" name="kanchor409">SBNE "arg1" "arg2" 
+ #line</a> - (<i><b>S</b></i>tring                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) Compares two string arguments and branches to the 
+ indicated #line if they are not equal.</li>
+                <li value="9"><a href="#stat">STAT status ["message"]</a> 
+ - Specifies the status condition of a script when it ends.</li>
+                <li value="10"><a href="#wait" name="kanchor410">WAIT #secs #idlefail #discfail</a><a name="kanchor415"></a> 
+ - Specifies the number of seconds the probe waits for a response.</li>
+            </ul>
+            <h2>String processing commands</h2>
+            <p>The following commands process and manipulate strings.</p>
+            <ul>
+                <li value="1"><a href="#eval" name="kanchor416">EVAL $result := expression</a> - Assigns the evaluated value of <span class="code">expression </span>to <span class="code">${result}</span></li>
+                <li value="2"><a href="#stor" name="kanchor417">STOR "variable" "string"</a> 
+ - Stores the string into the variable named "variable"</li>
+                <li value="3"><a href="#scat" name="kanchor418">SCAT "variable1" "variable2" 
+ #fail</a><a name="kanchor419"></a><a name="kanchor420"></a> - Concatenates variable1 and variable2, placing the resulting 
+ string in variable1. </li>
+                <li value="4"><a href="#nadd" name="kanchor421">NADD "variable" #number</a> 
+ - (<i><b>N</b></i>umeric                     <i><b>Add</b></i>) Adds a numeric value to a 
+ variable.</li>
+            </ul>
+            <h2>Commands that measure time</h2>
+            <ul>
+                <li value="1"><a href="#strt" name="kanchor422">STRT</a><a name="kanchor423"></a><a name="kanchor424"></a><a name="kanchor425"></a><a name="kanchor426"></a><a name="kanchor427"></a><a name="kanchor428"></a><a name="kanchor429"></a> - Starts a millisecond timer 
+ that InterMapper can use to determine the elapsed time for some event.</li>
+                <li value="2"><a href="#time">TIME "variable"</a> - Sets 
+ the named variable to the current number of milliseconds from the most 
+ recent STRT command. </li>
+                <li value="3"><a href="#wait">WAIT #secs #idlefail #discfail</a> 
+ - Specifies the number of seconds the probe waits for a response.</li>
+            </ul>
+            <h2 class="pagebreakbefore"><a name="kanchor430"></a><a name="kanchor431"></a>Probe Command Details - Alphabetical</h2>
+            <p style="font-weight: bold;"><a name="brcv"></a>BRCV {BER&#160;Sequence}</p>
+            <p>Receive TCP data and decode from BER format into a local format, checking for expected tags and values as indicated. BER stands for "Basic Encoding Rules" for ASN.1. See LDAP probes for examples, syntax.</p>
+            <p>Documentation of BER format is beyond the scope of this manual. </p>
+            <p><b><a name="imspecific_syntax"></a>InterMapper-specific BER syntax</b> information you need is:</p>
+            <ul>
+                <li value="1">{ - starts a sequence (sequences may be nested) </li>
+                <li value="2">} - ends a sequence </li>
+                <li value="3">[ - starts a hexadecimal tag </li>
+                <li value="4">] - ends a hexadecimal tag </li>
+                <li value="5"># - indicates a literal number follows </li>
+                <li value="6">" - begins and ends a literal string</li>
+            </ul>
+            <p>Remember that <span class="code">${}</span> is the variable format. Don't confuse these the sequence start and end characters "<span class="code">{}</span>" with the variable delimiters.</p>
+            <p style="font-weight: bold;">Example:</p>
+            <p class="code">BRCV { #1, [61]{ [0A]#ENUM, "", "" } } else @PARSE_ERROR</p>
+            <p style="font-weight: bold;"><a name="bsnd"></a>BSND {BER sequence}</p>
+            <p>Encode local data in BER format and send. BER stands for "Basic Encoding Rules" for ASN.1. See LDAP probes for examples and syntax.</p>
+            <p>Documentation of BER format is beyond the scope of this manual. See <a href="#imspecific_syntax">InterMapper-specific BER syntax</a> above for the information you need to use <span class="code">BSND</span>.</p>
+            <p style="font-weight: bold;">Example:</p>
+            <p class="code">BSND { #1, [60]{ #3, "${Bind Name}", [80]"${Bind Password*}"} }</p>
+            <p><a name="chck"></a><b>CHCK "string" #fail</b>
+            </p>
+            <p class="td">Use the <b><i>CHCK</i></b> command to determine whether "string" 
+ is non-empty. If the string is empty, the script jumps to the specified 
+ #fail line. </p>
+            <p class="td">This command can be used to construct scripts whose control changes 
+ depending on whether an optional parameter is supplied.</p>
+            <p class="td"><b style="font-weight: bold;"><a name="kanchor432"></a>Possible failures:</b> None</p>
+            <h3 class="pagebreakbefore"><a name="conn"></a><b>CONN #timeout ["TELNET"]["SECURE"]</b>
+            </h3>
+            <p>Use the <i><b>CONN</b></i><a name="kanchor433"></a> command to specify the connect timeout of 
+ the probe and whether to process Telnet options. </p>
+            <p>If you are going to use the <b><i>CONN</i></b> command, it                     <i>must be 
+ the first statement of the script. </i>When the script executes, the parameters 
+ of the                     <i><b>CONN</b></i> statement determine the options InterMapper 
+ uses to connect to the remote computer.</p>
+            <p><b style="font-weight: bold;">#timeout:</b> The number 
+ of seconds to wait while trying to connect before giving up.</p>
+            <p><b style="font-weight: bold;">"TELNET":</b> If the second parameter 
+ of the                     <b><i>CONN</i></b><a name="kanchor434"></a><a name="kanchor435"></a> command is "TELNET" (including the 
+ quotes), then the connection is created in a mode where the TCP stream 
+ automatically processes and negatively acknowledge any incoming Telnet 
+ options. This allows a Telnet probe to ignore the telnet options and work 
+ in simple line-by-line mode for the remainder of the script.</p>
+            <p><b>SECURE</b> To create an SSL connection, place the word SECURE at the end
+of the line.
+</p>
+            <p><b>SECURE:ADH </b> Use anonymous Diffe-Hellman key exchange.</p>
+            <p><b>SECURE:NO_TLS </b> TLSv1 is turned off when making a secure connection. The HTTPS (SSLv3) probe uses this option.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
+            <h3><a name="disc"></a><b>DISC #discfail</b>
+            </h3>
+            <p>Use the <b><i>DISC</i></b> command to cause the script to jump to a 
+ specified line number if the probe is suddenly disconnected. You can use 
+ this command to identify scripts that fail because of a TCP disconnection. 
+ </p>
+            <p>The script's disconnect line can also be set using the third parameter 
+ to the WAIT command.</p>
+            <h3><a name="done"></a><b>DONE <i>status</i> ["message"]</b>
+            </h3>
+            <p class="td">Use the <b><i>DONE</i></b> command to terminate the script with the 
+ specified condition, which must be one of <a name="kanchor436"></a><a name="kanchor437"></a><a name="kanchor438"></a><a name="kanchor439"></a></p><pre class="code">[OKAY | WARN | ALRM | DOWN]</pre>
+            <p class="td"><a name="kanchor440"></a><a name="kanchor441"></a>The optional "message" parameter lets you provide more detail 
+ about the condition. The status values for the <i><b>DONE </b></i>command 
+ must be in                     <i><a name="kanchor442"></a>UPPERCASE</i>.</p>
+            <p class="td"><b style="font-weight: bold;">Example:</b><a name="kanchor443"></a>
+            </p><pre class="code">DONE ALRM "[HTTP] 500 Response received." 
+</pre>
+            <p class="td">This example sets the status of the device to <i>ALRM</i><a name="kanchor444"></a><a name="kanchor445"></a><a name="kanchor446"></a>. The condition 
+ of the device (which is displayed in the device's Status window and the Device 
+ List window) is set to "[HTTP] 500 Response received." to give 
+ the user an indication of the reason for the alarm.</p>
+            <p class="td"><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <p class="td"><b style="font-weight: bold;">Tip:</b> If the final statement of your 
+ script is not a                     <i><b>DONE </b></i>command, the script automatically terminates 
+ with a "DONE                     <i>OKAY</i>" status.</p>
+            <h3><a name="eval"></a>EVAL $result := expression</h3>
+            <p style="font-weight: normal;">Assigns a value to the variable in <span class="code">${result}</span> based on <span class="code">expression</span>.</p>
+            <p>The expression can use any operators or functions defined in Probe Calculations, allowing you to perform variable assignments, arithmetic calculations, relational and logical comparisons, as well as use built-in functions to perform bitwise, rounding and mathematical operations. You can also perform operations on strings using regular expressions.</p>
+            <p style="font-weight: normal;"><b>Examples:</b>
+            </p>
+            <p class="code">-- Simple Assignment
+EVAL $msgstring := $otherstring 
+
+--Simple subtraction of numeric values
+EVAL $newopen := $fileopen - $prevfileopen
+
+--Use of function and conditional logic
+EVAL $prevtest := defined("test") == 1 ? $test : 0
+
+--Use of regular expression
+EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
+            <p style="font-weight: normal;">Numerous examples that use the EVAL command can be found in the built-in TCP probes.</p>
+            <p style="font-weight: normal;"><b>Note:</b> The EVAL command used in TCP&#160;probes should not be confused with the <b style="font-style: italic;">$<a href="builtinvariablereference.htm#evalmacro"><b style="font-style: italic;">{eval}</b> macro<a href="builtinvariablereference.htm#evalmacro" title="" alt="" class="MCXref xref"> </a></a></b>, available the output sections of command-line, SNMP, and TCP&#160;probes.</p>
+            <h3><a name="exit"></a><b>EXIT</b>
+            </h3>
+            <table style="width: 100%;border-spacing: 0px;border-spacing: 0px;" cellspacing="0" width="100%">
+                <tr>
+                    <td style="width: 17px;padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;" width="17px">&#160;</td>
+                    <td style="padding-left: 5px;padding-top: 5px;padding-right: 5px;padding-bottom: 5px;">Use the <i><b>EXIT</b></i> command to 
+ terminate the script, setting the status and condition string to whatever 
+ is specified by a previous                     <i><b>STAT </b></i>command.</td>
+                </tr>
+            </table>
+            <h3><a name="expt"></a><b>EXPT "string" #fail</b>
+            </h3>
+            <p>Use the <b><i>EXPT</i></b> command to "<i><b>EXP</b></i>ec<i><b>T</b></i>", 
+ or search for the specified                     <i>string </i>in any number of incoming lines. 
+ </p>
+            <ul>
+                <li value="1">If the string is found, the script falls through 
+ to the next statement.</li>
+                <li value="2">If the string is not found, the script jumps to the 
+ statement specified in the <i>#fail </i>parameter.<br /><br /><b>Notes:</b><br />EXPT is identical to MTCH, except that:<br />- MTCH fails if the *next* line or block does not match what is specified.
+<br />- EXPT keeps going until it finds a line or text block that matches what is specified.
+<br /><br />Both EXPT&#160;and MTCH can use regular expressions. For more information, see <a href="language.html#matching">String Matching</a>.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">EXPT "220 " #14
+</pre>
+            <p><b style="font-weight: bold;">Possible Failures:</b>
+            </p>
+            <p><a name="kanchor447"></a>The EXPT command can fail if the expected text is not received before the 
+ connection closes. In that event, the script jumps to the statement specified 
+ by <i>#fail</i>. </p>
+            <p>However, if the timeout specified by a previous WAIT command expires 
+ before the connection closes, the script jumps to the <i>#idlefail</i> 
+ line specified by the                     <i><b>WAIT </b></i>command instead.</p>
+            <h3><a name="fail"></a><a name="kanchor448"></a>FAIL #</h3>
+            <p>Specify the line number to jump to if the probe fails to connect. The FAIL command must follow immediately after a CONN command line.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b>&#160;</p>
+            <p>If the statement number is out of bounds, the script terminates with 
+ a <i><b>DONE</b></i> command and                     <i>DOWN</i> status.</p>
+            <p><a name="goto"></a><b>GOTO #statement</b>
+            </p>
+            <p>Use the <b><i>GOTO </i></b>command to branch immediately to the specified 
+ statement number.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b>
+            </p>
+            <p>If the statement number is out of bounds, the script terminates with 
+ a <i><b>DONE</b></i> command and                     <i>DOWN</i> status.</p>
+            <h3><a name="line"></a><b>LINE [ON | OFF]</b>
+            </h3>
+            <p>Use the <b><i>LINE</i></b> command to specify whether the script should 
+ read incoming data as lines or as raw data. </p>
+            <p><b style="font-weight: bold;">Notes:</b>
+            </p>
+            <ul>
+                <li value="1">By default, the script reads in <i><b><a name="kanchor449"></a>LINE ON </b></i><a name="kanchor450"></a><a name="kanchor451"></a><a name="kanchor452"></a>mode. 
+ That is, the incoming data is read until it is terminated by a CR-LF or 
+ just a plain LF, and then the line is processed. </li>
+                <li value="2"><a name="kanchor453"></a>If you issue a <i><b><a name="kanchor454"></a>LINE OFF</b></i> command, data 
+ is read without regard for line delimiters.<br /><br /><a name="kanchor455"></a><a name="kanchor456"></a>Reading raw data is useful for scanning HTTP data since web pages are 
+ not necessarily broken into lines. InterMapper's TCP probe has a maximum 
+ line buffer of 4096 characters, so if lines are longer than that, they may be 
+ treated as separate lines.</li>
+            </ul>
+            <p><b style="font-weight: bold;">Tip: </b><a name="kanchor457"></a>Once you've matched some data 
+ in                     <i><b>LINE ON </b></i>mode, you shouldn't match any more because your 
+ position in the buffer is not restored and you may miss something.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
+            <h3><a name="mtch"></a><b>MTCH "string" #fail</b>
+            </h3>
+            <p>Use the <b><i>MTCH</i></b> command to "<b><i>M</i></b>a<b><i>TCH</i></b>", 
+ or search for the specified string in the next incoming line. If found, 
+ the script falls through to the next statement.<br /><br /><b>Notes:</b><br />MTCH is identical to EXPT, except that:<br />- MTCH fails if the *next* line or block does not match what is specified.
+<br />- EXPT keeps going until it finds a line or text block that matches what is specified.
+<br /><br />Both EXPT&#160;and MTCH can use regular expressions. For more information, see <a href="language.html#matching">String Matching</a></p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">MTCH "331" #16
+</pre>
+            <p><b style="font-weight: bold;">Possible Failures:</b>
+            </p>
+            <p>If the next incoming line does not contain the desired string, or if 
+ the connection closes before the next line can be read, this script fails. 
+ In either case, the script jumps to the statement specified by <i>#fail</i>. 
+ </p>
+            <p>If the idle timeout expires instead, the script jumps to the <i>#idlefail</i> 
+ line specified by the previous                     <i><b>WAIT </b></i>command.</p>
+            <h3><b style="font-weight: bold;"><a name="nadd"></a>NADD "variable" 
+ #number</b>
+            </h3>
+            <p>The <i><b>NADD</b></i> (<i><b>N</b></i>umeric                     <i><b>Add</b></i>) command 
+ adds a numeric value to a variable. The variable is looked up and converted 
+ to a numeric value. The number is added, and the result is converted back 
+ to a string and placed into the variable.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote>
+                <p><span class="code">NADD "fred" #3</span>
+                    <br />adds 3 to the value of the variable <span class="code">fred</span>. 
+ If <span class="code">fred</span> contains "3", the 
+ result will be "6". If <span class="code">fred</span> 
+ contains "golf", the result will be "3" (because the 
+ conversion from a string to a number yields zero). </p>
+                <p>If the number is missing, the script adds zero to the value. </p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Possible Failures: </b>None.</p>
+            <h3 class="pagebreakbefore"><a name="nbgt"></a><b>NBGT #<i>arg1 #arg2</i> #line</b>
+            </h3>
+            <p>Use the <i><b>NBGT</b></i> (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>G</b></i>reater                     <i><b>T</b></i>han) command to branch to                     <i>#line 
+ </i>if #<i>arg1</i> is greater than                     <i>#arg2</i>.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote>
+                <p><span class="code">NBGT #${arg1} #${arg2} @exit</span>
+                    <br />branches to the label <span class="code">@exit</span> if the numeric                     <span class="code">${arg1}</span> is greater than   <span class="code">${arg2}</span>.</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Note:</b> Use the leading                     <b>#</b> to 
+ force InterMapper to treat the arguments as numeric values.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><b style="font-weight: bold;"><a name="nbne"></a>NBNE #arg1 #arg2 #line</b>
+            </h3>
+            <p>Use the <i><b>NBNE</b></i> (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) command compares the two numeric 
+ arguments, and branches to the indicated #line if the arguments are not 
+ equal.</p>
+            <p class="td"><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code">NBNE #${arg1} #${arg2} @exit<br /></pre>
+            <p class="td">branches to the label <span class="code">@exit</span> if the numeric <span class="code">${arg1}</span> is not equal to <span class="code">${arg2}</span>.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><b style="font-weight: bold;"><a name="next"></a>NEXT</b>
+            </h3>
+            <p class="td">The <i><b>NEXT</b></i> command clears the input buffer (represented 
+ by the <span class="code">${LINE}</span> variable) so that subsequent                     <i><b>MTCH</b></i> commands will operate on newly-received information. 
+ </p>
+            <p class="td"><b style="font-weight: bold;">Notes:</b>
+            </p>
+            <ul>
+                <li value="1">The <i><b>SEND</b></i> command incorporates an implicit                     <i><b>NEXT</b></i> command. </li>
+                <li value="2">The <i><b>NEXT</b></i> command has no effect if input 
+ is not in                     <i><b>LINE</b></i> mode.</li>
+            </ul>
+            <p class="td"><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><a name="port"></a><b>PORT #port_num #connect_timeout</b>
+            </h3>
+            <p><i style="font-style: italic;"><a name="kanchor458"></a>Deprecated</i> This command is no longer 
+ required in a script because the remote port number is now a separate 
+ parameter in the configuration dialog.</p>
+            <p>If present, this command must be in the first statement of the script. 
+ The first parameter specifies the default TCP port to connect to on the 
+ remote computer. The #connect_timeout parameter is the number of seconds 
+ to wait for the probe to connect.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
+            <h3 class="pagebreakbefore"><a name="rcon"></a>RCON</h3>
+            <p>Takes no parameters.</p>
+            <p>See the Barracuda probes for examples and syntax.</p>
+            <p><b>Possible Failures:</b> None</p>
+            <h3><b style="font-weight: bold;"><a name="sbne"></a>SBNE "arg1" 
+ "arg2" #line</b>
+            </h3>
+            <p>The <b><i>SBNE </i></b>(<i><b>S</b></i>tring                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) command compares the two string arguments, and branches 
+ to the indicated #line if the arguments are not equal.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote>
+                <p><span class="code">SBNE "${arg1}" "${arg2}" @exit</span>
+                    <br />branches to the label <span class="code">@exit</span> if the string                     <span class="code">${arg1}</span> is not equal to                     <span class="code">${arg2}</span>.</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><b style="font-weight: bold;"><a name="scat"></a>SCAT "variable1" 
+ "variable2" #fail</b>
+            </h3>
+            <p>The <i><b>SCAT</b></i> (<i><b>S</b></i>tring Con<i><b>CAT</b></i>enate) 
+ command concatenates variable1 and variable2 and places the resulting 
+ string in variable1. </p>
+            <p><b style="font-weight: bold;">Example: </b>
+            </p>
+            <blockquote>
+                <p><span class="code">STOR "name" "Fred"</span>
+                    <br />sets the variable <span class="code">${name}</span> to the string 
+ "Fred"<span class="code"><br /><br /><a name="kanchor459"></a>SCAT "name" "Flintstone" @TOO_LONG</span><br />sets the variable <span class="code">${name}</span> to the value 
+ "FredFlintstone"</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Possible Failures: </b>If the sum of the lengths of the strings exceeds 65,535 characters, the SCAT command 
+ will fail, and transfer to the <span class="code">@TOO_LONG</span> 
+ label.</p>
+            <h3><a name="send"></a><b>SEND "string"</b>
+            </h3>
+            <p>Use the <b><i>SEND</i></b> command to send the specified string to the 
+ remote device. </p>
+            <p>To send a line of data, you must explicitly specify the CR-LF using 
+ the quoting convention.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote><span class="code"><a name="kanchor460"></a>SEND "Greetings!\r\n"</span>
+                <br />transmits the data "Greetings!" followed by a CR-LF. 
+</blockquote>
+            <p><b style="font-weight: bold;">Possible Failures: </b>This command can't fail. If the data can't be sent because of a network 
+ failure or device failure, the failure shows up in a subsequent <i><b>EXPT 
+ </b></i>or                     <i><b>MTCH </b></i>command.</p>
+            <h3 class="pagebreakbefore"><a name="skip"></a><b>SKIP "string" #fail</b>
+            </h3>
+            <p>Use the <i><b>SKIP </b></i>command to ignore all incoming lines containing 
+ the specified                     <i>string</i>. The script falls through to the next statement 
+ when an incoming line does                     <i>not </i>contain the                     <i>string</i>.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b>
+            </p>
+            <p>If the connection closes unexpectedly, the script jumps to #fail.<br />If the <i><b>WAIT</b></i> timeout (as defined by the                     <b><i>WAIT</i></b> 
+ command) expires, the script jumps to                     <i>#idlefail</i>.</p>
+            <h3><a name="stat"></a><b>STAT <i>status</i> ["message"]</b>
+            </h3>
+            <p>Use the <b><i>STAT</i></b> command to specify the status of the device 
+ when the script ends. This command                     <i>does not </i>terminate the script. 
+ You can also specify a condition string as the second argument.</p>
+            <p>The status must be one of</p><pre class="code">[OKAY | WARN | ALRM | DOWN | CRIT]</pre>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p><pre class="code"><a name="kanchor461"></a>STAT ALRM "[HTTP] 500 Response received." 
+</pre>
+            <p><b style="font-weight: bold;">Note:</b> A subsequent                     <i><b>STAT </b></i>or                     <i><b>DONE </b></i>command overrides the value set by this command.</p>
+            <h3><b style="font-weight: bold;"><a name="stor"></a>STOR "variable" 
+ "string"</b>
+            </h3>
+            <p>The <i><b>STOR</b></i> command stores the string into the variable named 
+ variable. If you wish to set a variable to a numeric value, enclose the 
+ number in quotes ("). Subsequent parts of the script can refer to 
+ this variable as <span class="code">${variable}</span>.</p>
+            <p><b style="font-weight: bold;">Examples:</b>
+            </p>
+            <blockquote>
+                <p><span class="code"><a name="kanchor462"></a>STOR "fred" "foobar"</span>
+                    <br />sets the variable fred to the text string foobar. Subsequent parts of the 
+ script can refer to this variable as <span class="code">${fred}</span>.</p>
+                <p><span class="code">STOR "fred" "3"</span>
+                    <br />sets the variable fred to the string value "3".</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Note:</b> String variables can be any 
+ length up to 65,535 characters.</p>
+            <p><b style="font-weight: bold;">Possible Failures: </b>None. </p>
+            <h3 class="pagebreakbefore"><b style="font-weight: bold;"><a name="strt"></a>STRT</b>
+            </h3>
+            <p>The <i><b>STRT</b></i> command starts a millisecond timer that InterMapper 
+ can use to determine the elapsed time for some event. See the TIME command.</p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote>
+                <p><span class="code">STRT</span> Starts the timer.</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><b style="font-weight: bold;"><a name="time"></a>TIME "variable" 
+ </b>
+            </h3>
+            <p>The <i><b>TIME</b></i> command sets the named variable to the current 
+ number of milliseconds from the most recent STRT command. </p>
+            <p><b style="font-weight: bold;">Example:</b>
+            </p>
+            <blockquote>
+                <p><span class="code"><a name="kanchor463"></a>TIME "connecttime" </span>
+                    <br />sets the variable <span class="code">connecttime</span> to the number 
+ of milliseconds since the most recent                     <i><b>STRT</b></i> command. If there 
+ was no previous                     <i><b>STRT</b></i> command, the variable will be set to 
+ zero.</p>
+            </blockquote>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None.</p>
+            <h3><a name="wait"></a><b>WAIT #secs #idlefail #discfail</b>
+            </h3>
+            <p>Use the <b><i>WAIT</i></b> command to specify the number of seconds 
+ the probe waits for a response. </p>
+            <p><b style="font-weight: bold;">Parameter 1 - #secs: </b><a name="kanchor464"></a><a name="kanchor465"></a>The number of 
+ seconds to wait for a response. If you do not include a                     <b><i>WAIT</i></b><a name="kanchor466"></a> 
+ command in your script, the default timeout 60 seconds is used.</p>
+            <p><b style="font-weight: bold;">Parameter 2 - #idlefail:</b> If present, 
+ the script jumps to this line number if the probe is idle for the specified 
+ number of seconds. This idle handler supercedes the error line number 
+ specified by the                     <i><b>EXPT</b></i>,                     <i><b>SKIP</b></i>, or                     <i><b>MTCH</b></i> 
+ commands. If the                     <i>#idlefail</i> parameter is not included, the script 
+ branches to the failure handler of the current command. [link] </p>
+            <p><b style="font-weight: bold;">Parameter 3 - #discfail:</b> If present, 
+ the script jumps to this line if the probe is unexpectedly disconnected. 
+ This allows you to identify scripts that fail because of a TCP disconnection.</p>
+            <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
+            <p><b style="font-weight: bold;">Tip:</b> You should specify all three 
+ parameters in the                     <i><b>WAIT </b></i>command.</p>
+            <h2 class="pagebreakbefore"><a name="example"></a><a name="kanchor467"></a><a name="kanchor468"></a>Annotated Example of the FTP (Login) Script</h2><pre class="code">01) PORT #21 (default tcp port)<br />02) WAIT #30 seconds<br />03) EXPT "220 " else goto -1- #14<br /><a name="kanchor469"></a>04) SEND "USER ${User ID}\r\n"<br />05) MTCH "331" else goto -2- #16<br /><a name="kanchor470"></a>06) SEND "PASS ${Password}\r\n"<br />07) MTCH "230" else goto -3- #20<br /><a name="kanchor471"></a>08) SEND "NOOP\r\n"<br />09) MTCH "200" else goto -4- #24<br />10) SEND "QUIT\r\n"<br />11) EXPT "221" #+1 (i.e. can't fail)<br /><a name="kanchor472"></a>12) DONE OKAY<br />13)<br /><a name="kanchor473"></a><a name="kanchor474"></a>14) DONE DOWN "[FTP] Unexpected greeting from port ${_REMOTEPORT}. ${_LINE:50})" -1-<br />15)<br />16) MTCH "500" else goto #+2 -2-<br /><a name="kanchor475"></a><a name="kanchor476"></a>17) DONE ALRM "[FTP] Port ${_REMOTEPORT} did not recognize the 'USER' command."<br />18) DONE ALRM "[FTP] Unexpected response to USER command. (${_LINE:50})"<br />19)<br />20) MTCH "530" else goto #+2 -3-<br /><a name="kanchor477"></a><a name="kanchor478"></a>21) DONE WARN "[FTP] Incorrect login for \"${User ID}"."<br />22) DONE ALRM "[FTP] Unexpected response to PASS command. (${_LINE:50})"<br />23)<br />24) DONE ALRM "[FTP] Unexpected response to NOOP command. (${_LINE:50})"</pre>
+            <h3>Explanation of the Script</h3><pre class="code">01) PORT #21 (default tcp port)<br />02) WAIT #30 seconds</pre>
+            <p><b style="font-weight: bold;">Line 1: </b>The PORT command at the beginning 
+ of the script specifies the default TCP port number for FTP, port 21. 
+ </p>
+            <p><b style="font-weight: bold;">Line 2: </b>The WAIT command specifies 
+ that if the script doesn't hear responses back within 30 seconds, it fails.</p><pre class="code">03) EXPT "220 " else goto -1- #14</pre>
+            <p><b style="font-weight: bold;">Line 3:</b> FTP servers normally send 
+ one or more "220" lines to greet new FTP control connections. 
+ Our script scans the incoming lines for "220 ". </p>
+            <p>Note the space following the 220; we don't want to match an incoming 
+ "220-"; the incoming dash indicates there are still more 220 
+ lines to be read -- we only want to match the final 220 line.</p>
+            <p>If the script fails to find "220 " before the connection closes 
+ or within 30 seconds, the script branches to statement 14. The "-1-" 
+ is an arbitrary label used to make the destination of the branch more 
+ easily visible. </p>
+            <p>The string "else goto -1-" has no function (except readability) 
+ in the script command text; this statement could have been written equally 
+ well as EXPT "220 " #14 . Note that statement #14 also has comment 
+ of "-1-" to show it is the destination.</p><pre class="code">04) SEND "USER ${User ID}\r\n"</pre>
+            <p><b style="font-weight: bold;">Line 4: </b><a name="kanchor479"></a><a name="kanchor480"></a><a name="kanchor481"></a><a name="kanchor482"></a>Send the FTP USER command. 
+ With this command, we send the user ID specified by the user, e.g. "anonymous". 
+ Note that you must include the carriage-return and line-feed at the end 
+ of the string sent, to denote the line ending.</p><pre class="code">05) MTCH "331" else goto -2- #16</pre>
+            <p><b style="font-weight: bold;">Line 5: </b>The script looks for the 331 
+ response to the USER command. </p>
+            <p>If something else arrives, the script jumps to statement 16. Unlike 
+ the <i><b>EXPT</b></i> command, the                     <i><b>MTCH</b></i> command fails immediately 
+ if the next line doesn't contain the required text.</p>
+            <p>[...] (Skipping down to statement 16).</p><pre class="code">16) MTCH "500" else goto #+2 -2-<br />17) DONE ALRM "[FTP] Port ${_REMOTEPORT} did not recognize the \"USER" command."<br />18) DONE ALRM "[FTP] Unexpected response to USER command. (${_LINE:50})"</pre>
+            <p><b style="font-weight: bold;">Line 16:</b> Statement 16 is executed 
+ only if statement 5 fails; that is, if an unexpected response to the USER 
+ command is received. The response is checked to see if it matches "500", 
+ which would indicate that the command isn't supported. This is possible 
+ if you accidentally try to pass the USER command to a TCP service other 
+ than FTP. </p>
+            <p>If the server's response matches "500", the script is terminated 
+ with the device in the <i>ALARM </i>status (in statement 17). The message 
+ reports that the server did not recognize the USER command.</p>
+            <p>If the server's response does not match "500", the script 
+ skips two lines to statement 18. This statement terminates the script 
+ with the <i>ALARM </i>status and uses the ${LINE" } macro to include 
+ the first 50 characters of the response line in the message.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="appxc\macros.html" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="846" MadCap:lastWidth="576">
+    <head><title></title>
+        <link rel="StyleSheet" href="../Resources/default.css" />
+    </head>
+    <body>
+        <h1 class="L2">
+            <MadCap:keyword term="Macro Reference" />Macro Reference</h1>
+        <p>A macro is a text string with the format <span class="code"><MadCap:keyword term="Macroname" />${macroname:other-information}</span>. 
+ The       <i>macroname</i> is required, and some macros use or require      <i>other-information</i> 
+ which follows the ":". The entire macro is replaced by 
+ the appropriate text when the page is generated.</p>
+        <p>Macros fall into these general categories:</p>
+        <ul>
+            <li><a href="#include">The Include Macro<MadCap:xref href="#include" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+            <li><a href="#content">Macros that generate "content" on an InterMapper web page<MadCap:xref href="#content" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+            <li><a href="#environment">Macros that describe InterMapper and its environment<MadCap:xref href="#environment" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+            <li><a href="#images">Macros to place images onto a page<MadCap:xref href="#images" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+            <li><a href="#interval">Macros that control the interval 
+ between page refreshes<MadCap:xref href="#interval" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+            <li><a href="#URL"><MadCap:keyword term="URL" />Macros related to links and URLs<MadCap:xref href="#URL" target="" title="" alt="" MadCap:conditions="Primary.print" /></a>
+            </li>
+        </ul>
+        <h2><b style="font-weight: bold;"><a name="include"></a>The Include Macro</b>
+        </h2>
+        <p>Your template files and target files may include other files.</p>
+        <table>
+            <tr>
+                <td style="text-align: right;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="HTML" /><MadCap:keyword term="File-to-be-included.html" />${include:file-to-be-included.html}</b>
+                    </p>
+                </td>
+                <td>
+                    <p>The named file is inserted into the web page. The file must be in the same folder.</p>
+                </td>
+            </tr>
+        </table>
+        <h2><b style="font-weight: bold;"><a name="content"></a>Macros that generate the "content" of an InterMapper web page</b>
+        </h2>
+        <p>InterMapper often uses these macros either as the <span class="code"><MadCap:keyword term="${bodytext}" />${bodytext}</span><MadCap:keyword term="Admin" /> 
+ of the page, or as a major part of a page's contents. All the macros below work on the map named in the request URL. If the URL is for a page in 
+ the ~admin directory, InterMapper displays information about all items in all maps.</p>
+        <table>
+            <col style="width: 227px;vertical-align: top;text-align: right;" />
+            <col style="width: 400px;vertical-align: top;" />
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Fullstatus" />${fullstatus}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="HTML:shows" />shows a list of all the devices and links for the map named in the 
+ URL.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Errorstatus" />${errorstatus}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows only the devices and links which are in warning or alarm states, or down for the named map.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Errorstatus_orig" />${errorstatus_orig}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Output the original "errors" status report. Differences from <span class="code">${errorstatus}</span>:<br /></p>
+                    <ul>
+                        <li><span class="code">${errorstatus_orig}</span> doesn't show device alarms.</li>
+                        <li><span class="code">${errorstatus}</span> first outputs interfaces in error, then interfaces with high utilization.<br /><span class="code">${errorstatus}</span>lists interfaces in random order.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Currentoutages" />${currentoutages}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows the list of current outages -- devices or links that are currently in warning, alarm, or are down in the named map.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Currentlinkoutages" />${currentlinkoutages}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Output a table of current interface outages. The table's column names are <b><i>Date</i></b>, <b><i>Time</i></b>, <b><i>Interface</i></b> and <b><i>Duration</i></b>.
+</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Previousoutages" />${previousoutages}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows the list of devices that had been listed as outages but have since returned to normal.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${previousoutages:hours=xx}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows the list of previous outages within the last xx hours.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Maxrows" />${previousoutages:maxrows=x}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows a list of the last x previous outages.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Maplist" />${maplist}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows an HTML unnumbered list (<span class="code">&lt;UL&gt;</span>) of the maps available.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Chartlist" />${chartlist}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs a sorted list of charts from the current context, one per  
+line with each line preceded by a <span class="code">&lt;LI&gt;</span> tag. You are required to  
+supply your own <span class="code">&lt;UL&gt;</span> or <span class="code">&lt;OL&gt;</span> tags. Each chart title is a hyperlink to  
+the related chart web page.</p>
+                    <p>Within an administrator context, <b>${chartlist}</b> generates a list of all  
+charts. In a "per-map" context, <b>${chartlist}</b> generates a list of  
+charts from the current map.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;">
+                    <p><b><MadCap:keyword term="chartname" />${chartname}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs the title of the chart related to the current web page. If you  
+are not on a chart-related page, the output is "".</p>
+                    <p><b>Note:</b> Similar to <span class="code">${mapname}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Maplistwithcharts" />${maplistwithcharts}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows an HTML unnumbered list of the maps available, with sub-lists of the charts for each map.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;text-align: right;vertical-align: top;">
+                    <p style="font-weight: normal;"><span style="font-weight: bold;">${include:file-to-be-included.html}</span>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Inserts the specified file into the web page.</p>
+                </td>
+            </tr>
+        </table>
+        <h2><b style="font-weight: bold;"><a name="environment"></a>Miscellaneous macros that describe InterMapper and its environment<br /></b>
+        </h2>
+        <table>
+            <col style="width: 228px;vertical-align: top;text-align: right;" />
+            <col style="width: 400px;vertical-align: top;" />
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${abouthtml}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Shows the "About" page with the current version of InterMapper.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Statshtml" />${statshtml}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="Uptime" />Shows InterMapper's statistics: uptime, memory usage, etc.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpuserid}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The name the user typed when asked for authentication.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;">
+                    <p><b>${httplocaladdress}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Output the IP address of the web server's side of the connection. If  
+the InterMapper server is multi-homed, this will be the local side IP  
+address of the current TCP connection.</p>
+                    <p><b>Note:</b> Use caution with this address; URL's produced using  
+this address may break in NAT situations.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpremoteaddress}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="IP" />The IP address of the remote browser.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Intermapperaddress" />${intermapperaddress}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The IP address of this InterMapper server.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${version}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The version of this copy of InterMapper.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${date}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The current date.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${time}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The current time.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Imagesuffix" />${imagesuffix}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="Png" />
+                        <MadCap:keyword term="Jpeg" />Set to ".png" if the web client can display PNG images, or 
+ ".jpeg" otherwise.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Telnet" /><MadCap:keyword term="Telnetserverurl" />${telnetserverurl}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The <span class="code">telnet:</span> URL that connects to this InterMapper Telnet server.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Webserverurl" />${webserverurl}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The <span class="code">http:</span> URL that connects to this InterMapper server.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Mapname" />${mapname}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The current map's name.</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top" style="vertical-align: top;">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Deviceaddress" />${deviceaddress}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="AppleTalk" />The IP or AppleTalk address of the particular device. For anything 
+ that isn't a device, an empty string is returned.</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top" style="vertical-align: top;">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Deviceid" />${deviceid}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs the device ID of the device related to the current page, in the form: <span class="code">"gMMMM-rNN"</span>. If the current page is not device-related, output "".
+</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top" style="vertical-align: top;">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Devicelist" />${devicelist}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs a table showing the device list for the current context. The table's columns are <b><i>Status</i></b>, <b><i>Name</i></b>, <b><i>Condition</i></b>, <b><i>Date</i></b>, <b><i>Time</i></b>, <b><i>Probe</i></b>, and <b><i>Port</i></b>.</p>
+                    <p>Within an administrator context, <b>${devicelist}</b> generates a list of all devices. In a "per-map" context,<b> ${devicelist}</b> generates a list of devices from the current map.
+
+</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;">
+                    <p><b>${devicelist_kml}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Generates a device list in <a href="http://code.google.com/apis/kml/documentation/">KML format</a> for use by Google Earth.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Devicename" />${devicename}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>
+                        <MadCap:keyword term="DNS" />
+                        <MadCap:keyword term="AppleTalk NBP" />The DNS name or AppleTalk NBP name of the particular device. It is 
+ an empty string for anything that isn't a device.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Ifadmin" />${ifadmin: ADMIN : NONADMIN }</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs ADMIN if the user has admin privileges. Otherwise outputs NONADMIN.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Pagetitle" />${pagetitle}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays the value set by the <span class="code">#title</span> 
+ directive</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="SetNameFieldWidth" />${SetNameFieldWidth:xx}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Set the width of the name field. InterMapper pads the name up to xx 
+ characters wide. Use -1 to set the width of the field to the width of 
+ its contents. The default width is 20 chars.</p>
+                </td>
+            </tr>
+        </table>
+        <h2><b style="font-weight: bold;"><a name="images"></a>Macros to place images 
+ onto a page<br /></b>
+        </h2>
+        <table>
+            <col style="width: 230px;vertical-align: top;text-align: right;" />
+            <col style="width: 400px;vertical-align: top;" />
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Imageref" /><MadCap:keyword term="Imagefile" />${imageref:IMAGEFILE [,tags]}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Creates an <span class="code"><MadCap:keyword term="Img" />&lt;img ... &gt;</span> tag to place 
+ an image on the page.</p>
+                    <p>Example:<br /><span class="code">&#160;&#160;${imageref: photo, class='grade4'}</span></p>
+                    <p>  outputs <br /><span class="code">&#160;&#160;&lt;IMG SRC="/images/photo.gif" class='grade4'&gt;</span></p>
+                    <p>
+                        <br /><b>Notes:</b>
+                        <br />Unlike every other macro, this one uses a comma-delimiter in  
+the parameter section instead of a colon.
+</p>
+                    <p>This macro searches the images folder alphabetically for the first  
+file whose name matches the IMAGEFILE parameter. If you have two  
+files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${imagesuffix}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Set to ".png" if the web client can display PNG images, or 
+ ".jpeg" otherwise.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Intermapperlogo" />${intermapperlogo}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Creates an <span class="code">&lt;img... &gt;</span> tag that 
+ includes the "Made with InterMapper" logo image.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b>*chart</b> <![CDATA[
+
+]]></p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays a strip chart, generally has a suffix of <span class="code">${chart}.${imagesuffix}</span> to send the desired format for the client's browser. Takes parameters of width (for the chart, in pixels) and the other parameters of the URL. </p>
+                    <p>Usage:
+</p>
+                    <p><span class="code">&lt;IMG SRC="*chart.${imagesuffix}?${clientwidth}&amp;${httpparams}"&gt; </span>
+                        <br />or<br style="mc-tag-and-class: ;" /><span class="code">
+&lt;IMG SRC="*chart.${imagesuffix}?width=300&amp;${httpparams}"&gt;</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b>*popuptext.html</b> <![CDATA[
+]]></p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays the contents of the current device, network, or interface Status Window (these were formerly called "pop-up windows") as HTML. </p>
+                    <p>Usage:</p>
+                    <p><span class="code"> ${include: *popuptext.html}</span>, generally enclosed in <span class="code">&lt;pre&gt; ...&lt;/pre&gt;</span> tags.
+</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b>*map</b> <![CDATA[
+]]></p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays an image of the devices, networks, and links (the "foreground") of the selected map against a transparent background. The objects in this image match with the *imagemap.html, below. Takes an option of a timestamp, to provide for auto-refresh. </p>
+                    <p>Usage: </p>
+                    <p><span class="code">&lt;img src="/${httpdocument}/document/main/*map.${imagesuffix}?${timestamp}"&gt;</span> <![CDATA[
+]]></p>
+                    <p><![CDATA[
+]]></p>
+                    <p><![CDATA[
+]]></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b>*mapbg</b> <![CDATA[
+]]></p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays the background image of the selected map. This provides the customer-selected background to the map as an image. It takes an option of a timestamp to provide for auto-refresh. </p>
+                    <p>Usage: </p>
+                    <p><span class="code">&lt;img src="/${httpdocument}/document/main/*mapbg?${timestamp}"&gt;</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b>*imagemap.html</b> <![CDATA[ ]]></p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Displays an HTML imagemap that corresponds to the map image; clicking in the image, follows the links in the (automatically-generated) image map. </p>
+                    <p>Usage: </p>
+                    <p><span class="code">${include:/${httpdocument}/document/main/*imagemap.html}</span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p><b>Note:</b> <![CDATA[ ]]><span style="font-weight: normal;">The web pages combine </span><span class="code" style="font-weight: normal;">*map</span><span style="font-weight: normal;"> with the </span><span class="code" style="font-weight: normal;">*mapbg</span><span style="font-weight: normal;"> and </span><span class="code" style="font-weight: normal;">*imagemap</span><span style="font-weight: normal;"> to create a </span><span class="code" style="font-weight: normal;">&lt;div&gt;</span><span style="font-weight: normal;"> that superimposes all three items into a single visual unit. See </span><span class="code" style="font-weight: normal;">InterMapper Settings/Web Pages/PerMapHTML/map.html</span><span style="font-weight: normal;"> for an example.</span></p>
+        <h2><b style="font-weight: bold;"><a name="interval"></a>Macros that control 
+ the interval between page refreshes</b>
+        </h2>
+        <p>InterMapper's web server can automatically refresh a particular web 
+ page at a desired interval. Include these tags on your page to take advantage 
+ of this facility.</p>
+        <table>
+            <col style="vertical-align: top;text-align: right;width: 201px;" />
+            <col style="width: 400px;vertical-align: top;" />
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Htmlrefreshmetatag" />${htmlrefreshmetatag}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Either an empty string or the previous refresh choice from the web 
+ client. (Inserts a <span class="code"><MadCap:keyword term="Meta http-equiv" />&lt;meta http-equiv="refresh"...&gt;</span> 
+ tag on the resulting page.)</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Htmlrefreshmetaoptions" />${htmlrefreshmetaoptions}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The option list that a web client can choose from. The current <span class="code">${htmlrefreshmetatag}</span> value is selected. 
+ Note that your HTML template should supply the       <span class="code">&lt;form&gt;&lt;select&gt;...&lt;/select&gt;&lt;/form&gt;</span> 
+ surrounding this       <span class="code">${htmlrefreshmetaoptions}</span> 
+ macro.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="jsrefreshmetaoptions" />${jsrefreshoptions}</b>
+                </td>
+                <td style="vertical-align: top;">The option list that a web client can choose from, generated with JavaScript. The current <span class="code">${htmlrefreshmetatag}</span> value is selected. 
+ Note that your HTML template should supply the       <span class="code">&lt;form&gt;&lt;select&gt;...&lt;/select&gt;&lt;/form&gt;</span></td>
+            </tr>
+        </table>
+        <h2><b style="font-weight: bold;"><a name="URL"></a>Macros related to links and URLs</b>
+        </h2>
+        <p>These macros all return a fully-escaped string, that is, a space character 
+ (" ") will be replaced with a <span class="code">%20</span>; 
+ a "?" with       <span class="code">%3F</span>; etc.</p>
+        <p>Here is a sample URL. The result of using this URL is shown in parentheses 
+ after each macro:<MadCap:keyword term="Device.html" /><MadCap:keyword term="Localhost/Map1/device/192.168.0.1%3ASNMP/!device.html" /></p>
+        <p><span class="code">&#160;http://localhost/Map1/device/192.168.0.1%3ASNMP/!device.html</span>
+        </p>
+        <table>
+            <col style="width: 233px;font-weight: bold;vertical-align: top;text-align: right;" />
+            <col style="width: 400px;vertical-align: top;vertical-align: top;" />
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Webpageurl" />${webpageurl}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The full URL of the requested web page. (e.g., the full URL as shown 
+ above).</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httppath}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The full path to the file requested (e.g., "/Map1/device/192.168.0.1%3ASNMP/!device.html").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpdocument}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The top level directory of the page requested. Also an alias for <span class="code">${mapname}</span> (e.g., "Map1").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpclass}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The second level directory of the page requested (device, chart, link, 
+ document, network) (e.g., "device").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpinstance}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The third level directory of the page requested (e.g., "192.168.0.1%3ASNMP").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpmethod}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>The fourth-level part of the page requested (e.g., "!device.html").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpinstancepath}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>A concatenation of <span class="code">${httpdocument}</span>,       <span class="code">${httpclass}</span>,       <span class="code">${httpinstance}</span> 
+ separated by "/" (e.g., "/Map1/device/192.168.0.1%3ASNMP").</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpparam: NAME}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs the value of the HTTP parameter specified by NAME. An HTTP parameter 
+					is one passed with the originating GET request, affixed to the URL following a 
+					question mark. If there is no HTTP parameter by the given name, outputs "".</p>
+                    <p>Example, given the following URL:</p>
+                    <p><span class="code">http://www.example.com/TestMap/?color=red&amp;style=bold</span>
+                    </p>
+                    <p>
+                        <br />${httpparam: color} outputs "red"<br />${httpparam: style} outputs "bold"<br />${httpparam: font} outputs "" (because the parameter doesn't exist)<br /></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${httpparams}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Outputs all the HTTP parameters from the originating GET request in their original format. If there were 
+					no parameters attached to the original request, output "".</p>
+                    <p>Example, given the following URL:</p>
+                    <p><span class="code">http://www.example.com/TestMap/?color=red&amp;style=bold</span>
+                    </p>
+                    <p><span class="code">${httpparams}</span> outputs "color=red&amp;style=bold".
+					
+					</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top">
+                        <MadCap:keyword term="httpparams_endchart" /><b style="font-weight: bold;">${httpparams_endchart}</b>
+                        <br />
+                        <MadCap:keyword term="httpparams_nextchart" /><b style="font-weight: bold;">${httpparams_nextchart}</b>
+                        <br />
+                        <MadCap:keyword term="httpparams_prevchart" /><b style="font-weight: bold;">${httpparams_prevchart}</b>
+                        <br />
+                        <MadCap:keyword term="httpparams_startchart" /><b style="font-weight: bold;">${httpparams_startchart}</b>
+                        <br />
+                        <MadCap:keyword term="httpparams_timescale" /><b style="font-weight: bold;">${httpparams_timescale}</b>
+                        <br />
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p><span class="code">${httpparams_endchart}</span> - Replaces the value of the "endtime" parameter with the chart's last time. 
+					(For scrolling to the end of the chart).<br /><br /><span class="code">${httpparams_nextchart}</span> - Replaces the value of the "endtime" parameter with a new time 
+					value that effectively scrolls the chart one page into the future.<br /><br /><span class="code">${httpparams_prevchart}</span> - Replaces the value of the "endtime" parameter with a new time value that 
+					effectively scrolls the chart one page into the past.</p>
+                    <p><span class="code">${httpparams_startchart}</span> - Replaces the value of the "endtime" parameter with the chart's starting time. 
+					(For scrolling to the beginning of the chart).</p>
+                    <p><span class="code">${httpparams_timescale: VALUE}</span> - Replaces the value of the "timescale" 
+					parameter with the specified value.</p>
+                    <p><b>Note:</b> These five macros are nearly identical to <span class="code">${httpparams}</span>. They implement support for 
+					chart scrolling and scaling in the web interface. They generate output <i>only </i>within a web page associated with a chart.
+
+
+					
+</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="anchor" />${anchor: value}<br />${attr}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Sets the current "anchor" value.</p>
+                    <p>Outputs the current "anchor" parameter value as set using <span class="code">${anchor: value}</span>. If no "anchor" value has been set, output is "".</p>
+                    <p><b>Note:</b> These two macros are closely related. <span class="code">${anchor}</span> sets the value; <span class="code">${attr}</span> retrieves it.</p>
+                    <p>Example:</p><pre class="code" xml:space="preserve">${anchor:class="header"}
+  &lt;A HREF="maplist.html" ${attr}&gt;Map List&lt;/A&gt;
+  &lt;A HREF="${TelnetServerURL}" ${attr}&gt;Telnet&lt;/A&gt;
+  &lt;A HREF="${WebServerURL}"${attr}&gt;Home&lt;/A&gt;
+${anchor:}</pre>
+                    <p>In this example, the anchor is set to 'class="header"'. Then the ${attr} macro is used to place the attribute string in each link. Afterward, ${anchor:} sets the anchor to an empty string.</p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultConditionTagSet>
+  <ConditionTag Name="review" BackgroundColor="#808080" />
+  <ConditionTag Name="online" BackgroundColor="#ff00ff" />
+  <ConditionTag Name="print" BackgroundColor="#00ffff" />
+  <ConditionTag BackgroundColor="#ff0000" Name="Outstanding" Comment="" Color="Normal" />
+</CatapultConditionTagSet>

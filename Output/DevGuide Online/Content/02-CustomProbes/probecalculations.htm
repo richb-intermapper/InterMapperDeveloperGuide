@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:tocPath="Creating Your Own Probes|SNMP Probes" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-US" xml:lang="en-US" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="index.xml" MadCap:SearchType="Stem">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Probe Calculations</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2" style="page-break-before: always;"><a name="kanchor196"></a>Probe Calculations</h1>
+            <p><a name="kanchor197"></a><a name="kanchor198"></a><a name="kanchor199"></a><a name="kanchor200"></a><a name="kanchor201"></a><a name="kanchor202"></a><a name="kanchor203"></a><a name="kanchor204"></a>InterMapper can compute values from data retrieved from devices, including 
+ SNMP MIB variables, round-trip time, packet loss, availability, etc. The 
+ results of these computations can be compared to thresholds to set device 
+ status and indicate problems.</p>
+            <p><a name="kanchor205"></a><a name="kanchor206"></a>InterMapper's Expression Syntax has the following features:</p>
+            <ul>
+                <li value="1"><a name="kanchor207"></a><a name="kanchor208"></a>Supports arithmetic expressions using +, -, *, /, 
+ %, and unary minus. </li>
+                <li value="2"><a name="kanchor209"></a>Supports the use of parentheses to group sub-expressions 
+ for calculation first. </li>
+                <li value="3"><a name="kanchor210"></a>Stores all intermediate and final results as double-precision 
+ floating point numbers. </li>
+                <li value="4"><a name="kanchor211"></a><a name="kanchor212"></a>Supports relational operators &lt;, &gt;, &lt;=, 
+ &gt;=, =, &lt;&gt;, ==, !=. The value for TRUE is "1.0". The 
+ value for FALSE is "0.0". </li>
+                <li value="5">Supports short-circuit logical operators 'and', 'or', 
+ 'not' as well as &amp;&amp;,||,!,. </li>
+                <li value="6"><a name="kanchor213"></a><a name="kanchor214"></a><a name="kanchor215"></a>Supports variables and functions from a provided 
+ symbol table. Variables may use $var syntax or ${var} syntax. </li>
+                <li value="7"><a name="kanchor216"></a><a name="kanchor217"></a>Supports built-in functions for bitwise operations, 
+ rounding, and other common mathematical functions. </li>
+                <li value="8"><a name="kanchor218"></a><a name="kanchor219"></a><a name="kanchor220"></a><a name="kanchor221"></a><a name="kanchor222"></a><a name="kanchor223"></a>Supports embedded string comparisons and simple regular 
+ expression tests. A variable in double-quotes will be treated as a string. 
+ All double-quoted strings are interpolated for variables in a Perl-like 
+ fashion. The use of + as the concatenation operator is supported. See below for <a href="#regexp">an example that uses Regular Expressions</a>.</li>
+            </ul>
+            <p><a name="kanchor224"></a>The set of capabilities are derived from C, Perl, Excel, and expr(1).</p>
+            <h2>Reserved keywords</h2>
+            <ul>
+                <li value="1">and </li>
+                <li value="2">or </li>
+                <li value="3">not </li>
+            </ul>
+            <h2><a name="kanchor225"></a>Precedence Table (Least to Most)</h2>
+            <ol>
+                <li value="1">Assignment: := </li>
+                <li value="2"><a name="kanchor226"></a>Conditional Expression: ?: </li>
+                <li value="3"><a name="kanchor227"></a>Logical Or: 'or', || </li>
+                <li value="4"><a name="kanchor228"></a>Logical And: 'and', &amp;&amp; </li>
+                <li value="5"><a name="kanchor229"></a>Equality Tests: ==, =, !=, </li>
+                <li value="6"><a name="kanchor230"></a>Relational Tests: &lt;, &gt;, &lt;=, &gt;=</li>
+                <li value="7"><a name="kanchor231"></a>Addition, Subtraction, Concatenation: +,- </li>
+                <li value="8"><a name="kanchor232"></a><a name="kanchor233"></a>Multiplication, Division, Modulo: *, /, % </li>
+                <li value="9"><a name="kanchor234"></a>String Matching: =~, !~ </li>
+                <li value="10">Unary: -, !, 'not' </li>
+            </ol>
+            <h2 class="pagebreakbefore"><a name="kanchor235"></a>Built-in Numeric Functions</h2>
+            <ul>
+                <li value="1"><a name="kanchor236"></a>abs( x ) - Absolute value of 'x'.</li>
+                <li value="2"><a name="kanchor237"></a><a href="#round">round</a>(x),round(x,y) - Round 'x' to nearest integer.</li>
+                <li value="3"><a name="kanchor238"></a>trunc( x ) - Remove all digits after the decimal 
+ point; e.g. trunc( 3.987) = 3.</li>
+                <li value="4"><a name="kanchor239"></a>min( x1, x2, ... , xn ) - Minimum value of x1, x2, 
+ ..., xn.</li>
+                <li value="5">max( x1, x2, ... , xn ) - Maximum value of x1, x2, 
+ ..., xn.</li>
+                <li value="6"><a name="kanchor240"></a>bitand( x, y ) - Bitwise 'and' of 'x' and 'y'.</li>
+                <li value="7"><a name="kanchor241"></a>bitor( x, y ) - Bitwise 'or' of 'x' and 'y'.</li>
+                <li value="8"><a name="kanchor242"></a>bitlshift( x, y ) - Bits of 'x' shifted left by 'y' 
+ bits.</li>
+                <li value="9"><a name="kanchor243"></a>bitrshift( x, y ) - Bits of 'x' shifted right by 
+ 'y' bits.</li>
+                <li value="10"><a name="kanchor244"></a>bitxor( x, y ) - Bitwise exclusive-or of 'x' and 
+ 'y'.</li>
+                <li value="11">sin( x ) - sine of 'x' where 'x' is in radians.</li>
+                <li value="12"><a name="kanchor245"></a>cos( x ) - cosine of 'x' where 'x' is in radians.</li>
+                <li value="13">tan( x ) - tangent of 'x' where 'x' is in radians.</li>
+                <li value="14"><a name="kanchor246"></a><a name="kanchor247"></a>pi() - value of PI (e.g. 3.14159...)</li>
+                <li value="15">pow( x, y ) - 'x' to the power of 'y'.</li>
+                <li value="16"><a name="kanchor248"></a>sqrt( x ) - square root of 'x'.</li>
+                <li value="17">exp( x ) - e to the power of 'x', where e is the 
+ base of the natural logarithms.</li>
+                <li value="18">log( x ) - natural logarithm of 'x'.</li>
+                <li value="19">log( x, y ) - logarithm of 'x' to base 'y', e.g. 
+ log( 100, 10) = 2</li>
+                <li value="20">time() - Time in seconds since 1 January 1970 UTC.</li>
+            </ul>
+            <h2><a name="kanchor249"></a>Built-in String Functions</h2>
+            <ul>
+                <li value="1"><a href="#defined">defined</a>(str) - Takes a string argument, and returns a non-zero value (1) if the variable name specified in the input string is defined.</li>
+                <li value="2"><a href="#strfind">strfind<a href="#strfind" target="" title="" alt="" class="MCXref_0"> </a></a>( strToBeSearched STRING, substrToFind STRING ) - Case sensitive match returns the position of the first matching substring.</li>
+                <li value="3"><a href="#strifind">strifind<a href="#strifind" target="" title="" alt="" class="MCXref_0"> </a> <![CDATA[ ]]></a>( strToBeSearched STRING, substrToFind STRING ) - Case insensitive match returns the position of the first matching substring.</li>
+                <li value="4"><a name="kanchor250"></a><a name="kanchor251"></a><a href="#strlen">strlen</a>(str) - Returns the length in bytes of the string 'str'  or the combined length of all string arguments.</li>
+                <li value="5"><a name="kanchor252"></a><a name="kanchor253"></a><a href="#sprintf">sprintf</a>( fmt, ...) - Returns formatted string using format specifier 'fmt'. Format specifier 'fmt' contains format codes that begin with '%'.</li>
+                <li value="6"><a name="kanchor254"></a><a name="kanchor255"></a><a href="#strftime">strftime</a>( fmt, [secs]) - Returns formatted date/time string using format specifier 'fmt'.</li>
+                <li value="7"><a name="kanchor256"></a><a href="#strptime">strptime</a>( str, fmt ) - Returns the number of seconds since UTC 1970 represented by the given date/time string, as interpreted using the specified format code.</li>
+                <li value="8"><a href="#subid">subid</a>(oid, start, length) - Gets the specified length sub-OIDs from a given OID string, starting from index start (the index starts from 0). </li>
+                <li value="9"><a href="#substr" name="kanchor257">substr</a>( 
+ str, offset, len )</li>
+                <li value="10"><a href="#unpack">unpack</a>( 
+ binary str, fmt )</li>
+                <li value="11">Regular Expressions - See below for <a href="#regexp">an example that uses Regular Expressions</a>.</li>
+            </ul>
+            <h2 class="pagebreakbefore"><a name="kanchor258"></a>Function Descriptions</h2>
+            <h3><a name="defined"></a>defined</h3>
+            <p>FUNCTION defined(variable:STRING):INTEGER;</p>
+            <p>Returns a non-zero value (1) if the variable name specified in the input string is defined (it has already been assigned a value).
+</p>
+            <p><b>Note:</b> This function takes a string argument. Note the usage below.</p>
+            <p>Example:
+</p><pre class="code">&#160;&#160;&#160;defined("var2") == 1 ? "$var2 is defined" : "$var2 is undefined"
+</pre>
+            <h3><a name="round"></a>round</h3>
+            <p>FUNCTION round(x:DOUBLE, y:INTEGER):DOUBLE;
+</p>
+            <p>FUNCTION round(x:DOUBLE):INTEGER;
+</p>
+            <p>Rounds a given double value (<b style="font-style: italic;">x</b>) to the nearest integer or to the given number of decimal places (<b style="font-style: italic;">y</b>).</p>
+            <p>Examples: 
+   </p><pre class="code">round(8.6) --&gt; 9
+round(3.14159, 3) = 3.142
+</pre>
+            <h3><a name="strfind"></a>strfind</h3>
+            <p>FUNCTION&#160;strfind( strToBeSearched:STRING, substrToFind:STRING ):INTEGER  </p>
+            <p>Case-sensitive string match returns an integer representing the position of the first occurrence of a substring in the string. If the substring is not found, the function returns a value of -1.</p>
+            <p>Example:</p><pre class="code">strfind( "Ethernet Interface", "int") <br /><br /> returns -1 (did not find the substring)</pre>
+            <h3><a name="strifind"></a>strifind</h3>
+            <p>FUNCTION strifind( strToBeSearched:STRING, substrToFind:STRING ): INTEGER</p>
+            <p>Case-insensitive string match returns an integer representing the position of the first occurrence of a substring in the string. If the substring is not found, the function returns a value of -1.</p>
+            <p>Example:</p><pre class="code">strifind( "Ethernet Interface", "int") <br /><br /> returns 9 (found the substring at position 9)</pre>
+            <h3><a name="strlen"></a>strlen</h3>
+            <p>FUNCTION&#160;strlen(str[, ...]:STRING):INTEGER</p>
+            <p>Returns the length of the string <b style="font-style: italic;">str</b> in bytes.
+<br />Returns the combined length of all string arguments in bytes.
+</p>
+            <p>Examples:
+	
+	</p><pre class="code">strlen( "Dartware" ) &#160;--&gt;  8
+strlen( "Dartware", "2000" )&#160;--&gt;&#160;&#160;12</pre>
+            <h3 class="pagebreakbefore"><a name="sprintf"></a>sprintf</h3>
+            <p>FUNCTION&#160;sprintf( fmt:STRING, ... ):STRING</p>
+            <p>Returns formatted string using format specifier <b style="font-style: italic;">fmt</b>. Format specifier <b style="font-style: italic;">fmt</b> contains format codes that begin with '%'. The following format codes are supported:</p>
+            <ul>
+                <li value="1">c	- Formats numeric argument as ascii character
+	</li>
+                <li value="2">d	- 	Formats numeric argument as decimal integer
+</li>
+                <li value="3">	o	- 	Formats numeric argument as octal integer
+	</li>
+                <li value="4">x	- 	Formats numeric argument as hexadecimal number (lower case)
+	</li>
+                <li value="5">X	- 	Formats numeric argument as hexadcimal number (upper case)
+</li>
+                <li value="6">	u	- 	Formats numeric argument as decimal integer (unsigned)
+	</li>
+                <li value="7">s	- 	Formats argument as an ascii string (NUL terminated)
+	</li>
+                <li value="8">a	- 	Formats argument as a hexadecimal string with bytes separated by ':'</li>
+                <li value="9">f	- 	Formats numeric argument as floating point (fixed precision)
+</li>
+                <li value="10">	e	- 	Formats numeric argument as floating point (scientific notation)
+</li>
+                <li value="11">	g	- 	Formats numeric argument as floating point (easy to read)
+	</li>
+                <li value="12">%	- 	Prints a percent sign</li>
+            </ul>
+            <p>The general specification for a format code is:
+
+	</p><pre class="code">% [-] [&lt;width&gt;] [. &lt;precision&gt; ] &lt;code&gt;</pre>
+            <h4>String Formatting
+</h4>
+            <p>For string data using %s, the width specifies the minimum width of the output field, and the precision specifies the number of characters to output. If the number of output characters is less than the minimum field width, the output is padded with spaces. </p>
+            <p>Example:
+</p><pre class="code">sprintf( "%10s", "Dartware" )
+  &#160;Results in "&#160;&#160; Dartware"
+sprintf( "%s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dartware"
+</pre>
+            <p>The default alignment is to the right; so padding is added to the beginning of the string. To left align the output of %s, you need to include a '-' immediately following the '%':
+</p><pre class="code">sprintf( "%-10s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dartware&#160;&#160;"
+sprintf( "%-10.4s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dart&#160;&#160;&#160;&#160;&#160;"
+</pre>
+            <h4>Integer Formatting</h4>
+            <p>Integers format similar to strings, except the &lt;precision&gt; field specifies the maximum field width, and this is enforced by padding with 0's if necessary.</p><pre class="code">sprintf( "%5d", 12 )<br />&#160;&#160;&#160;Results in "&#160;&#160;&#160;12"
+sprintf( "%-5d", 12 )<br />&#160;&#160;&#160;Results in "12&#160;&#160;&#160;"
+sprintf( "%6.5d", 12 )
+&#160;&#160;&#160;Results in "&#160;00012"
+sprintf( "%-2X", 15 )<br />&#160;&#160;&#160;Results in "F&#160;"
+sprintf( "%-2.2x", 15 )<br />&#160;&#160;&#160;Results in "0f"
+</pre>
+            <h4>Floating Point Formatting
+
+</h4>
+            <p>The floating point format codes use the &lt;precision&gt; field to specify the number of decimal places following the decimal point. %f uses the format '[-]ddd.ddd', and %e uses the format '[-]d.ddde+-dd'.
+</p><pre class="code">sprintf( "%f", 1/2 )
+&#160;&#160;&#160;Results in "0.500000"
+sprintf( "%5.3f", 1/2 )
+&#160;&#160;&#160;Results in "0.500"
+sprintf( "%e", 1/2 )
+&#160;&#160;&#160;Results in "5.000000e-01"
+sprintf( "%g", 1/2 )
+&#160;&#160;&#160;Results in "0.5"</pre>
+            <h4>Address Formatting</h4>
+            <p>The %a format code outputs a string in hexadecimal.</p><pre class="code">sprintf( "%a", "\x01\x02\x03" )<br />&#160;&#160;&#160;Results in "01:02:03"
+sprintf( "%a", "Dartware" )<br />&#160;&#160;&#160;Results in "44:61:72:74:77:61:72:65"
+</pre>
+            <h3 class="pagebreakbefore"><a name="strftime"></a>strftime</h3>
+            <p>FUNCTION&#160;strftime( fmt [, time] )</p>
+            <p>Returns formatted date/time string using format specifier 'fmt'. Format specifier 'fmt' contains format codes that begin with '%'. If a time argument is provided, it must be in seconds since UTC 1970. If no time argument is provided, it defaults to the current time. The following format codes are supported on all platforms:</p>
+            <ul>
+                <li value="1">	a	- 	Abbreviated weekday name
+</li>
+                <li value="2">	A	- 	Full weekday name
+	</li>
+                <li value="3">b	- 	Abbreviated month name
+</li>
+                <li value="4">	B	- 	Full month name
+</li>
+                <li value="5">	c	- 	Date and time formatted something like "Tue Feb 06 10:25:22 2007"
+	</li>
+                <li value="6">d		- Day of month (01-31)
+	</li>
+                <li value="7">H	- 	Hour number (00-23)
+</li>
+                <li value="8">	I	- 	Hour number (01-12)
+</li>
+                <li value="9">j	- 	Day of the year number (001-366)
+</li>
+                <li value="10">	m	- 	Month number (01-12)
+</li>
+                <li value="11">	M	- 	Minute number (00-59)
+</li>
+                <li value="12">	p	- 	"AM" or "PM"
+</li>
+                <li value="13">	S	- 	Second number (00-61)
+	</li>
+                <li value="14">U	- 	Week of the year number (00-53). First Sunday is day 1 of week 1.
+	</li>
+                <li value="15">w	- 	Weekday number (0-6). Sunday is 0.
+	</li>
+                <li value="16">W	- 	Week of the year number (00-53). First Monday is day 1 or week 1.
+</li>
+                <li value="17">	x	- 	Date.
+</li>
+                <li value="18">	X	- 	Time.
+</li>
+                <li value="19">	y	- 	Two-digit year number (00-99)
+	</li>
+                <li value="20">Y	- 	Year with century (e.g. 2007)
+	</li>
+                <li value="21">z	- 	Time zone.
+	</li>
+                <li value="22">%	- 	Prints a percent sign
+</li>
+            </ul>
+            <p>The strftime function is implemented using the identically named function in the underlying system. Other format codes may work, but these are not portable.</p><pre class="code">strftime( "%c")
+&#160;&#160;&#160;Results in "Tue Feb  6 11:19:24 2007"
+strftime( "%Y-%m-%d", 1170778895)
+&#160;&#160;&#160;Results in "2007-02-06"
+</pre>
+            <h3><a name="strptime"></a>strptime</h3>
+            <p>FUNCTION&#160;strptime( str , fmt )
+</p>
+            <p>Returns the number of seconds since UTC 1970 represented by the given date/time string, as interpreted using the specified format code. Basically, this function can be used to parse dates.
+
+</p>
+            <p>This function uses the same underlying format codes as strftime.
+
+</p>
+            <p class="pagebreakbefore">Example:
+</p><pre class="code">strftime( "%Y", strptime( "1990", "%Y"))
+&#160;&#160;&#160;Results in "1990"</pre>
+            <h3><a name="subid"></a>subid&#160;</h3>
+            <p>FUNCTION&#160;subid(oid, start, length)</p>
+            <p> Gets the specified length sub-OIDs from a given OID string, starting from index start (the index starts from 0). When the start index is negative, it will be counted from the end of the OID string.</p>
+            <p>Examples:</p><pre class="code">subid("1.3.6.1.2.1.4.20.1.1.10.10.2.20", 0, 2) &#160;&#160;&#160;--&gt; "1.3"
+subid("1.3.6.1.2.1.4.20.1.1.10.10.2.20", -4, 4) &#160;&#160;--&gt; "10.10.2.20"
+subid(\"1.3.6.1.2.1.4.20.1.1.10.10.2.20\", 0, 2) &#160;--&gt; \"1.3\"
+subid(\"1.3.6.1.2.1.4.20.1.1.10.10.2.20\", -4, 4) --&gt; \"10.10.2.20\"
+subid(\"1.3.6.1.2.1.4.20.1.1.10.10.2.20\", 4, 4) &#160;--&gt; \"2.1.4.20\"
+subid(\"1.3.6.1.2.1.4.20.1.1.10.10.2.20\", -2, 4) --&gt; \"2.20\"
+subid(\"1.3.6\", 3, 4) &#160;--&gt; \"\"
+subid(\"1.3.6\", 2, 4) &#160;--&gt; \"6\"
+subid(\"1.3.6\", -4, 4) --&gt; \"1.3.6\"
+subid(\"1.3.6\", -2, 4) --&gt; \"3.6\"
+</pre>
+            <h3><a name="substr"></a>substr</h3>
+            <p>FUNCTION 
+ substr(<span style="font-style: italic;">str</span>:STRING,                                       <span style="font-style: italic;">offset</span>:INTEGER):STRING;<br /><a name="kanchor259"></a>FUNCTION substr(<span style="font-style: italic;">str</span>:STRING,                                       <span style="font-style: italic;">offset</span>:INTEGER,                                       <span style="font-style: italic;">length</span>:INTEGER):STRING;</p>
+            <p>&#160;
+            <a name="kanchor260"></a><a name="kanchor261"></a><a name="kanchor262"></a><a name="kanchor263"></a>Extract 
+ a substring out of <b style="font-style: italic;">str </b>and return it. The substring is extracted starting 
+ at <b style="font-style: italic;">offset </b>characters from the start of the string. </p>
+            <ul style="list-style: disc;" type="disc">
+                <li value="1">If <b style="font-style: italic;">offset </b>is negative, the substring starts that 
+ far from the end of the string instead; <b style="font-style: italic;">length </b>indicates the length of 
+ the substring to extract. </li>
+                <li value="2">If <b style="font-style: italic;">length </b>is omitted, everything from <b style="font-style: italic;">offset</b> to the end of the 
+ string is returned. </li>
+                <li value="3">If <b style="font-style: italic;">length </b>is negative, the length is calculated to 
+ leave that many characters off the end of the string. If neither <b style="font-style: italic;">offset </b>nor <b style="font-style: italic;">length </b>is supplied, the function will return <b style="font-style: italic;">str</b>. (See Perl <i>substr</i>).</li>
+            </ul>
+            <p>Examples:</p><pre class="code">substr( "0123456789", 7) &#160;&#160;&#160;&#160;--&gt;&#160;&#160;&#160;"789"<br />substr( "0123456789", 4, 2) &#160;--&gt; &#160;&#160;"45"<br />substr( "0123456789", 4, -2) --&gt; &#160;&#160;"4567"<br />substr( "0123456789", -2, 1) --&gt; &#160;&#160;"8"</pre>
+            <h3 class="pagebreakbefore"><a name="unpack"></a>unpack</h3>
+            <p>&#160;FUNCTION 
+ unpack(<span style="font-style: italic;">str</span>:STRING,                                       <span style="font-style: italic;">format</span>:STRING):VALUE</p>
+            <p>Take a string <b style="font-style: italic;">str</b> representing a data value and convert it into a scalar 
+ value. The format string specifies the type of value to be unpacked. (See 
+ perl <i>unpack</i>).</p>
+            <ul style="list-style: disc;" type="disc">
+                <li value="1">If the input string is shorter than the expected 
+ number of bytes to be unpacked, treat the input string as if it is padded 
+ with zero bytes at the end. <br /><br /><span class="code">  unpack("\1\2\3",  "&gt;L") </span><br /><br />is the same as <br /><br /><span class="code">  unpack("\1\2\3\0",  "&gt;L")</span><br /><br /></li>
+                <li value="2">If the input string is longer, the remaining bytes 
+ in the input are ignored. </li>
+                <li value="3"><a name="kanchor264"></a>If the endian modifier is not supplied, we will use 
+ the target platform's byte order (little endian on Windows, big endian on Mac). </li>
+                <li value="4">If format specifier is not supplied, the function 
+ will return <span style="font-style: italic;">str</span>.</li>
+            </ul>
+            <br />
+            <table id="formats" style="border-spacing: 0;width: 80%;margin-left: 24px;" width="80%" cellspacing="0">
+                <col style="width: 60px;" />
+                <col style="width: auto;" />
+                <tr valign="top">
+                    <td>
+                        <p style="font-weight: bold;">Format specifier</p>
+                    </td>
+                    <td>
+                        <p style="font-weight: bold;">Description</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">c</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td>
+                        <p class="td">signed character value (1 byte)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">C</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td>
+                        <p class="td">unsigned character value (1 byte)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">l</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td>
+                        <p class="td">signed long value (4 bytes)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">L</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td">unsigned long value (4 bytes)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">s</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td">signed short value (2 bytes)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">S</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td">unsigned short value (2 bytes)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">#B</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td"><a name="kanchor265"></a>a base64 string (all bytes) </p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">&gt;</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td"><a name="kanchor266"></a>big-endian modifier</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">&lt;</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td class="p">
+                        <p class="td"><a name="kanchor267"></a>little-endian modifier</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;">
+                        <p><span class="code">H</span> <![CDATA[ ]]></p>
+                    </td>
+                    <td>
+                        <p class="td">decodes the given hexadecimal value and returns an integer (up to 32-bits)</p>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td style="vertical-align: top;"><span class="code">#H</span> <![CDATA[ ]]></td>
+                    <td>
+                        <p class="td">decodes the given hexadecimal value and returns a string</p>
+                    </td>
+                </tr>
+            </table>
+            <p>Examples:</p><pre class="code" xml:space="preserve">unpack( "\1", "c") &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt;  1
+unpack( "\1\2\3\4", "&gt;L") &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt; &#160;16909060
+unpack(  "\1\2\3\4", "&lt;L") &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt;  67305985
+unpack(  "BS64", "#B") &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt; &#160;"..."  (where "..." is "\x5\x2e\xb8")
+unpack(  "\1\2\3", "&gt;L") &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt;  16909056
+unpack( "1F", "H")  &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;--&gt; &#160;31
+unpack( "42696c6c207761732068657265", "#H") --&gt; &#160;"Bill was here"</pre>
+            <p><span style="font-weight: bold;">Note:</span> The unpack() function supports one format code in the format string.</p>
+            <p><a name="regexp"></a>
+            </p>
+            <h2>Using Regular Expressions In Custom SNMP Probes</h2>
+            <p>You can use a regular expression to divide a string into separate variables after retrieving it from a device.&#160;In the example below, a customer had a piece of equipment that returned the following information in sysDescr.0:</p><pre class="code">FW TR6-3.1.4Rt_F213E4, 2.4GHz, 0dBi ext. antenna        </pre>
+            <p>They created a probe that retrieved sysDescr.0 and then parsed out those strings with the following commands in the &lt;snmp-device-variables&gt; section of the probe:</p><pre class="code">
+&lt;snmp-device-variables&gt;<br />&#160;&#160;sysDescr, &#160;1.3.6.1.2.1.1.1.0,                                          DEFAULT,     "system description"
+&#160;&#160;firmware, &#160;"$sysDescr" =~ "^FW ([^,]+), (.+)Hz, (.+) antenna" ;"${1}", CALCULATION, "Firmware"
+&#160;&#160;frequency, "${2}",                                                     CALCULATION, "Frequency"
+&#160;&#160;antenna,  "${3}",                                                     CALCULATION, "Antenna"
+. . .<br />&lt;/snmp-device-variables&gt;</pre>
+            <ol>
+                <li value="1"> Retrieve sysDescr.0 (OID of 1.3.6.1.2.1.1.1.0) and assign it to the variable $sysDescr.</li>
+                <li value="2">Set the value of $firmware based on the calculation. There are many things going on in this line:
+<ul><li value="1">The "=~" operator indicates that the $sysDescr variable should be parsed using the regular expression string that follows.</li><li value="2">This regular expression breaks the string at the comma characters. The "[^,]" matches any single character that isn't a comma; adding a "+" forms a pattern that matches multiple non-comma characters.</li><li value="3">Parentheses around a pattern serve to memorize a string. Each pair of paren's matches a string whose value is placed in variables numbered ${1}, ${2}, ${3}, etc.</li><li value="4">The semicolon followed by "${1}" indicates that the entire CALCULATION should return the value of ${1} as a string.</li><li value="5"> The variable $firmware thus gets assigned the value of ${1}<br /><br /></li></ul></li>
+                <li value="3">Assign the variable $frequency with the result of the second match (${2}).</li>
+                <li value="4">Assign the variable $antenna with the result of the third match (${3}).</li>
+            </ol>
+            <p><b>Note: </b>It is beyond the scope of this manual to describe the full capabilities of
+regular expressions. There are a number of tutorials available on the web. One 
+example is the <a href="http://perldoc.perl.org/perlretut.html">Perl Regular
+Expression Tutorial</a>.</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p><iframe id="mctoolbar_3022595656_0" name="mctoolbar_3022595656_0" title="Toolbar" frameborder="0" scrolling="no" style="width: 100%; height: 28px; visibility: hidden;" allowTransparency="true" MadCap:buttonItems="PreviousTopic|CurrentTopicIndex|NextTopic" src="../../Skin/Toolbar.htm" class="MCTopicToolbar_0"></iframe>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

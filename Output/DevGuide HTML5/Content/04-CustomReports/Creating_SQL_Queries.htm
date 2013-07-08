@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Retrieving Collected Data">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Creating SQL Queries</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Creating SQL Queries</h1>
+            <p>You can create your own SQL queries to retrieve data from InterMapper Database. The <span class="code">datasample </span>tables contain the 5-minute, hourly and daily samples derived from the original data values. The recommended approach for retrieving data is to get it from these tables. For more information, see <a href="DatabaseSchemas.htm">InterMapper Database Schemas<a href="DatabaseSchemas.htm" title="" alt="" class="MCXref xref"> </a></a>.</p>
+            <p>You can also query individual data values, but this is much slower than querying the <span class="code">datasample </span>tables. In InterMapper 5.4 and earlier, individual data values were stored in the <span class="code">datapoints </span>table. They are now stored in the <span class="code">datastore </span>table. Existing queries on the <span class="code">datapoints </span>table must be rewritten to use the <span class="code">datastore </span>table instead. <i>This applies only if you have written queries in this or a related construct:</i></p><pre class="code" data-mc-conditions="">SELECT FROM datapoint WHERE dataset_id = 5 AND data_time BETWEEN a AND b</pre>
+            <p>To retrieve data from the <span class="code">datastore </span>table, use the <span class="code">load_data()</span> function, described below.</p>
+            <h2 class="L2" data-mc-conditions="">Using the load_data() function</h2>
+            <p data-mc-conditions=""> Use this function <i>only</i> if you have an existing query on the <span class="code">datapoint </span>table, or if you actually need the individual raw values.  In the overwhelming majority of cases you should query the <span class="code">datasample </span>tables as described above, since they're faster and easier to access.</p>
+            <p data-mc-conditions="">The syntax for the load_data() function is as follows:</p><pre class="code" data-mc-conditions="">load_data([dataset id],[datatime start],[datatime end])</pre>
+            <p data-mc-conditions="">For example, to retrieve data for <span class="code">dataset_id = 5 </span>between <span class="code">data_times a </span>and <span class="code">b</span>, use this recommended syntax:</p><pre class="code" data-mc-conditions="">SELECT data_time, data_value FROM load_data(5, a, b)</pre>
+            <p data-mc-conditions="">The explicit column list is not required, but it is recommended. If you use <span class="code">SELECT * </span>rather than an explicit column list, the function returns a single column of the built-in <i>composite-value</i> type, containing both values. You can still reference the values from this composite data type, but you won't be able to treat it as you would a regular Postgres column.</p>
+            <p class="pagebreakbefore" data-mc-conditions="">The <span class="code">load_data()</span> function acts as a table source, and accepts the built-in Postgres <span class="code">infinity </span>and <span class="code">-infinity</span> timestamps.:</p><pre class="code">SELECT data_time, data_value <br />FROM load_data(1, '2011-11-09 00:00:00', 'infinity') <br />ORDER BY data_time</pre>
+            <p>You can also use <span class="code">UNION </span>to combine sources:</p><pre class="code">SELECT 5 as dataset_id, data_time, data_value <br />FROM load_data(5, '2011-11-09 00:00:00', 'infinity') <br />UNION SELECT 6 as dataset_id, data_time,data_value <br />FROM load_data(6, '2011-11-09 00:00:00', 'infinity') <br />UNION SELECT 14 as dataset_id, data_time, data_value <br />FROM load_data(14,'2011-11-09 00:00:00', 'infinity') <br />ORDER BY dataset_id, data_time</pre>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

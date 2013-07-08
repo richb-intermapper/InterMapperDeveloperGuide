@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-US" xml:lang="en-US" class="no-feedback" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Creating Your Own Probes|Anatomy of a Probe">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using Persistent Variables</title>
+        <meta name="description" content="Dartware network monitoring: Testing the description tag." />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Resources/default.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.current-topic-index-button
+{
+	
+}
+
+.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
+        </div>
+        <div class="pagewidth">
+            <h1 class="L2">Using Persistent Variables</h1>
+            <p>SNMP&#160;and Command-line probes can make use of persistent variables. A persistent variable is one that retains its value between polls.</p>
+            <h2>SNMP&#160;Probe Example</h2>
+            <p>The example below demonstrates the use of persistent variables in an SNMP probe.</p><pre class="code">&lt;!--<br />SNMP probe with persistent variables (com.dartware.snmp.persistent)<br />Custom Probe for InterMapper (http://www.intermapper.com)<br />Please feel free to use this as a base for further development.<br />Original version 24 November 2003 by reb.<br />Updated 29 July 2005 -<br />Updated 28 Oct 2005 - include display_name so it displays properly in InterMapper 4.4 -reb<br />21 Apr 2006 - Changed to test conversion of $variables to a condition string.<br />20 Sep 2011 - Updated to talk about variable persistence -reb<br />18 Oct 2011 - Minor editing polish -reb<br />--&gt;<br /><br />&lt;header&gt;<br />&#160;&#160;"type"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"custom-snmp"<br />&#160;&#160;"package"&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"com.dartware"<br />&#160;&#160;"probe_name"&#160;&#160;&#160;&#160;=&#160;&#160;"snmp.persistent"<br />&#160;&#160;"human_name"&#160;&#160;&#160;&#160;=&#160;&#160;"SNMP Persistent Variables"<br />&#160;&#160;"version"&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;&#160;"1.1"<br />&#160;&#160;"address_type"&#160;&#160;=&#160;&#160;"IP,AT"<br />&#160;&#160;"port_number"&#160;&#160;&#160;=&#160;&#160;"161"<br />&#160;&#160;"display_name"&#160;&#160;=&#160;&#160;"Miscellaneous/Test/SNMP Persistent Variables"<br />&lt;/header&gt;<br /><br />&lt;snmp-device-properties&gt;<br />&#160;&#160;-- none required<br />&lt;/snmp-device-properties&gt;<br /><br />-- The &lt;description&gt; contains text that will be displayed in the Set  Probe window.<br />-- Describe the probe as much as necessary so that people will understand what it does and how it works.<br />&lt;description&gt;<br />\GB\SNMP Probe with Persistent Variables \P\<br />Sometimes probes need to compare variables from previous invocations <br />o the current values. InterMapper SNMP probes can retain variables from one invocation to the next.<br />This is done by setting a variable in this invocation to preserve the value of the current calculation. This becomes the "old variable" in the next invocation. The steps are:<br />- Read the new (current) value into a variable ("XYZ");<br />- Do the computations with it;<br />- Save that value in a separate variable ("oldXYZ");<br />- Re-run the probe. The oldXYZ will still contain its previous value.<br />\b\Example Probe\p\<br />This probe reads ifInOctets for a specified interface and computes the difference between it and the previous ifInOctets. It also reads the sysUpTime.0, and computes the time delta between the probe executions. From these values, the probe computes the traffic rate. For comparison, the probe also looks at ifInOctets using InterMapper's standard PER-SECOND calculations.<br />&lt;/description&gt;<br /><br />-- Parameters are user-settable values that the probe uses for its comparisons.<br />-- Specify the default values here. The customer can change them and they will be retained for each device.<br />&lt;parameters&gt;<br />"Interface"&#160;&#160;= &#160;&#160;"24"<br />&lt;/parameters&gt;<br /><br />-- SNMP values to be retrieved from the device, and<br />-- Specify the variable name, its OID, a format (usually DEFAULT) and a short description.<br />-- CALCULATION variables are computed from other values already retrieved from the device.<br />&lt;snmp-device-variables&gt;<br />actInOctets,&#160;&#160;ifInOctets.$Interface,&#160;&#160;PER-SECOND,&#160;&#160;"actual inOctets"<br />inOctets,&#160;&#160;&#160;&#160;&#160;ifInOctets.$Interface,&#160;&#160;INTEGER,&#160;&#160;&#160;&#160;&#160;"current value"<br />deltaBytes,&#160;&#160;&#160;$inOctets-$oldInOctets,&#160;CALCULATION,&#160;""<br />curSysUpTime,&#160;sysUpTime.0,&#160;INTEGER,&#160;"current sysuptime"<br />deltaTime,&#160;$curSysUptime - $oldSysUpTime,&#160;CALCULATION, 	""<br />-- Now update the oldXXXX variables with current values for next time<br />-- NB: prevInOctets is only needed for display - it is not used in<br />-- the calculations above<br />prevInOctets,&#160;$oldInOctets,&#160;CALCULATION,&#160;"from last time"<br />oldInOctets,&#160;$inOctets,&#160;CALCULATION,&#160;&#160;&#160;&#160;&#160;"old inOctets for next time"<br />oldSysUpTime,&#160;$curSysUpTime,&#160;CALCULATION,&#160;"old sysuptime for next time"<br />&lt;/snmp-device-variables&gt;<br /><br />-- Specify rules for setting the device into Alarm or Warning state<br />&lt;snmp-device-thresholds&gt;<br />&lt;/snmp-device-thresholds&gt;<br /><br />-- The &lt;snmp-device-display&gt; section specifies the text that will be appended<br />-- to the device's Status Window.<br />&lt;snmp-device-display&gt;<br />\B5\Persistent SNMP Variables on Interface=$interface\0P\<br />\4\Old Octets:\0\  $prevInOctets \3g\bytes\0mp\<br />\4\Cur Octets:\0\  $inOctets \3g\bytes\0mp\<br />\4\Delta's:\0\  $deltaBytes \3g\bytes\0mp\ in $deltaTime \3g\centi-seconds \0mp\<br />\4\Computed Rate:\0\  ${eval:sprintf("%d",($deltaBytes) / $deltaTime * 100) } \3g\bytes/sec\0mp\<br />\4\Actual Rate:\0\  ${scalable10: #.### : $actInOctets} \3g\bytes/sec, using built-in PER-SECOND type\0mp\<br />&lt;/snmp-device-display&gt;</pre>
+            <h2 class="pagebreakbefore">Command Line Probe Example</h2>
+            <p>The example below demonstrates the use of persistent variables in a command-line probe.</p><pre class="code">
+&lt;!-- 
+Command-line Return (com.dartware.tool.persistent.txt) 
+Copyright (c) 2008-2011 Dartware, LLC. All rights reserved. 
+
+Test of persistent variables by round-tripping values: pass them into script, get results back, post to status window.
+20 Sep 2011 -reb
+18 Oct 2011 Minor editing -reb
+--&gt; 
+
+&lt;header&gt; 
+&#160;&#160;type&#160;&#160;=&#160;&#160;"cmd-line" 
+&#160;&#160;package&#160;&#160;=&#160;&#160;"com.dartware" 
+&#160;&#160;probe_name&#160;&#160;=&#160;&#160;"tool.persistent" 
+&#160;&#160;human_name&#160;&#160;=&#160;&#160;"Command Line Persistent Variables" 
+&#160;&#160;version&#160;&#160;=&#160;&#160;"1.1" 
+&#160;&#160;address_type&#160;&#160;=&#160;&#160;"IP" 
+&#160;&#160;display_name&#160;&#160;=&#160;&#160;"Miscellaneous/Test/Command Line Persistent Variables"
+&lt;/header&gt; 
+
+&lt;description&gt; 
+\GB\Command Line Persistent Variables\p\ 
+This is an example of passing persistent variables into a command-line probe. The attached Python script takes the variables, updates them, and returns them to be used for the next iteration.
+The script below processes two variables: \b\$SearchString\p\ and \b\$numericParam\p\. The script appends an "a" to $SearchString, and adds 1 to the $numericParam and returns both values. (This is a useless script, created just to demonstrate use of persistent variables.)
+Both variables are uninitialized when the probe is executed the very first time. The script can detect this startup condition because an uninitialized variable is passed to the script as the variable's name. 
+For example, the variable named $SearchString will be passed as a string - "$SearchString". The script can detect this value - it's the same name that will be used to return the new result for the variable - and treat the variable as uninitialized, by assigning a sensible default value.
+The Python script tests the passed-in values to see if they match the expected name and initializes them accordingly.
+\i\Note:\p\ This device's address should be set to \i\localhost\p\.
+\i\Note:\p\ These variables could be initialized by setting them in the &lt;parameter&gt; section, but this exposes a lot of the script's internal variables to the customer: this is generally not a good design. 
+&lt;/description&gt; 
+
+&lt;parameters&gt; 
+-- no human-editable parameters
+&lt;/parameters&gt; 
+
+&lt;command-line&gt; 
+   -- Unix/OSX: Empty path forces the InterMapper Settings:Tools directory
+   path=""
+   cmd="${PYTHON} persistent.py $numericParam"
+   arg=''
+   input="${SearchString}"
+&lt;/command-line&gt; 
+
+&lt;command-exit&gt;
+-- These are the exit codes used by Nagios plugins
+&#160;&#160;down:&#160;&#160;${EXIT_CODE}=4
+&#160;&#160;critical:&#160;&#160;${EXIT_CODE}=3 
+&#160;&#160;alarm:&#160;&#160;${EXIT_CODE}=2 
+&#160;&#160;warn:&#160;&#160;${EXIT_CODE}=1 
+&#160;&#160;okay:&#160;&#160;${EXIT_CODE}=0 
+&lt;/command-exit&gt; 
+
+&lt;command-display&gt; 
+\b5\ Current value of SearchString and numericParam\p0\ 
+&#160;&#160;Search String: $SearchString
+&#160;&#160;Number: $numericParam
+&lt;/command-display&gt; 
+
+&lt;tool:persistent.py&gt;
+#!/usr/local/imdc/core/python/bin/imdc -OO 
+# The line above is required to run as an IMDC plugin
+# persistent.py 
+
+# Round-trip the passed-in variables, update them, and return them
+# 20 Sep 2011 -reb
+import os
+import sys
+import getopt
+
+try:
+&#160;&#160;opts, args = getopt.getopt(sys.argv[1:], "")
+
+except getopt.GetoptError, err:
+&#160;&#160;searchString = "getopt error %d" % (err)
+
+if (args[0] == "$numericParam"):&#160;&#160;# check to see if the argument is the name of the parameter
+&#160;&#160;number = 0&#160;&#160;&#160;&#160;&#160;# if so, set it to a good initial value
+else:
+&#160;&#160;number = int(args[0])&#160;&#160;&#160;# otherwise, convert the string to an integer
+
+# Read the stdin file which contains the search String
+f = sys.stdin&#160;&#160;&#160;&#160;&#160;# open stdin
+searchString = f.readline().strip()&#160;&#160;# get the line &amp; remove leading &amp; trailing whitespace
+
+if (searchString == "$SearchString"):&#160;&#160;# check to see if the value is the name of the parameter
+&#160;&#160;searchString = ""&#160;&#160;&#160;&#160;# if so, set it to a good initial value
+
+retcode=0
+searchString = searchString + "a"&#160;&#160;# add another "a" to the end of the string
+number = number+1&#160;&#160;&#160;&#160;# increment the number as well
+retstring = "Hunky Dory!"
+
+print "\{ $SearchString := '%s', $numericParam := '%d' } %s" % (searchString, number, retstring)
+sys.exit(retcode)
+&lt;/tool&gt;			
+</pre>
+            <p>&#160;</p>
+        </div>
+        <p>
+            <script id="dartwarejs" name="dartwarejs" type="text/javascript" src="../dartware.js">
+            </script>
+        </p>
+        <div class="buttons inline-buttons clearfix topicToolbarProxy" style="mc-topic-toolbar-items: ;text-align: left;">
+            <div class="button-group-container-left">
+                <div class="button-group">
+                    <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                    </button>
+                    <div class="button current-topic-index-button disabled"><span class="sequence-index"></span> of <span class="sequence-total"></span></div>
+                    <button class="button needs-pie next-topic-button" title="Navigate next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

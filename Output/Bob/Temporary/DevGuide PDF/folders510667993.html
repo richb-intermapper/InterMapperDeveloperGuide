@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="2" MadCap:lastHeight="644" MadCap:lastWidth="576" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Customizing Web Pages" MadCap:medium="print" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="PDF">
+    <head><title>Folder Structure</title>
+        <link href="file:///E:/Projects/Doc Projects/Dartware/Flare-InterMapper/InterMapper Developer Guide/Output/Bob/Temporary/DevGuide PDF/DevGuide PDF_6249A6BB/Resources/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 class="L2" MadCap:xrefTargetName="Folder Structure" MadCap:sourceTitle="Folder Structure"><a MadCap:generatedBookmark="TOC" name="Folder Structure"></a>
+            <MadCap:keyword term="Folder Structure" />Folder Structure</h1>
+        <p>Web target files and template files are in the <i><MadCap:keyword term="Level:Web Pages" /><MadCap:keyword term="Web Pages" />Web Pages</i> folder 
+ within the       <i><MadCap:keyword term="InterMapper Settings" />InterMapper Settings</i><MadCap:keyword term="Level" /><MadCap:keyword term="Web Pages:level" /> folder. Except for the folders 
+ described below, the InterMapper web server serves out only those files 
+ located in the top level of the       <i>Web Pages</i> folder.</p>
+        <p>InterMapper ships with four folders stored in the <i>Web Pages</i> folder:</p>
+        <p class="dt">
+            <MadCap:keyword term="HTML" />
+            <MadCap:keyword term="AdminHTML" />~AdminHTML</p>
+        <p class="dd">
+            <MadCap:keyword term="URL" />This folder contains HTML templates for pages that show the overall 
+ status of the InterMapper program. People who have access to these pages 
+ may also view all the separate map pages. You can access these files from 
+ the default web URL, or by using a URL in this form: 
+	
+	</p><pre class="code">http://intermapper.domainname.com/~admin/filename.html</pre>
+        <p class="dt">
+            <MadCap:keyword term="GuestHTML" />~GuestHTML</p>
+        <p class="dd">This folder contains HTML templates for reporting errors such as missing 
+ or invalid file names, and for responding to web clients who are not authorized 
+ for the web server. These files bypass the usual access list mechanism; 
+ you can access them using this URL form: 
+	
+	</p><pre class="code">http://intermapper.domainname.com/~error/filename.html</pre>
+        <p class="dt">
+            <MadCap:keyword term="GuestImages" />~GuestImages</p>
+        <p class="dd">
+            <MadCap:keyword term="Used" />This folder contains images used by the InterMapper web server. These 
+ images may be placed in a target or template file using the <span class="code"><MadCap:keyword term="Imageref" />${imageref: ... }</span> macro.<br /></p>
+        <p class="dt">
+            <MadCap:keyword term="PerMapHTML" />PerMapHTML</p>
+        <p class="dd">This folder contains HTML templates that are used when displaying a 
+ map's information. <!--To customize the HTML for a particular map, duplicate the PerMapHTML folder, and edit the file(s) within that folder. You must also select the new folder name from the drop-down menu in the map's {glosssub("Chapter 4 == Map Access Control","Map Settings...")} dialog. -->To view a specific document's information, use this URL form: 
+	
+	</p><pre class="code">http://intermapper.domainname.com/docname</pre>
+        <h2 class="pagebreakbefore">
+            <MadCap:keyword term="Web Page Files" />How the Web Page Files are Used</h2>
+        <p class="dt">
+            <MadCap:keyword term="Main Web Page" />Main Web Page</p>
+        <p class="dd">
+            <MadCap:keyword term="Index.html" />
+            <MadCap:keyword term="Admin/!index.html" />The main web page is the ~admin/!index.html target file. When an unqualified 
+ URL request arrives (that is, a request for "/", without any 
+ additional path of file information), InterMapper sends out the file specified 
+ by ~admin/!index.html.</p>
+        <p class="dt">
+            <MadCap:keyword term="Main Template file" />Main Template file</p>
+        <p class="dd">
+            <MadCap:keyword term="Template.html" />By default, all target files use the same template, "!template.html" 
+ (note the exclamation point at the beginning of the filename). A target 
+ file may specify a different template file by using the #template directive.</p>
+        <p class="dt">
+            <MadCap:keyword term="Default HTML" />Default HTML page</p>
+        <p class="dd">For both the "~AdminHTML" and "PerMapHTML" folders, 
+ the default HTML page is "!index.html". A request for <span class="code"><MadCap:keyword term="Intermapper.domain.com" />http://intermapper.domain.com/</span> is treated like 
+ a request for</p><pre class="code">http://intermapper.domain.com/~admin/!index.html.</pre>
+        <p>Similarly, a request for </p><pre class="code">http://intermapper.domain.com/docname</pre>
+        <p>will be treated like a request for</p><pre class="code">http://intermapper.domain.com/docname/document/main/!index.html.</pre>
+    </body>
+</html>
