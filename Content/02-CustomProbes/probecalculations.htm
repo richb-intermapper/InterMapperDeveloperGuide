@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="Probe_Calculations" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="6" MadCap:lastHeight="6780" MadCap:lastWidth="1122">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="Probe_Calculations" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="6" MadCap:lastHeight="850" MadCap:lastWidth="576">
     <head><title></title>
         <link rel="StyleSheet" href="../Resources/default.css" />
     </head>
@@ -195,8 +195,8 @@ round(3.14159, 3) = 3.142
 </p>
         <p>Examples:
 	
-	</p><pre class="code">strlen( "Dartware" ) &#160;--&gt;  8
-strlen( "Dartware", "2000" )&#160;--&gt;&#160;&#160;12</pre>
+	</p><pre class="code">strlen( "Help/Systems" ) &#160;--&gt;  8
+strlen( "Help/Systems", "2000" )&#160;--&gt;&#160;&#160;12</pre>
         <h3><a name="sprintf"></a>sprintf</h3>
         <p>FUNCTION&#160;sprintf( fmt:STRING, ... ):STRING</p>
         <p>Returns formatted string using format specifier <b style="font-style: italic;">fmt</b>. Format specifier <b style="font-style: italic;">fmt</b> contains format codes that begin with '%'. The following format codes are supported:</p>
@@ -231,13 +231,13 @@ strlen( "Dartware", "2000" )&#160;--&gt;&#160;&#160;12</pre>
 </h4>
         <p>For string data using %s, the width specifies the minimum width of the output field, and the precision specifies the number of characters to output. If the number of output characters is less than the minimum field width, the output is padded with spaces. </p>
         <p>Example:
-</p><pre class="code">sprintf( "%10s", "Dartware" )
-  &#160;Results in "&#160;&#160; Dartware"
-sprintf( "%s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dartware"
+</p><pre class="code">sprintf( "%10s", "Help/Systems" )
+  &#160;Results in "&#160;&#160; Help/Systems"
+sprintf( "%s", "Help/Systems" )<br />&#160;&#160;&#160;Results in "Help/Systems"
 </pre>
         <p>The default alignment is to the right; so padding is added to the beginning of the string. To left align the output of %s, you need to include a '-' immediately following the '%':
-</p><pre class="code">sprintf( "%-10s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dartware&#160;&#160;"
-sprintf( "%-10.4s", "Dartware" )<br />&#160;&#160;&#160;Results in "Dart&#160;&#160;&#160;&#160;&#160;"
+</p><pre class="code">sprintf( "%-10s", "Help/Systems" )<br />&#160;&#160;&#160;Results in "Help/Systems&#160;&#160;"
+sprintf( "%-10.4s", "Help/Systems" )<br />&#160;&#160;&#160;Results in "Dart&#160;&#160;&#160;&#160;&#160;"
 </pre>
         <h4>Integer Formatting</h4>
         <p>Integers format similar to strings, except the &lt;precision&gt; field specifies the maximum field width, and this is enforced by padding with 0's if necessary.</p><pre class="code">sprintf( "%5d", 12 )<br />&#160;&#160;&#160;Results in "&#160;&#160;&#160;12"
@@ -261,7 +261,7 @@ sprintf( "%g", 1/2 )
 &#160;&#160;&#160;Results in "0.5"</pre>
         <h4>Address Formatting</h4>
         <p>The %a format code outputs a string in hexadecimal.</p><pre class="code">sprintf( "%a", "\x01\x02\x03" )<br />&#160;&#160;&#160;Results in "01:02:03"
-sprintf( "%a", "Dartware" )<br />&#160;&#160;&#160;Results in "44:61:72:74:77:61:72:65"
+sprintf( "%a", "Help/Systems" )<br />&#160;&#160;&#160;Results in "44:61:72:74:77:61:72:65"
 </pre>
         <h3 class="pagebreakbefore"><a name="strftime"></a>strftime</h3>
         <p>FUNCTION&#160;strftime( fmt [, time] )</p>

@@ -2,14 +2,14 @@
 <CatapultVariableSet>
   <Variable
     Comment=""
-    Name="CompanyName">Dartware</Variable>
+    Name="CompanyName">Help/Systems, LLC</Variable>
   <Variable
     Comment=""
     Name="PhoneNumber">877-276-6903</Variable>
   <Variable
     Name="CurrentVersion"
     Comment="Currently used in What's New"
-    Definition="Some text">5.6</Variable>
+    Definition="Some text">5.7</Variable>
   <Variable
     Name="CurrentFlowsVersion"
     Comment=""
@@ -20,17 +20,17 @@
   <Variable
     Name="CurrentIMReleaseDate"
     Comment=""
-    Definition="Some text">January 2013</Variable>
+    Definition="Some text">August 2013</Variable>
   <Variable
     Name="CurrentVersionMajor"
     Comment=""
-    Definition="Some text">5.6</Variable>
+    Definition="Some text">5.7</Variable>
   <Variable
     Name="ReleaseMonth"
     Comment=""
-    Definition="Some text">January 2013</Variable>
+    Definition="Some text">August 2013</Variable>
   <Variable
     Name="Copyright"
     Comment=""
-    Definition="Some text">2012</Variable>
+    Definition="Some text">2013</Variable>
 </CatapultVariableSet>

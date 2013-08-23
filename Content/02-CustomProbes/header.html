@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="2756" MadCap:lastWidth="1109">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="43" MadCap:lastWidth="576">
     <head>
         <link rel="StyleSheet" href="../Resources/default.css" /><title></title>
     </head>
@@ -9,10 +9,13 @@
         <p>The <span class="code">&lt;header&gt;</span><MadCap:keyword term="IP" /> section of a probe file contains a formal description of the probe. 
  It is defined as follows, with each header property having a name and a corresponding 
  value.</p><pre class="code">&lt;header&gt; <br />..[part name] = "[value]"<br />&lt;/header&gt;</pre>
-        <p><b>Note:</b> Information by which InterMapper uniquely identifies the probe is contained in the header. While it is not required, Dartware strongly recommends that you follow <a href="#probefilenames">probe file naming conventions</a> that correspond to the unique identifer in the probe header.</p>
+        <p><b>Note:</b> Information by which InterMapper uniquely identifies the probe is contained in the header. While it is not required, Help/Systems strongly recommends that you follow <a href="#probefilenames">probe file naming conventions</a> that correspond to the unique identifer in the probe header.</p>
         <h2 style="page-break-before: avoid;">
             <MadCap:keyword term="Header Parts" />Header Parts</h2>
         <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <col />
+            <col style="width: 136px;" />
+            <col />
             <tr>
                 <td valign="top" width="17">&#160;</td>
                 <td valign="top"><b>type</b>
@@ -44,7 +47,7 @@
                     <p>The first part of the probe's full identifier. Typically, the package 
  is made up of the domain name of the organization that created the probe, 
  with the labels reversed. </p>
-                    <p>For example, all probes created by Dartware, LLC the package statement 
+                    <p>For example, all probes created by Help/Systems, LLC the package statement 
  is as follows: <MadCap:keyword term="Com.dartware" /></p><pre class="code">&#160;&#160;&#160;package = "com.dartware"</pre>
                     <p>The package part guarantees that different organizations can create 
  probes without concern that their probe identifiers will conflict.</p>
@@ -67,9 +70,10 @@
             </tr>
             <tr>
                 <td valign="top" width="17">&#160;</td>
-                <td valign="top"><b><MadCap:keyword term="Human_name" />human_name</b>
+                <td valign="top"><b>human_name</b>
                 </td>
-                <td valign="top">The string that appears in the left pane of the Set Probe window. This string helps guides the user to select the probe for 
+                <td valign="top">
+                    <MadCap:keyword term="Human_name" />The string that appears in the left pane of the Set Probe window. This string helps guides the user to select the probe for 
  a particular device.</td>
             </tr>
             <tr>
@@ -91,19 +95,23 @@
         </table>
         <!-- broke table to allow a pagebreak -->
         <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <col />
+            <col style="width: 136px;" />
+            <col />
             <tr>
                 <td valign="top" width="17">&#160;</td>
-                <td valign="top"><b><MadCap:keyword term="Port_number" />port_number</b>
+                <td valign="top"><b>port_number</b>
                 </td>
-                <td valign="top">The IP port used by this probe.</td>
+                <td valign="top">The IP port used by this probe.<MadCap:keyword term="Port_number" /></td>
             </tr>
             <tr>
                 <td valign="top" width="17">&#160;</td>
-                <td valign="top"><b><MadCap:keyword term="display_name" />display_name</b>
+                <td valign="top"><b>display_name</b>
                 </td>
                 <td valign="top">
                     <p>
-                        <MadCap:keyword term="Select Probe window" />Specify the display_name to use with this probe, using forward slashes to specify the heirarchy. To do this, add the following line to the &lt;header&gt; 
+                        <MadCap:keyword term="Select Probe window" />
+                        <MadCap:keyword term="display_name" />Specify the display_name to use with this probe, using forward slashes to specify the heirarchy. To do this, add the following line to the &lt;header&gt; 
  section of the probe:</p>
                     <p>&#160;&#160;&#160;&#160;display_name = "[top level]/[next level]/[next 
  level]"</p>
@@ -112,12 +120,11 @@
             </tr>
             <tr>
                 <td valign="top" width="17">&#160;</td>
-                <td valign="top"><b><MadCap:keyword term="Url_hint" />url_hint</b>
+                <td valign="top"><b>url_hint</b>
                 </td>
                 <td valign="top">Assign a double-click action within the probe (making it 
  the pre-defined double-click action). To do this, add the following line 
- to your &lt;header&gt; section of the probe: 
-        <p></p><blockquote><MadCap:keyword term="Url-to-invoke" /> url_hint = "url-to-invoke" </blockquote><p> The following example would invoke the web browser to the device's 
+ to your &lt;header&gt; section of the probe: <MadCap:keyword term="Url_hint" /> <p /><blockquote><MadCap:keyword term="Url-to-invoke" /> url_hint = "url-to-invoke" </blockquote><p> The following example would invoke the web browser to the device's 
  IP address and port
         </p><pre class="code"> url_hint = "http://${address}:${port}" </pre><p>&#160;</p></td>
             </tr>
@@ -195,7 +202,7 @@ section.<br /><br /><!-- the next three are documented here, but should not be u
             </p>
         </blockquote>
         <p>The probe's package name and probe name are defined in the probe definition's 
- header section. Dartware recommends that you name the file with the combination 
+ header section. Help/Systems recommends that you name the file with the combination 
  of the package name and probe name, as shown above.</p>
         <p>The header section of the probe definition in the example above contains these 
  two lines:</p><pre class="code">package = "com.dartware" 
