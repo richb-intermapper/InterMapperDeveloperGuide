@@ -45,22 +45,22 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor680"></a>Template Files</h1>
+            <h1 class="L2"><a name="kanchor671"></a>Template Files</h1>
             <p>To allow all the web pages to have the same look, InterMapper uses <i>template 
- files</i><a name="kanchor681"></a> to control the formatting of pages. A template file is composed of 
+ files</i><a name="kanchor672"></a> to control the formatting of pages. A template file is composed of 
  HTML commands that provide the skeleton for a web page. In addition, template 
  files often contain macros and quoted links that are replaced by appropriate 
  text when the page is generated.</p>
-            <h2><a name="kanchor682"></a>Template File Example</h2>
-            <p>Here is a simple template file that could be used with InterMapper:<a name="kanchor683"></a></p><pre class="code">
-            &lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN"&gt;<br />&lt;HTML&gt;<br /><a name="kanchor684"></a>&lt;HEAD&gt;<br /><a name="kanchor685"></a><a name="kanchor686"></a>&#160;&#160;&#160;&lt;TITLE&gt;${pagetitle}&lt;/TITLE&gt;<br />&lt;/HEAD&gt;<br /><a name="kanchor687"></a><a name="kanchor688"></a>&lt;BODY BGCOLOR="#FFFFFF"&gt;<br /><a name="kanchor689"></a>&#160;&#160;&#160;${imageref:logo.gif}<br /><a name="kanchor690"></a>&#160;&#160;&#160;${bodytext}<br /><a name="kanchor691"></a>&#160;&#160;&#160;${include:footer.incl}<br />&lt;/BODY&gt;<br />&lt;/HTML&gt;<br /></pre>
+            <h2><a name="kanchor673"></a>Template File Example</h2>
+            <p>Here is a simple template file that could be used with InterMapper:<a name="kanchor674"></a></p><pre class="code">
+            &lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN"&gt;<br />&lt;HTML&gt;<br /><a name="kanchor675"></a>&lt;HEAD&gt;<br /><a name="kanchor676"></a><a name="kanchor677"></a>&#160;&#160;&#160;&lt;TITLE&gt;${pagetitle}&lt;/TITLE&gt;<br />&lt;/HEAD&gt;<br /><a name="kanchor678"></a><a name="kanchor679"></a>&lt;BODY BGCOLOR="#FFFFFF"&gt;<br /><a name="kanchor680"></a>&#160;&#160;&#160;${imageref:logo.gif}<br /><a name="kanchor681"></a>&#160;&#160;&#160;${bodytext}<br /><a name="kanchor682"></a>&#160;&#160;&#160;${include:footer.incl}<br />&lt;/BODY&gt;<br />&lt;/HTML&gt;<br /></pre>
             <p>This sample contains several important macros:</p>
             <ul>
                 <li value="1"><b>${pagetitle}</b> - Replaced with the text of the #title directive of 
  the target file.</li>
                 <li value="2"><b>${bodytext}</b> - Replaced with the body text of the target file, that 
  is, everything from the target file that is not a directive.</li>
-                <li value="3"><b>${imageref:logo.gif}</b> - Replaced with an <span class="code"><a name="kanchor692"></a>&lt;img ... &gt;</span><a name="kanchor693"></a><a name="kanchor694"></a> tag that refers to the logo.gif file in the 
+                <li value="3"><b>${imageref:logo.gif}</b> - Replaced with an <span class="code"><a name="kanchor683"></a>&lt;img ... &gt;</span><a name="kanchor684"></a><a name="kanchor685"></a> tag that refers to the logo.gif file in the 
  ~GuestImages folder on the InterMapper server.</li>
                 <li value="4"><b>${include:footer.incl}</b> - Replaced with the contents of the file named 
  'footer.incl'.</li>

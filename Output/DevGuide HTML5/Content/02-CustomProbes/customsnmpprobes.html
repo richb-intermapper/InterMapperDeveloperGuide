@@ -47,11 +47,11 @@
         <div class="pagewidth">
             <h1>SNMP Probes</h1>
             <p class="code">type="custom-snmp"</p>
-            <p><a name="kanchor132"></a><a name="kanchor133"></a><a name="kanchor134"></a><a name="kanchor135"></a><a name="kanchor136"></a><a name="kanchor137"></a><a name="kanchor138"></a><a name="kanchor139"></a>Using  SNMP probes, you can monitor certain MIB variables that aren't 
+            <p><a name="kanchor123"></a><a name="kanchor124"></a><a name="kanchor125"></a><a name="kanchor126"></a><a name="kanchor127"></a><a name="kanchor128"></a><a name="kanchor129"></a><a name="kanchor130"></a>Using  SNMP probes, you can monitor certain MIB variables that aren't 
  tested by InterMapper's built-in probes. These MIB variables might include the 
  CPU utilization of a router, temperature inside the equipment, switch closures, 
  etc.</p>
-            <p><a name="kanchor140"></a><a name="kanchor141"></a>Like other probes,  SNMP probes are invoked and return the status and 
+            <p><a name="kanchor131"></a><a name="kanchor132"></a>Like other probes,  SNMP probes are invoked and return the status and 
  condition string for the device being tested. Here's a summary of the operational 
  flow of an  SNMP probe:</p>
             <ol>
@@ -60,7 +60,7 @@
  (usually byte and packet rates for interfaces).</li>
                 <li value="2">InterMapper also polls each interface for probe variables as
 needed.<br /></li>
-                <li value="3"><a name="kanchor142"></a>InterMapper then evaluates a series of expressions in the probe
+                <li value="3"><a name="kanchor133"></a>InterMapper then evaluates a series of expressions in the probe
 file, comparing the probe variables to thresholds.<br /></li>
                 <li value="4">If a comparison is triggered (generally, if the probe variable is above 
  or below the given threshold), then InterMapper sets the device status as 
@@ -82,15 +82,15 @@ section specifies the help text that appears in the Set  Probe window. Format th
             <p><b>Note:</b> See <a href="handlingtraps.htm"><a href="trap_viewing_and_logging.htm">SNMP Trap Probes</a></a> for information on creating probes that handle SNMP traps.</p>
             <p>Each SNMP probe also has:</p>
             <ul>
-                <li value="1"><b><a href="snmp-device-variables.htm#devvar" name="kanchor143">An <span class="code">&lt;snmp-device-variables&gt;</span> 
+                <li value="1"><b><a href="snmp-device-variables.htm#devvar" name="kanchor134">An <span class="code">&lt;snmp-device-variables&gt;</span> 
     section</a></b> - Specifies which MIB variables to collect from the device</li>
-                <li value="2"><b><a href="Thresholds.htm" name="kanchor144">An <span class="code">&lt;snmp-device-thresholds&gt;</span> 
+                <li value="2"><b><a href="Thresholds.htm" name="kanchor135">An <span class="code">&lt;snmp-device-thresholds&gt;</span> 
     section</a></b> - Specifies how those variables are to be tested against thresholds 
  to determine the device's status</li>
-                <li value="3"><a href="#devdisp" name="kanchor146"><b>An <span class="code">&lt;snmp-device-display&gt;</span> 
+                <li value="3"><a href="#devdisp" name="kanchor137"><b>An <span class="code">&lt;snmp-device-display&gt;</span> 
     section</b></a> - Specifies what information about the device and its links 
  should be displayed in the Status window</li>
-                <li value="4"><a href="snmp-device-properties.htm#devprop" name="kanchor147"><b>The <span class="code">&lt;snmp-device-properties&gt;</span> 
+                <li value="4"><a href="snmp-device-properties.htm#devprop" name="kanchor138"><b>The <span class="code">&lt;snmp-device-properties&gt;</span> 
     section</b></a> - Specifies certain aspects of the SNMP queries sent to the 
  device. </li>
                 <li value="5"><a href="OnDemandTables.htm"><b>The </b><span class="code" style="font-weight: bold;">&lt;snmp-device-variables-ondemand&gt;</span><b> Section</b></a>&#160; - Many devices store information in SNMP tables. InterMapper can

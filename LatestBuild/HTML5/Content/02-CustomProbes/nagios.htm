@@ -45,17 +45,17 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor566"></a>Nagios Plugins</h1>
+            <h1 class="L2"><a name="kanchor557"></a>Nagios Plugins</h1>
             <p>InterMapper's command-line probes are similar to <b>Nagios® plugins</b> 
   (<a href="http://www.nagios.org/" target="_blank">http://www.nagios.org</a>). You can see the   <a href="http://sourceforge.net/project/showfiles.php?group_id=29880" target="_blank">standard 
  set of Nagios plugins.</a> Many vendors and individuals have created their own 
  Nagios plugins, many of which are available in the   <a href="http://sourceforge.net/tracker?group_id=29880&amp;atid=541465" target="_blank">development 
- section.</a><a name="kanchor567"></a> You will have to download the Nagios plugins and build/compile 
+ section.</a><a name="kanchor558"></a> You will have to download the Nagios plugins and build/compile 
  them yourself.</p>
             <p>The Nagios Plugin probe lets you specify a Nagios plugin to run, along with any associated parameters. You can use the ${ADDRESS} and ${PORT} macros in the command line--InterMapper substitutes the device's IP address and the specified port. InterMapper will invoke the plugin and use the exit value to set the condition of the device to UP/Okay, UP/Alarm, UP/Critical, or DOWN.</p>
             <p>InterMapper also interprets the information written by the plugin to stdout and puts it in the InterMapper status window, nicely displaying and making chartable the performance data returned by the probe, and displaying the reason/condition provided.</p>
             <p>The Nagios Plugin probe expects the Nagios plugin to be in the Tools sub-directory of the InterMapper Settings directory. Nagios and the Nagios logo are registered trademarks of Ethan Galstad. For more information, see <a href="http://www.nagios.org/" target="_blank">http://www.nagios.org/</a>. </p>
-            <h3><a name="kanchor568"></a><a name="kanchor569"></a><a name="kanchor570"></a><a name="kanchor571"></a><a name="kanchor572"></a><a name="kanchor573"></a>
+            <h3><a name="kanchor559"></a><a name="kanchor560"></a><a name="kanchor561"></a><a name="kanchor562"></a><a name="kanchor563"></a><a name="kanchor564"></a>
             </h3>
             <div class="floatright">
                 <img src="../images/nagiosplugin.png" />
@@ -76,11 +76,11 @@
   </li>
                 <li value="5">You can use the ${ADDRESS} and ${PORT} macros in the command line. InterMapper 
 				will substitute the device's IP address and the specified port. 
-				<a name="kanchor574"></a><a name="kanchor575"></a><a name="kanchor576"></a></li>
+				<a name="kanchor565"></a><a name="kanchor566"></a><a name="kanchor567"></a></li>
             </ol>
-            <h4 class="pagebreakbefore"><a name="kanchor577"></a><a name="kanchor578"></a><a name="kanchor579"></a><a name="kanchor580"></a>Creating Nagios Probes</h4>
+            <h4 class="pagebreakbefore"><a name="kanchor568"></a><a name="kanchor569"></a><a name="kanchor570"></a><a name="kanchor571"></a>Creating Nagios Probes</h4>
             <p> If you wish to develop your own Nagios plugins, you should follow the developer 
- guidelines for Nagios (found at <a href="http://nagiosplug.sourceforge.net/developer-guidelines.html" target="_blank">http://nagiosplug.sourceforge.net/developer-guidelines.html</a><a name="kanchor581"></a>). 
+ guidelines for Nagios (found at <a href="http://nagiosplug.sourceforge.net/developer-guidelines.html" target="_blank">http://nagiosplug.sourceforge.net/developer-guidelines.html</a><a name="kanchor572"></a>). 
  This will result in probes/plugins that work for both InterMapper and Nagios. </p>
             <p>As described in the Nagios Guidelines, a Nagios plugin returns:</p>
             <ul>

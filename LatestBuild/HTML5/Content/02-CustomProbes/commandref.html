@@ -45,37 +45,37 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor360"></a><a name="kanchor361"></a><a name="kanchor362"></a><a name="kanchor363"></a>TCP Probe Command Reference</h1>
-            <p><a name="kanchor364"></a><a name="kanchor365"></a>This is a list of commands defined in the InterMapper TCP Probe Scripting Language. 
- For an example of a custom probe script, see the <a href="#example" name="kanchor366">Annotated 
+            <h1 class="L2"><a name="kanchor351"></a><a name="kanchor352"></a><a name="kanchor353"></a><a name="kanchor354"></a>TCP Probe Command Reference</h1>
+            <p><a name="kanchor355"></a><a name="kanchor356"></a>This is a list of commands defined in the InterMapper TCP Probe Scripting Language. 
+ For an example of a custom probe script, see the <a href="#example" name="kanchor357">Annotated 
  Example of the FTP (Login) Script</a>.</p>
-            <h2><a name="kanchor370"></a>Device I/O Commands</h2>
-            <p><a name="kanchor371"></a><a name="kanchor372"></a><a name="kanchor373"></a><a name="kanchor374"></a><a name="kanchor375"></a><a name="kanchor376"></a>The following commands operate on a device by sending data to the device 
+            <h2><a name="kanchor361"></a>Device I/O Commands</h2>
+            <p><a name="kanchor362"></a><a name="kanchor363"></a><a name="kanchor364"></a><a name="kanchor365"></a><a name="kanchor366"></a><a name="kanchor367"></a>The following commands operate on a device by sending data to the device 
  or by reading one or more lines from the input (from the connection to 
  the device being tested). Each command that reads a device compares its 
- string to the <i>current line</i><a name="kanchor377"></a> - which is the most recently-read line 
+ string to the <i>current line</i><a name="kanchor368"></a> - which is the most recently-read line 
  from the connection. If there is no current line (for example, if a SEND 
  command has been executed), these statements will read one or more lines 
  to get the current line.</p>
             <ul>
-                <li value="1"><a href="#expt" name="kanchor378">EXPT "string" #fail</a><a name="kanchor379"></a><a name="kanchor380"></a> 
+                <li value="1"><a href="#expt" name="kanchor369">EXPT "string" #fail</a><a name="kanchor370"></a><a name="kanchor371"></a> 
  - Searches incoming lines for the specified                     <i>string.</i></li>
-                <li value="2"><a href="#mtch" name="kanchor381">MTCH "string" #fail</a><a name="kanchor382"></a> 
+                <li value="2"><a href="#mtch" name="kanchor372">MTCH "string" #fail</a><a name="kanchor373"></a> 
  - Searches the next incoming line for the specified string.</li>
-                <li value="3"><a href="#skip" name="kanchor383">SKIP "string" #fail</a><a name="kanchor384"></a><a name="kanchor385"></a> 
+                <li value="3"><a href="#skip" name="kanchor374">SKIP "string" #fail</a><a name="kanchor375"></a><a name="kanchor376"></a> 
  - Ignore all incoming lines containing the specified                     <i>string.</i></li>
-                <li value="4"><a href="#disc" name="kanchor386">DISC #discfail</a><a name="kanchor388"></a><a name="kanchor389"></a> - Jump to a specified 
+                <li value="4"><a href="#disc" name="kanchor377">DISC #discfail</a><a name="kanchor379"></a><a name="kanchor380"></a> - Jump to a specified 
  line number if the probe is suddenly disconnected.</li>
-                <li value="5"><a href="#conn" name="kanchor390">CONN #timeout ["TELNET"]["SECURE"]</a><a name="kanchor395"></a> 
+                <li value="5"><a href="#conn" name="kanchor381">CONN #timeout ["TELNET"]["SECURE"]</a><a name="kanchor386"></a> 
  - Specifies the connect timeout of the probe and whether to process Telnet 
  options.</li>
                 <li value="6"><a href="#rcon">RCON</a> - reconnects to the specified server and port.</li>
-                <li value="7"><a href="#port" name="kanchor396">PORT #port_num #connect_timeout</a> 
+                <li value="7"><a href="#port" name="kanchor387">PORT #port_num #connect_timeout</a> 
  - No longer required (the remote port number is now a separate parameter 
  in the configuration dialog.)</li>
-                <li value="8"><a href="#line" name="kanchor399">LINE [ON | OFF]</a> - Specifies whether 
+                <li value="8"><a href="#line" name="kanchor390">LINE [ON | OFF]</a> - Specifies whether 
  the script should read incoming data as lines or as raw data.</li>
-                <li value="9"><a href="#next">NEXT</a><a name="kanchor400"></a> - Clears the input buffer 
+                <li value="9"><a href="#next">NEXT</a><a name="kanchor391"></a> - Clears the input buffer 
  so that subsequent                     <i><b>MTCH</b></i> commands will operate on newly-received 
  information. </li>
                 <li value="10"><a href="#send">SEND "string"</a> - Sends 
@@ -86,44 +86,44 @@
             <h2>Commands that control script flow</h2>
             <p>The following commands control the order of operations in the script.</p>
             <ul>
-                <li value="1"><a href="#chck" name="kanchor401">CHCK "string" #fail</a> 
+                <li value="1"><a href="#chck" name="kanchor392">CHCK "string" #fail</a> 
  - Determines whether "string" is non-empty.</li>
-                <li value="2"><a href="#done" name="kanchor402">DONE <i>status</i> ["message"]</a> 
+                <li value="2"><a href="#done" name="kanchor393">DONE <i>status</i> ["message"]</a> 
  - Terminates a script with a specified condition.</li>
-                <li value="3"><a href="#exit" name="kanchor404">EXIT</a> - Terminates a script with 
+                <li value="3"><a href="#exit" name="kanchor395">EXIT</a> - Terminates a script with 
  the condition specified previously by                     <b><i>STAT</i></b>.</li>
-                <li value="4"><a href="#fail" name="kanchor405">FAIL</a> - specifies the line # to jump to if a CONN command fails to connect.</li>
-                <li value="5"><a href="#goto" name="kanchor406">GOTO #statement</a> - Branches immediately 
+                <li value="4"><a href="#fail" name="kanchor396">FAIL</a> - specifies the line # to jump to if a CONN command fails to connect.</li>
+                <li value="5"><a href="#goto" name="kanchor397">GOTO #statement</a> - Branches immediately 
  to the specified statement number.</li>
-                <li value="6"><a href="#nbgt" name="kanchor407">NBGT #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>G</b></i>reater                     <i><b>T</b></i>han) branches 
+                <li value="6"><a href="#nbgt" name="kanchor398">NBGT #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>G</b></i>reater                     <i><b>T</b></i>han) branches 
  to                     <i>#line </i>if #<i>arg1</i> is greater than                     <i>#arg2</i>.</li>
-                <li value="7"><a href="#nbne" name="kanchor408">NBNE #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) Compares two 
+                <li value="7"><a href="#nbne" name="kanchor399">NBNE #arg1 #arg2 #line</a> - (<i><b>N</b></i>umeric                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) Compares two 
  numeric arguments and branches to the indicated #line if they are not 
  equal.</li>
-                <li value="8"><a href="#sbne" name="kanchor409">SBNE "arg1" "arg2" 
+                <li value="8"><a href="#sbne" name="kanchor400">SBNE "arg1" "arg2" 
  #line</a> - (<i><b>S</b></i>tring                     <i><b>B</b></i>ranch                     <i><b>N</b></i>ot                     <i><b>E</b></i>qual) Compares two string arguments and branches to the 
  indicated #line if they are not equal.</li>
                 <li value="9"><a href="#stat">STAT status ["message"]</a> 
  - Specifies the status condition of a script when it ends.</li>
-                <li value="10"><a href="#wait" name="kanchor410">WAIT #secs #idlefail #discfail</a><a name="kanchor415"></a> 
+                <li value="10"><a href="#wait" name="kanchor401">WAIT #secs #idlefail #discfail</a><a name="kanchor406"></a> 
  - Specifies the number of seconds the probe waits for a response.</li>
             </ul>
             <h2>String processing commands</h2>
             <p>The following commands process and manipulate strings.</p>
             <ul>
-                <li value="1"><a href="#eval" name="kanchor416">EVAL $result := expression</a> - Assigns the evaluated value of <span class="code">expression </span>to <span class="code">${result}</span></li>
-                <li value="2"><a href="#stor" name="kanchor417">STOR "variable" "string"</a> 
+                <li value="1"><a href="#eval" name="kanchor407">EVAL $result := expression</a> - Assigns the evaluated value of <span class="code">expression </span>to <span class="code">${result}</span></li>
+                <li value="2"><a href="#stor" name="kanchor408">STOR "variable" "string"</a> 
  - Stores the string into the variable named "variable"</li>
-                <li value="3"><a href="#scat" name="kanchor418">SCAT "variable1" "variable2" 
- #fail</a><a name="kanchor419"></a><a name="kanchor420"></a> - Concatenates variable1 and variable2, placing the resulting 
+                <li value="3"><a href="#scat" name="kanchor409">SCAT "variable1" "variable2" 
+ #fail</a><a name="kanchor410"></a><a name="kanchor411"></a> - Concatenates variable1 and variable2, placing the resulting 
  string in variable1. </li>
-                <li value="4"><a href="#nadd" name="kanchor421">NADD "variable" #number</a> 
+                <li value="4"><a href="#nadd" name="kanchor412">NADD "variable" #number</a> 
  - (<i><b>N</b></i>umeric                     <i><b>Add</b></i>) Adds a numeric value to a 
  variable.</li>
             </ul>
             <h2>Commands that measure time</h2>
             <ul>
-                <li value="1"><a href="#strt" name="kanchor422">STRT</a><a name="kanchor423"></a><a name="kanchor424"></a><a name="kanchor425"></a><a name="kanchor426"></a><a name="kanchor427"></a><a name="kanchor428"></a><a name="kanchor429"></a> - Starts a millisecond timer 
+                <li value="1"><a href="#strt" name="kanchor413">STRT</a><a name="kanchor414"></a><a name="kanchor415"></a><a name="kanchor416"></a><a name="kanchor417"></a><a name="kanchor418"></a><a name="kanchor419"></a><a name="kanchor420"></a> - Starts a millisecond timer 
  that InterMapper can use to determine the elapsed time for some event.</li>
                 <li value="2"><a href="#time">TIME "variable"</a> - Sets 
  the named variable to the current number of milliseconds from the most 
@@ -131,7 +131,7 @@
                 <li value="3"><a href="#wait">WAIT #secs #idlefail #discfail</a> 
  - Specifies the number of seconds the probe waits for a response.</li>
             </ul>
-            <h2 class="pagebreakbefore"><a name="kanchor430"></a><a name="kanchor431"></a>Probe Command Details - Alphabetical</h2>
+            <h2 class="pagebreakbefore"><a name="kanchor421"></a><a name="kanchor422"></a>Probe Command Details - Alphabetical</h2>
             <p style="font-weight: bold;"><a name="brcv"></a>BRCV {BER&#160;Sequence}</p>
             <p>Receive TCP data and decode from BER format into a local format, checking for expected tags and values as indicated. BER stands for "Basic Encoding Rules" for ASN.1. See LDAP probes for examples, syntax.</p>
             <p>Documentation of BER format is beyond the scope of this manual. </p>
@@ -159,10 +159,10 @@
  #fail line. </p>
             <p class="td">This command can be used to construct scripts whose control changes 
  depending on whether an optional parameter is supplied.</p>
-            <p class="td"><b style="font-weight: bold;"><a name="kanchor432"></a>Possible failures:</b> None</p>
+            <p class="td"><b style="font-weight: bold;"><a name="kanchor423"></a>Possible failures:</b> None</p>
             <h3 class="pagebreakbefore"><a name="conn"></a><b>CONN #timeout ["TELNET"]["SECURE"]</b>
             </h3>
-            <p>Use the <i><b>CONN</b></i><a name="kanchor433"></a> command to specify the connect timeout of 
+            <p>Use the <i><b>CONN</b></i><a name="kanchor424"></a> command to specify the connect timeout of 
  the probe and whether to process Telnet options. </p>
             <p>If you are going to use the <b><i>CONN</i></b> command, it                     <i>must be 
  the first statement of the script. </i>When the script executes, the parameters 
@@ -171,7 +171,7 @@
             <p><b style="font-weight: bold;">#timeout:</b> The number 
  of seconds to wait while trying to connect before giving up.</p>
             <p><b style="font-weight: bold;">"TELNET":</b> If the second parameter 
- of the                     <b><i>CONN</i></b><a name="kanchor434"></a><a name="kanchor435"></a> command is "TELNET" (including the 
+ of the                     <b><i>CONN</i></b><a name="kanchor425"></a><a name="kanchor426"></a> command is "TELNET" (including the 
  quotes), then the connection is created in a mode where the TCP stream 
  automatically processes and negatively acknowledge any incoming Telnet 
  options. This allows a Telnet probe to ignore the telnet options and work 
@@ -193,14 +193,14 @@ of the line.
             <h3><a name="done"></a><b>DONE <i>status</i> ["message"]</b>
             </h3>
             <p class="td">Use the <b><i>DONE</i></b> command to terminate the script with the 
- specified condition, which must be one of <a name="kanchor436"></a><a name="kanchor437"></a><a name="kanchor438"></a><a name="kanchor439"></a></p><pre class="code">[OKAY | WARN | ALRM | DOWN]</pre>
-            <p class="td"><a name="kanchor440"></a><a name="kanchor441"></a>The optional "message" parameter lets you provide more detail 
+ specified condition, which must be one of <a name="kanchor427"></a><a name="kanchor428"></a><a name="kanchor429"></a><a name="kanchor430"></a></p><pre class="code">[OKAY | WARN | ALRM | DOWN]</pre>
+            <p class="td"><a name="kanchor431"></a><a name="kanchor432"></a>The optional "message" parameter lets you provide more detail 
  about the condition. The status values for the <i><b>DONE </b></i>command 
- must be in                     <i><a name="kanchor442"></a>UPPERCASE</i>.</p>
-            <p class="td"><b style="font-weight: bold;">Example:</b><a name="kanchor443"></a>
+ must be in                     <i><a name="kanchor433"></a>UPPERCASE</i>.</p>
+            <p class="td"><b style="font-weight: bold;">Example:</b><a name="kanchor434"></a>
             </p><pre class="code">DONE ALRM "[HTTP] 500 Response received." 
 </pre>
-            <p class="td">This example sets the status of the device to <i>ALRM</i><a name="kanchor444"></a><a name="kanchor445"></a><a name="kanchor446"></a>. The condition 
+            <p class="td">This example sets the status of the device to <i>ALRM</i><a name="kanchor435"></a><a name="kanchor436"></a><a name="kanchor437"></a>. The condition 
  of the device (which is displayed in the device's Status window and the Device 
  List window) is set to "[HTTP] 500 Response received." to give 
  the user an indication of the reason for the alarm.</p>
@@ -254,13 +254,13 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
 </pre>
             <p><b style="font-weight: bold;">Possible Failures:</b>
             </p>
-            <p><a name="kanchor447"></a>The EXPT command can fail if the expected text is not received before the 
+            <p><a name="kanchor438"></a>The EXPT command can fail if the expected text is not received before the 
  connection closes. In that event, the script jumps to the statement specified 
  by <i>#fail</i>. </p>
             <p>However, if the timeout specified by a previous WAIT command expires 
  before the connection closes, the script jumps to the <i>#idlefail</i> 
  line specified by the                     <i><b>WAIT </b></i>command instead.</p>
-            <h3><a name="fail"></a><a name="kanchor448"></a>FAIL #</h3>
+            <h3><a name="fail"></a><a name="kanchor439"></a>FAIL #</h3>
             <p>Specify the line number to jump to if the probe fails to connect. The FAIL command must follow immediately after a CONN command line.</p>
             <p><b style="font-weight: bold;">Possible Failures:</b>&#160;</p>
             <p>If the statement number is out of bounds, the script terminates with 
@@ -280,16 +280,16 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <p><b style="font-weight: bold;">Notes:</b>
             </p>
             <ul>
-                <li value="1">By default, the script reads in <i><b><a name="kanchor449"></a>LINE ON </b></i><a name="kanchor450"></a><a name="kanchor451"></a><a name="kanchor452"></a>mode. 
+                <li value="1">By default, the script reads in <i><b><a name="kanchor440"></a>LINE ON </b></i><a name="kanchor441"></a><a name="kanchor442"></a><a name="kanchor443"></a>mode. 
  That is, the incoming data is read until it is terminated by a CR-LF or 
  just a plain LF, and then the line is processed. </li>
-                <li value="2"><a name="kanchor453"></a>If you issue a <i><b><a name="kanchor454"></a>LINE OFF</b></i> command, data 
- is read without regard for line delimiters.<br /><br /><a name="kanchor455"></a><a name="kanchor456"></a>Reading raw data is useful for scanning HTTP data since web pages are 
+                <li value="2"><a name="kanchor444"></a>If you issue a <i><b><a name="kanchor445"></a>LINE OFF</b></i> command, data 
+ is read without regard for line delimiters.<br /><br /><a name="kanchor446"></a><a name="kanchor447"></a>Reading raw data is useful for scanning HTTP data since web pages are 
  not necessarily broken into lines. InterMapper's TCP probe has a maximum 
  line buffer of 4096 characters, so if lines are longer than that, they may be 
  treated as separate lines.</li>
             </ul>
-            <p><b style="font-weight: bold;">Tip: </b><a name="kanchor457"></a>Once you've matched some data 
+            <p><b style="font-weight: bold;">Tip: </b><a name="kanchor448"></a>Once you've matched some data 
  in                     <i><b>LINE ON </b></i>mode, you shouldn't match any more because your 
  position in the buffer is not restored and you may miss something.</p>
             <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
@@ -367,7 +367,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <p class="td"><b style="font-weight: bold;">Possible Failures:</b> None.</p>
             <h3><a name="port"></a><b>PORT #port_num #connect_timeout</b>
             </h3>
-            <p><i style="font-style: italic;"><a name="kanchor458"></a>Deprecated</i> This command is no longer 
+            <p><i style="font-style: italic;"><a name="kanchor449"></a>Deprecated</i> This command is no longer 
  required in a script because the remote port number is now a separate 
  parameter in the configuration dialog.</p>
             <p>If present, this command must be in the first statement of the script. 
@@ -402,7 +402,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <blockquote>
                 <p><span class="code">STOR "name" "Fred"</span>
                     <br />sets the variable <span class="code">${name}</span> to the string 
- "Fred"<span class="code"><br /><br /><a name="kanchor459"></a>SCAT "name" "Flintstone" @TOO_LONG</span><br />sets the variable <span class="code">${name}</span> to the value 
+ "Fred"<span class="code"><br /><br /><a name="kanchor450"></a>SCAT "name" "Flintstone" @TOO_LONG</span><br />sets the variable <span class="code">${name}</span> to the value 
  "FredFlintstone"</p>
             </blockquote>
             <p><b style="font-weight: bold;">Possible Failures: </b>If the sum of the lengths of the strings exceeds 65,535 characters, the SCAT command 
@@ -416,7 +416,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
  the quoting convention.</p>
             <p><b style="font-weight: bold;">Example:</b>
             </p>
-            <blockquote><span class="code"><a name="kanchor460"></a>SEND "Greetings!\r\n"</span>
+            <blockquote><span class="code"><a name="kanchor451"></a>SEND "Greetings!\r\n"</span>
                 <br />transmits the data "Greetings!" followed by a CR-LF. 
 </blockquote>
             <p><b style="font-weight: bold;">Possible Failures: </b>This command can't fail. If the data can't be sent because of a network 
@@ -438,7 +438,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
  You can also specify a condition string as the second argument.</p>
             <p>The status must be one of</p><pre class="code">[OKAY | WARN | ALRM | DOWN | CRIT]</pre>
             <p><b style="font-weight: bold;">Example:</b>
-            </p><pre class="code"><a name="kanchor461"></a>STAT ALRM "[HTTP] 500 Response received." 
+            </p><pre class="code"><a name="kanchor452"></a>STAT ALRM "[HTTP] 500 Response received." 
 </pre>
             <p><b style="font-weight: bold;">Note:</b> A subsequent                     <i><b>STAT </b></i>or                     <i><b>DONE </b></i>command overrides the value set by this command.</p>
             <h3><b style="font-weight: bold;"><a name="stor"></a>STOR "variable" 
@@ -451,7 +451,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <p><b style="font-weight: bold;">Examples:</b>
             </p>
             <blockquote>
-                <p><span class="code"><a name="kanchor462"></a>STOR "fred" "foobar"</span>
+                <p><span class="code"><a name="kanchor453"></a>STOR "fred" "foobar"</span>
                     <br />sets the variable fred to the text string foobar. Subsequent parts of the 
  script can refer to this variable as <span class="code">${fred}</span>.</p>
                 <p><span class="code">STOR "fred" "3"</span>
@@ -478,7 +478,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <p><b style="font-weight: bold;">Example:</b>
             </p>
             <blockquote>
-                <p><span class="code"><a name="kanchor463"></a>TIME "connecttime" </span>
+                <p><span class="code"><a name="kanchor454"></a>TIME "connecttime" </span>
                     <br />sets the variable <span class="code">connecttime</span> to the number 
  of milliseconds since the most recent                     <i><b>STRT</b></i> command. If there 
  was no previous                     <i><b>STRT</b></i> command, the variable will be set to 
@@ -489,8 +489,8 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             </h3>
             <p>Use the <b><i>WAIT</i></b> command to specify the number of seconds 
  the probe waits for a response. </p>
-            <p><b style="font-weight: bold;">Parameter 1 - #secs: </b><a name="kanchor464"></a><a name="kanchor465"></a>The number of 
- seconds to wait for a response. If you do not include a                     <b><i>WAIT</i></b><a name="kanchor466"></a> 
+            <p><b style="font-weight: bold;">Parameter 1 - #secs: </b><a name="kanchor455"></a><a name="kanchor456"></a>The number of 
+ seconds to wait for a response. If you do not include a                     <b><i>WAIT</i></b><a name="kanchor457"></a> 
  command in your script, the default timeout 60 seconds is used.</p>
             <p><b style="font-weight: bold;">Parameter 2 - #idlefail:</b> If present, 
  the script jumps to this line number if the probe is idle for the specified 
@@ -504,7 +504,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
             <p><b style="font-weight: bold;">Possible Failures:</b> None</p>
             <p><b style="font-weight: bold;">Tip:</b> You should specify all three 
  parameters in the                     <i><b>WAIT </b></i>command.</p>
-            <h2 class="pagebreakbefore"><a name="example"></a><a name="kanchor467"></a><a name="kanchor468"></a>Annotated Example of the FTP (Login) Script</h2><pre class="code">01) PORT #21 (default tcp port)<br />02) WAIT #30 seconds<br />03) EXPT "220 " else goto -1- #14<br /><a name="kanchor469"></a>04) SEND "USER ${User ID}\r\n"<br />05) MTCH "331" else goto -2- #16<br /><a name="kanchor470"></a>06) SEND "PASS ${Password}\r\n"<br />07) MTCH "230" else goto -3- #20<br /><a name="kanchor471"></a>08) SEND "NOOP\r\n"<br />09) MTCH "200" else goto -4- #24<br />10) SEND "QUIT\r\n"<br />11) EXPT "221" #+1 (i.e. can't fail)<br /><a name="kanchor472"></a>12) DONE OKAY<br />13)<br /><a name="kanchor473"></a><a name="kanchor474"></a>14) DONE DOWN "[FTP] Unexpected greeting from port ${_REMOTEPORT}. ${_LINE:50})" -1-<br />15)<br />16) MTCH "500" else goto #+2 -2-<br /><a name="kanchor475"></a><a name="kanchor476"></a>17) DONE ALRM "[FTP] Port ${_REMOTEPORT} did not recognize the 'USER' command."<br />18) DONE ALRM "[FTP] Unexpected response to USER command. (${_LINE:50})"<br />19)<br />20) MTCH "530" else goto #+2 -3-<br /><a name="kanchor477"></a><a name="kanchor478"></a>21) DONE WARN "[FTP] Incorrect login for \"${User ID}"."<br />22) DONE ALRM "[FTP] Unexpected response to PASS command. (${_LINE:50})"<br />23)<br />24) DONE ALRM "[FTP] Unexpected response to NOOP command. (${_LINE:50})"</pre>
+            <h2 class="pagebreakbefore"><a name="example"></a><a name="kanchor458"></a><a name="kanchor459"></a>Annotated Example of the FTP (Login) Script</h2><pre class="code">01) PORT #21 (default tcp port)<br />02) WAIT #30 seconds<br />03) EXPT "220 " else goto -1- #14<br /><a name="kanchor460"></a>04) SEND "USER ${User ID}\r\n"<br />05) MTCH "331" else goto -2- #16<br /><a name="kanchor461"></a>06) SEND "PASS ${Password}\r\n"<br />07) MTCH "230" else goto -3- #20<br /><a name="kanchor462"></a>08) SEND "NOOP\r\n"<br />09) MTCH "200" else goto -4- #24<br />10) SEND "QUIT\r\n"<br />11) EXPT "221" #+1 (i.e. can't fail)<br /><a name="kanchor463"></a>12) DONE OKAY<br />13)<br /><a name="kanchor464"></a><a name="kanchor465"></a>14) DONE DOWN "[FTP] Unexpected greeting from port ${_REMOTEPORT}. ${_LINE:50})" -1-<br />15)<br />16) MTCH "500" else goto #+2 -2-<br /><a name="kanchor466"></a><a name="kanchor467"></a>17) DONE ALRM "[FTP] Port ${_REMOTEPORT} did not recognize the 'USER' command."<br />18) DONE ALRM "[FTP] Unexpected response to USER command. (${_LINE:50})"<br />19)<br />20) MTCH "530" else goto #+2 -3-<br /><a name="kanchor468"></a><a name="kanchor469"></a>21) DONE WARN "[FTP] Incorrect login for \"${User ID}"."<br />22) DONE ALRM "[FTP] Unexpected response to PASS command. (${_LINE:50})"<br />23)<br />24) DONE ALRM "[FTP] Unexpected response to NOOP command. (${_LINE:50})"</pre>
             <h3>Explanation of the Script</h3><pre class="code">01) PORT #21 (default tcp port)<br />02) WAIT #30 seconds</pre>
             <p><b style="font-weight: bold;">Line 1: </b>The PORT command at the beginning 
  of the script specifies the default TCP port number for FTP, port 21. 
@@ -525,7 +525,7 @@ EVAL $msg_part := ($msg =~ "(.*)| *([^|]+)$")</p>
  in the script command text; this statement could have been written equally 
  well as EXPT "220 " #14 . Note that statement #14 also has comment 
  of "-1-" to show it is the destination.</p><pre class="code">04) SEND "USER ${User ID}\r\n"</pre>
-            <p><b style="font-weight: bold;">Line 4: </b><a name="kanchor479"></a><a name="kanchor480"></a><a name="kanchor481"></a><a name="kanchor482"></a>Send the FTP USER command. 
+            <p><b style="font-weight: bold;">Line 4: </b><a name="kanchor470"></a><a name="kanchor471"></a><a name="kanchor472"></a><a name="kanchor473"></a>Send the FTP USER command. 
  With this command, we send the user ID specified by the user, e.g. "anonymous". 
  Note that you must include the carriage-return and line-feed at the end 
  of the string sent, to denote the line ending.</p><pre class="code">05) MTCH "331" else goto -2- #16</pre>

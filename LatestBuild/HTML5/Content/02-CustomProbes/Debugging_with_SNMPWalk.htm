@@ -45,31 +45,31 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor606"></a>Debugging with the SNMPWalk Command</h1>
+            <h1 class="L2"><a name="kanchor597"></a>Debugging with the SNMPWalk Command</h1>
             <p>InterMapper provides a simple SNMPWalk command, available from the Monitor menu, that allows you to perform an SNMPWalk on a specified OID. In some cases this may not be sufficient. You can also execute SNMPWalk as a server command, and include specific arguments as described below.</p>
-            <p><a name="kanchor607"></a>The InterMapper server implements a simple snmpwalk facility in its debug mode.<a name="kanchor608"></a><a name="kanchor609"></a><a name="kanchor610"></a><a name="kanchor611"></a><a name="kanchor612"></a><a name="kanchor613"></a><a name="kanchor614"></a><a name="kanchor615"></a></p><pre class="code">snmpwalk -v [1|2c|3] -c community -o filename [-e] [-n num-OIDs] -p 161 -r 3 -t 10 IP-address startOID
+            <p><a name="kanchor598"></a>The InterMapper server implements a simple snmpwalk facility in its debug mode.<a name="kanchor599"></a><a name="kanchor600"></a><a name="kanchor601"></a><a name="kanchor602"></a><a name="kanchor603"></a><a name="kanchor604"></a><a name="kanchor605"></a><a name="kanchor606"></a></p><pre class="code">snmpwalk -v [1|2c|3] -c community -o filename [-e] [-n num-OIDs] -p 161 -r 3 -t 10 IP-address startOID
 </pre>
             <p>where:</p>
             <ul>
-                <li value="1"><i>-v [1|2c|3]</i><a name="kanchor616"></a><a name="kanchor617"></a><a name="kanchor618"></a> is the version of SNMP to use: SNMPv1, SNMPv2c, or
+                <li value="1"><i>-v [1|2c|3]</i><a name="kanchor607"></a><a name="kanchor608"></a><a name="kanchor609"></a> is the version of SNMP to use: SNMPv1, SNMPv2c, or
 SNMPv3
 </li>
-                <li value="2"><i>-c community</i><a name="kanchor619"></a><a name="kanchor620"></a> indicates the SNMP read-only community string (see note
+                <li value="2"><i>-c community</i><a name="kanchor610"></a><a name="kanchor611"></a> indicates the SNMP read-only community string (see note
 for SNMPv3)
 </li>
-                <li value="3"><i>-e</i><a name="kanchor621"></a><a name="kanchor622"></a><a name="kanchor623"></a><a name="kanchor624"></a> if present, means to proceed to the end of the MIB
+                <li value="3"><i>-e</i><a name="kanchor612"></a><a name="kanchor613"></a><a name="kanchor614"></a><a name="kanchor615"></a> if present, means to proceed to the end of the MIB
 </li>
-                <li value="4"><i>-n num-OIDs</i><a name="kanchor625"></a><a name="kanchor626"></a> if present, indicates the number of OIDs to display (-e
+                <li value="4"><i>-n num-OIDs</i><a name="kanchor616"></a><a name="kanchor617"></a> if present, indicates the number of OIDs to display (-e
 and -n are mutually exclusive)
 </li>
                 <li value="5">-<i>o filename</i> is the name of a SQLite-format file saved in the InterMapper Settings/Temporary 
 directory. For more information see <a href="snmpwalk_o.htm">Using the SNMPWALK&#160;-O&#160;Option</a>.</li>
-                <li value="6"><i>-p</i><a name="kanchor627"></a> destination port (default is 161)
+                <li value="6"><i>-p</i><a name="kanchor618"></a> destination port (default is 161)
 </li>
                 <li value="7"><i>-r</i> number of retries that InterMapper will attempt if a response
 doesn't return (default is 3)
 </li>
-                <li value="8"><i>-t</i><a name="kanchor628"></a> timeout in seconds that InterMapper waits for a response (default
+                <li value="8"><i>-t</i><a name="kanchor619"></a> timeout in seconds that InterMapper waits for a response (default
 is 10 seconds)
 </li>
                 <li value="9"><i>IP-address</i> is the IP address of the device to query
@@ -85,13 +85,13 @@ from the device does not have the specified start OID as its prefix unless
 specified. If               <i>-e</i> is specified, the walk will continue until the end of
 the MIB or
 the specified maximum OIDs have been received. </p>
-            <p><i>Note:</i> For SNMPv3,               <i>community</i> should be in the following format:</p><pre class="code"><a name="kanchor629"></a><a name="kanchor630"></a><a name="kanchor631"></a><a name="kanchor632"></a><a name="kanchor633"></a><a name="kanchor634"></a><a name="kanchor635"></a><a name="kanchor636"></a>username:[md5|sha|none]:authpassword:[des|none]:privpassword
+            <p><i>Note:</i> For SNMPv3,               <i>community</i> should be in the following format:</p><pre class="code"><a name="kanchor620"></a><a name="kanchor621"></a><a name="kanchor622"></a><a name="kanchor623"></a><a name="kanchor624"></a><a name="kanchor625"></a><a name="kanchor626"></a><a name="kanchor627"></a>username:[md5|sha|none]:authpassword:[des|none]:privpassword
 </pre>
             <h2 class="pagebreakbefore">Examples</h2>
-            <p><b>Example:</b><a name="kanchor637"></a> SNMP walk of the ifTable of a device with IP address 192.168.1.1
+            <p><b>Example:</b><a name="kanchor628"></a> SNMP walk of the ifTable of a device with IP address 192.168.1.1
  using SNMPv2c with community string public:</p><pre class="code">snmpwalk -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2
 </pre>
-            <p><b>Example:</b><a name="kanchor638"></a> SNMP walk of the ifXTable of a device with IP address 10.10.2.20
+            <p><b>Example:</b><a name="kanchor629"></a> SNMP walk of the ifXTable of a device with IP address 10.10.2.20
  using SNMPv3 with user name 'user', authentication
  protocol MD5, authentication password 'auth', privacy protocol
  DES and privacy password 'priv':</p><pre class="code">snmpwalk -v 3 -c user:md5:auth:des:priv 10.10.2.20 1.3.6.1.2.1.31.1.1
@@ -104,7 +104,7 @@ the specified maximum OIDs have been received. </p>
 reached or
  until 10,000 OIDs have been received:</p><pre class="code">snmpwalk -v 1 -c public -e -n10000 192.168.1.1 1.3.6.1.2.1.2.2
 </pre>
-            <h2 class="pagebreakbefore">Invoking the snmpwalk command<a name="kanchor639"></a><a name="kanchor640"></a><a name="kanchor641"></a></h2>
+            <h2 class="pagebreakbefore">Invoking the snmpwalk command<a name="kanchor630"></a><a name="kanchor631"></a><a name="kanchor632"></a></h2>
             <p class="floatright" style="margin-right: 0;">
                 <img src="../images/snmpwalkcommand.png" border="0" />
             </p>
@@ -114,16 +114,16 @@ To use this command:</p>
                 <li value="1">Select <b>Help &gt; Diagnostics &gt; Server Command...</b>  The Server command
 window appears as shown above.
 </li>
-                <li value="2"><a name="kanchor642"></a> Enter the snmpwalk command, and click Send. 
+                <li value="2"><a name="kanchor633"></a> Enter the snmpwalk command, and click Send. 
 </li>
-                <li value="3"> The output of the SNMPwalk is written to the <b>Debug</b><a name="kanchor643"></a><a name="kanchor644"></a> file, which
+                <li value="3"> The output of the SNMPwalk is written to the <b>Debug</b><a name="kanchor634"></a><a name="kanchor635"></a> file, which
 is at this path: InterMapper Settings : InterMapper Logs :
 Debug<i>yyyymmddhhmm</i>.txt
 <br /><br />Note: You can use snmpwalk's -o option to direct the output of snmpwalk to an SQLite database. For more information, see <a href="snmpwalk_o.htm">Using the SNMPWALK -o Option</a>.<br /><br /></li>
                 <li value="4"> The output of the SNMPwalk will also appear in the Debug window, as shown
 below:
 </li>
-            </ol><pre class="code"><a name="kanchor645"></a><a name="kanchor646"></a>SNMPWalk 192.168.1.1: prefix 1.3 (maximum number of OIDs: 2000) <br />-- 9/16/2005 13:04:56<br />SNMPWalk on 192.168.1.1 started<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.1.0 = OctetString: ExampleOS<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.2.0 = OID: 1.3.6.1.4.1.9.1<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.3.0 = TimeTicks: 11058776
+            </ol><pre class="code"><a name="kanchor636"></a><a name="kanchor637"></a>SNMPWalk 192.168.1.1: prefix 1.3 (maximum number of OIDs: 2000) <br />-- 9/16/2005 13:04:56<br />SNMPWalk on 192.168.1.1 started<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.1.0 = OctetString: ExampleOS<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.2.0 = OID: 1.3.6.1.4.1.9.1<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.3.0 = TimeTicks: 11058776
 SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.4.0 = OctetString: support@example.com
 SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.5.0 = OctetString: Example.com Router<br />SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.6.0 = OctetString: http://www.example.com
 SNMPWalk 192.168.1.1: 1.3.6.1.2.1.1.7.0 = Integer: 72
@@ -137,10 +137,10 @@ SNMPWalk 192.168.1.1: 1.3.6.1.2.1.2.2.1.1.2 = Integer: 2
 ...
 SNMPWalk 192.168.1.1: Finished (end of MIB reached) -- 9/16/2005 13:09:48
 </pre>
-            <h2 class="pagebreakbefore"><a name="kanchor647"></a>snmpwalk stopall command</h2>
-            <p><a name="kanchor648"></a>To stop all SNMPwalks for a particular server, you can enter this command in the
+            <h2 class="pagebreakbefore"><a name="kanchor638"></a>snmpwalk stopall command</h2>
+            <p><a name="kanchor639"></a>To stop all SNMPwalks for a particular server, you can enter this command in the
 Server command... window. </p><pre class="code">snmpwalk stopall</pre>
-            <h4><a name="kanchor649"></a>Error Conditions</h4>
+            <h4><a name="kanchor640"></a>Error Conditions</h4>
             <p>InterMapper detects the following error conditions:</p>
             <p />
             <ul>
@@ -157,8 +157,8 @@ message that indicates
  that a loop is detected in the walk.
 </li>
             </ul>
-            <h4><a name="kanchor650"></a>Help from the telnet command line</h4>
-            <p><a name="kanchor651"></a>There is also documentation in the InterMapper's telnet help. Typing 'help 
+            <h4><a name="kanchor641"></a>Help from the telnet command line</h4>
+            <p><a name="kanchor642"></a>There is also documentation in the InterMapper's telnet help. Typing 'help 
  snmpwalk' in the telnet window will display a summary of the command. </p>
         </div>
         <p>

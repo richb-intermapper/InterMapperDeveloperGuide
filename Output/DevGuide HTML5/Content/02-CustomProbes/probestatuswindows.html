@@ -45,8 +45,8 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2" style="page-break-before: always;"><a name="kanchor104"></a><a name="kanchor105"></a><a name="kanchor106"></a><a name="kanchor107"></a><a name="kanchor108"></a>Probe Status Windows</h1>
-            <p><a name="kanchor109"></a><a name="kanchor110"></a>When you create a custom probe, you can override the default contents 
+            <h1 class="L2" style="page-break-before: always;"><a name="kanchor95"></a><a name="kanchor96"></a><a name="kanchor97"></a><a name="kanchor98"></a><a name="kanchor99"></a>Probe Status Windows</h1>
+            <p><a name="kanchor100"></a><a name="kanchor101"></a>When you create a custom probe, you can override the default contents 
  of  Status windows. How you do this depends on the type of probe, as follows:</p>
             <ul>
                 <li value="1"><b>The <span class="code"><a href="snmp-device-display.htm">&lt;snmp-device-display&gt;<a href="snmp-device-display.htm" class="MCXref xref "> </a></a></span> 
@@ -59,23 +59,23 @@ section </b> - for SNMP trap probes</li>
   section</b> - for Command-line probes</li>
             </ul>
             <p>All of these sections can be formatted using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup Language</a>. See the <span class="code">&lt;snmp-device-display&gt;</span> example below.</p>
-            <h2><a name="kanchor111"></a>Controlling the Status window in SNMP Probes with <span class="code">&lt;snmp-device-display&gt;</span></h2>
-            <p><a name="kanchor112"></a>Use the optional <span class="code">&lt;snmp-device-display&gt;</span> 
+            <h2><a name="kanchor102"></a>Controlling the Status window in SNMP Probes with <span class="code">&lt;snmp-device-display&gt;</span></h2>
+            <p><a name="kanchor103"></a>Use the optional <span class="code">&lt;snmp-device-display&gt;</span> 
   section to describe the text that appears in a custom SNMP probe's Status
 window. Probe variables are replaced with their values in the Status
  window's text.</p>
-            <p><a name="kanchor113"></a>The default font for the Status window's text is a mono-spaced font, so alignment 
+            <p><a name="kanchor104"></a>The default font for the Status window's text is a mono-spaced font, so alignment 
  of text is straightforward. You can change the appearance of the text in the 
  Status window using IMML, <a href="IMML - InterMapper Markup Language.htm">InterMapper's Markup Language</a>.</p>
             <p>Here is a sample <span class="code">&lt;snmp-device-display&gt;</span> section. Note that the variables
-are replaced with the values retrieved from the device, and that formatting is controlled by IMML.<a name="kanchor114"></a><a name="kanchor115"></a><a name="kanchor116"></a><a name="kanchor117"></a><a name="kanchor118"></a></p><pre class="code">
+are replaced with the values retrieved from the device, and that formatting is controlled by IMML.<a name="kanchor105"></a><a name="kanchor106"></a><a name="kanchor107"></a><a name="kanchor108"></a><a name="kanchor109"></a></p><pre class="code">
 &lt;snmp-device-display&gt;
   \B5\Custom SNMP Probe\0P\
   \4\ipForwDatagrams:\0\ ${ipForwDatagrams} datagrams/sec
   \4\ipInHdrErrors:\0\ &#160;&#160;${ipInHdrErrors} errors/minute
   \4\tcpCurrEstab:\0\ &#160;&#160;&#160;${tcpCurrEstab} connections
 &lt;/snmp-device-display&gt;</pre>
-            <h2><a name="kanchor119"></a>Controlling the Status window in TCP Probes with <span class="code">&lt;script-output&gt;</span></h2>
+            <h2><a name="kanchor110"></a>Controlling the Status window in TCP Probes with <span class="code">&lt;script-output&gt;</span></h2>
             <p>Use the optional <span class="code">&lt;script-output&gt;</span> 
   section to describe the text that appears in a TCP-based custom probe's 
  Status window. The data in this section appears in the Status window 

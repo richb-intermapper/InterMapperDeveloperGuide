@@ -45,48 +45,48 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2" style="page-break-before: always;"><a name="kanchor497"></a><a name="kanchor498"></a>Example TCP Probe File</h1>
+            <h1 class="L2" style="page-break-before: always;"><a name="kanchor488"></a><a name="kanchor489"></a>Example TCP Probe File</h1>
             <p>The following is the Help/Systems-provided probe for the Custom TCP script.</p><pre class="code">&lt;!-- 
-<a name="kanchor499"></a><a name="kanchor500"></a><a name="kanchor501"></a>Custom TCP (com.dartware.tcp.custom)
+<a name="kanchor490"></a><a name="kanchor491"></a><a name="kanchor492"></a>Custom TCP (com.dartware.tcp.custom)
 Copyright © 2000-2003 Help/Systems, LLC. 
 Please feel free to use this as the basis for new probes.
 --&gt;
 
-&lt;header&gt;<a name="kanchor502"></a>
+&lt;header&gt;<a name="kanchor493"></a>
   type = "tcp-script"
-  package = "com.dartware"<a name="kanchor503"></a>
-  probe_name = "tcp.custom"<a name="kanchor504"></a>
-  human_name = "Custom TCP"version = "1.2"<a name="kanchor505"></a>
-  address_type = "IP"<a name="kanchor506"></a>
+  package = "com.dartware"<a name="kanchor494"></a>
+  probe_name = "tcp.custom"<a name="kanchor495"></a>
+  human_name = "Custom TCP"version = "1.2"<a name="kanchor496"></a>
+  address_type = "IP"<a name="kanchor497"></a>
   port_number = "23"
 &lt;/header&gt;
 
 &lt;description&gt;
 \GB\Custom TCP Probe\P\
-<a name="kanchor507"></a><a name="kanchor508"></a><a name="kanchor509"></a><a name="kanchor510"></a>
+<a name="kanchor498"></a><a name="kanchor499"></a><a name="kanchor500"></a><a name="kanchor501"></a>
 This probe lets you send your own string over the TCP connection and set the
 status of the device depending on the response received. There are six
 parameters which control the operation of this probe:
-<a name="kanchor511"></a><a name="kanchor512"></a>
+<a name="kanchor502"></a><a name="kanchor503"></a>
 \i\String to send\p\ is the initial string sent over the TCP connection. This
 could be a command which indicates what to test, or a combination of a command
 and a password. The string is sent on its own line, terminated by a CR-LF.
 
-<a name="kanchor513"></a><a name="kanchor514"></a><a name="kanchor515"></a>\i\Seconds to wait\p\ is the number of seconds to wait for a response. If no
+<a name="kanchor504"></a><a name="kanchor505"></a><a name="kanchor506"></a>\i\Seconds to wait\p\ is the number of seconds to wait for a response. If no
 response is received within the specified number of seconds, the device's status
 is set to DOWN.
 
-<a name="kanchor516"></a><a name="kanchor517"></a><a name="kanchor518"></a>\i\OK Response\p\ is the substring which should match the device's "ok
+<a name="kanchor507"></a><a name="kanchor508"></a><a name="kanchor509"></a>\i\OK Response\p\ is the substring which should match the device's "ok
 response". If it matches the first line received, the device is reported to have
 a status of OK.
 
-<a name="kanchor519"></a>\i\WARN Response\p\ is the substring which should match the device's warning
+<a name="kanchor510"></a>\i\WARN Response\p\ is the substring which should match the device's warning
 response.
 
-<a name="kanchor520"></a>\i\ALRM Response\p\ is the substring which should match the device's alarm
+<a name="kanchor511"></a>\i\ALRM Response\p\ is the substring which should match the device's alarm
 response.
 
-<a name="kanchor521"></a>\i\DOWN Response\p\ is the substring which should match the device's down
+<a name="kanchor512"></a>\i\DOWN Response\p\ is the substring which should match the device's down
 response.
 
 If InterMapper cannot connect to the specified TCP port, the device's status is
@@ -103,21 +103,21 @@ set to DOWN.
 &lt;/parameters&gt;
 
 &lt;script&gt;
-  <a name="kanchor522"></a><a name="kanchor523"></a>CONN #60 (connect timeout in secs)
+  <a name="kanchor513"></a><a name="kanchor514"></a>CONN #60 (connect timeout in secs)
   SEND "${String to send}\r\n"
-  <a name="kanchor524"></a><a name="kanchor525"></a>WAIT #${Seconds to wait} else goto @IDLE
-  <a name="kanchor526"></a><a name="kanchor527"></a>EXPT "."r else goto @DISCONNECT
-  <a name="kanchor528"></a>MTCH "${OK Response}" else #+2
-  <a name="kanchor529"></a>DONE OKAY "[Custom] Response was \"${_LINE:50}\"."
+  <a name="kanchor515"></a><a name="kanchor516"></a>WAIT #${Seconds to wait} else goto @IDLE
+  <a name="kanchor517"></a><a name="kanchor518"></a>EXPT "."r else goto @DISCONNECT
+  <a name="kanchor519"></a>MTCH "${OK Response}" else #+2
+  <a name="kanchor520"></a>DONE OKAY "[Custom] Response was \"${_LINE:50}\"."
   MTCH "${WARN Response}" else #+2
-  <a name="kanchor530"></a>DONE WARN "[Custom] Response was \"${_LINE:50}\"."
+  <a name="kanchor521"></a>DONE WARN "[Custom] Response was \"${_LINE:50}\"."
   MTCH "${ALRM Response}" else #+2
-  <a name="kanchor531"></a>DONE ALRM "[Custom] Response was \"${_LINE:50}\"."
+  <a name="kanchor522"></a>DONE ALRM "[Custom] Response was \"${_LINE:50}\"."
   MTCH "${DOWN Response}" else #+2
-  <a name="kanchor532"></a>DONE DOWN "[Custom] Response was \"${_LINE:50}\"."
+  <a name="kanchor523"></a>DONE DOWN "[Custom] Response was \"${_LINE:50}\"."
 
   @IDLE:
-    <a name="kanchor533"></a>DONE DOWN "[Custom] Did not receive a line of data within ${Seconds to wait}
+    <a name="kanchor524"></a>DONE DOWN "[Custom] Did not receive a line of data within ${Seconds to wait}
     seconds. [Line ${_IDLELINE}]"
 
   @DISCONNECT:
@@ -126,7 +126,7 @@ set to DOWN.
 
 &lt;script-output&gt;
 &#160;&#160;\B5\Custom TCP Information\0P\
-<a name="kanchor534"></a>&#160;&#160;\4\Time to establish connection:\0\ ${_connect} msecs
+<a name="kanchor525"></a>&#160;&#160;\4\Time to establish connection:\0\ ${_connect} msecs
 &#160;&#160;\4\Time spent connected to host:\0\ ${_active} msecs
 &lt;/script-output&gt;
 </pre>

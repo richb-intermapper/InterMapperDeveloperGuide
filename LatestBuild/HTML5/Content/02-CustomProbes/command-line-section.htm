@@ -49,7 +49,7 @@
             <p>The <span class="code">&lt;command-line&gt;</span> section allows you to specify the information 
  needed to execute the commands for the probe. There are three variables:</p>
             <ul>
-                <li value="1"><b>path</b> - specify the path to the executable script/command.<a name="kanchor562"></a></li>
+                <li value="1"><b>path</b> - specify the path to the executable script/command.<a name="kanchor553"></a></li>
                 <li value="2"><b>cmd</b> - specify the actual script/command.</li>
                 <li value="3"><b>arg</b> - specify the arguments to be passed to the script/command.</li>
                 <li value="4"><b>input</b> - specify information to pass to STDIN to the script/command.</li>
@@ -73,7 +73,7 @@
   <br /><pre class="code">&lt;command-line&gt;<br />&#160;&#160;path = ""<br />&#160;&#160;cmd &#160;= "check_ping" <br />&#160;&#160;arg &#160;= "-H ${ADDRESS} -w 100,10% -c 1000,90%" <br />&lt;/command-line&gt;</pre></li>
                 <li value="4">Use the <span class="code">input</span> property to pass information to STDIN. See <a href="#stdin">Sending Data to STDIN</a>, below.</li>
             </ul>
-            <p class="indent"><a name="kanchor563"></a>Note the use of the "${ADDRESS}" macro. This is replaced with 
+            <p class="indent"><a name="kanchor554"></a>Note the use of the "${ADDRESS}" macro. This is replaced with 
  the address given when the device was created. You can also use the "${PORT}" 
  macro to indicate the port given when the device was created. </p>
             <h2 class="pagebreakbefore"><a name="stdin"></a>Sending Data to STDIN</h2>

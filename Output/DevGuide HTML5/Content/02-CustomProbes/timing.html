@@ -45,14 +45,14 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor483"></a><a name="kanchor484"></a><a name="kanchor485"></a><a name="kanchor486"></a><a name="kanchor487"></a>Measuring TCP&#160;Response Times</h1>
+            <h1 class="L2"><a name="kanchor474"></a><a name="kanchor475"></a><a name="kanchor476"></a><a name="kanchor477"></a><a name="kanchor478"></a>Measuring TCP&#160;Response Times</h1>
             <p>You can measure the response time of a device as it is being tested by a TCP&#160;probe. Times are 
  measured in milliseconds. </p>
             <p>With TCP Probes, InterMapper measures both the         <i>time to establish 
  the connection</i> and the         <i>time for various portions of an interaction</i>. 
  These times can be charted and logged.</p>
-            <h2><a name="kanchor488"></a>Time Measurement Probe Variables</h2>
-            <p><a name="kanchor489"></a>TCP Timers are:</p>
+            <h2><a name="kanchor479"></a>Time Measurement Probe Variables</h2>
+            <p><a name="kanchor480"></a>TCP Timers are:</p>
             <table width="100%" border="0" cellspacing="0" cellpadding="5">
                 <col style="width: 187px;" />
                 <col style="width: 122px;" />
@@ -73,19 +73,19 @@
  end of the end of the script.</td>
                 </tr>
             </table>
-            <h2><a name="kanchor490"></a>TCP Script Commands</h2>
+            <h2><a name="kanchor481"></a>TCP Script Commands</h2>
             <p>InterMapper supports two commands for measuring intervals during
 a script. These are:</p>
             <table width="100%" border="0" cellspacing="0" cellpadding="5">
                 <tr>
-                    <td><b><a name="kanchor491"></a>STRT</b>
+                    <td><b><a name="kanchor482"></a>STRT</b>
                     </td>
                     <td>Starts the probe's custom timer.</td>
                 </tr>
                 <tr>
-                    <td><b>TIME <i><a name="kanchor492"></a>varname</i></b>
+                    <td><b>TIME <i><a name="kanchor483"></a>varname</i></b>
                     </td>
-                    <td>Sets the variable named ${<i>varname</i><a name="kanchor493"></a>} to the milliseconds elapsed 
+                    <td>Sets the variable named ${<i>varname</i><a name="kanchor484"></a>} to the milliseconds elapsed 
  since the customtimer was started.</td>
                 </tr>
             </table>
@@ -93,7 +93,7 @@ a script. These are:</p>
             <p>Use the optional <span class="code">&lt;script-output&gt;</span> 
   section to display the results of custom TCP probes. The data in this section 
  appears in a Status window when you click and hold on the device. The format 
- of this section is the same as the <span class="code"><a name="kanchor494"></a>&lt;snmp-device-display&gt;</span>, 
+ of this section is the same as the <span class="code"><a name="kanchor485"></a>&lt;snmp-device-display&gt;</span>, 
  described in         <a href="probestatuswindows.html"> Customized  Status Windows</a>.</p>
             <p>Use the <span class="code">${_connect}</span> and <span class="code">${_active}</span> 
   variables, as well as any variables set with the TIME         <i>varname</i> command, 
@@ -103,7 +103,7 @@ a script. These are:</p>
             <p>InterMapper uses different techniques to measure the round-trip
 times of various probes.</p>
             <ul>
-                <li value="1"><b><a name="kanchor495"></a><a name="kanchor496"></a>Pings (ICMP and AppleTalk echoes)</b> - These are the most accurate timings. 
+                <li value="1"><b><a name="kanchor486"></a><a name="kanchor487"></a>Pings (ICMP and AppleTalk echoes)</b> - These are the most accurate timings. 
  InterMapper detects the arrival of the Ping response at the moment it arrives. Thus, it can compute the response times with millisecond accuracy.</li>
                 <li value="2"><b>Other UDP-based and TCP-based probes</b> - These timings are computed by InterMapper as it does its normal 
 polling. Thus, the measured time can be affected slightly by the 

@@ -46,7 +46,7 @@
         </div>
         <div class="pagewidth">
             <h1 class="L2">The <span class="code">&lt;snmp-device-thresholds&gt;</span> Section</h1>
-            <p>Use the <span class="code">&lt;snmp-device-thresholds&gt;</span><a name="kanchor162"></a><a name="kanchor163"></a> 
+            <p>Use the <span class="code">&lt;snmp-device-thresholds&gt;</span><a name="kanchor153"></a><a name="kanchor154"></a> 
   section to specify the comparisons that should be made between probe variables 
  and other values.</p>
             <p>Each line in the threshold section contains a <i> status</i>, a                             <i>comparison</i>, 
@@ -67,7 +67,7 @@
 </li>
             </ul>
             <h3>Sample <span class="code">&lt;snmp-device-threshold&gt;</span> 
-  Section </h3><pre class="code">&lt;snmp-device-thresholds&gt;<a name="kanchor164"></a>
+  Section </h3><pre class="code">&lt;snmp-device-thresholds&gt;<a name="kanchor155"></a>
 &#160;&#160;&#160;down: ${ifOperStatus} &#160;&#160;= &#160;0 "Device Down"
 &#160;&#160;&#160;critical: ${ipInHdrErrors} &#160;&#160;&gt; &#160;15 "ipInHdrErrors critical"
 &#160;&#160;&#160;   alarm: ${ipForwDatagrams} &gt; &#160;10 "ipForwarded datagrams too high"
@@ -77,7 +77,7 @@
 &#160;&#160;&#160; warning: ${ipForwDatagrams} &lt;= &#160;2
 &#160;&#160;&#160; warning: ${ipInHdrErrors} &#160;&#160;&gt; &#160;&#160;5<br />&#160;&#160;&#160; okay: 1 = 1 "Everything is OK"
 &lt;/snmp-device-threshold&gt;</pre>
-            <h2><a name="kanchor165"></a><a name="kanchor166"></a>Creating Comparisons </h2>
+            <h2><a name="kanchor156"></a><a name="kanchor157"></a>Creating Comparisons </h2>
             <p>As implied above, comparisons are evaluated <i>in order from top to bottom until a comparison is 
  triggered</i> (result is <i>true</i>). <i>It is important to put the Critical comparisons first, followed by Alarm, Warning, and OK</i>.</p>
             <p>At that point, if the associated status is 
@@ -86,17 +86,17 @@
             <p>When a comparison is triggered, it is written to the log file as well as being 
  added to the bottom of the device's Status window. If the condition string is 
  present, it is displayed in addition to the comparison string.</p>
-            <h3 class="pagebreakbefore"><a name="kanchor167"></a>Numeric Comparisons</h3>
+            <h3 class="pagebreakbefore"><a name="kanchor158"></a>Numeric Comparisons</h3>
             <p>The following numeric comparison operators are legal: </p>
             <p class="code">&gt;, &gt;=, &lt;, &lt;=, =, and !=. </p>
-            <h3><b><a name="kanchor168"></a><a name="kanchor169"></a>String Matches</b>
+            <h3><b><a name="kanchor159"></a><a name="kanchor160"></a>String Matches</b>
             </h3>
             <p>By default, InterMapper performs numeric comparisons. </p>
             <p><b>To compare values as strings:</b>
             </p>
             <ul>
                 <li value="1">Enclose one or both of the operands in double-quotes ("). For example, the 
- comparison<br></br><br></br><span class="code"><a name="kanchor170"></a>warning: ${sysContact} != "Fred Flintstone"</span><br></br><br></br>performs a string comparison because the name is enclosed in quotes. 
+ comparison<br></br><br></br><span class="code"><a name="kanchor161"></a>warning: ${sysContact} != "Fred Flintstone"</span><br></br><br></br>performs a string comparison because the name is enclosed in quotes. 
   </li>
                 <li value="2">Use the =~ and !~ operators to provide partial string matches. They perform 
  "contains" and "doesn't contain" comparisons, respectively.</li>

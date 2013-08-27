@@ -45,10 +45,10 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor267"></a>Probe Properties</h1>
-            <p>The <span class="code"><a name="kanchor268"></a><a name="kanchor269"></a>&lt;snmp-device-properties&gt;</span> section specifies 
+            <h1 class="L2"><a name="kanchor258"></a>Probe Properties</h1>
+            <p>The <span class="code"><a name="kanchor259"></a><a name="kanchor260"></a>&lt;snmp-device-properties&gt;</span> section specifies 
  certain aspects of the SNMP queries sent to the device. Like other sections, 
- it is closed with a &lt;/snmp-device-properties&gt; tag. For example:<a name="kanchor270"></a><a name="kanchor271"></a><a name="kanchor272"></a></p><pre class="code">&lt;snmp-device-properties&gt;
+ it is closed with a &lt;/snmp-device-properties&gt; tag. For example:<a name="kanchor261"></a><a name="kanchor262"></a><a name="kanchor263"></a></p><pre class="code">&lt;snmp-device-properties&gt;
 &#160;&#160;&#160;nomib2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"true"
 &#160;&#160;&#160;pdutype&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"get-request"
 &#160;&#160;&#160;apcups&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;=&#160;"false"
@@ -58,13 +58,13 @@
 &lt;/snmp-device-properties&gt;</pre>
             <p>The properties that may be set include:</p>
             <ul>
-                <li value="1"><b>nomib2="true"</b><a name="kanchor273"></a><a name="kanchor274"></a><a name="kanchor275"></a> -- InterMapper does not query the sysUptime MIB-2 
+                <li value="1"><b>nomib2="true"</b><a name="kanchor264"></a><a name="kanchor265"></a><a name="kanchor266"></a> -- InterMapper does not query the sysUptime MIB-2 
  variable.
   </li>
-                <li value="2"><b>pdutype="get-request"</b><a name="kanchor276"></a><a name="kanchor277"></a> -- InterMapper uses SNMP Get-Request, instead 
+                <li value="2"><b>pdutype="get-request"</b><a name="kanchor267"></a><a name="kanchor268"></a> -- InterMapper uses SNMP Get-Request, instead 
  of Get-Next-Request queries.
   </li>
-                <li value="3"><b>apcups="false"</b><a name="kanchor278"></a><a name="kanchor279"></a><a name="kanchor280"></a> -- If apcups is false, InterMapper will not query the APC-UPS MIB even for devices that auto-detect as one. 
+                <li value="3"><b>apcups="false"</b><a name="kanchor269"></a><a name="kanchor270"></a><a name="kanchor271"></a> -- If apcups is false, InterMapper will not query the APC-UPS MIB even for devices that auto-detect as one. 
   </li>
                 <li value="4"><b>maxvars="10"</b> -- maxvars controls the maximum number of variables 
  to put in each SNMP request. If a custom probe requires more variables than 

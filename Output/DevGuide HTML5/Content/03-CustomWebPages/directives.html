@@ -45,7 +45,7 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor695"></a>Directives</h1>
+            <h1 class="L2"><a name="kanchor686"></a>Directives</h1>
             <p>A <i>directive</i> is a special command interpreted by the web server 
  to control the way a page is formatted.</p>
             <ul>
@@ -63,9 +63,9 @@
                         </p>
                     </td>
                     <td>
-                        <p><span class="code"><a name="kanchor696"></a><a name="kanchor697"></a>#template "othertemplate.html"</span>
+                        <p><span class="code"><a name="kanchor687"></a><a name="kanchor688"></a>#template "othertemplate.html"</span>
                         </p>
-                        <p>A target file may specify a template file with the <span class="code">#template</span> directive. The <span class="code"> #template</span><a name="kanchor698"></a> 
+                        <p>A target file may specify a template file with the <span class="code">#template</span> directive. The <span class="code"> #template</span><a name="kanchor689"></a> 
         directive is optional; if none is present, InterMapper uses the file named 
  <span class="code">!template.html</span> as the page's template.</p>
                     </td>
@@ -76,7 +76,7 @@
                         </p>
                     </td>
                     <td>
-                        <p><span class="code"><a name="kanchor699"></a>#title "This is a Test Page"</span>
+                        <p><span class="code"><a name="kanchor690"></a>#title "This is a Test Page"</span>
                         </p>
                         <p>The text in quotes becomes the title of the page - it enclosed in <span class="code">&lt;title&gt;...&lt;/title&gt;</span> 
  tags in the generated page. The <span class="code">#title</span> 
@@ -91,7 +91,7 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                        <p valign="top"><b><a name="kanchor700"></a>#alt_title</b>
+                        <p valign="top"><b><a name="kanchor691"></a>#alt_title</b>
                         </p>
                     </td>
                     <td>
@@ -112,7 +112,7 @@
                         </p>
                         <p>The optional <span class="code">#filename</span> directive causes InterMapper 
  to treat the file as if named with the quoted string. </p>
-                        <p><a name="kanchor701"></a>For example, a target file named "xindex.html" could have a directive of <br /><span class="code">#filename "!index.html"</span>. This causes the target file to be used in place of 
+                        <p><a name="kanchor692"></a>For example, a target file named "xindex.html" could have a directive of <br /><span class="code">#filename "!index.html"</span>. This causes the target file to be used in place of 
  the file named "!index.html" <i>if its version number is higher</i>. This can 
  be useful for debugging, or for creating alternate versions of pages.</p>
                     </td>
@@ -138,7 +138,7 @@
                             <li value="2"> If you edit one of the default web template files, you could can 
  change its #version to make it take precedence over InterMapper's built-in 
  copy.<br /></li>
-                            <li value="3"> If you edit the file without changing the <span class="code">#version</span><a name="kanchor702"></a>, 
+                            <li value="3"> If you edit the file without changing the <span class="code">#version</span><a name="kanchor693"></a>, 
  its date-last-modified value is later, causing it to take precedence 
  over InterMapper's built-in copy.<br /></li>
                             <li value="4">If you install a new version of InterMapper with updated web files, 
@@ -153,7 +153,7 @@
  In such a case, the <span class="code">#version</span> 
           is used to determine which file takes precedence.</li>
                         </ul>
-                        <p><a name="kanchor703"></a>Version numbers must be in a 'digit.digit' format. InterMapper uses the 
+                        <p><a name="kanchor694"></a>Version numbers must be in a 'digit.digit' format. InterMapper uses the 
  file with the highest version number. This is useful for debugging as 
  well as experimenting with alternate pages. </p>
                         <p>If <span class="code">#version</span> directive is not present in the 
@@ -173,7 +173,7 @@
  of the original target file. </p>
                         <p>This can be used to force a well-known page (such as !index.html) to 
  display a user-selected page.</p>
-                        <p><b>Note:</b><a name="kanchor704"></a> This directive creates a static redirection that works 
+                        <p><b>Note:</b><a name="kanchor695"></a> This directive creates a static redirection that works 
  only for web pages that exist on the disk when the web server is started. 
  To redirect to web pages that are generated dynamically by InterMapper 
  (such as map web pages), use the HTML refresh meta tag instead.</p>
@@ -185,11 +185,11 @@
                         </p>
                     </td>
                     <td>
-                        <p><span class="code"><a name="kanchor705"></a>#target "window_name"</span>
+                        <p><span class="code"><a name="kanchor696"></a>#target "window_name"</span>
                         </p>
                         <p>The <span class="code">#target</span> directive forces a page to be 
  opened in a new window named "window_name". </p>
-                        <p><a name="kanchor706"></a>When generating the web page, InterMapper generates an HREF link with 
+                        <p><a name="kanchor697"></a>When generating the web page, InterMapper generates an HREF link with 
  a ...target = "window_name" ... reference. This causes the detailed information 
  to appear in a separate window when the user clicks a map's device or 
  link.</p>

@@ -45,7 +45,7 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2" data-mc-conditions=""><a name="kanchor191"></a>The <span class="code">&lt;snmp-device-alarmpoints&gt;</span> Section</h1>
+            <h1 class="L2" data-mc-conditions=""><a name="kanchor182"></a>The <span class="code">&lt;snmp-device-alarmpoints&gt;</span> Section</h1>
             <p>InterMapper can monitor multiple conditions within a single device (e.g., a single piece of hardware) and give separate, independent notifications for each. For example, it can send notifications for a high temperature alarm independent of a low-memory condition in the same device.</p>
             <p>Each of these conditions is called an "alarm point". InterMapper's custom SNMP probe facility allows you to define multiple alarm points for a device, along with their thresholds and the notifications to be sent.</p>
             <p>InterMapper tracks the state of each alarm point separately. Alarms on one point will not affect the status, logging, or notifications of any other alarm point. However, the visual appearance of a device will reflect the most serious condition of any of its contained alarm points.</p>
@@ -111,7 +111,7 @@
             <h2 class="pagebreakbefore">Notifications</h2>
             <p>Alarm points can use the same notification settings as the device, or they can have independent notifications. That is, each alarm point's set of notifications can be separate from any others, and each transition to a new severity can have its own notification. <br />Notifications for alarm points follow the current InterMapper scheme of sending the notification to an identity. Each identity is configured to use a single notification method (sound, e-mail, modem paging, SNPP, running a script, etc.) to send the desired message.<br />Alarm point notifications can have independent repeats, delays, and counts, as well. They are defined in the probe file as described in the <a href="alarmpointnotifiers.htm">Alarm Point Notifier List</a> section.</p>
             <h2>Log File Messages</h2>
-            <p>InterMapper writes messages to the Event Log file for individual alarm point actions. The entries will be written on a change of severity, for notifications, acknowledgements, or for <a name="kanchor192"></a>maintenance mode changes. The lines will have tab-delimited fields in this order:<br /></p>
+            <p>InterMapper writes messages to the Event Log file for individual alarm point actions. The entries will be written on a change of severity, for notifications, acknowledgements, or for <a name="kanchor183"></a>maintenance mode changes. The lines will have tab-delimited fields in this order:<br /></p>
             <ul>
                 <li value="1"><b>Date-time</b> Date and time the entry was made into the log file</li>
                 <li value="2"><b>Severity</b> A four or five-character severity of the event (clear, minor, major, crit, unkn)</li>

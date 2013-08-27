@@ -45,17 +45,17 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 data-mc-conditions="Primary.online"><a name="kanchor12"></a><a name="kanchor13"></a><a name="kanchor14"></a>Overview</h1>
-            <p><a name="kanchor15"></a>For many Internet services, simply "pinging" a device is not a sufficient test of whether it is operating correctly. InterMapper has a number of built-in probes that can test different aspects of a device's operation, whether it's a web server, router, database, LDAP server etc. </p>
+            <h1 data-mc-conditions="Primary.online"><a name="kanchor3"></a><a name="kanchor4"></a><a name="kanchor5"></a>Overview</h1>
+            <p><a name="kanchor6"></a>For many Internet services, simply "pinging" a device is not a sufficient test of whether it is operating correctly. InterMapper has a number of built-in probes that can test different aspects of a device's operation, whether it's a web server, router, database, LDAP server etc. </p>
             <p>However, InterMapper's built-in probes may not test the kinds of devices you want to monitor, or may not test them ways that are most useful to you. In such a case, you can create your own probes. InterMapper's probes are defined by <i>probe files</i>, simple text files that can be duplicated and modified using any standard text editing utility. When you create your own probe, it becomes a first-class citizen and appears in the                    Set Probe window along with the built-in probes.</p>
             <h2>What is a probe?</h2>
             <p>A probe is a text file that specifies the way in which InterMapper tests a device. It is essentially a plug-in. All of InterMapper's probes follow the same logic:</p>
             <ul>
-                <li value="1"><a name="kanchor16"></a><a name="kanchor17"></a><a name="kanchor18"></a><a name="kanchor19"></a><a name="kanchor20"></a>The probe sends one or more queries, as SNMP requests or UDP datagrams or over a TCP connection to the device being tested.
+                <li value="1"><a name="kanchor7"></a><a name="kanchor8"></a><a name="kanchor9"></a><a name="kanchor10"></a><a name="kanchor11"></a>The probe sends one or more queries, as SNMP requests or UDP datagrams or over a TCP connection to the device being tested.
 </li>
                 <li value="2"> The device responds (or fails to respond).
 </li>
-                <li value="3"><a name="kanchor21"></a>If there is no response, InterMapper sets the device's status to DOWN.
+                <li value="3"><a name="kanchor12"></a>If there is no response, InterMapper sets the device's status to DOWN.
 </li>
                 <li value="4"> InterMapper examines the response(s) from the device, and sets the device's status accordingly.
 </li>
@@ -65,7 +65,7 @@
             <h2>Types of Probes</h2>
             <p>InterMapper has several kinds of probes. You can use InterMapper's built-in probes as-is, you can copy and modify them, or you can develop your own probes from scratch. These are the different probe types:</p>
             <ul>
-                <li value="1"><a href="customsnmpprobes.html"><b>SNMP Probes</b></a> <a name="kanchor22"></a> - InterMapper tests the device's status by sending SNMP queries and comparing the results to 
+                <li value="1"><a href="customsnmpprobes.html"><b>SNMP Probes</b></a> <a name="kanchor13"></a> - InterMapper tests the device's status by sending SNMP queries and comparing the results to 
 	user-specified thresholds. </li>
                 <li value="2"><a href="handlingtraps.htm"><b>SNMP Trap Probes</b></a> - InterMapper can receive and process SNMP traps, and can set the status of a probe based on the contents of the trap's variables. You can create custom probes that alert you to problems in a certain device based on the contents of specific trap variables.<br /></li>
                 <li value="3"><a href="TCP_Probes.htm"><b>TCP Probes</b></a> - InterMapper establishes a TCP connection to a device. It then sends certain requests and evaluates the 	

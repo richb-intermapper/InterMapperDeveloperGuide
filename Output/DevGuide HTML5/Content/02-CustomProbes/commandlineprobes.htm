@@ -45,11 +45,11 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1><a name="kanchor535"></a>Command Line Probes</h1>
+            <h1><a name="kanchor526"></a>Command Line Probes</h1>
             <p class="code">type="cmd-line"</p>
             <p> InterMapper provides the ability to run a <i>command-line</i> probe, a script or program (written 
  in perl, C, C++, or your favorite language.) Your program's return value becomes the device's status on the 
- InterMapper map. <a name="kanchor536"></a><a name="kanchor537"></a><a name="kanchor538"></a><a name="kanchor539"></a><a name="kanchor540"></a><a name="kanchor541"></a><a name="kanchor542"></a><a name="kanchor543"></a><a name="kanchor544"></a><a name="kanchor545"></a></p>
+ InterMapper map. <a name="kanchor527"></a><a name="kanchor528"></a><a name="kanchor529"></a><a name="kanchor530"></a><a name="kanchor531"></a><a name="kanchor532"></a><a name="kanchor533"></a><a name="kanchor534"></a><a name="kanchor535"></a><a name="kanchor536"></a></p>
             <h2>Common Sections of a Command-Line Probe</h2>
             <p>Each command-line probe follows the same general format as other probe files, sharing these common sections:</p>
             <ul>
@@ -70,17 +70,17 @@ section specifies the help text that appears in the Set  Probe window. Format th
  InterMapper sets the device's status based on the return code from the 
  program or script. In addition, any data written to the 
  script's standard output file is used as the device's reason string, and appears in the status window.
-The total amount of data that can be returned by the program, including return code, reason string, and additional values, is 64k.<a name="kanchor546"></a><a name="kanchor547"></a><a name="kanchor548"></a><a name="kanchor549"></a><a name="kanchor550"></a><a name="kanchor551"></a><a name="kanchor552"></a></p>
-            <p><a name="nagios"></a>InterMapper's command-line probes are similar to <a name="kanchor553"></a> <b><a href="http://www.nagios.org/">Nagios® 
+The total amount of data that can be returned by the program, including return code, reason string, and additional values, is 64k.<a name="kanchor537"></a><a name="kanchor538"></a><a name="kanchor539"></a><a name="kanchor540"></a><a name="kanchor541"></a><a name="kanchor542"></a><a name="kanchor543"></a></p>
+            <p><a name="nagios"></a>InterMapper's command-line probes are similar to <a name="kanchor544"></a> <b><a href="http://www.nagios.org/">Nagios® 
  plugins</a></b>. You 
- can see the                                 <a href="http://sourceforge.net/project/showfiles.php?group_id=29880" name="kanchor554">standard 
- set of Nagios plugins.</a><a name="kanchor555"></a> Many vendors and individuals have created their own 
+ can see the                                 <a href="http://sourceforge.net/project/showfiles.php?group_id=29880" name="kanchor545">standard 
+ set of Nagios plugins.</a><a name="kanchor546"></a> Many vendors and individuals have created their own 
  Nagios plugins. You will have to download the Nagios plugins and build/compile 
  them yourself. 
 </p>
             <p> If you wish to develop your own command-line probes, we recommend you follow 
  the <a href="http://nagiosplug.sourceforge.net/developer-guidelines.html">developer guidelines for Nagios</a>. 
- This will result in probes/plugins that work for both InterMapper and Nagios. <a name="kanchor556"></a></p>
+ This will result in probes/plugins that work for both InterMapper and Nagios. <a name="kanchor547"></a></p>
             <p>For more information about InterMapper and Nagios Plugins, see the<a href="nagios.htm"> Nagios Plugins page</a>.</p>
             <p>See <a href="cmdlineprobeexample.htm">Command Line Probe Example</a> for a sample shell script and corresponding probe.</p>
             <h2>The &lt;tool&gt; section - embedding a companion script</h2>
@@ -103,12 +103,12 @@ to the command. As the script developer, you are responsible for parsing the arg
             <p><b>Example:</b> The following output from a script sets two values to the probe:<br /><span class="code">$rtt </span>and <span class="code">$hop</span>, and sets the device's reason string to "<i>Round-trip time 
   is very high</i>".</p><pre class="code">\{ $rtt := 5, $hop := 2 } Round-trip time is very high</pre>
             <p>You can do a significant amount when writing to stdout, using the ${^stdout} variable. For more information, see <a href="builtinvariablereference.htm#stdout">The <span class="code">${^stdout}</span> variable and the Reason string</a>.<br /></p>
-            <h2 class="pagebreakbefore"><a name="kanchor557"></a><a name="kanchor558"></a>Installing a Command-line Probe</h2>
+            <h2 class="pagebreakbefore"><a name="kanchor548"></a><a name="kanchor549"></a>Installing a Command-line Probe</h2>
             <p>Once you have created your probe, you need to install it before you can test it.</p>
             <p><b>To install and use a command-line probe:</b>
             </p>
             <ol>
-                <li value="1"><a name="kanchor559"></a><a name="kanchor560"></a><a name="kanchor561"></a> If you are using an external script or other executable, create the program, and make it runnable. If it's a Perl, Python, or other 
+                <li value="1"><a name="kanchor550"></a><a name="kanchor551"></a><a name="kanchor552"></a> If you are using an external script or other executable, create the program, and make it runnable. If it's a Perl, Python, or other 
  script, set the permissions so that it can run from the command line. If it's 
  written in C, C++, or other non-interpreted language, compile the source and 
  then place the resulting binary in an appropriate directory. (See the <a href="#path">path</a> discussion below.)

@@ -45,15 +45,15 @@
         <div id="dartware_toclink" class="dartware_toclink"><a name="dartware_a" href="#">Show TOC</a>
         </div>
         <div class="pagewidth">
-            <h1 class="L2"><a name="kanchor92"></a>The <span class="code">&lt;parameters&gt;</span> Section</h1>
-            <p><a name="kanchor93"></a>A probe can have one or more parameters. These parameters are set by the user 
+            <h1 class="L2"><a name="kanchor83"></a>The <span class="code">&lt;parameters&gt;</span> Section</h1>
+            <p><a name="kanchor84"></a>A probe can have one or more parameters. These parameters are set by the user 
  in the Set Probe window (shown below). They are used for specifying 
  numeric thresholds or strings to be sent to or received from the device. </p>
-            <p>The <i>parameter</i><a name="kanchor94"></a> section of the defines a set of name/value pairs with 
+            <p>The <i>parameter</i><a name="kanchor85"></a> section of the defines a set of name/value pairs with 
  the format:</p><pre class="code">&lt;parameters&gt;<br />&#160;&#160;[parameter name]= "[parameter value]"<br />&lt;/parameters&gt;</pre>
             <p>Each parameter name/value appears in its own entry field in the Set Probe 
 	window.</p>
-            <p><a name="kanchor95"></a><a name="kanchor96"></a>Probe parameters are accessed and used just like variables. They can be used 
+            <p><a name="kanchor86"></a><a name="kanchor87"></a>Probe parameters are accessed and used just like variables. They can be used 
 	in calculations, alarm/warning thresholds, and displayed in the status window. 
 	To refer to a parameter whose name contains one or more spaces, the name will 
 	need to be enclosed in curly braces. (Example: "${Seconds to wait}").</p>
@@ -68,7 +68,7 @@
             <h3>Text Fields</h3>
             <p>This field type presents a simple text box for entering a string.</p><pre class="code">	"Text"	= "Text Value"</pre>
             <p>The line above sets the variable <samp>${Text}</samp></p>
-            <h3><a name="kanchor97"></a><a name="kanchor98"></a>Password Fields</h3>
+            <h3><a name="kanchor88"></a><a name="kanchor89"></a>Password Fields</h3>
             <p>You can create input parameters that conceal the string 
  from casual view (so-called <i>password parameters</i>.) The data is displayed 
  as a line of asterisks ("*****") when a user types the password. To specify 
@@ -95,8 +95,8 @@ selected by the user. To display the value of a dropdown in the Status window, y
             <p>You can use this parameter in expressions. The full variable is
 ${Checkbox[Equal,NotEqual]}, and it returns the current value of the check box as
 selected by the user</p>
-            <h2 class="pagebreakbefore"><a name="kanchor99"></a>Parameter Section Example</h2>
-            <p><a name="kanchor100"></a><a name="kanchor101"></a>This is an example parameter section that demonstrates the use of the four types of input fields. The screenshot below shows how each input field type appears.</p><pre class="code">&lt;parameters&gt;
+            <h2 class="pagebreakbefore"><a name="kanchor90"></a>Parameter Section Example</h2>
+            <p><a name="kanchor91"></a><a name="kanchor92"></a>This is an example parameter section that demonstrates the use of the four types of input fields. The screenshot below shows how each input field type appears.</p><pre class="code">&lt;parameters&gt;
 &#160;&#160;"Text"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= "Text Value"
 &#160;&#160;"Password*"&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= ""
 &#160;&#160;"Dropdown[Choice1,Choice2,Choice3]"&#160;&#160;=&#160;&#160;"Choice2"

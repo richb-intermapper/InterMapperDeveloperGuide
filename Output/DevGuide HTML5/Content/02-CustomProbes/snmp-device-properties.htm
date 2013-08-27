@@ -47,18 +47,18 @@
         </div>
         <div class="pagewidth">
             <h1 class="L2">The <span class="code">&lt;snmp-device-properties&gt;</span> 
-  Section<a name="kanchor171"></a><a name="kanchor172"></a></h1>
+  Section<a name="kanchor162"></a><a name="kanchor163"></a></h1>
             <p>The <span class="code">&lt;snmp-device-properties&gt;</span> section specifies certain aspects of the SNMP queries sent to the device. Like other sections, it is closed with a &lt;/snmp-device-properties&gt; tag. The items that may be set include:</p>
             <ul>
-                <li value="1"><b><a name="kanchor173"></a>nomib2="true"</b><a name="kanchor174"></a><a name="kanchor175"></a> - InterMapper does not query the sysUptime MIB-2 variable 
+                <li value="1"><b><a name="kanchor164"></a>nomib2="true"</b><a name="kanchor165"></a><a name="kanchor166"></a> - InterMapper does not query the sysUptime MIB-2 variable 
   </li>
-                <li value="2"><b><a name="kanchor176"></a>pdutype="get-request"</b><a name="kanchor177"></a><a name="kanchor178"></a> - InterMapper uses SNMP Get-Request, instead 
+                <li value="2"><b><a name="kanchor167"></a>pdutype="get-request"</b><a name="kanchor168"></a><a name="kanchor169"></a> - InterMapper uses SNMP Get-Request, instead 
  of Get-Next-Request queries 
   </li>
-                <li value="3"><b>apcups="false"</b><a name="kanchor179"></a><a name="kanchor180"></a><a name="kanchor181"></a> - If apcups is false, InterMapper does not query 
+                <li value="3"><b>apcups="false"</b><a name="kanchor170"></a><a name="kanchor171"></a><a name="kanchor172"></a> - If apcups is false, InterMapper does not query 
  the APC-UPS MIB even for devices that auto-detect as one. 
   </li>
-                <li value="4"><b><a name="kanchor182"></a>maxvars="10"</b> - maxvars controls the maximum number of variables 
+                <li value="4"><b><a name="kanchor173"></a>maxvars="10"</b> - maxvars controls the maximum number of variables 
  to put in each SNMP request. If a custom probe requires more variables than 
  maxvars, InterMapper sends multiple queries containing up to maxvars variables. 
 </li>

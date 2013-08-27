@@ -46,22 +46,22 @@
         </div>
         <div class="pagewidth">
             <h1 class="L2">The <span class="code">&lt;snmp-device-variables&gt;</span> Section<madcap:keyword term="Variable-name OID;Var;Probe Variables" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" /></h1>
-            <p>Use the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor148"></a><a name="kanchor149"></a> 
+            <p>Use the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor139"></a><a name="kanchor140"></a> 
   section to specify the values you want to retrieve using a particular SNMP OID. 
  These values, called                                <i>probe variables</i>, can then be compared to thresholds 
  to create alarms, warnings, etc.</p>
-            <p>Each line of the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor150"></a> 
+            <p>Each line of the <span class="code">&lt;snmp-device-variables&gt;</span><a name="kanchor141"></a> 
   section defines a particular variable to be retrieved. The definition is composed 
  of four comma-separated attributes:</p><pre class="code">[Variable-name], [OID], [Type], [Chart-legend]</pre>
             <h3>Sample <span class="code">&lt;snmp-device-variables&gt;</span> 
   Section </h3><pre class="code">&lt;snmp-device-variables&gt;<br style="mc-tag-and-class: ;"></br>&#160;&#160;--Variable-name&#160; OID --- TYPE ---- CHART LEGEND ------<br style="mc-tag-and-class: ;"></br>&#160;&#160;ipForwDatagrams, 1.3.6.1.2.1.4.6.0, PER-SECOND, "Forwarded datagrams"<br style="mc-tag-and-class: ;"></br>&#160;&#160;ipInHdrErrors, &#160;&#160;1.3.6.1.2.1.4.4.0, PER-MINUTE, "IP received header err"<br style="mc-tag-and-class: ;"></br>&#160;&#160;tcpCurrEstab, &#160;&#160;&#160;1.3.6.1.2.1.6.9.0, DEFAULT, &#160;&#160;&#160;"Number of TCP conn's"<br style="mc-tag-and-class: ;"></br>&#160;&#160;sysDescr, &#160;&#160;&#160;&#160;&#160;&#160;&#160;1.3.6.1.2.1.1.1.0, DEFAULT<br style="mc-tag-and-class: ;"></br>&lt;/snmp-device-variables&gt;</pre>
-            <p><b>Note:</b> The OIDs above have a trailing ".0" to specify their full OID.<a name="kanchor151"></a><a name="kanchor152"></a><a name="kanchor153"></a><a name="kanchor154"></a><a name="kanchor155"></a><a name="kanchor156"></a><a name="kanchor157"></a><a name="kanchor158"></a><a name="kanchor159"></a></p>
-            <h2><a name="devdisp"></a><a name="kanchor160"></a>Status Window Text - The <span class="code">&lt;snmp-device-display&gt;</span> 
+            <p><b>Note:</b> The OIDs above have a trailing ".0" to specify their full OID.<a name="kanchor142"></a><a name="kanchor143"></a><a name="kanchor144"></a><a name="kanchor145"></a><a name="kanchor146"></a><a name="kanchor147"></a><a name="kanchor148"></a><a name="kanchor149"></a><a name="kanchor150"></a></p>
+            <h2><a name="devdisp"></a><a name="kanchor151"></a>Status Window Text - The <span class="code">&lt;snmp-device-display&gt;</span> 
   Section</h2>
             <p>Use the <span class="code">&lt;snmp-device-display&gt;</span> 
   to control the way information gathered during polling appears in the Status 
  window. Create a <span class="code">&lt;snmp-device-display&gt;</span> section with the items to be displayed. 
- For more information, see                                <a href="probestatuswindows.html" name="kanchor161">Customized Status Windows</a>.</p>
+ For more information, see                                <a href="probestatuswindows.html" name="kanchor152">Customized Status Windows</a>.</p>
             <p>
                 <madcap:keyword term="MIB" xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />InterMapper retrieves MIB variables from a device and then tests them against thresholds.
 The
