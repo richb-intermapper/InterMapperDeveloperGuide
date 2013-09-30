@@ -96,6 +96,7 @@ a
 	x-text-overline: off;
 	x-text-line-through: off;
 	text-decoration: none;
+	color: #0000ff;
 }
 
 a.header
@@ -469,6 +470,7 @@ p.codeindent
 	MadCap|xref
 	{
 		mc-format: ' (Pg {page})';
+		color: #0000ff;
 	}
 
 	h1.L2pagebreak

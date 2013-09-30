@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="807" MadCap:lastWidth="576">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="818" MadCap:lastWidth="576">
     <head>
     </head>
     <body>
         <h1 class="L2">HTTP API Scripting Examples</h1>
-        <p>Two command line scripts are available; these scripts provide good examples of the use of the InterMapper HTTP API:</p>
+        <p>Two command line script examples are included here; these scripts provide good examples of the use of the InterMapper HTTP API:</p>
         <ul>
             <li><b>Unix shell script</b> - for Unix/Linux platforms</li>
             <li><b>Windows vbscript</b> - for Windows platforms</li>
         </ul>
-        <p>Both scripts make a copy of the InterMapper Settings directory. Both scripts assume  they are invoked from the destination directory rather than trying to look it up - this is intended to make testing easier. Help/Systems recommends that you create a dummy InterMapper Settings  folder someplace and try the synchronization to that (the destination directory doesn't  even require that InterMapper is installed, only the script). The remote server  does not need to be the same platform as the destination machine.</p>
-        <p>The destination directory should <b style="font-style: italic;">not</b> have an active InterMapper running in it, as the script assumes that it  can replace files at will.</p>
+        <p><b>Notes:</b> <![CDATA[ ]]></p>
+        <ul>
+            <li>These scripts are not installed on your InterMapper server.</li>
+            <li> If you copy the scripts, <i>make sure you are copying from the online version</i> of this guide, available at <a href="http://download.intermapper.com/docs/DevGuide/">http://download.intermapper.com/docs/DevGuide/</a>. Copying from the PDF version may result in unreliable results, caused by unwanted line breaks.</li>
+            <li>Both scripts make a copy of the InterMapper Settings directory. </li>
+            <li>Both scripts assume  they are invoked <i>from the destination directory</i> rather than trying to look it up - this is intended to make testing easier. Help/Systems recommends that you create a dummy InterMapper Settings  folder someplace and try the synchronization to that (the destination directory doesn't  even require that InterMapper is installed, only the script). The remote server  does not need to be the same platform as the destination machine.</li>
+            <li>The destination directory should <b style="font-style: italic;">not</b> have an active InterMapper running in it, as the script assumes that it  can replace files at will.</li>
+        </ul>
         <p>The following URLs are used to access the folders:</p>
         <table class="fieldtable">
             <tbody>
@@ -57,7 +63,7 @@
             </tbody>
         </table>
         <h3>Unix shell script</h3>
-        <p>The Unix shell  script assumes that the current working directory is the "Temporary" folder  inside the destination InterMapper Settings <i>(This is likely to change.).</i></p>
+        <p><b>File location:</b> The Unix shell  script assumes that the current working directory is the "Temporary" folder  inside the destination InterMapper Settings.</p>
         <p>The script requires bash, curl, tr, grep, sed and awk. to  be installed.</p>
         <h4>Unix script  options</h4><pre class="code">
 clone_im.sh [options]
@@ -77,7 +83,7 @@ clone_im.sh -r nitro.dartware.com -t 8080 -u IMuser -p UsErpaSS
 </pre>
         <h3>
             <br />Windows vbscript</h3>
-        <p>The Windows vbscript assumes that the current working  directory is the destination InterMapper Settings.</p>
+        <p><b>File location:</b> The Windows vbscript assumes that the current working  directory is the destination machine's InterMapper Settings folder.</p>
         <h4>Windows script  options</h4><pre class="code">
 clone_im.vbs 
 /host:[remote_hostname] 
