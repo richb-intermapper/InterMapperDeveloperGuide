@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="appxc\macros.html" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="846" MadCap:lastWidth="576">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:conditions="Primary.online,Primary.print" MadCap:check_list="Ran Smart Index" MadCap:id="appxc\macros.html" MadCap:timeEstimate="0" MadCap:priority="0" MadCap:status="In Progress" MadCap:lastBlockDepth="7" MadCap:lastHeight="867" MadCap:lastWidth="576">
     <head><title></title>
         <link rel="StyleSheet" href="../Resources/default.css" />
     </head>
@@ -96,7 +96,7 @@
                     </p>
                 </td>
                 <td style="vertical-align: top;">
-                    <p>Output a table of current interface outages. The table's column names are <b><i>Date</i></b>, <b><i>Time</i></b>, <b><i>Interface</i></b> and <b><i>Duration</i></b>.
+                    <p>Output a table of current interface outages. The table's column names are <b style="font-style: italic;">Date</b>, <b style="font-style: italic;">Time</b>, <b style="font-style: italic;">Interface</b> and <b style="font-style: italic;">Duration</b>.
 </p>
                 </td>
             </tr>
@@ -275,6 +275,15 @@ this address may break in NAT situations.</p>
             </tr>
             <tr>
                 <td style="text-align: right;vertical-align: top;" align="right" valign="top">
+                    <p align="right" valign="top"><b style="font-weight: bold;">${timestamp}</b>
+                    </p>
+                </td>
+                <td style="vertical-align: top;">
+                    <p>Timestamp in Unix epoch format.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;vertical-align: top;" align="right" valign="top">
                     <p align="right" valign="top"><b style="font-weight: bold;"><MadCap:keyword term="Imagesuffix" />${imagesuffix}</b>
                     </p>
                 </td>
@@ -445,9 +454,7 @@ files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
             </tr>
             <tr>
                 <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
-                    <p align="right" valign="top"><b>*chart</b> <![CDATA[
-
-]]></p>
+                    <p align="right" valign="top"><b>*chart</b> <![CDATA[ ]]></p>
                 </td>
                 <td style="vertical-align: top;">
                     <p>Displays a strip chart, generally has a suffix of <span class="code">${chart}.${imagesuffix}</span> to send the desired format for the client's browser. Takes parameters of width (for the chart, in pixels) and the other parameters of the URL. </p>
@@ -460,8 +467,7 @@ files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
             </tr>
             <tr>
                 <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
-                    <p align="right" valign="top"><b>*popuptext.html</b> <![CDATA[
-]]></p>
+                    <p align="right" valign="top"><b>*popuptext.html</b> <![CDATA[ ]]></p>
                 </td>
                 <td style="vertical-align: top;">
                     <p>Displays the contents of the current device, network, or interface Status Window (these were formerly called "pop-up windows") as HTML. </p>
@@ -472,24 +478,19 @@ files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
             </tr>
             <tr>
                 <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
-                    <p align="right" valign="top"><b>*map</b> <![CDATA[
-]]></p>
+                    <p align="right" valign="top"><b>*map</b> <![CDATA[ ]]></p>
                 </td>
                 <td style="vertical-align: top;">
                     <p>Displays an image of the devices, networks, and links (the "foreground") of the selected map against a transparent background. The objects in this image match with the *imagemap.html, below. Takes an option of a timestamp, to provide for auto-refresh. </p>
                     <p>Usage: </p>
-                    <p><span class="code">&lt;img src="/${httpdocument}/document/main/*map.${imagesuffix}?${timestamp}"&gt;</span> <![CDATA[
-]]></p>
-                    <p><![CDATA[
-]]></p>
-                    <p><![CDATA[
-]]></p>
+                    <p><span class="code">&lt;img src="/${httpdocument}/document/main/*map.${imagesuffix}?${timestamp}"&gt;</span> <![CDATA[ ]]></p>
+                    <p> <![CDATA[ ]]></p>
+                    <p> <![CDATA[ ]]></p>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: right;font-weight: normal;vertical-align: top;" align="right" valign="top">
-                    <p align="right" valign="top"><b>*mapbg</b> <![CDATA[
-]]></p>
+                    <p align="right" valign="top"><b>*mapbg</b> <![CDATA[ ]]></p>
                 </td>
                 <td style="vertical-align: top;">
                     <p>Displays the background image of the selected map. This provides the customer-selected background to the map as an image. It takes an option of a timestamp to provide for auto-refresh. </p>
@@ -510,7 +511,7 @@ files, "photo.gif" and "photo.png", photo.gif is found first.<br /></p>
                 </td>
             </tr>
         </table>
-        <p><b>Note:</b> <![CDATA[ ]]><span style="font-weight: normal;">The web pages combine </span><span class="code" style="font-weight: normal;">*map</span><span style="font-weight: normal;"> with the </span><span class="code" style="font-weight: normal;">*mapbg</span><span style="font-weight: normal;"> and </span><span class="code" style="font-weight: normal;">*imagemap</span><span style="font-weight: normal;"> to create a </span><span class="code" style="font-weight: normal;">&lt;div&gt;</span><span style="font-weight: normal;"> that superimposes all three items into a single visual unit. See </span><span class="code" style="font-weight: normal;">InterMapper Settings/Web Pages/PerMapHTML/map.html</span><span style="font-weight: normal;"> for an example.</span></p>
+        <p><b>Note:</b> The web pages combine <span class="code" style="font-weight: normal;">*map</span> with the <span class="code" style="font-weight: normal;">*mapbg</span> and <span class="code" style="font-weight: normal;">*imagemap</span> to create a <span class="code" style="font-weight: normal;">&lt;div&gt;</span> that superimposes all three items into a single visual unit. See <span class="code" style="font-weight: normal;">InterMapper Settings/Web Pages/PerMapHTML/map.html</span> for an example.</p>
         <h2><b style="font-weight: bold;"><a name="interval"></a>Macros that control 
  the interval between page refreshes</b>
         </h2>
