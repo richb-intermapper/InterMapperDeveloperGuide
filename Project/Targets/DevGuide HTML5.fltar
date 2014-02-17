@@ -10,7 +10,7 @@
   ConditionTagExpression="include[Primary.online] exclude[Primary.Outstanding or Primary.print or Primary.review] "
   MasterPage="/Content/Resources/MasterPages/TopicMaster.flmsp"
   Comment="Dont know if this makes it into the system or not"
-  OutputFolder="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapperDeveloperGuide"
+  OutputFolder="E:\Projects\Doc Projects\HelpSystems\Flare-InterMapper\InterMapperDeveloperGuide"
   GetLatestBeforeCompile="true"
   Skin="/Project/Skins/HTML5test.flskn">
   <Variables />

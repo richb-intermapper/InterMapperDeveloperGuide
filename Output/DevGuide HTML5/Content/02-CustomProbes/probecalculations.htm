@@ -271,24 +271,25 @@ sprintf( "%a", "Help/Systems" )<br />&#160;&#160;&#160;Results in "44:61:72:74:7
                 <li value="12">	p	- 	"AM" or "PM"
 </li>
                 <li value="13">	S	- 	Second number (00-61)
-	</li>
-                <li value="14">U	- 	Week of the year number (00-53). First Sunday is day 1 of week 1.
-	</li>
-                <li value="15">w	- 	Weekday number (0-6). Sunday is 0.
-	</li>
-                <li value="16">W	- 	Week of the year number (00-53). First Monday is day 1 or week 1.
 </li>
-                <li value="17">	x	- 	Date.
+                <li value="14">s - returns the number of seconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).</li>
+                <li value="15">U	- 	Week of the year number (00-53). First Sunday is day 1 of week 1.
+	</li>
+                <li value="16">w	- 	Weekday number (0-6). Sunday is 0.
+	</li>
+                <li value="17">W	- 	Week of the year number (00-53). First Monday is day 1 or week 1.
 </li>
-                <li value="18">	X	- 	Time.
+                <li value="18">	x	- 	Date.
 </li>
-                <li value="19">	y	- 	Two-digit year number (00-99)
+                <li value="19">	X	- 	Time.
+</li>
+                <li value="20">	y	- 	Two-digit year number (00-99)
 	</li>
-                <li value="20">Y	- 	Year with century (e.g. 2007)
+                <li value="21">Y	- 	Year with century (e.g. 2007)
 	</li>
-                <li value="21">z	- 	Time zone.
+                <li value="22">z	- returns the +hhmm or -hhmm numeric timezone (that is, the hour and minute offset from UTC) for the InterMapper server.
 	</li>
-                <li value="22">%	- 	Prints a percent sign
+                <li value="23">%	- 	Prints a percent sign
 </li>
             </ul>
             <p>The strftime function is implemented using the identically named function in the underlying system. Other format codes may work, but these are not portable.</p><pre class="code">strftime( "%c")
