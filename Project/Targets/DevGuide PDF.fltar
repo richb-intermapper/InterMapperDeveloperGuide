@@ -11,7 +11,7 @@
   MasterPageLayout="/Content/Resources/PageLayouts/DartwareChapter.flpgl"
   MasterToc="/Project/TOCs/Primary.fltoc"
   MasterStylesheet="/Content/Resources/default.css"
-  OutputFolder="E:\Projects\Doc Projects\Dartware\Flare-InterMapper\InterMapperDeveloperGuide">
+  OutputFolder="E:\Projects\Doc Projects\HelpSystems\Flare-InterMapper\InterMapperDeveloperGuide">
   <Variables />
   <ConditionTags />
   <Glossaries>
